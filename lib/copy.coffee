@@ -15,4 +15,12 @@ copyFileSync = (srcFile, destFile) ->
   fs.closeSync(fdr)
   fs.closeSync(fdw)
 
+copyFile = (srcFile, destFile, cb) ->
+  fdr = fs.createReadStream(srcFile)
+  fdw = fs.createWriteStream(destFile)
+  fdr.on 'end', ->
+    cb(null)
+  fdr.pipe(fdw)
+
 module.exports.copyFileSync = copyFileSync
+module.exports.copyFile = copyFile

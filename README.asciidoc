@@ -26,11 +26,12 @@ Usage
 fs = require('fs-extra')
 ----
 
-You can still use all of the vanilla Node.js path methods. At this time, there is only one extra method.
+You can still use all of the vanilla Node.js path methods.
 
 Methods:
 ----
 fs.copyFileSync(srcFile, destFile) //synchronously copies a file
+fs.copyFile(srcFile, destFile, function(err)) //asynchronously copies a file
 ----
 
 License
