@@ -7,7 +7,7 @@ Installation
 ~~~~~~~~~~~~
 
 ----
-npm install file-extra
+npm install fs-extra
 ----
 
 Make sure that you run the test script to verify that it works on your system.
