@@ -20,7 +20,7 @@ buildBuffer = (size) ->
       bytesWritten += buf.write(d.substring(0,4), bytesWritten)
   buf
 
-describe 'fs-extra', ->
+describe 'fs-extra: copy', ->
 
   describe 'copyFileSync', ->
     it 'should copy synchronously', ->
@@ -40,7 +40,7 @@ describe 'fs-extra', ->
 
 
   describe 'copyFile', ->
-    it 'should copy asynchronously', ->
+    it 'should copy asynchronously', (done) ->
       buf = buildBuffer(16*64*1024+7)
       ex = Date.now()
       fileSrc = path.join(path.tempdir(), "TEST_fs-extra_write-#{ex}")
@@ -52,13 +52,14 @@ describe 'fs-extra', ->
 
       destMd5 = ''
 
-      runs ->
-        fs.copyFile fileSrc, fileDest, (err) ->
-          destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
-      waitsFor -> destMd5 isnt ''
-      runs ->
+      fs.copyFile fileSrc, fileDest, (err) ->
+        destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
         T bufMd5 is destMd5
         T srcMd5 is destMd5
+        done()
+
+      
+
       
 
 
