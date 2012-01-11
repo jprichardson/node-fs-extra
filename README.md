@@ -33,4 +33,4 @@ fs.rmrf(dir, callback)  //asynchronous version as before
 
 Copyright (c) 2011 JP Richardson
 
-  1: http://nodejs.org/docs/latest/api/fs.html 
+[1]: http://nodejs.org/docs/latest/api/fs.html 
