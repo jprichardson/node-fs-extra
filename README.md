@@ -1,41 +1,36 @@
-Node.js: fs-extra
--------------------
+# Node.js: fs-extra
 
 This module simply patches the Node.js 'fs' object with extra methods.
 
-Installation
-~~~~~~~~~~~~
+## Installation
 
-----
-npm install fs-extra
-----
+    npm install fs-extra
 
 Make sure that you run the test script to verify that it works on your system.
 Navigate to the directory for the module and run: `make test`
 
+## Usage
 
-Usage
-~~~~~
-
-----
+```javascript
 fs = require('fs-extra')
-----
+```
 
-Note that you can still use all of the http://nodejs.org/docs/latest/api/fs.html[vanilla Node.js file methods].
+Note that you can still use all of the [vanilla Node.js file methods][1].
 
-.Methods
-=====
+## Methods
+
+```javascript
 fs.copyFileSync(srcFile, destFile) //synchronously copies a file
 fs.copyFile(srcFile, destFile, function(err)) //asynchronously copies a file
 
 fs.rmrfSync(dir) //recursively deletes directory, like rm -rf on Unix
 fs.rmrf(dir, callback)  //asynchronous version as before
-=====
+```
 
-License
-~~~~~~~
+## License
 
 (The MIT License)
 
 Copyright (c) 2011 JP Richardson
 
+  1: http://nodejs.org/docs/latest/api/fs.html 
