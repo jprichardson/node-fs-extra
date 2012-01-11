@@ -23,7 +23,7 @@ fs = require('fs-extra')
 
 Note that you can still use all of the http://nodejs.org/docs/latest/api/fs.html[vanilla Node.js file methods].
 
-Methods:
+.Methods
 ----
 fs.copyFileSync(srcFile, destFile) //synchronously copies a file
 fs.copyFile(srcFile, destFile, function(err)) //asynchronously copies a file
