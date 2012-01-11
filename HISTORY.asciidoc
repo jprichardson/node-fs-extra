@@ -1,0 +1,4 @@
+0.0.3 / 2012-01-11
+------------------
+* Added methods rmrf and rmrfSync
+* Moved tests from Jasmine to Mocha
