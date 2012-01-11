@@ -11,13 +11,8 @@ npm install fs-extra
 ----
 
 Make sure that you run the test script to verify that it works on your system.
-----
-#Mac OS X or Linux Users:
-TEST_fs-extra
+Navigate to the directory for the module and run: `make test`
 
-#Windows Users:
-coffee TEST_fs-extra
-----
 
 Usage
 ~~~~~
@@ -29,6 +24,7 @@ fs = require('fs-extra')
 Note that you can still use all of the http://nodejs.org/docs/latest/api/fs.html[vanilla Node.js file methods].
 
 Methods:
+
 [source,javascript]
 ----
 fs.copyFileSync(srcFile, destFile) //synchronously copies a file

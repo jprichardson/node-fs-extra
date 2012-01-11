@@ -22,8 +22,5 @@
         "path-extra": ">=0.0.1",
         "rimraf": ">=1.0.9"
      },
-    "bin" : {
-        "TEST_file-extra": "./bin/TEST_file-extra" 
-    },
     "main" : "index"
 }
