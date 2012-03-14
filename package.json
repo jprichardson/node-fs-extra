@@ -1,6 +1,6 @@
 {
     "name" : "fs-extra", 
-    "version" : "0.0.3",
+    "version" : "0.0.4",
     "description" : "fs-extra contains methods that aren't included in the vanilla Node.js fs package.",
     "homepage" : [
         "https://github.com/jprichardson/node-fs-extra"
@@ -16,11 +16,13 @@
         "url" : "http://github.com/jprichardson/node-fs-extra/raw/master/LICENSE"
     }],
     "dependencies" : {
-        "coffee-script" : ">=1.0.1",
-        "jasmine-node": ">=1.0.12",
-        "mocha": ">=0.9.0",
-        "path-extra": ">=0.0.1",
-        "rimraf": ">=1.0.9"
+        "path-extra": "0.0.x",
+        "rimraf": "1.0.x"
      },
-    "main" : "index"
+     "devDepdencies":{
+        "mocha": "0.14.x",
+        "growl": "1.5.x",
+        "coffee-script": "1.2.x"
+    },
+    "main" : "./lib/index"
 }

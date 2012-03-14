@@ -20,9 +20,8 @@ buildBuffer = (size) ->
       bytesWritten += buf.write(d.substring(0,4), bytesWritten)
   buf
 
-describe 'fs-extra: copy', ->
-
-  describe 'copyFileSync', ->
+describe 'fs-extra', ->
+  describe '+ copyFileSync()', ->
     it 'should copy synchronously', ->
       buf = buildBuffer(16*64*1024+7)
       ex = Date.now()
@@ -39,7 +38,7 @@ describe 'fs-extra: copy', ->
       T srcMd5 is destMd5
 
 
-  describe 'copyFile', ->
+  describe '+ copyFile()', ->
     it 'should copy asynchronously', (done) ->
       buf = buildBuffer(16*64*1024+7)
       ex = Date.now()

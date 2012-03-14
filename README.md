@@ -4,7 +4,7 @@ This module simply patches the Node.js 'fs' object with extra methods.
 
 ## Installation
 
-    npm install fs-extra
+    npm install --production fs-extra
 
 Make sure that you run the test script to verify that it works on your system.
 Navigate to the directory for the module and run: `make test`

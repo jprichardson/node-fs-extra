@@ -26,9 +26,8 @@ buildDir = ->
   fs.writeFileSync(path.join(subDir, Math.random() + ''))
   baseDir
 
-describe 'fs-extra: remove', ->
-
-  describe 'rmrfSync', ->
+describe 'fs-extra', ->
+  describe '+ rmrfSync()', ->
     it 'should remove directories and files synchronously', ->
       dir = buildDir()
       T path.existsSync(dir)
@@ -36,7 +35,7 @@ describe 'fs-extra: remove', ->
       F path.existsSync(dir)
       
 
-  describe 'rmrf', ->
+  describe '+ rmrf()', ->
     it 'should remove directories and files asynchronously', (done) ->
       dir = buildDir()
       T path.existsSync(dir)
