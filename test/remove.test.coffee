@@ -1,7 +1,10 @@
 crypto = require('crypto')
-fs = require('fs-extra')
+fs = require('../lib')
 path = require('path-extra')
 testutil = require('testutil')
+mkdir = require('mkdirp')
+
+DIR = ''
 
 buildDir = ->
   buf = new Buffer(5) #small buffer for data
@@ -24,20 +27,55 @@ buildDir = ->
   baseDir
 
 describe 'fs-extra', ->
-  describe '+ rmrfSync()', ->
-    it 'should remove directories and files synchronously', ->
-      dir = buildDir()
-      T path.existsSync(dir)
-      fs.rmrfSync(dir)
-      F path.existsSync(dir)
-      
+  beforeEach (done) ->
+    DIR = testutil.createTempDir()
+    done()
 
-  describe '+ rmrf()', ->
-    it 'should remove directories and files asynchronously', (done) ->
+  afterEach (done) ->
+    if fs.existsSync(DIR)
+      fs.remove DIR, done
+    else
+      done()
+  
+  describe '+ removeSync()', ->
+    it 'should delete directories and files synchronously', ->
+      T path.existsSync(DIR)
+      fs.removeSync(DIR)
+      F path.existsSync(DIR) 
+
+    it 'should delete an empty directory synchronously', ->
+      T fs.existsSync DIR
+      fs.removeSync DIR
+      F fs.existsSync DIR
+
+    it 'should delete a file synchronously', ->
+      file = testutil.createFileWithData(path.join(DIR, 'file'), 4)
+      T fs.existsSync file
+      fs.removeSync file
+
+
+  describe '+ remove()', ->
+    it 'should delete an empty directory', (done) ->
+      T fs.existsSync DIR
+      fs.remove DIR, (err) ->
+        T err is null
+        F fs.existsSync DIR
+        done()
+
+    it 'should delete a directory full of directories and files', (done) ->
       dir = buildDir()
-      T path.existsSync(dir)
-      fs.rmrf dir, ->
-        F path.existsSync(dir)
+      T fs.existsSync(DIR)
+      fs.remove DIR, (err) ->
+        T err is null
+        F fs.existsSync(DIR)
+        done()
+
+    it 'should delete a file', (done) ->
+      file = testutil.createFileWithData(path.join(DIR, 'file'), 4)
+      T fs.existsSync file
+      fs.remove file, (err) ->
+        T err is null
+        F fs.existsSync file
         done()
       
 

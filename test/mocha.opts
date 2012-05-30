@@ -2,3 +2,4 @@
 --ui bdd
 --growl
 --compilers coffee:coffee-script
+--timeout 7000

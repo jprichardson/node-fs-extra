@@ -1,4 +1,5 @@
 fs = require('fs')
+ncp = require('ncp').ncp
 
 BUF_LENGTH = 64*1024
 _buff = new Buffer(BUF_LENGTH)
@@ -22,5 +23,10 @@ copyFile = (srcFile, destFile, cb) ->
     cb(null)
   fdr.pipe(fdw)
 
+
+copy = (source, dest, callback) ->
+  ncp(source, dest, callback)
+
 module.exports.copyFileSync = copyFileSync
 module.exports.copyFile = copyFile
+module.exports.copy = copy
