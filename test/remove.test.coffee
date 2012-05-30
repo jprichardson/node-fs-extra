@@ -1,10 +1,7 @@
 crypto = require('crypto')
 fs = require('fs-extra')
 path = require('path-extra')
-assert = require('assert')
-
-T = (v) -> assert(v)
-F = (v) -> assert(!v)
+testutil = require('testutil')
 
 buildDir = ->
   buf = new Buffer(5) #small buffer for data

@@ -1,6 +1,6 @@
 {
     "name" : "fs-extra", 
-    "version" : "0.0.4",
+    "version" : "0.1.0",
     "description" : "fs-extra contains methods that aren't included in the vanilla Node.js fs package.",
     "homepage" : [
         "https://github.com/jprichardson/node-fs-extra"
@@ -9,7 +9,7 @@
         "type" : "git", 
         "url" : "https://github.com/jprichardson/node-fs-extra"
     },
-    "keywords" : ["fs","file","file system", "copy"],
+    "keywords" : ["fs","file","file system", "copy", "directory", "extra"],
     "author" : "JP Richardson <jprichardson@gmail.com>",
     "licenses" : [ {
         "type" : "MIT",
@@ -20,9 +20,10 @@
         "rimraf": "1.0.x"
      },
      "devDepdencies":{
-        "mocha": "0.14.x",
+        "mocha": "1.0.x",
         "growl": "1.5.x",
-        "coffee-script": "1.2.x"
+        "coffee-script": "1.2.x",
+        "test-util": "0.1.x"
     },
     "main" : "./lib/index"
 }

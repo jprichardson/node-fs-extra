@@ -29,8 +29,8 @@ fs.rmrf(dir, callback)  //asynchronous version as before
 
 ## License
 
-(The MIT License)
+Dual licensed under MIT and Apache v2
 
-Copyright (c) 2011 JP Richardson
+Copyright (c) 2011-2012 JP Richardson
 
 [1]: http://nodejs.org/docs/latest/api/fs.html 
