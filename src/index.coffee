@@ -1,17 +1,27 @@
 fs = require('fs')
 path = require('path')
 
+fse = {}
+
+for key,val of fs
+  if typeof val is 'function'
+    fse[key] = val
+
+fs = fse
+
 #fs-extra
 copy = require('./copy')
-#fs.copyFileSync = copy.copyFileSync
-#fs.copyFile = copy.copyFile
 fs.copy = copy.copy
 
 remove = require('./remove')
-#fs.rmrfSync = remove.rmrfSync
-#fs.rmrf = remove.rmrf
 fs.remove = remove.remove
 fs.removeSync = remove.removeSync
+fs.delete = fs.remove
+fs.deleteSync = fs.deleteSync
+
+mkdir = require('./mkdir')
+fs.mkdir = mkdir.mkdir
+fs.mkdirSync = mkdir.mkdirSync
 
 #make compatible for Node v0.8
 if not fs.exists?

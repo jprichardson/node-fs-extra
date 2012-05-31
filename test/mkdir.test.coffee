@@ -16,9 +16,9 @@ describe 'fs-extra', ->
       dir = path.join(path.tempdir(), 'tmp-' + Date.now() + Math.random())
       newDir = path.join(dir, 'dfdf', 'ffff', 'aaa')
       F fs.existsSync dir
-      fs.mkdir dir, (err) ->
+      fs.mkdir newDir, (err) ->
         T err is null
-        T fs.existsSync dir
+        T fs.existsSync newDir
         done()
 
   describe '+ mkdirSync()', ->
@@ -33,7 +33,6 @@ describe 'fs-extra', ->
       dir = path.join(path.tempdir(), 'tmp-' + Date.now() + Math.random())
       newDir = path.join(dir, 'dfdf', 'ffff', 'aaa')
       F fs.existsSync dir
-      fs.mkdir dir, (err) ->
-        T err is null
-        T fs.existsSync dir
-        done()
+      fs.mkdirSync dir 
+      T fs.existsSync dir
+      done()

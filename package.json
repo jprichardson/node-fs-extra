@@ -9,14 +9,13 @@
         "type" : "git", 
         "url" : "https://github.com/jprichardson/node-fs-extra"
     },
-    "keywords" : ["fs","file","file system", "copy", "directory", "extra"],
+    "keywords" : ["fs","file","file system", "copy", "directory", "extra", "mkdirp", "recursive"],
     "author" : "JP Richardson <jprichardson@gmail.com>",
     "licenses" : [ {
         "type" : "MIT",
         "url" : "http://github.com/jprichardson/node-fs-extra/raw/master/LICENSE"
     }],
     "dependencies" : {
-        "path-extra": "0.0.x",
         "rimraf": "1.0.x",
         "ncp": "0.2.x",
         "mkdirp": "0.3.x"
@@ -25,7 +24,8 @@
         "mocha": "1.0.x",
         "growl": "1.5.x",
         "coffee-script": "1.2.x",
-        "test-util": "0.1.x"
+        "test-util": "0.1.x",
+        "path-extra": "0.0.x"
     },
     "main" : "./lib/index"
 }
