@@ -126,6 +126,7 @@ fse.mkdirSync('/tmp/another/path');
 fs.mkdir('/tmp/node/cant/do/this', function(err){
   console.log('this wasnt successful');
 });
+```
 
 
 ## License
