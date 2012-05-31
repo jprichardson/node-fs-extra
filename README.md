@@ -128,6 +128,10 @@ fs.mkdir('/tmp/node/cant/do/this', function(err){
 });
 ```
 
+### exists() / existsSync()
+
+These methods are actually from `path`. But in Node v0.8 they are moved from `path` to `fs`. So you might as well start future proofing your code now.
+
 
 ## License
 
