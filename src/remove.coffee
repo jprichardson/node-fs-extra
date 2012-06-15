@@ -5,7 +5,10 @@ rmrfSync = (dir) ->
   rimraf.sync(dir)
 
 rmrf = (dir,cb) ->
-  rimraf(dir,cb)
+  if cb?
+    rimraf(dir,cb)
+  else #rimraf throughs an error without a callback
+    rimraf(dir, (->))
 
 ###
 remove = (path, callback) ->

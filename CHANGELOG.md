@@ -1,3 +1,7 @@
+0.1.1 / 2012-06-15
+==================
+* Fixed bug in `remove()`/`delete()` that wouldn't execute the function if a callback wasn't passed.
+
 0.1.0 / 2012-05-31
 ==================
 * Renamed `copyFile()` to `copy()`. `copy()` can now copy directories (recursively) too.

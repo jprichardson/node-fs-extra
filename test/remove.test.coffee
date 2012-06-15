@@ -77,6 +77,18 @@ describe 'fs-extra', ->
         T err is null
         F fs.existsSync file
         done()
+
+    it 'should delete without a callback', (done) ->
+      file = testutil.createFileWithData(path.join(DIR, 'file'), 4)
+      T fs.existsSync file
+      existsChecker = setInterval(->
+        fs.exists file, (itDoes) ->
+          if not itDoes
+            clearInterval(existsChecker)
+            done()
+      ,25)
+      fs.remove file
+
       
 
 
