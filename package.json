@@ -1,6 +1,6 @@
 {
     "name" : "fs-extra", 
-    "version" : "0.1.1",
+    "version" : "0.1.2",
     "description" : "fs-extra contains methods that aren't included in the vanilla Node.js fs package.",
     "homepage" : [
         "https://github.com/jprichardson/node-fs-extra"

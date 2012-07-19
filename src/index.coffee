@@ -17,7 +17,7 @@ remove = require('./remove')
 fs.remove = remove.remove
 fs.removeSync = remove.removeSync
 fs.delete = fs.remove
-fs.deleteSync = fs.deleteSync
+fs.deleteSync = fs.removeSync
 
 mkdir = require('./mkdir')
 fs.mkdir = mkdir.mkdir

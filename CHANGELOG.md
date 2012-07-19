@@ -1,3 +1,8 @@
+0.1.2 / 2012-06-15
+==================
+* Bug fix: `deleteSync()` didn't exist.
+* Verified Node v0.8 compatibility.
+
 0.1.1 / 2012-06-15
 ==================
 * Fixed bug in `remove()`/`delete()` that wouldn't execute the function if a callback wasn't passed.

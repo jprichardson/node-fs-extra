@@ -39,9 +39,9 @@ describe 'fs-extra', ->
   
   describe '+ removeSync()', ->
     it 'should delete directories and files synchronously', ->
-      T path.existsSync(DIR)
+      T fs.existsSync(DIR)
       fs.removeSync(DIR)
-      F path.existsSync(DIR) 
+      F fs.existsSync(DIR) 
 
     it 'should delete an empty directory synchronously', ->
       T fs.existsSync DIR
@@ -90,5 +90,17 @@ describe 'fs-extra', ->
       fs.remove file
 
       
+  describe '+ delete()', ->
+    it 'should delete an empty directory', (done) ->
+      T fs.existsSync DIR
+      fs.delete DIR, (err) ->
+        T err is null
+        F fs.existsSync DIR
+        done()
 
+  describe '+ deleteSync()', ->
+    it 'should delete directories and files synchronously', ->
+      T fs.existsSync(DIR)
+      fs.deleteSync(DIR)
+      F fs.existsSync(DIR) 
 
