@@ -21,9 +21,9 @@
         "mkdirp": "0.3.x"
      },
      "devDepdencies":{
-        "mocha": "1.0.x",
+        "mocha": "1.3.x",
         "growl": "1.5.x",
-        "coffee-script": "1.2.x",
+        "coffee-script": "1.3.x",
         "test-util": "0.1.x",
         "path-extra": "0.0.x"
     },

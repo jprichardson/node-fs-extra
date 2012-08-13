@@ -29,4 +29,7 @@ if not fs.exists?
 if not fs.existsSync?
   fs.existsSync = path.existsSync
 
+read = require('./read')
+fs.readJSONFile = read.readJSONFile
+
 module.exports = fs

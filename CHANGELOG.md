@@ -1,3 +1,7 @@
+0.1.3 / 2012-08-13
+==================
+* Added method `readJSONFile`.
+
 0.1.2 / 2012-06-15
 ==================
 * Bug fix: `deleteSync()` didn't exist.

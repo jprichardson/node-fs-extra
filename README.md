@@ -3,10 +3,21 @@ Node.js: fs-extra
 
 This module adds a few extra file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
 
+
+
+Why?
+----
+
+I got tired of including `mkdirp` and `rimraf` in most of my projects. 
+
+
+
 Installation
 ------------
 
-    npm install --production fs-extra
+    npm install fs-extra
+
+
 
 Usage
 -----
@@ -14,6 +25,8 @@ Usage
 ```javascript
 var fs = require('fs-extra');
 ```
+
+
 
 Naming
 ------
@@ -36,10 +49,14 @@ My perspective: when in doubt, err on the side of simplicity. Consider that for 
 So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdir(path)`. (Note: you can still use the native Node.js `fs.mkdir()` method by requiring `fs` and calling `mkdir` on that object)
 
 
+
+
 Compromise
 ----------
 
 If you feel that this module should add functionality, please let me know. If you don't like the naming scheme, let me know that as well. I'm willing to work with the community so that we can develop a logical grouping of file system functions that aren't found Node.js.
+
+
 
 
 Methods
@@ -125,6 +142,20 @@ fse.mkdirSync('/tmp/another/path');
 
 fs.mkdir('/tmp/node/cant/do/this', function(err){
   console.log('this wasnt successful');
+});
+```
+
+### fs.readJSONFile()
+
+Reads a JSON file and then parses it into an object.
+
+Example:
+
+```javascript
+var fs = require('fs-extra');
+
+fs.readJSONFile('./package.json', function(err, packageObj) {
+  console.log(packageObj.version); //0.1.3
 });
 ```
 
