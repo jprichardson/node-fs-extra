@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/jprichardson/node-fs-extra.png)](http://travis-ci.org/jprichardson/node-fs-extra)
 Node.js: fs-extra
 =================
 
