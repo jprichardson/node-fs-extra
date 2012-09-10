@@ -33,11 +33,10 @@
     "jsonfile": "0.0.x"
   },
   "devDependencies": {
-    "mocha": "1.3.x",
-    "growl": "1.5.x",
+    "mocha": "1.4.x",
     "coffee-script": "1.3.x",
-    "test-util": "0.1.x",
-    "path-extra": "0.0.x"
+    "path-extra": "0.0.x",
+    "testutil": "~0.2.2"
   },
   "main": "./lib/index",
   "scripts": {
