@@ -1,3 +1,5 @@
+[![build status](https://secure.travis-ci.org/jprichardson/node-fs-extra.png)](http://travis-ci.org/jprichardson/node-fs-extra)
+
 Node.js: fs-extra
 =================
 
@@ -9,22 +11,6 @@ Why?
 ----
 
 I got tired of including `mkdirp` and `rimraf` in most of my projects. 
-
-
-
-Installation
-------------
-
-    npm install fs-extra
-
-
-
-Usage
------
-
-```javascript
-var fs = require('fs-extra');
-```
 
 
 
@@ -50,7 +36,6 @@ So, if you want to remove a file or a directory regardless of whether it has con
 
 
 
-
 Compromise
 ----------
 
@@ -58,11 +43,27 @@ If you feel that this module should add functionality, please let me know. If yo
 
 
 
+Installation
+------------
+
+    npm install fs-extra
+
+
+
+Usage
+-----
+
+```javascript
+var fs = require('fs-extra');
+```
+
+
 
 Methods
 -------
 
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
+
 
 ### copy()
 
@@ -93,6 +94,7 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir'function(err){
 ```
 
 
+
 ### remove()
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
@@ -115,6 +117,7 @@ fs.remove('/tmp/myfile', function(err){
 
 fs.removeSync('/home/jprichardson'); //I just deleted my entire HOME directory. 
 ```
+
 
 
 ### mkdir()
@@ -145,7 +148,11 @@ fs.mkdir('/tmp/node/cant/do/this', function(err){
 });
 ```
 
-### fs.readJSONFile()
+
+
+### Methods from [jsonfile][jsonfile]
+
+### fs.readJSONFile() / fs.readJSONFileSync()
 
 Reads a JSON file and then parses it into an object.
 
@@ -159,16 +166,61 @@ fs.readJSONFile('./package.json', function(err, packageObj) {
 });
 ```
 
+
+### fs.writeJSONFile() / fs.writeJSONFileSync()
+
+Writes an object to a JSON file.
+
+Example:
+
+```javascript
+var fs = require('fs-extra');
+fs.writeJSONFile('./package.json', {name: 'fs-extra'}, function(err){
+  console.log(err);
+});
+```
+
+
+
 ### exists() / existsSync()
 
-These methods are actually from `path`. But in Node v0.8 they are moved from `path` to `fs`. So you might as well start future proofing your code now.
+These methods are actually from `path`. But in Node v0.8 they are moved from `path` to `fs`. So you can use this module to help make your modules v0.6 and v0.8 compatible.
 
 
-## License
+
+TODO
+----
+
+* Remove all CoffeeScript from tests.
+
+
+
+Author
+------
+
+`node-fs-extra` was written by [JP Richardson][aboutjp]. You should follow him on Twitter [@jprichardson][twitter]. Also read his coding blog [Procbits][procbits]. If you write software with others, you should checkout [Gitpilot][gitpilot] to make collaboration with Git simple.
+
+
+
+
+License
+-------
+
 
 Licensed under MIT
 
 Copyright (c) 2011-2012 JP Richardson
 
 [1]: http://nodejs.org/docs/latest/api/fs.html 
+
+
+[jsonfile]: https://github.com/jprichardson/node-jsonfile
+
+
+[aboutjp]: http://about.me/jprichardson
+[twitter]: http://twitter.com/jprichardson
+[procbits]: http://procbits.com
+[gitpilot]: http://gitpilot.com
+
+
 

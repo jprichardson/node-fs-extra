@@ -1,3 +1,9 @@
+0.2.0 / 2012-09-10
+------------------
+* Rewrote module into JavaScript. (Must still rewrite tests into JavaScript)
+* Added all methods of [jsonfile][https://github.com/jprichardson/node-jsonfile]
+* Added Travis-CI.
+
 0.1.3 / 2012-08-13
 ------------------
 * Added method `readJSONFile`.
