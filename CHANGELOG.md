@@ -1,3 +1,7 @@
+0.2.1 / 2012-09-11
+------------------
+* Updated `rimraf` dep.
+
 0.2.0 / 2012-09-10
 ------------------
 * Rewrote module into JavaScript. (Must still rewrite tests into JavaScript)

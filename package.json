@@ -1,6 +1,6 @@
 {
   "name": "fs-extra",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "fs-extra contains methods that aren't included in the vanilla Node.js fs package.",
   "homepage": [
     "https://github.com/jprichardson/node-fs-extra"
@@ -27,7 +27,7 @@
     }
   ],
   "dependencies": {
-    "rimraf": "1.0.x",
+    "rimraf": "~2.0.2",
     "ncp": "0.2.x",
     "mkdirp": "0.3.x",
     "jsonfile": "0.0.x"
