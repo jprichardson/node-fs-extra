@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Node-fs-extra by jprichardson</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Node-fs-extra</h1>
+          <h2>Node.js: extra methods for the fs object.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jprichardson/node-fs-extra/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/jprichardson/node-fs-extra/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/jprichardson/node-fs-extra" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p><a href="http://travis-ci.org/jprichardson/node-fs-extra"><img src="https://secure.travis-ci.org/jprichardson/node-fs-extra.png" alt="build status"></a></p>
+
+<h1>Node.js: fs-extra</h1>
+
+<p>This module adds a few extra file system methods that aren't included in the native <code>fs</code> module. It is a drop in replacement for <code>fs</code>.</p>
+
+<h2>Why?</h2>
+
+<p>I got tired of including <code>mkdirp</code> and <code>rimraf</code> in most of my projects. </p>
+
+<h2>Naming</h2>
+
+<p>I put a lot of thought into the naming of these function. Inspired by <a href="https://github.com/coolaj86" class="user-mention">@coolaj86</a>'s request. So he deserves much of the credit for raising the issue. See discussion(s) here:</p>
+
+<ul>
+<li><a href="https://github.com/jprichardson/node-fs-extra/issues/2">https://github.com/jprichardson/node-fs-extra/issues/2</a></li>
+<li><a href="https://github.com/flatiron/utile/issues/11">https://github.com/flatiron/utile/issues/11</a></li>
+<li><a href="https://github.com/ryanmcgrath/wrench-js/issues/29">https://github.com/ryanmcgrath/wrench-js/issues/29</a></li>
+<li><a href="https://github.com/substack/node-mkdirp/issues/17">https://github.com/substack/node-mkdirp/issues/17</a></li>
+</ul><p>First, I believe that in as many cases as possible, the <a href="http://nodejs.org/api/fs.html">Node.js naming schemes</a> should be chosen. However, there are problems with the Node.js own naming schemes.</p>
+
+<p>For example, <code>fs.readFile()</code> and <code>fs.readdir()</code>: the <strong>F</strong> is capitalized in <em>File</em> and the <strong>d</strong> is not capitalized in <em>dir</em>. Perhaps a bit pedantic, but they should still be consistent. Also, Node.js has chosen a lot of POSIX naming schemes, which I believe is great. See: <code>fs.mkdir()</code>, <code>fs.rmdir()</code>, <code>fs.chown()</code>, etc.</p>
+
+<p>We have a dilemma though. How do you consistently name methods perform the following POSIX commands: <code>cp</code>, <code>cp -r</code>, <code>mkdir -p</code>, and <code>rm -rf</code>?</p>
+
+<p>My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. </p>
+
+<p>So, if you want to remove a file or a directory regardless of whether it has contents, just call <code>fs.remove(path)</code> or its alias <code>fs.delete(path)</code>. If you want to copy a file or a directory whether it has contents, just call <code>fs.copy(source, destination)</code>. If you want to create a directory regardless of whether its parent directories exist, just call <code>fs.mkdir(path)</code>. (Note: you can still use the native Node.js <code>fs.mkdir()</code> method by requiring <code>fs</code> and calling <code>mkdir</code> on that object)</p>
+
+<h2>Compromise</h2>
+
+<p>If you feel that this module should add functionality, please let me know. If you don't like the naming scheme, let me know that as well. I'm willing to work with the community so that we can develop a logical grouping of file system functions that aren't found Node.js.</p>
+
+<h2>Installation</h2>
+
+<pre><code>npm install fs-extra
+</code></pre>
+
+<h2>Usage</h2>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+</pre></div>
+
+<h2>Methods</h2>
+
+<p><strong>NOTE:</strong> You can still use the native Node.js methods. They are copied over to <code>fs-extra</code>.</p>
+
+<h3>copy()</h3>
+
+<p>Copy a file or directory. The directory can have contents. Like <code>cp -r</code>. There isn't a synchronous version implemented yet.</p>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="s1">'/tmp/myfile'</span><span class="p">,</span> <span class="s1">'/tmp/mynewfile'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span> <span class="c1">//copies file</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="s1">'/tmp/mydir'</span><span class="p">,</span> <span class="s1">'/tmp/mynewdir'</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span> <span class="c1">//copies directory, even if it has subdirectories or files</span>
+</pre></div>
+
+<h3>remove()</h3>
+
+<p>Removes a file or directory. The directory can have contents. Like <code>rm -rf</code>.</p>
+
+<p>Alias: <code>delete()</code>.</p>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'/tmp/myfile'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">removeSync</span><span class="p">(</span><span class="s1">'/home/jprichardson'</span><span class="p">);</span> <span class="c1">//I just deleted my entire HOME directory. </span>
+</pre></div>
+
+<h3>mkdir()</h3>
+
+<p>Creates a directory. If the parent hierarchy doesn't exist, it's created. Like <code>mkdir -p</code>.</p>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+
+<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdir</span><span class="p">(</span><span class="s1">'/tmp/some/long/path/that/prob/doesnt/exist'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdirSync</span><span class="p">(</span><span class="s1">'/tmp/another/path'</span><span class="p">);</span>
+
+<span class="c1">//now use Node.js native mkdir()</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">mkdir</span><span class="p">(</span><span class="s1">'/tmp/node/cant/do/this'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'this wasnt successful'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>Methods from <a href="https://github.com/jprichardson/node-jsonfile">jsonfile</a>
+</h3>
+
+<h3>fs.readJSONFile() / fs.readJSONFileSync()</h3>
+
+<p>Reads a JSON file and then parses it into an object.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFile</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">packageObj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">packageObj</span><span class="p">.</span><span class="nx">version</span><span class="p">);</span> <span class="c1">//0.1.3</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>fs.writeJSONFile() / fs.writeJSONFileSync()</h3>
+
+<p>Writes an object to a JSON file.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">writeJSONFile</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'fs-extra'</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>exists() / existsSync()</h3>
+
+<p>These methods are actually from <code>path</code>. But in Node v0.8 they are moved from <code>path</code> to <code>fs</code>. So you can use this module to help make your modules v0.6 and v0.8 compatible.</p>
+
+<h2>TODO</h2>
+
+<ul>
+<li>Remove all CoffeeScript from tests.</li>
+</ul><h2>Author</h2>
+
+<p><code>node-fs-extra</code> was written by <a href="http://about.me/jprichardson">JP Richardson</a>. You should follow him on Twitter <a href="http://twitter.com/jprichardson">@jprichardson</a>. Also read his coding blog <a href="http://procbits.com">Procbits</a>. If you write software with others, you should checkout <a href="http://gitpilot.com">Gitpilot</a> to make collaboration with Git simple.</p>
+
+<h2>License</h2>
+
+<p>Licensed under MIT</p>
+
+<p>Copyright (c) 2011-2012 JP Richardson</p>
+        </section>
+
+        <footer>
+          Node-fs-extra is maintained by <a href="https://github.com/jprichardson">jprichardson</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
