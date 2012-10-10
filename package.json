@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "mocha": "1.4.x",
-    "coffee-script": "1.3.x",
     "path-extra": "0.0.x",
     "testutil": "~0.2.2"
   },
