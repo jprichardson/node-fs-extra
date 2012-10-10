@@ -58,7 +58,7 @@
 
 <p>My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. </p>
 
-<p>So, if you want to remove a file or a directory regardless of whether it has contents, just call <code>fs.remove(path)</code> or its alias <code>fs.delete(path)</code>. If you want to copy a file or a directory whether it has contents, just call <code>fs.copy(source, destination)</code>. If you want to create a directory regardless of whether its parent directories exist, just call <code>fs.mkdir(path)</code>. (Note: you can still use the native Node.js <code>fs.mkdir()</code> method by requiring <code>fs</code> and calling <code>mkdir</code> on that object)</p>
+<p>So, if you want to remove a file or a directory regardless of whether it has contents, just call <code>fs.remove(path)</code> or its alias <code>fs.delete(path)</code>. If you want to copy a file or a directory whether it has contents, just call <code>fs.copy(source, destination)</code>. If you want to create a directory regardless of whether its parent directories exist, just call <code>fs.mkdirs(path)</code> or <code>fs.mkdirp(path)</code>. </p>
 
 <h2>Compromise</h2>
 
@@ -127,7 +127,7 @@
 <span class="nx">fs</span><span class="p">.</span><span class="nx">removeSync</span><span class="p">(</span><span class="s1">'/home/jprichardson'</span><span class="p">);</span> <span class="c1">//I just deleted my entire HOME directory. </span>
 </pre></div>
 
-<h3>mkdir()</h3>
+<h3>mkdirs() / mkdirp()</h3>
 
 <p>Creates a directory. If the parent hierarchy doesn't exist, it's created. Like <code>mkdir -p</code>.</p>
 
@@ -136,7 +136,7 @@
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">fse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
-<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdir</span><span class="p">(</span><span class="s1">'/tmp/some/long/path/that/prob/doesnt/exist'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdirs</span><span class="p">(</span><span class="s1">'/tmp/some/long/path/that/prob/doesnt/exist'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
   <span class="p">}</span>
@@ -145,7 +145,7 @@
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdirSync</span><span class="p">(</span><span class="s1">'/tmp/another/path'</span><span class="p">);</span>
+<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdirsSync</span><span class="p">(</span><span class="s1">'/tmp/another/path'</span><span class="p">);</span>
 
 <span class="c1">//now use Node.js native mkdir()</span>
 
