@@ -188,11 +188,6 @@ These methods are actually from `path`. But in Node v0.8 they are moved from `pa
 
 
 
-TODO
-----
-
-* Remove all CoffeeScript from tests.
-
 
 
 Author
