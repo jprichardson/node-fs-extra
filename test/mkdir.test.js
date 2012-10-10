@@ -4,13 +4,13 @@ var fs = require('../lib')
 
 describe('fs-extra', function() {
   
-  describe('+ mkdir()', function() {
+  describe('+ mkdirs()', function() {
     it('should make the directory', function(done) {
       var dir = path.join(path.tempdir(), 'tmp-' + Date.now() + Math.random());
       
       F (fs.existsSync(dir));
       
-      fs.mkdir(dir, function(err) {
+      fs.mkdirs(dir, function(err) {
         T (err === null);
         T (fs.existsSync(dir));
         
@@ -24,7 +24,7 @@ describe('fs-extra', function() {
       
       F (fs.existsSync(dir));
       
-      fs.mkdir(newDir, function(err) {
+      fs.mkdirs(newDir, function(err) {
         T (err === null);
         T (fs.existsSync(newDir));
         
@@ -33,12 +33,12 @@ describe('fs-extra', function() {
     })
   })
   
-  describe('+ mkdirSync()', function() {
+  describe('+ mkdirsSync()', function() {
     it('should make the directory', function(done) {
       var dir = path.join(path.tempdir(), 'tmp-' + Date.now() + Math.random());
       
       F (fs.existsSync(dir));
-      fs.mkdirSync(dir);
+      fs.mkdirsSync(dir);
       T (fs.existsSync(dir));
       
       done();
@@ -49,7 +49,7 @@ describe('fs-extra', function() {
         , newDir = path.join(dir, 'dfdf', 'ffff', 'aaa');
       
       F (fs.existsSync(dir));
-      fs.mkdirSync(dir);
+      fs.mkdirsSync(dir);
       T (fs.existsSync(dir));
       
       done();

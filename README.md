@@ -32,7 +32,7 @@ We have a dilemma though. How do you consistently name methods perform the follo
 
 My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. 
 
-So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdir(path)`. (Note: you can still use the native Node.js `fs.mkdir()` method by requiring `fs` and calling `mkdir` on that object)
+So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`. 
 
 
 
@@ -120,7 +120,7 @@ fs.removeSync('/home/jprichardson'); //I just deleted my entire HOME directory.
 
 
 
-### mkdir()
+### mkdirs() / mkdirp()
 
 Creates a directory. If the parent hierarchy doesn't exist, it's created. Like `mkdir -p`.
 
@@ -130,7 +130,7 @@ Examples:
 var fs = require('fs');
 var fse = require('fs-extra');
 
-fse.mkdir('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
+fse.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
   if (err) {
     console.error(err);
   }
@@ -139,7 +139,7 @@ fse.mkdir('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
   }
 });
 
-fse.mkdirSync('/tmp/another/path');
+fse.mkdirsSync('/tmp/another/path');
 
 //now use Node.js native mkdir()
 
