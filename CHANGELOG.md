@@ -1,3 +1,8 @@
+0.3.0 / 2012-10-09
+------------------
+* Removed all CoffeeScript from tests.
+* Renamed `mkdir` to `mkdirs`/`mkdirp`.
+
 0.2.1 / 2012-09-11
 ------------------
 * Updated `rimraf` dep.
