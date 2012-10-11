@@ -1,3 +1,7 @@
+0.3.1 / 2012-10-11
+------------------
+* Fixed some stray globals.
+
 0.3.0 / 2012-10-09
 ------------------
 * Removed all CoffeeScript from tests.
