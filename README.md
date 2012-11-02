@@ -166,6 +166,7 @@ fs.touch(file, function(err) {
 
   //file has now been created, including the directory it is to be placed in
 })
+```
 
 
 
