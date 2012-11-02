@@ -1,6 +1,6 @@
 {
   "name": "fs-extra",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "fs-extra contains methods that aren't included in the vanilla Node.js fs package. Such as mkdir -p, cp -r, and rm -rf.",
   "homepage": [
     "https://github.com/jprichardson/node-fs-extra"
@@ -17,13 +17,16 @@
     "directory",
     "extra",
     "mkdirp",
+    "mkdir",
+    "mkdirs",
     "recursive",
     "json",
     "read",
     "write",
     "extra",
     "delete",
-    "remove"
+    "remove",
+    "touch"
   ],
   "author": "JP Richardson <jprichardson@gmail.com>",
   "licenses": [
@@ -41,7 +44,7 @@
   "devDependencies": {
     "mocha": "1.4.x",
     "path-extra": "0.0.x",
-    "testutil": "~0.2.2"
+    "testutil": "~0.2.4"
   },
   "main": "./lib/index",
   "scripts": {

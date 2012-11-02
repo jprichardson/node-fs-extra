@@ -149,6 +149,25 @@ fs.mkdir('/tmp/node/cant/do/this', function(err){
 ```
 
 
+### touch() / touchSync()
+
+Creates a file. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is **NOT MODIFIED**.
+
+
+
+Example:
+
+```javascript
+var fs = require('fs')
+  , file = '/tmp/this/path/does/not/exist/file.txt'
+
+fs.touch(file, function(err) {
+  console.log(err); //null
+
+  //file has now been created, including the directory it is to be placed in
+})
+
+
 
 ### Methods from [jsonfile][jsonfile]
 
@@ -184,7 +203,7 @@ fs.writeJSONFile('./package.json', {name: 'fs-extra'}, function(err){
 
 ### exists() / existsSync()
 
-These methods are actually from `path`. But in Node v0.8 they are moved from `path` to `fs`. So you can use this module to help make your modules v0.6 and v0.8 compatible.
+These methods are actually from `path` in v0.6. But in Node v0.8 they are moved from `path` to `fs`. So you can use this module to help make your modules v0.6 and v0.8 compatible.
 
 
 

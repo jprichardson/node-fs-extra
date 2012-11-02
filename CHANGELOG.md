@@ -1,3 +1,7 @@
+0.3.2 / 2012-11-01
+------------------
+* Added `touch()` and `touchSync()` methods.
+
 0.3.1 / 2012-10-11
 ------------------
 * Fixed some stray globals.
