@@ -105,7 +105,7 @@
 <span class="p">});</span> <span class="c1">//copies directory, even if it has subdirectories or files</span>
 </pre></div>
 
-<h3>remove()</h3>
+<h3>remove() / delete()</h3>
 
 <p>Removes a file or directory. The directory can have contents. Like <code>rm -rf</code>.</p>
 
@@ -154,16 +154,33 @@
 <span class="p">});</span>
 </pre></div>
 
-<h3>Methods from <a href="https://github.com/jprichardson/node-jsonfile">jsonfile</a>
-</h3>
+<h3>touch() / touchSync()</h3>
 
-<h3>fs.readJSONFile() / fs.readJSONFileSync()</h3>
-
-<p>Reads a JSON file and then parses it into an object.</p>
+<p>Creates a file. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is <strong>NOT MODIFIED</strong>.</p>
 
 <p>Example:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">touch</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
+
+  <span class="c1">//file has now been created, including the directory it is to be placed in</span>
+<span class="p">})</span>
+
+
+
+<span class="err">###</span> <span class="nx">Methods</span> <span class="nx">from</span> <span class="p">[</span><span class="nx">jsonfile</span><span class="p">][</span><span class="nx">jsonfile</span><span class="p">]</span>
+
+<span class="err">###</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFile</span><span class="p">()</span> <span class="o">/</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFileSync</span><span class="p">()</span>
+
+<span class="nx">Reads</span> <span class="nx">a</span> <span class="nx">JSON</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">then</span> <span class="nx">parses</span> <span class="nx">it</span> <span class="nx">into</span> <span class="nx">an</span> <span class="nx">object</span><span class="p">.</span>
+
+<span class="nx">Example</span><span class="o">:</span>
+
+<span class="err">```</span><span class="nx">javascript</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFile</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">packageObj</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">packageObj</span><span class="p">.</span><span class="nx">version</span><span class="p">);</span> <span class="c1">//0.1.3</span>
@@ -184,13 +201,9 @@
 
 <h3>exists() / existsSync()</h3>
 
-<p>These methods are actually from <code>path</code>. But in Node v0.8 they are moved from <code>path</code> to <code>fs</code>. So you can use this module to help make your modules v0.6 and v0.8 compatible.</p>
+<p>These methods are actually from <code>path</code> in v0.6. But in Node v0.8 they are moved from <code>path</code> to <code>fs</code>. So you can use this module to help make your modules v0.6 and v0.8 compatible.</p>
 
-<h2>TODO</h2>
-
-<ul>
-<li>Remove all CoffeeScript from tests.</li>
-</ul><h2>Author</h2>
+<h2>Author</h2>
 
 <p><code>node-fs-extra</code> was written by <a href="http://about.me/jprichardson">JP Richardson</a>. You should follow him on Twitter <a href="http://twitter.com/jprichardson">@jprichardson</a>. Also read his coding blog <a href="http://procbits.com">Procbits</a>. If you write software with others, you should checkout <a href="http://gitpilot.com">Gitpilot</a> to make collaboration with Git simple.</p>
 
