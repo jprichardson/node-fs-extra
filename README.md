@@ -83,7 +83,7 @@ fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err){
   }
 }); //copies file
 
-fs.copy('/tmp/mydir', '/tmp/mynewdir'function(err){
+fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err){
   if (err) {
     console.error(err);
   }
