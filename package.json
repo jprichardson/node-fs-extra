@@ -39,10 +39,10 @@
     }
   ],
   "dependencies": {
-    "rimraf": "~2.0.2",
     "ncp": "0.2.x",
     "mkdirp": "0.3.x",
-    "jsonfile": "0.0.x"
+    "jsonfile": "0.0.x",
+    "rimraf": "~2.1.2"
   },
   "devDependencies": {
     "mocha": "*",
