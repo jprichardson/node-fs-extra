@@ -54,7 +54,7 @@
 
 <p>For example, <code>fs.readFile()</code> and <code>fs.readdir()</code>: the <strong>F</strong> is capitalized in <em>File</em> and the <strong>d</strong> is not capitalized in <em>dir</em>. Perhaps a bit pedantic, but they should still be consistent. Also, Node.js has chosen a lot of POSIX naming schemes, which I believe is great. See: <code>fs.mkdir()</code>, <code>fs.rmdir()</code>, <code>fs.chown()</code>, etc.</p>
 
-<p>We have a dilemma though. How do you consistently name methods perform the following POSIX commands: <code>cp</code>, <code>cp -r</code>, <code>mkdir -p</code>, and <code>rm -rf</code>?</p>
+<p>We have a dilemma though. How do you consistently name methods that perform the following POSIX commands: <code>cp</code>, <code>cp -r</code>, <code>mkdir -p</code>, and <code>rm -rf</code>?</p>
 
 <p>My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. </p>
 
@@ -78,9 +78,11 @@
 
 <p><strong>NOTE:</strong> You can still use the native Node.js methods. They are copied over to <code>fs-extra</code>.</p>
 
-<h3>copy()</h3>
+<h3>copy(src, dest, callback)</h3>
 
 <p>Copy a file or directory. The directory can have contents. Like <code>cp -r</code>. There isn't a synchronous version implemented yet.</p>
+
+<p>Sync: (none)</p>
 
 <p>Examples:</p>
 
@@ -95,7 +97,7 @@
   <span class="p">}</span>
 <span class="p">});</span> <span class="c1">//copies file</span>
 
-<span class="nx">fs</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="s1">'/tmp/mydir'</span><span class="p">,</span> <span class="s1">'/tmp/mynewdir'</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="s1">'/tmp/mydir'</span><span class="p">,</span> <span class="s1">'/tmp/mynewdir'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
   <span class="p">}</span>
@@ -105,11 +107,11 @@
 <span class="p">});</span> <span class="c1">//copies directory, even if it has subdirectories or files</span>
 </pre></div>
 
-<h3>remove() / delete()</h3>
+<h3>remove(dir, callback) / delete(dir, callback)</h3>
 
 <p>Removes a file or directory. The directory can have contents. Like <code>rm -rf</code>.</p>
 
-<p>Alias: <code>delete()</code>.</p>
+<p>Sync: <code>removeSync()</code> / <code>deleteSync()</code></p>
 
 <p>Examples:</p>
 
@@ -127,9 +129,11 @@
 <span class="nx">fs</span><span class="p">.</span><span class="nx">removeSync</span><span class="p">(</span><span class="s1">'/home/jprichardson'</span><span class="p">);</span> <span class="c1">//I just deleted my entire HOME directory. </span>
 </pre></div>
 
-<h3>mkdirs() / mkdirp()</h3>
+<h3>mkdirs(dir, callback) / mkdirp(dir, callback)</h3>
 
 <p>Creates a directory. If the parent hierarchy doesn't exist, it's created. Like <code>mkdir -p</code>.</p>
+
+<p>Sync: <code>mkdirsSync()</code> / <code>mkdirpSync()</code></p>
 
 <p>Examples:</p>
 
@@ -154,33 +158,70 @@
 <span class="p">});</span>
 </pre></div>
 
-<h3>touch() / touchSync()</h3>
+<h3>createFile(file, callback)</h3>
 
 <p>Creates a file. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is <strong>NOT MODIFIED</strong>.</p>
 
+<p>Sync: <code>createFileSync()</code></p>
+
 <p>Example:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
   <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
 
-<span class="nx">fs</span><span class="p">.</span><span class="nx">touch</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">createFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
 
   <span class="c1">//file has now been created, including the directory it is to be placed in</span>
 <span class="p">})</span>
+</pre></div>
 
+<h3>outputFile(file, data, callback)</h3>
 
+<p>Almost the same as <code>writeFile</code>, except that if the directory does not exist, it's created.</p>
 
-<span class="err">###</span> <span class="nx">Methods</span> <span class="nx">from</span> <span class="p">[</span><span class="nx">jsonfile</span><span class="p">][</span><span class="nx">jsonfile</span><span class="p">]</span>
+<p>Sync: <code>outputFileSync()</code></p>
 
-<span class="err">###</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFile</span><span class="p">()</span> <span class="o">/</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFileSync</span><span class="p">()</span>
+<p>Example:</p>
 
-<span class="nx">Reads</span> <span class="nx">a</span> <span class="nx">JSON</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">then</span> <span class="nx">parses</span> <span class="nx">it</span> <span class="nx">into</span> <span class="nx">an</span> <span class="nx">object</span><span class="p">.</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
 
-<span class="nx">Example</span><span class="o">:</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">outputFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="s1">'hello!'</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
 
-<span class="err">```</span><span class="nx">javascript</span>
-<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="s1">'utf8'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span> <span class="c1">//hello!</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</pre></div>
+
+<h3>readTextFile(file, callback)</h3>
+
+<p>Exactly the same as <code>readFile(file, 'utf8', callback)</code>.</p>
+
+<p>Sync: <code>readTextFileSync()</code>.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/etc/passwd'</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readTextFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//instead of fs.readFile(file, 'utf8', callback)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// (contents of your /etc/passwd) file</span>
+<span class="p">})</span>
+</pre></div>
+
+<h3>Methods from <a href="https://github.com/jprichardson/node-jsonfile">jsonfile</a>
+</h3>
+
+<h3>fs.readJSONFile() / fs.readJSONFileSync()</h3>
+
+<p>Reads a JSON file and then parses it into an object.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFile</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">packageObj</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">packageObj</span><span class="p">.</span><span class="nx">version</span><span class="p">);</span> <span class="c1">//0.1.3</span>
