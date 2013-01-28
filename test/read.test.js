@@ -5,9 +5,8 @@ var fs = require('../lib')
 var DIR = '';
 
 describe('fs-extra', function() {
-  beforeEach(function(done) {
-    DIR = testutil.createTempDir();
-    done();
+  beforeEach(function() {
+    DIR = testutil.createTestDir('fs-extra')
   })
 
   afterEach(function(done) {

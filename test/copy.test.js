@@ -9,7 +9,7 @@ var DIR = '';
 
 describe('fs-extra', function() {
   beforeEach(function(done) {
-    DIR = testutil.createTempDir();
+    DIR = testutil.createTestDir('fs-extra');
     done();
   })
   

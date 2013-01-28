@@ -1,6 +1,6 @@
 var crypto = require('crypto')
   , fs = require('../lib')
-  , path = require('path-extra')
+  , path = require('path')
   , testutil = require('testutil')
   , mkdir = require('mkdirp');
 
@@ -15,20 +15,19 @@ var DIR = '';
       bytesWritten += 1;
     }
     ex = Date.now();
-    baseDir = path.join(path.tempdir(), "TEST_fs-extra_rmrf-" + ex);
+    baseDir = path.join(DIR, "TEST_fs-extra_rmrf-" + ex);
     fs.mkdirSync(baseDir);
     fs.writeFileSync(path.join(baseDir, Math.random() + ''), buf);
     fs.writeFileSync(path.join(baseDir, Math.random() + ''), buf);
-    subDir = path.join(path.tempdir(), Math.random() + '');
+    subDir = path.join(DIR, Math.random() + '');
     fs.mkdirSync(subDir);
     fs.writeFileSync(path.join(subDir, Math.random() + ''));
     return baseDir;
   };
 
 describe('fs-extra', function() {
-  beforeEach(function(done) {
-    DIR = testutil.createTempDir();
-    done();
+  beforeEach(function() {
+    DIR = testutil.createTestDir('fs-extra');
   })
 
   afterEach(function(done) {
