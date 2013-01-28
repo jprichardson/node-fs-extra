@@ -43,6 +43,26 @@ describe('fs-extra', function() {
     })
   })
 
+  describe('+ readTextFile', function() {
+    it('should read the text file', function(done) {
+      var file = path.join(DIR, 'readtext.txt')
+      fs.writeFileSync(file, "hello")
+      fs.readTextFile(file, function(err, data) {
+        if (err) return done(err)
+        EQ (data, 'hello')
+        done()
+      })
+    })
+  })
+
+  describe('+ readTextFileSync', function() {
+    it('should read the text file', function() {
+      var file = path.join(DIR, 'readtext.txt')
+      fs.writeFileSync(file, "hello")
+      var data = fs.readTextFileSync(file)
+      EQ (data, 'hello')
+    })
+  })
 })
 
 
