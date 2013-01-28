@@ -65,9 +65,12 @@ Methods
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
 
-### copy()
+### copy(src, dest, callback)
 
 Copy a file or directory. The directory can have contents. Like `cp -r`. There isn't a synchronous version implemented yet.
+
+Sync: (none)
+
 
 Examples:
 
@@ -95,11 +98,12 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err){
 
 
 
-### remove() / delete()
+### remove(dir, callback) / delete(dir, callback)
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
 
-Alias: `delete()`.
+Sync: `removeSync()` / `deleteSync()`
+
 
 Examples:
 
@@ -120,9 +124,12 @@ fs.removeSync('/home/jprichardson'); //I just deleted my entire HOME directory.
 
 
 
-### mkdirs() / mkdirp()
+### mkdirs(dir, callback) / mkdirp(dir, callback)
 
 Creates a directory. If the parent hierarchy doesn't exist, it's created. Like `mkdir -p`.
+
+Sync: `mkdirsSync()` / `mkdirpSync()`
+
 
 Examples:
 
@@ -149,22 +156,65 @@ fs.mkdir('/tmp/node/cant/do/this', function(err){
 ```
 
 
-### touch() / touchSync()
+### createFile(file, callback) 
 
 Creates a file. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is **NOT MODIFIED**.
 
+Sync: `createFileSync()`
 
 
 Example:
 
 ```javascript
-var fs = require('fs')
+var fs = require('fs-extra')
   , file = '/tmp/this/path/does/not/exist/file.txt'
 
-fs.touch(file, function(err) {
+fs.createFile(file, function(err) {
   console.log(err); //null
 
   //file has now been created, including the directory it is to be placed in
+})
+```
+
+
+### outputFile(file, data, callback)
+
+Almost the same as `writeFile`, except that if the directory does not exist, it's created.
+
+Sync: `outputFileSync()`
+
+
+Example:
+
+```javascript
+var fs = require('fs-extra')
+  , file = '/tmp/this/path/does/not/exist/file.txt'
+
+fs.outputFile(file, 'hello!' function(err) {
+  console.log(err); //null
+
+  fs.readFile(file, 'utf8', function(err, data) {
+    console.log(data); //hello!
+  })
+})
+```
+
+
+### readTextFile(file, callback)
+
+Exactly the same as `readFile(file, 'utf8', callback)`.
+
+Sync: `readTextFileSync()`.
+
+
+Example:
+
+```javascript
+var fs = require('fs-extra')
+  , file = '/etc/passwd'
+
+fs.readTextFile(file, function(err, data) { //instead of fs.readFile(file, 'utf8', callback)
+  console.log(data); // (contents of your /etc/passwd) file
 })
 ```
 

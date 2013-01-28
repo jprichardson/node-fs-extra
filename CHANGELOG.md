@@ -1,3 +1,12 @@
+0.4.0 / 2013-01-28
+------------------
+* Set default spaces in `jsonfile` from 4 to 2.
+* Updated `testutil` deps for tests.
+* Renamed `touch()` to `createFile()`
+* Added `outputFile()` and `outputFileSync()`
+* Changed creation of testing diretories so the /tmp dir is not littered.
+* Added `readTextFile()` and `readTextFileSync()`.
+
 0.3.2 / 2012-11-01
 ------------------
 * Added `touch()` and `touchSync()` methods.
