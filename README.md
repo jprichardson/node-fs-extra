@@ -202,6 +202,11 @@ fs.outputFile(file, 'hello!' function(err) {
 
 ### readTextFile(file, callback)
 
+**NOTE:** This was a mistake. Don't use this method. It will be removed. The problem with this method
+is that when a developer reads your code `readTextFile()` causes an additional cognitive load on trying to
+figure out what it does. Where as most Node.js devs will know what `readFile(file, 'utf8', callback)` does.
+Plus, `readTextFile()` is ambigious. DON'T USE IT. 
+
 Exactly the same as `readFile(file, 'utf8', callback)`.
 
 Sync: `readTextFileSync()`.
