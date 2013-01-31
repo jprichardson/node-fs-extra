@@ -198,6 +198,11 @@
 
 <h3>readTextFile(file, callback)</h3>
 
+<p><strong>NOTE:</strong> This was a mistake. Don't use this method. It will be removed. The problem with this method
+is that when a developer reads your code <code>readTextFile()</code> causes an additional cognitive load on trying to
+figure out what it does. Where as most Node.js devs will know what <code>readFile(file, 'utf8', callback)</code> does.
+Plus, <code>readTextFile()</code> is ambigious. DON'T USE IT. </p>
+
 <p>Exactly the same as <code>readFile(file, 'utf8', callback)</code>.</p>
 
 <p>Sync: <code>readTextFileSync()</code>.</p>
