@@ -1,3 +1,9 @@
+0.5.0 / 2013-02-03
+------------------
+* Removed `readTextFile`.
+* Renamed `readJSONFile` to `readJSON` and `readJson`, same with write.
+* Restructured documentation a bit. Added roadmap.
+
 0.4.0 / 2013-01-28
 ------------------
 * Set default spaces in `jsonfile` from 4 to 2.

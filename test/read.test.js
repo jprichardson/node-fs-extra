@@ -13,7 +13,7 @@ describe('fs-extra', function() {
     fs.remove(DIR, done);
   })
 
-  describe('+ readJSONFile', function() {
+  describe('+ readJSON', function() {
     it('should read a file and parse the json', function(done) {
       var obj1 = {
         firstName: 'JP',
@@ -23,7 +23,7 @@ describe('fs-extra', function() {
       
       fs.writeFileSync(file, JSON.stringify(obj1));
       
-      fs.readJSONFile(file, function(err, obj2) {
+      fs.readJSON(file, function(err, obj2) {
         F (err != null);
         T (obj1.firstName === obj2.firstName);
         T (obj1.lastName === obj2.lastName);
@@ -35,7 +35,7 @@ describe('fs-extra', function() {
     it('should error if it cant parse the json', function(done) {
       var file = path.join(DIR, 'file2.json');
       fs.writeFileSync(file, '%asdfasdff444');
-      fs.readJSONFile(file, function(err, obj) {
+      fs.readJSON(file, function(err, obj) {
         T (err != null);
         F (obj);
         done();
@@ -43,7 +43,7 @@ describe('fs-extra', function() {
     })
   })
 
-  describe('+ readTextFile', function() {
+  /*(describe('+ readTextFile', function() {
     it('should read the text file', function(done) {
       var file = path.join(DIR, 'readtext.txt')
       fs.writeFileSync(file, "hello")
@@ -62,7 +62,7 @@ describe('fs-extra', function() {
       var data = fs.readTextFileSync(file)
       EQ (data, 'hello')
     })
-  })
+  })*/
 })
 
 
