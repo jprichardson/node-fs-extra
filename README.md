@@ -213,8 +213,8 @@ fs.writeJson('./package.json', {name: 'fs-extra'}, function(err){
 
 
 
-Roadmap 
--------
+Roadmap to 1.0.0
+-----------------
 
 This contains items that I'm considering doing. I'd love community feedback.
 
