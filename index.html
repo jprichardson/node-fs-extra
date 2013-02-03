@@ -116,10 +116,9 @@
 
 <p>Examples:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">fse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
-<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdirs</span><span class="p">(</span><span class="s1">'/tmp/some/long/path/that/prob/doesnt/exist'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">mkdirs</span><span class="p">(</span><span class="s1">'/tmp/some/long/path/that/prob/doesnt/exist'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
   <span class="p">}</span>
@@ -128,13 +127,7 @@
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">fse</span><span class="p">.</span><span class="nx">mkdirsSync</span><span class="p">(</span><span class="s1">'/tmp/another/path'</span><span class="p">);</span>
-
-<span class="c1">//now use Node.js native mkdir()</span>
-
-<span class="nx">fs</span><span class="p">.</span><span class="nx">mkdir</span><span class="p">(</span><span class="s1">'/tmp/node/cant/do/this'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'this wasnt successful'</span><span class="p">);</span>
-<span class="p">});</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">mkdirsSync</span><span class="p">(</span><span class="s1">'/tmp/another/path'</span><span class="p">);</span>
 </pre></div>
 
 <h3>outputFile(file, data, callback)</h3>
@@ -214,7 +207,7 @@
 <span class="p">});</span>
 </pre></div>
 
-<h2>Roadmap </h2>
+<h2>Roadmap to 1.0.0</h2>
 
 <p>This contains items that I'm considering doing. I'd love community feedback.</p>
 
