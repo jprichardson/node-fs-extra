@@ -108,10 +108,9 @@ Sync: `mkdirsSync()` / `mkdirpSync()`
 Examples:
 
 ```javascript
-var fs = require('fs');
-var fse = require('fs-extra');
+var fs = require('fs-extra');
 
-fse.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
+fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
   if (err) {
     console.error(err);
   }
@@ -120,13 +119,7 @@ fse.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
   }
 });
 
-fse.mkdirsSync('/tmp/another/path');
-
-//now use Node.js native mkdir()
-
-fs.mkdir('/tmp/node/cant/do/this', function(err){
-  console.log('this wasnt successful');
-});
+fs.mkdirsSync('/tmp/another/path');
 ```
 
 
