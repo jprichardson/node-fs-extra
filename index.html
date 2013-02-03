@@ -39,30 +39,7 @@
 
 <h2>Why?</h2>
 
-<p>I got tired of including <code>mkdirp</code> and <code>rimraf</code> in most of my projects. </p>
-
-<h2>Naming</h2>
-
-<p>I put a lot of thought into the naming of these function. Inspired by <a href="https://github.com/coolaj86" class="user-mention">@coolaj86</a>'s request. So he deserves much of the credit for raising the issue. See discussion(s) here:</p>
-
-<ul>
-<li><a href="https://github.com/jprichardson/node-fs-extra/issues/2">https://github.com/jprichardson/node-fs-extra/issues/2</a></li>
-<li><a href="https://github.com/flatiron/utile/issues/11">https://github.com/flatiron/utile/issues/11</a></li>
-<li><a href="https://github.com/ryanmcgrath/wrench-js/issues/29">https://github.com/ryanmcgrath/wrench-js/issues/29</a></li>
-<li><a href="https://github.com/substack/node-mkdirp/issues/17">https://github.com/substack/node-mkdirp/issues/17</a></li>
-</ul><p>First, I believe that in as many cases as possible, the <a href="http://nodejs.org/api/fs.html">Node.js naming schemes</a> should be chosen. However, there are problems with the Node.js own naming schemes.</p>
-
-<p>For example, <code>fs.readFile()</code> and <code>fs.readdir()</code>: the <strong>F</strong> is capitalized in <em>File</em> and the <strong>d</strong> is not capitalized in <em>dir</em>. Perhaps a bit pedantic, but they should still be consistent. Also, Node.js has chosen a lot of POSIX naming schemes, which I believe is great. See: <code>fs.mkdir()</code>, <code>fs.rmdir()</code>, <code>fs.chown()</code>, etc.</p>
-
-<p>We have a dilemma though. How do you consistently name methods that perform the following POSIX commands: <code>cp</code>, <code>cp -r</code>, <code>mkdir -p</code>, and <code>rm -rf</code>?</p>
-
-<p>My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. </p>
-
-<p>So, if you want to remove a file or a directory regardless of whether it has contents, just call <code>fs.remove(path)</code> or its alias <code>fs.delete(path)</code>. If you want to copy a file or a directory whether it has contents, just call <code>fs.copy(source, destination)</code>. If you want to create a directory regardless of whether its parent directories exist, just call <code>fs.mkdirs(path)</code> or <code>fs.mkdirp(path)</code>. </p>
-
-<h2>Compromise</h2>
-
-<p>If you feel that this module should add functionality, please let me know. If you don't like the naming scheme, let me know that as well. I'm willing to work with the community so that we can develop a logical grouping of file system functions that aren't found Node.js.</p>
+<p>I got tired of including <code>mkdirp</code>, <code>rimraf</code>, and <code>cp -r</code> in most of my projects. </p>
 
 <h2>Installation</h2>
 
@@ -107,31 +84,33 @@
 <span class="p">});</span> <span class="c1">//copies directory, even if it has subdirectories or files</span>
 </pre></div>
 
-<h3>remove(dir, callback) / delete(dir, callback)</h3>
+<h3>createFile(file, callback)</h3>
 
-<p>Removes a file or directory. The directory can have contents. Like <code>rm -rf</code>.</p>
+<p>Creates a file. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is <strong>NOT MODIFIED</strong>.</p>
 
-<p>Sync: <code>removeSync()</code> / <code>deleteSync()</code></p>
+<p>Sync: <code>createFileSync()</code></p>
 
-<p>Examples:</p>
+<p>Example:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
 
-<span class="nx">fs</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'/tmp/myfile'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">});</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">createFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
 
-<span class="nx">fs</span><span class="p">.</span><span class="nx">removeSync</span><span class="p">(</span><span class="s1">'/home/jprichardson'</span><span class="p">);</span> <span class="c1">//I just deleted my entire HOME directory. </span>
+  <span class="c1">//file has now been created, including the directory it is to be placed in</span>
+<span class="p">})</span>
 </pre></div>
 
-<h3>mkdirs(dir, callback) / mkdirp(dir, callback)</h3>
+<h3>exists() / existsSync()</h3>
+
+<p>These methods are actually from <code>path</code> in v0.6. But in Node v0.8 they are moved from <code>path</code> to <code>fs</code>. So you can use this module to help make your modules v0.6 and v0.8 compatible.</p>
+
+<h3>mkdirs(dir, callback)</h3>
 
 <p>Creates a directory. If the parent hierarchy doesn't exist, it's created. Like <code>mkdir -p</code>.</p>
+
+<p>Alias: <code>mkdirp()</code></p>
 
 <p>Sync: <code>mkdirsSync()</code> / <code>mkdirpSync()</code></p>
 
@@ -158,24 +137,6 @@
 <span class="p">});</span>
 </pre></div>
 
-<h3>createFile(file, callback)</h3>
-
-<p>Creates a file. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is <strong>NOT MODIFIED</strong>.</p>
-
-<p>Sync: <code>createFileSync()</code></p>
-
-<p>Example:</p>
-
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
-  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
-
-<span class="nx">fs</span><span class="p">.</span><span class="nx">createFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
-
-  <span class="c1">//file has now been created, including the directory it is to be placed in</span>
-<span class="p">})</span>
-</pre></div>
-
 <h3>outputFile(file, data, callback)</h3>
 
 <p>Almost the same as <code>writeFile</code>, except that if the directory does not exist, it's created.</p>
@@ -196,58 +157,94 @@
 <span class="p">})</span>
 </pre></div>
 
-<h3>readTextFile(file, callback)</h3>
-
-<p><strong>NOTE:</strong> This was a mistake. Don't use this method. It will be removed. The problem with this method
-is that when a developer reads your code <code>readTextFile()</code> causes an additional cognitive load on trying to
-figure out what it does. Where as most Node.js devs will know what <code>readFile(file, 'utf8', callback)</code> does.
-Plus, <code>readTextFile()</code> is ambigious. DON'T USE IT. </p>
-
-<p>Exactly the same as <code>readFile(file, 'utf8', callback)</code>.</p>
-
-<p>Sync: <code>readTextFileSync()</code>.</p>
-
-<p>Example:</p>
-
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
-  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/etc/passwd'</span>
-
-<span class="nx">fs</span><span class="p">.</span><span class="nx">readTextFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//instead of fs.readFile(file, 'utf8', callback)</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// (contents of your /etc/passwd) file</span>
-<span class="p">})</span>
-</pre></div>
-
-<h3>Methods from <a href="https://github.com/jprichardson/node-jsonfile">jsonfile</a>
-</h3>
-
-<h3>fs.readJSONFile() / fs.readJSONFileSync()</h3>
+<h3>readJson(file, callback)</h3>
 
 <p>Reads a JSON file and then parses it into an object.</p>
+
+<p>Alias: <code>readJSON()</code></p>
+
+<p>Sync: <code>readJsonSync()</code>, <code>readJSONSync()</code></p>
 
 <p>Example:</p>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
-<span class="nx">fs</span><span class="p">.</span><span class="nx">readJSONFile</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">packageObj</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readJson</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">packageObj</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">packageObj</span><span class="p">.</span><span class="nx">version</span><span class="p">);</span> <span class="c1">//0.1.3</span>
 <span class="p">});</span>
 </pre></div>
 
-<h3>fs.writeJSONFile() / fs.writeJSONFileSync()</h3>
+<h3>remove(dir, callback)</h3>
+
+<p>Removes a file or directory. The directory can have contents. Like <code>rm -rf</code>.</p>
+
+<p>Alias: <code>delete()</code></p>
+
+<p>Sync: <code>removeSync()</code> / <code>deleteSync()</code></p>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'/tmp/myfile'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">removeSync</span><span class="p">(</span><span class="s1">'/home/jprichardson'</span><span class="p">);</span> <span class="c1">//I just deleted my entire HOME directory. </span>
+</pre></div>
+
+<h3>writeJson(file, object, callback)</h3>
 
 <p>Writes an object to a JSON file.</p>
+
+<p>Alias: <code>writeJSON()</code></p>
+
+<p>Sync: <code>writeJsonSync()</code>, <code>writeJSONSync()</code></p>
 
 <p>Example:</p>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
-<span class="nx">fs</span><span class="p">.</span><span class="nx">writeJSONFile</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'fs-extra'</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">writeJson</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'fs-extra'</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
 
-<h3>exists() / existsSync()</h3>
+<h2>Roadmap </h2>
 
-<p>These methods are actually from <code>path</code> in v0.6. But in Node v0.8 they are moved from <code>path</code> to <code>fs</code>. So you can use this module to help make your modules v0.6 and v0.8 compatible.</p>
+<p>This contains items that I'm considering doing. I'd love community feedback.</p>
+
+<ul>
+<li>File system walker. I really like this one: <a href="https://github.com/daaku/nodejs-walker">https://github.com/daaku/nodejs-walker</a>
+</li>
+<li>File/directory tree watcher. There are quite a few.</li>
+<li>Method to move files.</li>
+<li>Copy sync.</li>
+<li>Thinking about moving <code>rimraf</code>, <code>ncp</code>, and <code>mkdirps</code> code into this library. I'd like fs-extra to be a stable library that module authors
+can depend upon. A bunch of other dependencies kinda sucks for modules/libraries.</li>
+<li>Change documentation to use the <code>fse</code> prefix instead of <code>fs</code>. This may encourage people to start using <code>fse</code> as a prefix and hence make their code clearer that they're not using the native <code>fs</code>. I'm very undecided on this one since <code>fs-extra</code> is a drop in replacement for the native <code>fs</code>.</li>
+</ul><h2>Naming</h2>
+
+<p>I put a lot of thought into the naming of these function. Inspired by <a href="https://github.com/coolaj86" class="user-mention">@coolaj86</a>'s request. So he deserves much of the credit for raising the issue. See discussion(s) here:</p>
+
+<ul>
+<li><a href="https://github.com/jprichardson/node-fs-extra/issues/2">https://github.com/jprichardson/node-fs-extra/issues/2</a></li>
+<li><a href="https://github.com/flatiron/utile/issues/11">https://github.com/flatiron/utile/issues/11</a></li>
+<li><a href="https://github.com/ryanmcgrath/wrench-js/issues/29">https://github.com/ryanmcgrath/wrench-js/issues/29</a></li>
+<li><a href="https://github.com/substack/node-mkdirp/issues/17">https://github.com/substack/node-mkdirp/issues/17</a></li>
+</ul><p>First, I believe that in as many cases as possible, the <a href="http://nodejs.org/api/fs.html">Node.js naming schemes</a> should be chosen. However, there are problems with the Node.js own naming schemes.</p>
+
+<p>For example, <code>fs.readFile()</code> and <code>fs.readdir()</code>: the <strong>F</strong> is capitalized in <em>File</em> and the <strong>d</strong> is not capitalized in <em>dir</em>. Perhaps a bit pedantic, but they should still be consistent. Also, Node.js has chosen a lot of POSIX naming schemes, which I believe is great. See: <code>fs.mkdir()</code>, <code>fs.rmdir()</code>, <code>fs.chown()</code>, etc.</p>
+
+<p>We have a dilemma though. How do you consistently name methods that perform the following POSIX commands: <code>cp</code>, <code>cp -r</code>, <code>mkdir -p</code>, and <code>rm -rf</code>?</p>
+
+<p>My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. </p>
+
+<p>So, if you want to remove a file or a directory regardless of whether it has contents, just call <code>fs.remove(path)</code> or its alias <code>fs.delete(path)</code>. If you want to copy a file or a directory whether it has contents, just call <code>fs.copy(source, destination)</code>. If you want to create a directory regardless of whether its parent directories exist, just call <code>fs.mkdirs(path)</code> or <code>fs.mkdirp(path)</code>. </p>
 
 <h2>Author</h2>
 
@@ -257,7 +254,7 @@ Plus, <code>readTextFile()</code> is ambigious. DON'T USE IT. </p>
 
 <p>Licensed under MIT</p>
 
-<p>Copyright (c) 2011-2012 JP Richardson</p>
+<p>Copyright (c) 2011-2013 JP Richardson</p>
         </section>
 
         <footer>
