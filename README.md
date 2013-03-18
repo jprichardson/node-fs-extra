@@ -250,7 +250,7 @@ Contributors
 - [JP Richardson](https://github.com/jprichardson)
 - [Mike McNeil](https://github.com/mikermcneil)
 - [Ian Crowther](https://github.com/iancrowther)
-<your name here>
+- `<your name here>`
 
 
 
