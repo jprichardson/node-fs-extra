@@ -2,6 +2,9 @@
 ------------------
 * removed node 0.6 support
 * added node 0.10 support
+* upgraded to latest `ncp` and `rimraf`.
+* optional `graceful-fs` support. See #17
+
 
 0.5.0 / 2013-02-03
 ------------------
