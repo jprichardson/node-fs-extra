@@ -1,7 +1,8 @@
-[![build status](https://secure.travis-ci.org/jprichardson/node-fs-extra.png)](http://travis-ci.org/jprichardson/node-fs-extra)
 
 Node.js: fs-extra
 =================
+
+[![build status](https://secure.travis-ci.org/jprichardson/node-fs-extra.png)](http://travis-ci.org/jprichardson/node-fs-extra)
 
 This module adds a few extra file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
 
