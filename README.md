@@ -90,11 +90,6 @@ fs.createFile(file, function(err) {
 ```
 
 
-### exists() / existsSync()
-
-These methods are actually from `path` in v0.6. But in Node v0.8 they are moved from `path` to `fs`. So you can use this module to help make your modules v0.6 and v0.8 compatible.
-
-
 
 ### mkdirs(dir, callback) 
 
@@ -250,10 +245,12 @@ So, if you want to remove a file or a directory regardless of whether it has con
 
 
 
-Author
-------
-
-`node-fs-extra` was written by [JP Richardson][aboutjp]. You should follow him on Twitter [@jprichardson][twitter]. Also read his coding blog [Procbits][procbits]. If you write software with others, you should checkout [Gitpilot][gitpilot] to make collaboration with Git simple.
+Contributors
+-------------
+- [JP Richardson](github/jprichardson)
+- [Mike McNeil](github/mikermcneil)
+- [Ian Crowther](github/iancrowther)
+<your name here>
 
 
 

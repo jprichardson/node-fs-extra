@@ -1,3 +1,8 @@
+0.6.0 / 2013-03-18
+------------------
+* removed node 0.6 support
+* added node 0.10 support
+
 0.5.0 / 2013-02-03
 ------------------
 * Removed `readTextFile`.
