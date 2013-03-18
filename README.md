@@ -19,12 +19,15 @@ I got tired of including `mkdirp`, `rimraf`, and `cp -r` in most of my projects.
 Installation
 ------------
 
-    npm install fs-extra
+    npm install --save fs-extra
 
 
 
 Usage
 -----
+
+Drop in replacement for native `fs`.
+
 
 ```javascript
 var fs = require('fs-extra');
