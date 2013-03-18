@@ -247,9 +247,9 @@ So, if you want to remove a file or a directory regardless of whether it has con
 
 Contributors
 -------------
-- [JP Richardson](@jprichardson)
-- [Mike McNeil](@mikermcneil)
-- [Ian Crowther](@iancrowther)
+- [JP Richardson](https://github.com/jprichardson)
+- [Mike McNeil](https://github.com/mikermcneil)
+- [Ian Crowther](https://github.com/iancrowther)
 <your name here>
 
 
