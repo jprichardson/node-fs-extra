@@ -95,17 +95,18 @@ fs.createFile(file, function(err) {
 
 
 
-### mkdirs(dir, callback) 
+### mkdirs(dir, [limit], callback) 
 
-Creates a directory. If the parent hierarchy doesn't exist, it's created. Like `mkdir -p`.
+Creates a directory. If the parent hierarchy doesn't exist, it's created. Like `mkdir -p`.  If `limit` is provided, `mkdirs` will create at most the specified number of parent directories (0 or more.)
 
-Alias: `mkdirp()`
+Alias: `mkdirp()` (but no "`limit`" support)
 
 Sync: `mkdirsSync()` / `mkdirpSync()`
 
 
 Examples:
 
+Equivalent to mkdir -p
 ```javascript
 var fs = require('fs-extra');
 
@@ -119,6 +120,39 @@ fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
 });
 
 fs.mkdirsSync('/tmp/another/path');
+```
+
+Using the limit:
+```javascript
+var fs = require('fs-extra');
+
+var root = path.join('usr', 'local', 'lib'); // forgot the initial '/'
+var outdir = path.join(root, 'mylib', 'base');
+// Okay to make 'mylib', but fail if we try to recreate the root
+fs.mkdirs(outdir, 1, function(err) {
+  if (err) {
+	console.error(err);
+  }
+  else {
+    console.log('success!');
+  }
+});
+```
+
+Concise logic to ensure a directory exists
+```javascript
+var fs = require('fs-extra');
+
+fs.mkdirsSync('mydir', 0);
+
+// Equivalent logic:
+try {
+  fs.mkdirSync('mydir');
+} catch (err) {
+  if (err !== 'EEXIST') {
+    throw err;
+  }
+}
 ```
 
 
