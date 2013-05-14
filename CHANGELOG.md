@@ -1,6 +1,6 @@
 0.6.1 / 2013-05-14
 ------------------
-* modified for `strict` mode
+* modified for `strict` mode, closes #24
 
 0.6.0 / 2013-03-18
 ------------------
