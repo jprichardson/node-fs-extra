@@ -135,7 +135,7 @@ Example:
 var fs = require('fs-extra')
   , file = '/tmp/this/path/does/not/exist/file.txt'
 
-fs.outputFile(file, 'hello!' function(err) {
+fs.outputFile(file, 'hello!', function(err) {
   console.log(err); //null
 
   fs.readFile(file, 'utf8', function(err, data) {
@@ -143,6 +143,33 @@ fs.outputFile(file, 'hello!' function(err) {
   })
 })
 ```
+
+
+
+### outputJson(file, data, callback)
+
+Almost the same as `writeJson`, except that if the directory does not exist, it's created.
+
+Alias: `outputJSON()
+
+Sync: `outputJsonSync()`, `outputJSONSync()`
+
+
+Example:
+
+```javascript
+var fs = require('fs-extra')
+  , file = '/tmp/this/path/does/not/exist/file.txt'
+
+fs.outputJson(file, {name: 'JP'}, function(err) {
+  console.log(err); //null
+
+  fs.readJson(file, function(err, data) {
+    console.log(data.name); //'JP
+  })
+})
+```
+
 
 
 ### readJson(file, callback) 
