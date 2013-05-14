@@ -1,6 +1,7 @@
 0.6.1 / 2013-05-14
 ------------------
 * modified for `strict` mode, closes #24
+* added `outputJson()/outputJsonSync()`, closes #23
 
 0.6.0 / 2013-03-18
 ------------------
