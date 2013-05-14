@@ -244,13 +244,13 @@ Roadmap to 1.0.0
 
 This contains items that I'm considering doing. I'd love community feedback.
 
-* File system walker. I really like this one: https://github.com/daaku/nodejs-walker
-* File/directory tree watcher. There are quite a few.
+* File system walker. I really like this one: https://github.com/daaku/nodejs-walker ... this might be adding too much.
+* File/directory tree watcher. There are quite a few. ... this also might be adding too much.
 * Method to move files.
 * Copy sync.
 * Thinking about moving `rimraf`, `ncp`, and `mkdirps` code into this library. I'd like fs-extra to be a stable library that module authors
-can depend upon. A bunch of other dependencies kinda sucks for modules/libraries.
-* Change documentation to use the `fse` prefix instead of `fs`. This may encourage people to start using `fse` as a prefix and hence make their code clearer that they're not using the native `fs`. I'm very undecided on this one since `fs-extra` is a drop in replacement for the native `fs`.
+can depend upon. A bunch of other dependencies kinda sucks for modules/libraries. I'm leaning against this now.
+* Change documentation to use the `fse` prefix instead of `fs`. This may encourage people to start using `fse` as a prefix and hence make their code clearer that they're not using the native `fs`. I'm very undecided on this one since `fs-extra` is a drop in replacement for the native `fs`. I'm leaning against this now.
 
 
 
