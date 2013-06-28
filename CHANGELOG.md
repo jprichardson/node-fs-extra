@@ -1,3 +1,9 @@
+0.6.3 / 2013-06-28
+------------------
+* changed JSON spacing default from `4` to `2` to follow Node conventions
+* updated `jsonfile` dep 
+* updated `rimraf` dep
+
 0.6.2 / 2013-06-28
 ------------------
 * added .npmignore, #25
