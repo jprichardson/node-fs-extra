@@ -281,6 +281,7 @@ Contributors
 - [JP Richardson](https://github.com/jprichardson)
 - [Mike McNeil](https://github.com/mikermcneil)
 - [Ian Crowther](https://github.com/iancrowther)
+- [Stephen Mathieson](https://github.com/stephenmathieson)
 - `<your name here>`
 
 
