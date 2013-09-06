@@ -1,3 +1,7 @@
+0.6.4 / 2013-09-05
+------------------
+* changed `homepage` field in package.json to remove NPM warning
+
 0.6.3 / 2013-06-28
 ------------------
 * changed JSON spacing default from `4` to `2` to follow Node conventions
