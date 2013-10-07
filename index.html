@@ -31,31 +31,59 @@
         <hr>
 
         <section id="main_content">
-          <p><a href="http://travis-ci.org/jprichardson/node-fs-extra"><img src="https://secure.travis-ci.org/jprichardson/node-fs-extra.png" alt="build status"></a></p>
+          <h1>
+<a name="nodejs-fs-extra" class="anchor" href="#nodejs-fs-extra"><span class="octicon octicon-link"></span></a>Node.js: fs-extra</h1>
 
-<h1>Node.js: fs-extra</h1>
+<p><a href="http://travis-ci.org/jprichardson/node-fs-extra"><img src="https://secure.travis-ci.org/jprichardson/node-fs-extra.png" alt="build status"></a></p>
 
 <p>This module adds a few extra file system methods that aren't included in the native <code>fs</code> module. It is a drop in replacement for <code>fs</code>.</p>
 
-<h2>Why?</h2>
+<h2>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why?</h2>
 
 <p>I got tired of including <code>mkdirp</code>, <code>rimraf</code>, and <code>cp -r</code> in most of my projects. </p>
 
-<h2>Installation</h2>
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<pre><code>npm install fs-extra
+<pre><code>npm install --save fs-extra
 </code></pre>
 
-<h2>Usage</h2>
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<p><code>fs-extra</code> is a drop in replacement for native <code>fs</code>. All methods in <code>fs</code> are unmodified and attached to <code>fs-extra</code>.</p>
+
+<p>You don't ever need to include the original <code>fs</code> module again:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span> <span class="c1">//this is no longer necessary</span>
 </pre></div>
 
-<h2>Methods</h2>
+<p>you can now do this:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span> <span class="c1">//var fs = require('fs')</span>
+</pre></div>
+
+<p>or if you prefer to make it clear that you're using <code>fs-extra</code> and not <code>fs</code>, you may want 
+to do this:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//var fs = require('fs')</span>
+<span class="kd">var</span> <span class="nx">fse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+</pre></div>
+
+<p>you can also keep, both, but it's redundant:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">fse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h2>
 
 <p><strong>NOTE:</strong> You can still use the native Node.js methods. They are copied over to <code>fs-extra</code>.</p>
 
-<h3>copy(src, dest, callback)</h3>
+<h3>
+<a name="copysrc-dest-callback" class="anchor" href="#copysrc-dest-callback"><span class="octicon octicon-link"></span></a>copy(src, dest, callback)</h3>
 
 <p>Copy a file or directory. The directory can have contents. Like <code>cp -r</code>. There isn't a synchronous version implemented yet.</p>
 
@@ -63,28 +91,23 @@
 
 <p>Examples:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="s1">'/tmp/myfile'</span><span class="p">,</span> <span class="s1">'/tmp/mynewfile'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
-  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
 <span class="p">});</span> <span class="c1">//copies file</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="s1">'/tmp/mydir'</span><span class="p">,</span> <span class="s1">'/tmp/mynewdir'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
-  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
 <span class="p">});</span> <span class="c1">//copies directory, even if it has subdirectories or files</span>
 </pre></div>
 
-<h3>createFile(file, callback)</h3>
+<h3>
+<a name="createfilefile-callback" class="anchor" href="#createfilefile-callback"><span class="octicon octicon-link"></span></a>createFile(file, callback)</h3>
 
 <p>Creates a file. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is <strong>NOT MODIFIED</strong>.</p>
 
@@ -92,21 +115,18 @@
 
 <p>Example:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
-  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">createFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
-
   <span class="c1">//file has now been created, including the directory it is to be placed in</span>
 <span class="p">})</span>
 </pre></div>
 
-<h3>exists() / existsSync()</h3>
-
-<p>These methods are actually from <code>path</code> in v0.6. But in Node v0.8 they are moved from <code>path</code> to <code>fs</code>. So you can use this module to help make your modules v0.6 and v0.8 compatible.</p>
-
-<h3>mkdirs(dir, callback)</h3>
+<h3>
+<a name="mkdirsdir-callback" class="anchor" href="#mkdirsdir-callback"><span class="octicon octicon-link"></span></a>mkdirs(dir, callback)</h3>
 
 <p>Creates a directory. If the parent hierarchy doesn't exist, it's created. Like <code>mkdir -p</code>.</p>
 
@@ -116,21 +136,19 @@
 
 <p>Examples:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">mkdirs</span><span class="p">(</span><span class="s1">'/tmp/some/long/path/that/prob/doesnt/exist'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
-  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
 <span class="p">});</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">mkdirsSync</span><span class="p">(</span><span class="s1">'/tmp/another/path'</span><span class="p">);</span>
 </pre></div>
 
-<h3>outputFile(file, data, callback)</h3>
+<h3>
+<a name="outputfilefile-data-callback" class="anchor" href="#outputfilefile-data-callback"><span class="octicon octicon-link"></span></a>outputFile(file, data, callback)</h3>
 
 <p>Almost the same as <code>writeFile</code>, except that if the directory does not exist, it's created.</p>
 
@@ -138,10 +156,10 @@
 
 <p>Example:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
-  <span class="p">,</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
 
-<span class="nx">fs</span><span class="p">.</span><span class="nx">outputFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="s1">'hello!'</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">outputFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="s1">'hello!'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
 
   <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="s1">'utf8'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -150,7 +168,31 @@
 <span class="p">})</span>
 </pre></div>
 
-<h3>readJson(file, callback)</h3>
+<h3>
+<a name="outputjsonfile-data-callback" class="anchor" href="#outputjsonfile-data-callback"><span class="octicon octicon-link"></span></a>outputJson(file, data, callback)</h3>
+
+<p>Almost the same as <code>writeJson</code>, except that if the directory does not exist, it's created.</p>
+
+<p>Alias: `outputJSON()</p>
+
+<p>Sync: <code>outputJsonSync()</code>, <code>outputJSONSync()</code></p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="s1">'/tmp/this/path/does/not/exist/file.txt'</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">outputJson</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'JP'</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">//null</span>
+
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readJson</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">//'JP</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</pre></div>
+
+<h3>
+<a name="readjsonfile-callback" class="anchor" href="#readjsonfile-callback"><span class="octicon octicon-link"></span></a>readJson(file, callback)</h3>
 
 <p>Reads a JSON file and then parses it into an object.</p>
 
@@ -160,14 +202,15 @@
 
 <p>Example:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">readJson</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">packageObj</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">packageObj</span><span class="p">.</span><span class="nx">version</span><span class="p">);</span> <span class="c1">//0.1.3</span>
 <span class="p">});</span>
 </pre></div>
 
-<h3>remove(dir, callback)</h3>
+<h3>
+<a name="removedir-callback" class="anchor" href="#removedir-callback"><span class="octicon octicon-link"></span></a>remove(dir, callback)</h3>
 
 <p>Removes a file or directory. The directory can have contents. Like <code>rm -rf</code>.</p>
 
@@ -177,21 +220,19 @@
 
 <p>Examples:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'/tmp/myfile'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
-  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"success!"</span><span class="p">)</span>
 <span class="p">});</span>
 
 <span class="nx">fs</span><span class="p">.</span><span class="nx">removeSync</span><span class="p">(</span><span class="s1">'/home/jprichardson'</span><span class="p">);</span> <span class="c1">//I just deleted my entire HOME directory. </span>
 </pre></div>
 
-<h3>writeJson(file, object, callback)</h3>
+<h3>
+<a name="writejsonfile-object-callback" class="anchor" href="#writejsonfile-object-callback"><span class="octicon octicon-link"></span></a>writeJson(file, object, callback)</h3>
 
 <p>Writes an object to a JSON file.</p>
 
@@ -201,28 +242,29 @@
 
 <p>Example:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs-extra'</span><span class="p">);</span>
 <span class="nx">fs</span><span class="p">.</span><span class="nx">writeJson</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'fs-extra'</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
 
-<h2>Roadmap to 1.0.0</h2>
+<h2>
+<a name="roadmap-to-100" class="anchor" href="#roadmap-to-100"><span class="octicon octicon-link"></span></a>Roadmap to 1.0.0</h2>
 
 <p>This contains items that I'm considering doing. I'd love community feedback.</p>
 
 <ul>
-<li>File system walker. I really like this one: <a href="https://github.com/daaku/nodejs-walker">https://github.com/daaku/nodejs-walker</a>
-</li>
-<li>File/directory tree watcher. There are quite a few.</li>
+<li>File system walker. I really like this one: <a href="https://github.com/daaku/nodejs-walker">https://github.com/daaku/nodejs-walker</a> ... this might be adding too much. Thoughts?</li>
+<li>File/directory tree watcher. There are quite a few. ... this also might be adding too much. Thoughts?</li>
 <li>Method to move files.</li>
 <li>Copy sync.</li>
 <li>Thinking about moving <code>rimraf</code>, <code>ncp</code>, and <code>mkdirps</code> code into this library. I'd like fs-extra to be a stable library that module authors
-can depend upon. A bunch of other dependencies kinda sucks for modules/libraries.</li>
-<li>Change documentation to use the <code>fse</code> prefix instead of <code>fs</code>. This may encourage people to start using <code>fse</code> as a prefix and hence make their code clearer that they're not using the native <code>fs</code>. I'm very undecided on this one since <code>fs-extra</code> is a drop in replacement for the native <code>fs</code>.</li>
-</ul><h2>Naming</h2>
+can depend upon. A bunch of other dependencies kinda sucks for modules/libraries. (I'm leaning against this now.)</li>
+<li>Change documentation to use the <code>fse</code> prefix instead of <code>fs</code>. This may encourage people to start using <code>fse</code> as a prefix and hence make their code clearer that they're not using the native <code>fs</code>. I'm very undecided on this one since <code>fs-extra</code> is a drop in replacement for the native <code>fs</code>. (I'm leaning against this now.)</li>
+</ul><h2>
+<a name="naming" class="anchor" href="#naming"><span class="octicon octicon-link"></span></a>Naming</h2>
 
-<p>I put a lot of thought into the naming of these function. Inspired by <a href="https://github.com/coolaj86" class="user-mention">@coolaj86</a>'s request. So he deserves much of the credit for raising the issue. See discussion(s) here:</p>
+<p>I put a lot of thought into the naming of these functions. Inspired by <a href="https://github.com/coolaj86" class="user-mention">@coolaj86</a>'s request. So he deserves much of the credit for raising the issue. See discussion(s) here:</p>
 
 <ul>
 <li><a href="https://github.com/jprichardson/node-fs-extra/issues/2">https://github.com/jprichardson/node-fs-extra/issues/2</a></li>
@@ -235,15 +277,21 @@ can depend upon. A bunch of other dependencies kinda sucks for modules/libraries
 
 <p>We have a dilemma though. How do you consistently name methods that perform the following POSIX commands: <code>cp</code>, <code>cp -r</code>, <code>mkdir -p</code>, and <code>rm -rf</code>?</p>
 
-<p>My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. </p>
+<p>My perspective: when in doubt, err on the side of simplicity. A directory is just a hierarchical grouping of directories and files. Consider that for a moment. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. </p>
 
 <p>So, if you want to remove a file or a directory regardless of whether it has contents, just call <code>fs.remove(path)</code> or its alias <code>fs.delete(path)</code>. If you want to copy a file or a directory whether it has contents, just call <code>fs.copy(source, destination)</code>. If you want to create a directory regardless of whether its parent directories exist, just call <code>fs.mkdirs(path)</code> or <code>fs.mkdirp(path)</code>. </p>
 
-<h2>Author</h2>
+<h2>
+<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
 
-<p><code>node-fs-extra</code> was written by <a href="http://about.me/jprichardson">JP Richardson</a>. You should follow him on Twitter <a href="http://twitter.com/jprichardson">@jprichardson</a>. Also read his coding blog <a href="http://procbits.com">Procbits</a>. If you write software with others, you should checkout <a href="http://gitpilot.com">Gitpilot</a> to make collaboration with Git simple.</p>
-
-<h2>License</h2>
+<ul>
+<li><a href="https://github.com/jprichardson">JP Richardson</a></li>
+<li><a href="https://github.com/mikermcneil">Mike McNeil</a></li>
+<li><a href="https://github.com/iancrowther">Ian Crowther</a></li>
+<li><a href="https://github.com/stephenmathieson">Stephen Mathieson</a></li>
+<li><code>&lt;your name here&gt;</code></li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Licensed under MIT</p>
 
@@ -252,7 +300,7 @@ can depend upon. A bunch of other dependencies kinda sucks for modules/libraries
 
         <footer>
           Node-fs-extra is maintained by <a href="https://github.com/jprichardson">jprichardson</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
 
                   <script type="text/javascript">
