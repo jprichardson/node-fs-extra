@@ -8,9 +8,10 @@ var SIZE = 16 * 64 * 1024 + 7;
 var DIR = '';
 
 describe('fs-extra', function() {
-  beforeEach(function(done) {
+  beforeEach(function() {
     DIR = testutil.createTestDir('fs-extra');
-    done();
+    //DIR = path.join(DIR, 'copy')
+    //mkdir.sync(DIR)
   })
   
   afterEach(function(done) {
@@ -46,8 +47,21 @@ describe('fs-extra', function() {
           done()
         })
       })
-    })
 
+      describe('> when the destination dir does not exist', function() {
+        it('should create the destination directory and copy the file', function(done) {
+          var src = path.join(DIR, 'file.txt')
+          var dest = path.join(DIR, 'this/path/does/not/exist/copied.txt')
+          var data = "did it copy?\n"
+
+          fs.writeFileSync(src, data, 'utf8')
+
+          fs.copy(src, dest, function(err) {
+            done(err)
+          })
+        })
+      })
+    })
 
     describe('> when the source is a directory', function() {
       it('should copy the directory asynchronously', function(done) {
