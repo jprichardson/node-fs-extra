@@ -37,7 +37,7 @@ var fs = require('fs') //this is no longer necessary
 you can now do this:
 
 ```javascript
-var fs = require('fs-extra');
+var fs = require('fs-extra'); //var fs = require('fs')
 ```
 
 or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want 
@@ -46,6 +46,13 @@ to do this:
 ```javascript
 //var fs = require('fs')
 var fse = require('fs-extra')
+```
+
+you can also keep, both, but it's redundant:
+
+```javascript
+var fs = require('fs')
+  , fse = require('fs-extra')
 ```
 
 
@@ -260,7 +267,7 @@ can depend upon. A bunch of other dependencies kinda sucks for modules/libraries
 Naming
 ------
 
-I put a lot of thought into the naming of these function. Inspired by @coolaj86's request. So he deserves much of the credit for raising the issue. See discussion(s) here:
+I put a lot of thought into the naming of these functions. Inspired by @coolaj86's request. So he deserves much of the credit for raising the issue. See discussion(s) here:
 
 * https://github.com/jprichardson/node-fs-extra/issues/2
 * https://github.com/flatiron/utile/issues/11
@@ -273,7 +280,7 @@ For example, `fs.readFile()` and `fs.readdir()`: the **F** is capitalized in *Fi
 
 We have a dilemma though. How do you consistently name methods that perform the following POSIX commands: `cp`, `cp -r`, `mkdir -p`, and `rm -rf`?
 
-My perspective: when in doubt, err on the side of simplicity. Consider that for a moment. A directory is just a hierarchical grouping of directories and files. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. 
+My perspective: when in doubt, err on the side of simplicity. A directory is just a hierarchical grouping of directories and files. Consider that for a moment. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. 
 
 So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`. 
 
