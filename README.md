@@ -26,11 +26,26 @@ Installation
 Usage
 -----
 
-Drop in replacement for native `fs`.
+`fs-extra` is a drop in replacement for native `fs`. All methods in `fs` are unmodified and attached to `fs-extra`.
 
+You don't ever need to include the original `fs` module again:
+
+```javascript
+var fs = require('fs') //this is no longer necessary
+```
+
+you can now do this:
 
 ```javascript
 var fs = require('fs-extra');
+```
+
+or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want 
+to do this:
+
+```javascript
+//var fs = require('fs')
+var fse = require('fs-extra')
 ```
 
 
@@ -54,21 +69,15 @@ Examples:
 var fs = require('fs-extra');
 
 fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err){
-  if (err) {
-    console.error(err);
-  }
-  else {
-    console.log("success!")
-  }
+  if (err) return console.error(err);
+
+  console.log("success!")
 }); //copies file
 
 fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err){
-  if (err) {
-    console.error(err);
-  }
-  else {
-    console.log("success!")
-  }
+  if (err) return console.error(err);
+  
+  console.log("success!")
 }); //copies directory, even if it has subdirectories or files
 ```
 
@@ -84,11 +93,11 @@ Example:
 
 ```javascript
 var fs = require('fs-extra')
-  , file = '/tmp/this/path/does/not/exist/file.txt'
+
+var file = '/tmp/this/path/does/not/exist/file.txt'
 
 fs.createFile(file, function(err) {
   console.log(err); //null
-
   //file has now been created, including the directory it is to be placed in
 })
 ```
@@ -110,12 +119,9 @@ Examples:
 var fs = require('fs-extra');
 
 fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
-  if (err) {
-    console.error(err);
-  }
-  else {
-    console.log("success!")
-  }
+  if (err) return console.error(err);
+  
+  console.log("success!")
 });
 
 fs.mkdirsSync('/tmp/another/path');
@@ -133,7 +139,7 @@ Example:
 
 ```javascript
 var fs = require('fs-extra')
-  , file = '/tmp/this/path/does/not/exist/file.txt'
+var file = '/tmp/this/path/does/not/exist/file.txt'
 
 fs.outputFile(file, 'hello!', function(err) {
   console.log(err); //null
@@ -159,7 +165,7 @@ Example:
 
 ```javascript
 var fs = require('fs-extra')
-  , file = '/tmp/this/path/does/not/exist/file.txt'
+var file = '/tmp/this/path/does/not/exist/file.txt'
 
 fs.outputJson(file, {name: 'JP'}, function(err) {
   console.log(err); //null
@@ -207,12 +213,9 @@ Examples:
 var fs = require('fs-extra');
 
 fs.remove('/tmp/myfile', function(err){
-  if (err) {
-    console.error(err);
-  }
-  else {
-    console.log("success!")
-  }
+  if (err) return console.error(err);
+  
+  console.log("success!")
 });
 
 fs.removeSync('/home/jprichardson'); //I just deleted my entire HOME directory. 
