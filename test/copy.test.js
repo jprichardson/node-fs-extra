@@ -57,6 +57,8 @@ describe('fs-extra', function() {
           fs.writeFileSync(src, data, 'utf8')
 
           fs.copy(src, dest, function(err) {
+            var data2 = fs.readFileSync(dest, 'utf8')
+            EQ (data, data2)
             done(err)
           })
         })
@@ -92,6 +94,30 @@ describe('fs-extra', function() {
               
               done()
             })
+          })
+        })
+      })
+
+      describe('> when the destination dir does not exist', function() {
+        it('should create the destination directory and copy the file', function(done) {
+          var src = path.join(DIR, 'data/')
+          fs.mkdirsSync(src)
+          var d1 = "file1";
+          var d2 = "file2";
+
+          var f1 = fs.writeFileSync(path.join(src, "f1.txt"), d1)
+          var f2 = fs.writeFileSync(path.join(src, "f2.txt"), d2)
+
+          var dest = path.join(DIR, 'this/path/does/not/exist/outputDir')
+
+          fs.copy(src, dest, function(err) {
+            var o1 = fs.readFileSync(path.join(dest, 'f1.txt'), 'utf8')
+            var o2 = fs.readFileSync(path.join(dest, 'f2.txt'), 'utf8')
+
+            EQ (d1, o1)
+            EQ (d2, o2)
+
+            done(err)
           })
         })
       })
