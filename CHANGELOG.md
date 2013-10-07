@@ -1,3 +1,8 @@
+0.7.0 / 2013-10-07
+------------------
+* update readme conventions
+* `copy()` now works if destination directory does not exist. Closes #29
+
 0.6.4 / 2013-09-05
 ------------------
 * changed `homepage` field in package.json to remove NPM warning
