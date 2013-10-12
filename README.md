@@ -284,6 +284,16 @@ My perspective: when in doubt, err on the side of simplicity. A directory is jus
 So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`. 
 
 
+Credit
+------
+
+`fs-extra` wouldn't be possible without using the modules from the following authors:
+
+- [Isaac Shlueter](https://github.com/isaacs)
+- [Charlie McConnel](https://github.com/avianflu)
+- [James Halliday](https://github.com/substack)
+
+
 Contributions
 -------------
 
