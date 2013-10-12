@@ -67,7 +67,7 @@ Methods
 
 Copy a file or directory. The directory can have contents. Like `cp -r`. There isn't a synchronous version implemented yet.
 
-Sync: (none)
+Sync: `copySync()`
 
 
 Examples:
@@ -285,13 +285,19 @@ My perspective: when in doubt, err on the side of simplicity. A directory is jus
 So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`. 
 
 
-
-Contributors
+Contributions
 -------------
+
+If you want to contribute, please add a test if you can. Also, don't change the version in `package.json`.
+
+
+### Contributors
+
 - [JP Richardson](https://github.com/jprichardson)
 - [Mike McNeil](https://github.com/mikermcneil)
 - [Ian Crowther](https://github.com/iancrowther)
 - [Stephen Mathieson](https://github.com/stephenmathieson)
+- [Srirangan](https://github.com/Srirangan)
 - `<your name here>`
 
 
@@ -311,10 +317,6 @@ Copyright (c) 2011-2013 JP Richardson
 [jsonfile]: https://github.com/jprichardson/node-jsonfile
 
 
-[aboutjp]: http://about.me/jprichardson
-[twitter]: http://twitter.com/jprichardson
-[procbits]: http://procbits.com
-[gitpilot]: http://gitpilot.com
 
 
 
