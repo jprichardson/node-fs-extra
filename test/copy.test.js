@@ -41,12 +41,32 @@ describe('fs-extra', function() {
           , srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
           , destMd5 = '';
 
-        fs.copy(fileSrc, fileDest, function(err) {
+        fs.copy(fileSrc, fileDest, null, function(err) {
           destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex");
           T (srcMd5 === destMd5);
           done()
         })
       })
+
+      it("should only copy files allowed by filter regex", function(done) {
+        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.jade"), SIZE);
+        var destFile1 = path.join(DIR, "dest1.jade");
+        var filter = /.html$|.css$/i;
+        fs.copy(srcFile1, destFile1, filter, function() {
+          T(!fs.existsSync(destFile1));
+          done();
+        });
+      });
+
+      it("should only copy files allowed by filter fn", function(done) {
+        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.css"), SIZE);
+        var destFile1 = path.join(DIR, "dest1.css");
+        var filter = function(s) { return s.split(".").pop() !== "css";};
+        fs.copy(srcFile1, destFile1, filter, function() {
+          T(!fs.existsSync(destFile1));
+          done();
+        });
+      });
 
       describe('> when the destination dir does not exist', function() {
         it('should create the destination directory and copy the file', function(done) {
@@ -56,7 +76,7 @@ describe('fs-extra', function() {
 
           fs.writeFileSync(src, data, 'utf8')
 
-          fs.copy(src, dest, function(err) {
+          fs.copy(src, dest, null, function(err) {
             var data2 = fs.readFileSync(dest, 'utf8')
             EQ (data, data2)
             done(err)
@@ -80,7 +100,7 @@ describe('fs-extra', function() {
             for (var i = 0; i < FILES; ++i)
               testutil.createFileWithData(path.join(subdir, i.toString()), SIZE);
 
-            fs.copy(src, dest, function(err) {
+            fs.copy(src, dest, null, function(err) {
               F (err);
               T (fs.existsSync(dest));
 
@@ -110,7 +130,7 @@ describe('fs-extra', function() {
 
           var dest = path.join(DIR, 'this/path/does/not/exist/outputDir')
 
-          fs.copy(src, dest, function(err) {
+          fs.copy(src, dest, null, function(err) {
             var o1 = fs.readFileSync(path.join(dest, 'f1.txt'), 'utf8')
             var o2 = fs.readFileSync(path.join(dest, 'f2.txt'), 'utf8')
 
@@ -135,6 +155,38 @@ describe('fs-extra', function() {
         fs.copySync(fileSrc, fileDest);
         destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex");
         T(srcMd5 === destMd5);
+        done();
+      });
+      it("should only copy files allowed by filter regex", function(done) {
+        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.html"), SIZE),
+            srcFile2 = testutil.createFileWithData(path.join(DIR, "2.css"), SIZE),
+            srcFile3 = testutil.createFileWithData(path.join(DIR, "3.jade"), SIZE);
+        var destFile1 = path.join(DIR, "dest1.html"),
+            destFile2 = path.join(DIR, "dest2.css"),
+            destFile3 = path.join(DIR, "dest3.jade");
+        var filter = /.html$|.css$/i;
+        fs.copySync(srcFile1, destFile1, filter);
+        fs.copySync(srcFile2, destFile2, filter);
+        fs.copySync(srcFile3, destFile3, filter);
+        T(fs.existsSync(destFile1));
+        T(fs.existsSync(destFile2));
+        T(!fs.existsSync(destFile3));
+        done();
+      });
+      it("should only copy files allowed by filter fn", function(done) {
+        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.html"), SIZE),
+            srcFile2 = testutil.createFileWithData(path.join(DIR, "2.css"), SIZE),
+            srcFile3 = testutil.createFileWithData(path.join(DIR, "3.jade"), SIZE);
+        var destFile1 = path.join(DIR, "dest1.html"),
+            destFile2 = path.join(DIR, "dest2.css"),
+            destFile3 = path.join(DIR, "dest3.jade");
+        var filter = function(s) { return s.split(".").pop() !== "css";};
+        fs.copySync(srcFile1, destFile1, filter);
+        fs.copySync(srcFile2, destFile2, filter);
+        fs.copySync(srcFile3, destFile3, filter);
+        T(fs.existsSync(destFile1));
+        T(!fs.existsSync(destFile2));
+        T(fs.existsSync(destFile3));
         done();
       });
       describe("> when the destination dir does not exist", function () {
