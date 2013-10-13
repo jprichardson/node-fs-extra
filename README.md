@@ -67,7 +67,7 @@ Methods
 
 Copy a file or directory. The directory can have contents. Like `cp -r`. There isn't a synchronous version implemented yet.
 
-Sync: (none)
+Sync: `copySync()`
 
 
 Examples:
@@ -255,9 +255,8 @@ Roadmap to 1.0.0
 This contains items that I'm considering doing. I'd love community feedback.
 
 * File system walker. I really like this one: https://github.com/daaku/nodejs-walker ... this might be adding too much. Thoughts?
-* File/directory tree watcher. There are quite a few. ... this also might be adding too much. Thoughts?
+* File/directory tree watcher. There are quite a few. ... this also might be adding too much. I like this one: https://github.com/paulmillr/chokidar but I don't like that it's written in CoffeeScript. Thoughts?
 * Method to move files.
-* Copy sync.
 * Thinking about moving `rimraf`, `ncp`, and `mkdirps` code into this library. I'd like fs-extra to be a stable library that module authors
 can depend upon. A bunch of other dependencies kinda sucks for modules/libraries. (I'm leaning against this now.)
 * Change documentation to use the `fse` prefix instead of `fs`. This may encourage people to start using `fse` as a prefix and hence make their code clearer that they're not using the native `fs`. I'm very undecided on this one since `fs-extra` is a drop in replacement for the native `fs`. (I'm leaning against this now.)
@@ -285,13 +284,29 @@ My perspective: when in doubt, err on the side of simplicity. A directory is jus
 So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`. 
 
 
+Credit
+------
 
-Contributors
+`fs-extra` wouldn't be possible without using the modules from the following authors:
+
+- [Isaac Shlueter](https://github.com/isaacs)
+- [Charlie McConnel](https://github.com/avianflu)
+- [James Halliday](https://github.com/substack)
+
+
+Contributions
 -------------
+
+If you want to contribute, please add a test if you can. Also, don't change the version in `package.json`.
+
+
+### Contributors
+
 - [JP Richardson](https://github.com/jprichardson)
 - [Mike McNeil](https://github.com/mikermcneil)
 - [Ian Crowther](https://github.com/iancrowther)
 - [Stephen Mathieson](https://github.com/stephenmathieson)
+- [Srirangan](https://github.com/Srirangan)
 - `<your name here>`
 
 
@@ -311,10 +326,6 @@ Copyright (c) 2011-2013 JP Richardson
 [jsonfile]: https://github.com/jprichardson/node-jsonfile
 
 
-[aboutjp]: http://about.me/jprichardson
-[twitter]: http://twitter.com/jprichardson
-[procbits]: http://procbits.com
-[gitpilot]: http://gitpilot.com
 
 
 

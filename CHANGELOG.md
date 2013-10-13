@@ -1,3 +1,8 @@
+0.7.1 / 2013-10-12
+------------------
+* `copySync()` implemented (Srirangan / #33)
+* updated to the latest `jsonfile` version `1.1.0` which gives `options` params for the JSON methods. Closes #32
+
 0.7.0 / 2013-10-07
 ------------------
 * update readme conventions
