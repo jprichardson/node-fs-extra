@@ -63,7 +63,7 @@ Methods
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
 
-### copy(src, dest, callback)
+### copy(src, dest, [filter], callback)
 
 Copy a file or directory. The directory can have contents. Like `cp -r`. There isn't a synchronous version implemented yet.
 
@@ -185,9 +185,9 @@ fs.outputJson(file, {name: 'JP'}, function(err) {
 
 
 
-### readJson(file, callback) 
+### readJson(file, [options], callback) 
 
-Reads a JSON file and then parses it into an object.
+Reads a JSON file and then parses it into an object. `options` are the same that you'd pass to `fs.readFile`.
 
 Alias: `readJSON()`
 
@@ -230,9 +230,9 @@ fs.removeSync('/home/jprichardson'); //I just deleted my entire HOME directory.
 
 
 
-### writeJson(file, object, callback) 
+### writeJson(file, object, [options], callback) 
 
-Writes an object to a JSON file.
+Writes an object to a JSON file. `options` are the same that you'd pass to `fs.readFile`.
 
 Alias: `writeJSON()`
 
