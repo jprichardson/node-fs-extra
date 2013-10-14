@@ -1,3 +1,7 @@
+0.8.0 / 2013-10-14
+------------------
+* `filter` implemented on `copy()` and `copySync()`. (Srirangan / #36)
+
 0.7.1 / 2013-10-12
 ------------------
 * `copySync()` implemented (Srirangan / #33)
