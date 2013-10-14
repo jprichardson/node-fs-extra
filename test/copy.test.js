@@ -41,7 +41,7 @@ describe('fs-extra', function() {
           , srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
           , destMd5 = '';
 
-        fs.copy(fileSrc, fileDest, null, function(err) {
+        fs.copy(fileSrc, fileDest, function(err) {
           destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex");
           T (srcMd5 === destMd5);
           done()
@@ -76,7 +76,7 @@ describe('fs-extra', function() {
 
           fs.writeFileSync(src, data, 'utf8')
 
-          fs.copy(src, dest, null, function(err) {
+          fs.copy(src, dest, function(err) {
             var data2 = fs.readFileSync(dest, 'utf8')
             EQ (data, data2)
             done(err)
@@ -100,7 +100,7 @@ describe('fs-extra', function() {
             for (var i = 0; i < FILES; ++i)
               testutil.createFileWithData(path.join(subdir, i.toString()), SIZE);
 
-            fs.copy(src, dest, null, function(err) {
+            fs.copy(src, dest, function(err) {
               F (err);
               T (fs.existsSync(dest));
 
@@ -130,7 +130,7 @@ describe('fs-extra', function() {
 
           var dest = path.join(DIR, 'this/path/does/not/exist/outputDir')
 
-          fs.copy(src, dest, null, function(err) {
+          fs.copy(src, dest, function(err) {
             var o1 = fs.readFileSync(path.join(dest, 'f1.txt'), 'utf8')
             var o2 = fs.readFileSync(path.join(dest, 'f2.txt'), 'utf8')
 
