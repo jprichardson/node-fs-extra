@@ -1,3 +1,7 @@
+0.8.1 / 2013-10-24
+------------------
+* copy failed to return an error to the callback if a file doesn't exist (ulikoehler #38, #39)
+
 0.8.0 / 2013-10-14
 ------------------
 * `filter` implemented on `copy()` and `copySync()`. (Srirangan / #36)
