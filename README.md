@@ -307,6 +307,7 @@ If you want to contribute, please add a test if you can. Also, don't change the 
 - [Ian Crowther](https://github.com/iancrowther)
 - [Stephen Mathieson](https://github.com/stephenmathieson)
 - [Srirangan](https://github.com/Srirangan)
+- [Uli Köhler](https://github.com/ulikoehler)
 - `<your name here>`
 
 
