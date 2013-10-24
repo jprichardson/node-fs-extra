@@ -297,7 +297,7 @@ Credit
 Contributions
 -------------
 
-If you want to contribute, please add a test if you can. Also, don't change the version in `package.json`.
+If you want to contribute, please add a test. Also, don't change the version in `package.json`.
 
 
 ### Contributors
