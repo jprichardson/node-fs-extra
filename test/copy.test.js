@@ -47,6 +47,17 @@ describe('fs-extra', function() {
           done()
         })
       })
+      
+      it('should return an error if the source file does not exist', function(done) {
+        var fileSrc = "we-simply-assume-this-file-does-not-exist.bin"
+          , fileDest = path.join(DIR, "TEST_fs-extra_copy")
+          , destMd5 = '';
+
+        fs.copy(fileSrc, fileDest, function(err) {
+          T (err);
+          done()
+        })
+      })
 
       it("should only copy files allowed by filter regex", function(done) {
         var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.jade"), SIZE);
