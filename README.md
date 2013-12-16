@@ -1,4 +1,3 @@
-
 Node.js: fs-extra
 =================
 
@@ -65,7 +64,7 @@ Methods
 
 ### copy(src, dest, [filter], callback)
 
-Copy a file or directory. The directory can have contents. Like `cp -r`. There isn't a synchronous version implemented yet.
+Copy a file or directory. The directory can have contents. Like `cp -r`.
 
 Sync: `copySync()`
 
