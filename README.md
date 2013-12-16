@@ -301,12 +301,13 @@ If you want to contribute, please add a test. Also, don't change the version in 
 
 ### Contributors
 
-- [JP Richardson](https://github.com/jprichardson)
-- [Mike McNeil](https://github.com/mikermcneil)
-- [Ian Crowther](https://github.com/iancrowther)
-- [Stephen Mathieson](https://github.com/stephenmathieson)
-- [Srirangan](https://github.com/Srirangan)
-- [Uli Köhler](https://github.com/ulikoehler)
+- [*] [JP Richardson](https://github.com/jprichardson)
+- [*] [Mike McNeil](https://github.com/mikermcneil)
+- [*] [Ian Crowther](https://github.com/iancrowther)
+- [*] [Stephen Mathieson](https://github.com/stephenmathieson)
+- [*] [Srirangan](https://github.com/Srirangan)
+- [*] [Uli Köhler](https://github.com/ulikoehler)
+- [1] [Jim Higson](https://github.com/jimhigson)
 - `<your name here>`
 
 
