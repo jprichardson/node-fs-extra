@@ -97,6 +97,17 @@ describe('fs-extra', function() {
     })
 
     describe('> when the source is a directory', function() {
+      describe('> when the source directory does not exist', function() {
+        it('should return an error', function(done) {
+          var ts = path.join(DIR, 'this_dir_does_not_exist')
+          var td = path.join(DIR, 'this_dir_really_does_not_matter')
+          fs.copy(ts, td, function(err) {
+            T (err)
+            done()
+          })
+        })
+      })
+
       it('should copy the directory asynchronously', function(done) {
         var FILES = 2
           , src = path.join(DIR, 'src')
