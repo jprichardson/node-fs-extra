@@ -136,7 +136,7 @@ fs.mkdirsSync('/tmp/another/path');
 
 ### outputFile(file, data, callback)
 
-Almost the same as `writeFile`, except that if the directory does not exist, it's created.
+Almost the same as `writeFile` (i.e. it [overwrites](http://pages.citebite.com/v2o5n8l2f5reb)), except that if the parent directory does not exist, it's created.
 
 Sync: `outputFileSync()`
 
