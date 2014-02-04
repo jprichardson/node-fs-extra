@@ -308,6 +308,7 @@ If you want to contribute, please add a test. Also, don't change the version in 
 - [*] [Srirangan](https://github.com/Srirangan)
 - [*] [Uli Köhler](https://github.com/ulikoehler)
 - [1] [Jim Higson](https://github.com/jimhigson)
+- [1] [PatrickJS](https://github.com/gdi2290)
 - `<your name here>`
 
 
