@@ -331,3 +331,7 @@ Copyright (c) 2011-2013 JP Richardson
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jprichardson/node-fs-extra/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
