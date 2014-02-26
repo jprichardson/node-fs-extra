@@ -248,6 +248,42 @@ describe('fs-extra', function() {
 
         done()
       });
+      it("should should apply filter recursively", function(done) {
+        var FILES = 2,
+            src = path.join(DIR, 'src'),
+            dest = path.join(DIR, 'dest'),
+            filter = /0$/i,
+            i, j;
+        mkdir.sync(src);
+        for (i = 0; i < FILES; ++i)
+          testutil.createFileWithData(path.join(src, i.toString()), SIZE);
+        var subdir = path.join(src, 'subdir');
+        mkdir.sync(subdir);
+        for (i = 0; i < FILES; ++i)
+          testutil.createFileWithData(path.join(subdir, i.toString()), SIZE);
+        fs.copySync(src, dest, filter);
+        T(fs.existsSync(dest));
+	T(FILES>1);
+
+        for (i = 0; i < FILES; ++i) {
+	    if (i==0) {
+		T(fs.existsSync(path.join(dest, i.toString())))
+	    } else {
+		T(!fs.existsSync(path.join(dest, i.toString())))
+	    }
+	};
+
+        var destSub = path.join(dest, 'subdir');
+        for (j = 0; j < FILES; ++j) {
+	    if (j==0) {
+		T(fs.existsSync(path.join(destSub, j.toString())));
+	    } else {
+		T(!fs.existsSync(path.join(destSub, j.toString())));
+	    }
+	}
+
+        done()
+      });
       describe("> when the destination dir does not exist", function() {
         it("should create the destination directory and copy the file", function(done) {
           var src = path.join(DIR, 'data/');
