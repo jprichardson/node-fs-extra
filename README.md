@@ -309,6 +309,7 @@ If you want to contribute, please add a test. Also, don't change the version in 
 - [*] [Uli Köhler](https://github.com/ulikoehler)
 - [1] [Jim Higson](https://github.com/jimhigson)
 - [1] [PatrickJS](https://github.com/gdi2290)
+- [1] [Michael Tiller](https://github.com/xogeny)
 - `<your name here>`
 
 
