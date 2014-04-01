@@ -179,6 +179,7 @@ describe('fs-extra', function() {
         T(srcMd5 === destMd5);
         done();
       });
+
       it("should only copy files allowed by filter regex", function(done) {
         var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.html"), SIZE),
             srcFile2 = testutil.createFileWithData(path.join(DIR, "2.css"), SIZE),
@@ -195,6 +196,7 @@ describe('fs-extra', function() {
         T(!fs.existsSync(destFile3));
         done();
       });
+
       it("should only copy files allowed by filter fn", function(done) {
         var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.html"), SIZE),
             srcFile2 = testutil.createFileWithData(path.join(DIR, "2.css"), SIZE),
@@ -211,6 +213,7 @@ describe('fs-extra', function() {
         T(fs.existsSync(destFile3));
         done();
       });
+
       describe("> when the destination dir does not exist", function () {
         it('should create the destination directory and copy the file', function (done) {
           var src = path.join(DIR, 'file.txt'),
@@ -225,6 +228,7 @@ describe('fs-extra', function() {
         })
       });
     });
+
     describe("> when the source is a directory", function() {
       it("should copy the directory synchronously", function(done) {
         var FILES = 2,
@@ -248,42 +252,50 @@ describe('fs-extra', function() {
 
         done()
       });
+
       it("should should apply filter recursively", function(done) {
-        var FILES = 2,
-            src = path.join(DIR, 'src'),
-            dest = path.join(DIR, 'dest'),
-            filter = /0$/i,
-            i, j;
+        var FILES = 2
+        var src = path.join(DIR, 'src')
+        var dest = path.join(DIR, 'dest')
+        var filter = /0$/i
+
         mkdir.sync(src);
-        for (i = 0; i < FILES; ++i)
+        
+        for (var i = 0; i < FILES; ++i)
           testutil.createFileWithData(path.join(src, i.toString()), SIZE);
+        
         var subdir = path.join(src, 'subdir');
         mkdir.sync(subdir);
+        
         for (i = 0; i < FILES; ++i)
           testutil.createFileWithData(path.join(subdir, i.toString()), SIZE);
+        
         fs.copySync(src, dest, filter);
-        T(fs.existsSync(dest));
-	T(FILES>1);
+        
+        T (fs.existsSync(dest));
+        T (FILES>1);
 
         for (i = 0; i < FILES; ++i) {
-	    if (i==0) {
-		T(fs.existsSync(path.join(dest, i.toString())))
-	    } else {
-		T(!fs.existsSync(path.join(dest, i.toString())))
-	    }
-	};
+          if (i==0) {
+            T (fs.existsSync(path.join(dest, i.toString())))
+          } else {
+            T (!fs.existsSync(path.join(dest, i.toString())))
+          }
+        }
 
         var destSub = path.join(dest, 'subdir');
-        for (j = 0; j < FILES; ++j) {
-	    if (j==0) {
-		T(fs.existsSync(path.join(destSub, j.toString())));
-	    } else {
-		T(!fs.existsSync(path.join(destSub, j.toString())));
-	    }
-	}
+        
+        for (var j = 0; j < FILES; ++j) {
+          if (j==0) {
+            T (fs.existsSync(path.join(destSub, j.toString())));
+          } else {
+            T (!fs.existsSync(path.join(destSub, j.toString())));
+          }
+        }
 
         done()
       });
+
       describe("> when the destination dir does not exist", function() {
         it("should create the destination directory and copy the file", function(done) {
           var src = path.join(DIR, 'data/');
