@@ -2,7 +2,10 @@ var crypto = require('crypto')
   , fs = require('../lib')
   , path = require('path-extra')
   , testutil = require('testutil')
-  , mkdir = require('mkdirp');
+  , mkdir = require('mkdirp')
+  , mkdirp = mkdir
+  , userid = require('userid')
+
 
 var SIZE = 16 * 64 * 1024 + 7;
 var DIR = '';
@@ -161,6 +164,67 @@ describe('fs-extra', function() {
 
             done(err)
           })
+        })
+      })
+    })
+
+    describe('> REGRESSIONS', function() {
+      //pretty UNIX specific, may not pass on windows... only test on Mac OS X 10.9
+      it('should maintain file permissions and ownership', function(done) {
+
+        //http://man7.org/linux/man-pages/man2/stat.2.html
+        var S_IFREG = 0100000 //regular file
+        var S_IFDIR = 0040000 //directory
+
+        var permDir = path.join(DIR, 'perms');
+        mkdirp.sync(permDir);
+
+        var srcDir = path.join(permDir, 'src');
+        mkdirp.sync(srcDir);
+
+        var f1 = path.join(srcDir, 'f1.txt');
+        fs.writeFileSync(f1, '');
+        fs.chmodSync(f1, 0666);
+        fs.chownSync(f1, process.getuid(), userid.gid('wheel'));
+        var f1stats = fs.lstatSync(f1);
+        EQ (f1stats.mode - S_IFREG, 0666);
+
+        var d1 = path.join(srcDir, 'somedir');
+        fs.mkdirSync(d1);
+        fs.chmodSync(d1, 0777);
+        fs.chownSync(d1, process.getuid(), userid.gid('staff'));
+        var d1stats = fs.lstatSync(d1);
+        EQ (d1stats.mode - S_IFDIR, 0777);
+
+        var f2 = path.join(d1, 'f2.bin');
+        fs.writeFileSync(f2, '');
+        fs.chmodSync(f2, 0777);
+        fs.chownSync(f2, process.getuid(), userid.gid('staff'));
+        var f2stats = fs.lstatSync(f2);
+        EQ (f2stats.mode - S_IFREG, 0777);
+
+        var d2 = path.join(srcDir, 'crazydir');
+        mkdirp.sync(d2);
+        fs.chmodSync(d2, 0444);
+        fs.chownSync(d2, process.getuid(), userid.gid('wheel'));
+        var d2stats = fs.lstatSync(d2);
+        EQ (d2stats.mode - S_IFDIR, 0444);
+
+        var destDir = path.join(permDir, 'dest');
+        fs.copy(srcDir, destDir, function(err) {
+          F (err)
+
+          var newf1stats = fs.lstatSync(path.join(permDir, 'dest/f1.txt'));
+          var newd1stats = fs.lstatSync(path.join(permDir, 'dest/somedir'));
+          var newf2stats = fs.lstatSync(path.join(permDir, 'dest/somedir/f2.bin'));
+          var newd2stats = fs.lstatSync(path.join(permDir, 'dest/crazydir'));
+
+          EQ (newf1stats.mode, f1stats.mode);
+          EQ (newd1stats.mode, d1stats.mode);
+          EQ (newf2stats.mode, f2stats.mode);
+          EQ (newd2stats.mode, d2stats.mode);
+
+          done();  
         })
       })
     })
