@@ -27,7 +27,8 @@
     "touch",
     "create",
     "text",
-    "output"
+    "output",
+    "move"
   ],
   "author": "JP Richardson <jprichardson@gmail.com>",
   "licenses": [
