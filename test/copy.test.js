@@ -167,6 +167,15 @@ describe('fs-extra', function() {
           })
         })
       })
+
+      describe('> when src dir does not exist', function() {
+        it('should return an error', function(done) {
+          fs.copy('/does/not/exist', '/something/else', function(err) {
+            T (err instanceof Error)
+            done()
+          });
+        })
+      })
     })
 
     describe.skip('> REGRESSIONS', function() {
