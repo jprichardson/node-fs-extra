@@ -47,11 +47,11 @@ to do this:
 var fse = require('fs-extra')
 ```
 
-you can also keep, both, but it's redundant:
+you can also keep both, but it's redundant:
 
 ```javascript
 var fs = require('fs')
-  , fse = require('fs-extra')
+var fse = require('fs-extra')
 ```
 
 
@@ -76,13 +76,11 @@ var fs = require('fs-extra');
 
 fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err){
   if (err) return console.error(err);
-
   console.log("success!")
 }); //copies file
 
 fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err){
   if (err) return console.error(err);
-  
   console.log("success!")
 }); //copies directory, even if it has subdirectories or files
 ```
@@ -101,7 +99,6 @@ Example:
 var fs = require('fs-extra')
 
 var file = '/tmp/this/path/does/not/exist/file.txt'
-
 fs.createFile(file, function(err) {
   console.log(err); //null
   //file has now been created, including the directory it is to be placed in
@@ -126,7 +123,6 @@ var fs = require('fs-extra');
 
 fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
   if (err) return console.error(err);
-  
   console.log("success!")
 });
 
@@ -248,8 +244,8 @@ fs.writeJson('./package.json', {name: 'fs-extra'}, function(err){
 
 
 
-Roadmap to 1.0.0
------------------
+Roadmap
+--------
 
 This contains items that I'm considering doing. I'd love community feedback.
 
@@ -321,7 +317,7 @@ License
 
 Licensed under MIT
 
-Copyright (c) 2011-2013 JP Richardson
+Copyright (c) 2011-2014 JP Richardson
 
 [1]: http://nodejs.org/docs/latest/api/fs.html 
 
@@ -334,5 +330,4 @@ Copyright (c) 2011-2013 JP Richardson
 
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jprichardson/node-fs-extra/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
