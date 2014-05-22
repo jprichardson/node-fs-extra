@@ -40,7 +40,7 @@
     "ncp": "^0.5.1",
     "mkdirp": "0.3.x",
     "jsonfile": "~1.1.0",
-    "rimraf": "~2.2.6"
+    "rimraf": "^2.2.8"
   },
   "devDependencies": {
     "mocha": "*",
