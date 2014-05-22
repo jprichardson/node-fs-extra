@@ -64,5 +64,57 @@ describe('fs-extra', function() {
       })
     })
   })
+
+  describe('+ ensureDir()', function() {
+    describe('> when dir exists', function() {
+      it('should not do anything', function(done) {
+        var dir = path.join(TEST_DIR, 'dir/does/not/exist')
+        fs.mkdirpSync(dir)
+
+        T (fs.existsSync(dir))
+        fs.ensureDir(dir, function(err) {
+          F (err)
+          T (fs.existsSync(dir))
+          done()
+        })
+      })
+    })
+
+    describe('> when dir does not exist', function() {
+      it('should create the dir', function(done) {
+        var dir = path.join(TEST_DIR, 'dir/that/does/not/exist')
+
+        F (fs.existsSync(dir))
+        fs.ensureDir(dir, function(err) {
+          F (err)
+          T (fs.existsSync(dir))
+          done()
+        })
+      })
+    })
+  })
+
+  describe('+ ensureDirSync()', function() {
+    describe('> when dir exists', function() {
+      it('should not do anything', function() {
+        var dir = path.join(TEST_DIR, 'dir/does/not/exist')
+        fs.mkdirpSync(dir)
+
+        T (fs.existsSync(dir))
+        fs.ensureDirSync(dir)
+        T (fs.existsSync(dir))
+      })
+    })
+
+    describe('> when dir does not exist', function() {
+      it('should create the dir', function() {
+        var dir = path.join(TEST_DIR, 'dir/that/does/not/exist')
+
+        F (fs.existsSync(dir))
+        fs.ensureDirSync(dir)
+        T (fs.existsSync(dir))
+      })
+    })
+  })
 })
 
