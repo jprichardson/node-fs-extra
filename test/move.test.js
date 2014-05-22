@@ -46,15 +46,15 @@ describe('fs-extra', function() {
       });
     });
 
-    it("should not create directory structure by default", function (done) {
-      fs.move("test/a-file", "test/does/not/exist/a-file-dest", function (err) {
+    it("should not create directory structure if mkdirp is false", function (done) {
+      fs.move("test/a-file", "test/does/not/exist/a-file-dest", {mkdirp: false}, function (err) {
         assert.strictEqual(err.code, 'ENOENT');
         done();
       });
     });
 
-    it("should create directory structure when mkdirp option set", function (done) {
-      fs.move("test/a-file", "test/does/not/exist/a-file-dest", {mkdirp: true}, function (err) {
+    it("should create directory structure by default", function (done) {
+      fs.move("test/a-file", "test/does/not/exist/a-file-dest", function (err) {
         assert.ifError(err);
         fs.readFile("test/does/not/exist/a-file-dest", 'utf8', function (err, contents) {
           assert.ifError(err);
