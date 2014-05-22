@@ -1,3 +1,7 @@
+0.9.1 / 2014-05-22
+------------------
+* removed Node.js `0.8.x` support, `0.9.0` was published moments ago and should have been done there
+
 0.9.0 / 2014-05-22
 ------------------
 * upgraded `ncp` from `~0.4.2` to `^0.5.1`, #58
