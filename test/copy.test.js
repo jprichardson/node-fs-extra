@@ -5,6 +5,7 @@ var crypto = require('crypto')
   , mkdir = require('mkdirp')
   , mkdirp = mkdir
   , userid = require('userid')
+  , ncp = require('ncp')
 
 
 var SIZE = 16 * 64 * 1024 + 7;
@@ -168,7 +169,7 @@ describe('fs-extra', function() {
       })
     })
 
-    describe('> REGRESSIONS', function() {
+    describe.skip('> REGRESSIONS', function() {
       //pretty UNIX specific, may not pass on windows... only test on Mac OS X 10.9
       it('should maintain file permissions and ownership', function(done) {
 
@@ -177,10 +178,10 @@ describe('fs-extra', function() {
         var S_IFDIR = 0040000 //directory
 
         var permDir = path.join(DIR, 'perms');
-        mkdirp.sync(permDir);
+        fs.mkdirSync(permDir);
 
         var srcDir = path.join(permDir, 'src');
-        mkdirp.sync(srcDir);
+        fs.mkdirSync(srcDir);
 
         var f1 = path.join(srcDir, 'f1.txt');
         fs.writeFileSync(f1, '');
@@ -204,14 +205,14 @@ describe('fs-extra', function() {
         EQ (f2stats.mode - S_IFREG, 0777);
 
         var d2 = path.join(srcDir, 'crazydir');
-        mkdirp.sync(d2);
+        fs.mkdirSync(d2);
         fs.chmodSync(d2, 0444);
         fs.chownSync(d2, process.getuid(), userid.gid('wheel'));
         var d2stats = fs.lstatSync(d2);
         EQ (d2stats.mode - S_IFDIR, 0444);
 
         var destDir = path.join(permDir, 'dest');
-        fs.copy(srcDir, destDir, function(err) {
+        ncp(srcDir, destDir, function(err) {
           F (err)
 
           var newf1stats = fs.lstatSync(path.join(permDir, 'dest/f1.txt'));
