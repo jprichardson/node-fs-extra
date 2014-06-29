@@ -1,6 +1,6 @@
 0.10.0 / 2014-06-29
 ------------------
-* bugfix: upgaded `"jsonfile": "~1.1.0"` to `"jsonfile": "^1.2.0", bumped minor because of `jsonfile` dep change
+* bugfix: upgaded `"jsonfile": "~1.1.0"` to `"jsonfile": "^1.2.0"`, bumped minor because of `jsonfile` dep change
 from `~` to `^`. #67
 
 0.9.1 / 2014-05-22
