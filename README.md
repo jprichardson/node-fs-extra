@@ -3,6 +3,9 @@ Node.js: fs-extra
 
 [![build status](https://secure.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
 [![downloads per month](http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
+[![Dependency Status](https://david-dm.org/jprichardson/node-fs-extra.svg)](https://david-dm.org/jprichardson/node-fs-extra)
+[![devDependency Status](https://david-dm.org/jprichardson/node-fs-extra/dev-status.svg)](https://david-dm.org/jprichardson/node-fs-extra#info=devDependencies)
+
 
 This module adds a few extra file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
 
