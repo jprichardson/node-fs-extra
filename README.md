@@ -293,12 +293,14 @@ var fs = require('fs-extra');
 * errs will be an array with all the errors that occurred
 * Otherwise null on success
 */
-fs.emptyDir(my_path, function (errs) {
+fs.emptyDir('./my_site', function (errs) {
     if (errs) {
         errs.forEach(function (err) {
-            console.log(err.path + " failed due to " + err.code);
+            console.log(err.path + " failed to be deleted due to " + err.code);
         });
+        return;
     }
+    console.log("All files removed successfully");
 });
 ```
 More details for [emptydir](https://github.com/GochoMugo/emptydir "Project repo")...
