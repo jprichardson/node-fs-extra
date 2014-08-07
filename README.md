@@ -281,6 +281,29 @@ fs.writeJson('./package.json', {name: 'fs-extra'}, function(err){
 });
 ```
 
+### emptyDir(path[, callback])
+
+Recursively removes files in a directory while leaving the directory tree intact.
+
+Example:
+
+```javascript
+var fs = require('fs-extra');
+/*
+* errs will be an array with all the errors that occurred
+* Otherwise null on success
+*/
+fs.emptyDir('./my_site', function (errs) {
+    if (errs) {
+        errs.forEach(function (err) {
+            console.log(err.path + " failed to be deleted due to " + err.code);
+        });
+        return;
+    }
+    console.log("All files removed successfully");
+});
+```
+More details for [emptydir](https://github.com/GochoMugo/emptydir "Project repo")...
 
 
 Roadmap
@@ -343,6 +366,7 @@ If you want to contribute, please add a test. Also, don't change the version in 
 - [1] [Jim Higson](https://github.com/jimhigson)
 - [1] [PatrickJS](https://github.com/gdi2290)
 - [1] [Michael Tiller](https://github.com/xogeny)
+- [1] [Gocho Mugo](https://github.com/GochoMugo)
 - `<your name here>`
 
 
