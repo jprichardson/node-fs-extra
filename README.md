@@ -289,12 +289,16 @@ Example:
 
 ```javascript
 var fs = require('fs-extra');
-fs.emptyDir('./my_site', function(err) {
-    if (err) {
-        console.log(err);
-        return;
+/*
+* errs will be an array with all the errors that occurred
+* Otherwise null on success
+*/
+fs.emptyDir(my_path, function (errs) {
+    if (errs) {
+        errs.forEach(function (err) {
+            console.log(err.path + " failed due to " + err.code);
+        });
     }
-    console.log('All directories including www, pub, etc. are empty now');
 });
 ```
 More details for [emptydir](https://github.com/GochoMugo/emptydir "Project repo")...
