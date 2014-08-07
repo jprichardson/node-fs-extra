@@ -2,6 +2,7 @@ var assert = require('assert'),
        fs = require('fs'),
        emptydir = require('emptydir');
 
+
 var test_folder = './test';
 var dirs = [
     test_folder,
@@ -53,10 +54,11 @@ describe('emptyDir', function () {
 
 
 describe('emptyDirs', function () {
-    it('should be called per file and always pass path', function (done) {
+    it('should be called per file and always pass path, no error should be passed to callback here', function (done) {
         var calls = 0;
         emptydir.emptyDirs(test_folder, function(err, path) {
             calls++;
+            assert.equal(null, err, 'some error was passed');
             assert(path, 'path not passed to callback');
             if (calls === 3) done();
         });
