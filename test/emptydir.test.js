@@ -11,7 +11,9 @@ var dirs = [
     test_folder + '/dirB/dirC'
 ];
 dirs.forEach(function (dir) {
-    fs.mkdirSync(dir)
+    if (! fs.existsSync(dir)) {
+        fs.mkdirSync(dir)
+    }
 });
 
 // Recreate the files
@@ -97,6 +99,8 @@ afterEach(function () {
 after(function () {
     dirs = dirs.reverse();
     dirs.forEach(function (dir) {
-        fs.rmdirSync(dir);
+        if (fs.existsSync(dir)) {
+            fs.rmdirSync(dir);
+        }
     });
 });
