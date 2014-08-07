@@ -97,10 +97,9 @@ afterEach(function () {
 
 // Destroy all Direcotories
 after(function () {
-    dirs = dirs.reverse();
-    dirs.forEach(function (dir) {
-        if (fs.existsSync(dir)) {
-            fs.rmdirSync(dir);
+    for (var i = dirs.length - 1; i <= 0; i--)
+        if (fs.existsSync(dirs[i])) {
+            fs.rmdirSync(dirs[i]);
         }
     });
 });
