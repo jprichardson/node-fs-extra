@@ -1,3 +1,8 @@
+0.11.0 / 2014-08-11
+-------------------
+- upgraded `"ncp": "^0.5.1"` to `"ncp": "^0.6.0"`
+- 
+
 0.10.0 / 2014-06-29
 ------------------
 * bugfix: upgaded `"jsonfile": "~1.1.0"` to `"jsonfile": "^1.2.0"`, bumped minor because of `jsonfile` dep change
