@@ -238,6 +238,18 @@ fs.readJson('./package.json', function(err, packageObj) {
 });
 ```
 
+`readJsonSync()` can take a `throws` option set to `false` and it won't throw if the JSON is invalid. Example:
+
+```js
+var fs = require('fs-extra')
+var file = path.join('/tmp/some-invalid.json')
+var data = "{not valid JSON"
+fs.writeFileSync(file, data)
+
+var obj = fs.readJsonSync(file, {throws: false})
+console.log(obj) // => null
+```
+
 
 ### remove(dir, callback)
 

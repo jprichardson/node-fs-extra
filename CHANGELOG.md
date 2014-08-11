@@ -1,7 +1,8 @@
 0.11.0 / 2014-08-11
 -------------------
 - upgraded `"ncp": "^0.5.1"` to `"ncp": "^0.6.0"`
-- 
+- upgrade `jsonfile": "^1.2.0"` to `jsonfile": "^2.0.0"` => on write, json files now have `\n` at end. Also adds `options.throws` to `readJsonSync()`
+see https://github.com/jprichardson/node-jsonfile#readfilesyncfilename-options for more details.
 
 0.10.0 / 2014-06-29
 ------------------
