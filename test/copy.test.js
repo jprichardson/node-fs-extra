@@ -254,6 +254,20 @@ describe('fs-extra', function() {
         done();
       });
 
+      it("should maintain file mode", function (done) {
+        var fileSrc = path.join(DIR, "TEST_fs-extra_src")
+            , fileDest = path.join(DIR, "TEST_fs-extra_copy")
+            , fileSrc = testutil.createFileWithData(fileSrc, SIZE);
+        fs.chmodSync(fileSrc, 0750);
+        fs.copySync(fileSrc, fileDest);
+
+        var statSrc = fs.statSync(fileSrc)
+            , statDest = fs.statSync(fileDest);
+        EQ (statSrc.mode, statDest.mode);
+
+        done();
+      });
+
       it("should only copy files allowed by filter regex", function(done) {
         var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.html"), SIZE),
             srcFile2 = testutil.createFileWithData(path.join(DIR, "2.css"), SIZE),
