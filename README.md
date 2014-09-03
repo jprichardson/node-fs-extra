@@ -157,9 +157,9 @@ fs.mkdirsSync('/tmp/another/path');
 
 Moves a file or directory, even across devices.
 
-Options:
-clobber (boolean): overwrite existing file or directory
-limit: (number): number of concurrent moves, see ncp for more information
+Options:  
+clobber (boolean): overwrite existing file or directory  
+limit (number): number of concurrent moves, see ncp for more information
 
 Example:
 
