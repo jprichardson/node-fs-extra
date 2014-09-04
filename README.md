@@ -153,9 +153,13 @@ fs.mkdirsSync('/tmp/another/path');
 ```
 
 
-### move(src, dest, callback)
+### move(src, dest, [options], callback)
 
 Moves a file or directory, even across devices.
+
+Options:  
+clobber (boolean): overwrite existing file or directory  
+limit (number): number of concurrent moves, see ncp for more information
 
 Example:
 
