@@ -254,6 +254,21 @@ describe('fs-extra', function() {
         done();
       });
 
+      it("should follow symlinks", function (done) {
+        var fileSrc = path.join(DIR, "TEST_fs-extra_src")
+            , fileDest = path.join(DIR, "TEST_fs-extra_copy")
+            , linkSrc = path.join(DIR, "TEST_fs-extra_copy_link")
+            , fileSrc = testutil.createFileWithData(fileSrc, SIZE)
+            , srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
+            , destMd5 = '';
+
+        fs.symlinkSync(fileSrc, linkSrc);
+        fs.copySync(linkSrc, fileDest);
+        destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex");
+        T(srcMd5 === destMd5);
+        done();
+      });
+
       it("should maintain file mode", function (done) {
         var fileSrc = path.join(DIR, "TEST_fs-extra_src")
             , fileDest = path.join(DIR, "TEST_fs-extra_copy")
@@ -337,6 +352,22 @@ describe('fs-extra', function() {
 
         var destSub = path.join(dest, 'subdir');
         for (j = 0; j < FILES; ++j) T (fs.existsSync(path.join(destSub, j.toString())));
+
+        done()
+      });
+
+      it("should preserve symbolic links", function(done) {
+        var FILES = 2,
+            src = path.join(DIR, 'src'),
+            dest = path.join(DIR, 'dest'),
+            i, j;
+        mkdir.sync(src);
+        fs.symlinkSync('destination', path.join(src, 'symlink'));
+
+        fs.copySync(src, dest);
+
+        var link = fs.readlinkSync(path.join(dest, 'symlink'));
+        EQ (link, 'destination');
 
         done()
       });
