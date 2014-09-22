@@ -298,8 +298,10 @@ fs.writeJson('./package.json', {name: 'fs-extra'}, function(err){
 ```
 
 
-Promises
---------
+Third Party
+-----------
+
+### Promises
 
 Use [Bluebird](https://github.com/petkaantonov/bluebird). See https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification. `fs-extra` is
 explicitly listed as supported.
@@ -310,10 +312,14 @@ var fs = Promise.promisifyAll(require("fs-extra"))
 ```
 
 
-TypeScript
-----------
+### TypeScript
 
 If you like TypeScript, you can use `fs-extra` with it: https://github.com/borisyankov/DefinitelyTyped/tree/master/fs-extra
+
+
+### Misc.
+
+- [mfs](https://github.com/cadorn/mfs) - Monitor your fs-extra calls.
 
 
 
