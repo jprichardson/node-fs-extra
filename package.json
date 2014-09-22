@@ -1,6 +1,6 @@
 {
   "name": "fs-extra",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "description": "fs-extra contains methods that aren't included in the vanilla Node.js fs package. Such as mkdir -p, cp -r, and rm -rf.",
   "homepage": "https://github.com/jprichardson/node-fs-extra",
   "repository": {
