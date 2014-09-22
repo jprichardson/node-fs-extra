@@ -1,3 +1,7 @@
+0.12.0 / 2014-09-22
+-------------------
+- copy symlinks in `copySync()` [#85](https://github.com/jprichardson/node-fs-extra/pull/85)
+
 0.11.1 / 2014-09-02
 -------------------
 - bugfix `copySync()` preserve file permissions [#80](https://github.com/jprichardson/node-fs-extra/pull/80)
