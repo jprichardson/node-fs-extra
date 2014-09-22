@@ -297,6 +297,7 @@ fs.writeJson('./package.json', {name: 'fs-extra'}, function(err){
 });
 ```
 
+
 Promises
 --------
 
@@ -307,6 +308,13 @@ explicitly listed as supported.
 var Promise = require("bluebird")
 var fs = Promise.promisifyAll(require("fs-extra"))
 ```
+
+
+TypeScript
+----------
+
+If you like TypeScript, you can use `fs-extra` with it: https://github.com/borisyankov/DefinitelyTyped/tree/master/fs-extra
+
 
 
 Roadmap
