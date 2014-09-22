@@ -297,6 +297,16 @@ fs.writeJson('./package.json', {name: 'fs-extra'}, function(err){
 });
 ```
 
+Promises
+--------
+
+Use [Bluebird](https://github.com/petkaantonov/bluebird). See https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification. `fs-extra` is
+explicitly listed as supported.
+
+```js
+var Promise = require("bluebird")
+var fs = Promise.promisifyAll(require("fs-extra"))
+```
 
 
 Roadmap
