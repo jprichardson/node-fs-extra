@@ -1,3 +1,7 @@
+0.13.0 / 2014-xx-yy
+-------------------
+- removed `touch` and `touchSync` methods
+
 0.12.0 / 2014-09-22
 -------------------
 - copy symlinks in `copySync()` [#85](https://github.com/jprichardson/node-fs-extra/pull/85)
