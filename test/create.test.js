@@ -2,6 +2,8 @@ var testutil = require('testutil')
   , fs = require('../')
   , path = require('path')
 
+var terst = require('terst')
+
 var TEST_DIR = '';
 
 describe('fs-extra', function () {

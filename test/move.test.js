@@ -4,6 +4,8 @@ var path = require('path')
 var assert = require('assert')
 var rimraf = require('rimraf')
 
+var terst = require('terst')
+
 var TEST_DIR = ''
 
 // makes fs.rename return cross-device error.

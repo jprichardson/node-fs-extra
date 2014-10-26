@@ -2,6 +2,8 @@ var fs = require('../lib')
   , path = require('path-extra')
   , testutil = require('testutil');
 
+var terst = require('terst')
+
 var TEST_DIR = ''
 
 describe('fs-extra', function() {

@@ -4,6 +4,8 @@ var crypto = require('crypto')
   , testutil = require('testutil')
   , mkdir = require('mkdirp');
 
+var terst = require('terst')
+
 var DIR = '';
 
   buildDir = function() { //shit function that should be deleted

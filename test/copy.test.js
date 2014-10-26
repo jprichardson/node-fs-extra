@@ -8,6 +8,8 @@ var crypto = require('crypto')
   , ncp = require('ncp')
 
 
+var terst = require('terst')
+
 var SIZE = 16 * 64 * 1024 + 7;
 var DIR = '';
 

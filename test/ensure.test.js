@@ -4,6 +4,8 @@ var path = require('path')
 
 var TEST_DIR = ''
 
+var terst = require('terst')
+
 describe('fs-extra', function() {
   beforeEach(function() {
     TEST_DIR = testutil.createTestDir('fs-extra');

@@ -4,6 +4,7 @@ var testutil = require('testutil')
   , fs = require('../lib')
   , path = require('path')
 
+var terst = require('terst')
 
 var TEST_DIR = null
 
