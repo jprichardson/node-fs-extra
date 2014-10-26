@@ -48,7 +48,8 @@
     "path-extra": "0.0.x",
     "testutil": "^0.7.0",
     "userid": "~0.1.1",
-    "terst": "^0.3.0"
+    "terst": "^0.3.0",
+    "secure-random": "^1.1.1"
   },
   "main": "./lib/index",
   "scripts": {
