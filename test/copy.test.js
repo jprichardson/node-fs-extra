@@ -7,6 +7,7 @@ var crypto = require('crypto')
   , userid = require('userid')
   , ncp = require('ncp')
 
+var testlib = require('./lib/util')
 
 var terst = require('terst')
 
@@ -24,26 +25,12 @@ describe('fs-extra', function() {
     fs.remove(DIR, done);
   })
 
-  /*
-    describe '+ copyFileSync()', ->
-      it 'should copy synchronously', ->
-        fileSrc = path.join(DIR, "TEST_fs-extra_src")
-        fileDest = path.join(DIR, "TEST_fs-extra_copy")
-
-        fileSrc = testutil.createFileWithData(fileSrc, SIZE)
-        srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest('hex')
-        fs.copyFileSync(fileSrc, fileDest)
-        destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
-
-        T srcMd5 is destMd5
-  */
-
   describe('+ copy()', function() {
     describe('> when the source is a file', function() {
       it('should copy the file asynchronously', function(done) {
         var fileSrc = path.join(DIR, "TEST_fs-extra_src")
           , fileDest = path.join(DIR, "TEST_fs-extra_copy")
-          , fileSrc = testutil.createFileWithData(fileSrc, SIZE)
+          , fileSrc = testlib.createFileWithData(fileSrc, SIZE)
           , srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
           , destMd5 = '';
 
@@ -66,7 +53,7 @@ describe('fs-extra', function() {
       })
 
       it("should only copy files allowed by filter regex", function(done) {
-        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.jade"), SIZE);
+        var srcFile1 = testlib.createFileWithData(path.join(DIR, "1.jade"), SIZE);
         var destFile1 = path.join(DIR, "dest1.jade");
         var filter = /.html$|.css$/i;
         fs.copy(srcFile1, destFile1, filter, function() {
@@ -76,7 +63,7 @@ describe('fs-extra', function() {
       });
 
       it("should only copy files allowed by filter fn", function(done) {
-        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.css"), SIZE);
+        var srcFile1 = testlib.createFileWithData(path.join(DIR, "1.css"), SIZE);
         var destFile1 = path.join(DIR, "dest1.css");
         var filter = function(s) { return s.split(".").pop() !== "css";};
         fs.copy(srcFile1, destFile1, filter, function() {
@@ -121,12 +108,12 @@ describe('fs-extra', function() {
 
         mkdir(src, function(err) {
           for (var i = 0; i < FILES; ++i)
-            testutil.createFileWithData(path.join(src, i.toString()), SIZE);
+            testlib.createFileWithData(path.join(src, i.toString()), SIZE);
 
           var subdir = path.join(src, 'subdir');
           mkdir(subdir, function(err) {
             for (var i = 0; i < FILES; ++i)
-              testutil.createFileWithData(path.join(subdir, i.toString()), SIZE);
+              testlib.createFileWithData(path.join(subdir, i.toString()), SIZE);
 
             fs.copy(src, dest, function(err) {
               F (err);
@@ -247,7 +234,7 @@ describe('fs-extra', function() {
       it("should copy the file synchronously", function (done) {
         var fileSrc = path.join(DIR, "TEST_fs-extra_src")
             , fileDest = path.join(DIR, "TEST_fs-extra_copy")
-            , fileSrc = testutil.createFileWithData(fileSrc, SIZE)
+            , fileSrc = testlib.createFileWithData(fileSrc, SIZE)
             , srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
             , destMd5 = '';
         fs.copySync(fileSrc, fileDest);
@@ -260,7 +247,7 @@ describe('fs-extra', function() {
         var fileSrc = path.join(DIR, "TEST_fs-extra_src")
             , fileDest = path.join(DIR, "TEST_fs-extra_copy")
             , linkSrc = path.join(DIR, "TEST_fs-extra_copy_link")
-            , fileSrc = testutil.createFileWithData(fileSrc, SIZE)
+            , fileSrc = testlib.createFileWithData(fileSrc, SIZE)
             , srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
             , destMd5 = '';
 
@@ -274,7 +261,7 @@ describe('fs-extra', function() {
       it("should maintain file mode", function (done) {
         var fileSrc = path.join(DIR, "TEST_fs-extra_src")
             , fileDest = path.join(DIR, "TEST_fs-extra_copy")
-            , fileSrc = testutil.createFileWithData(fileSrc, SIZE);
+            , fileSrc = testlib.createFileWithData(fileSrc, SIZE);
         fs.chmodSync(fileSrc, 0750);
         fs.copySync(fileSrc, fileDest);
 
@@ -286,9 +273,9 @@ describe('fs-extra', function() {
       });
 
       it("should only copy files allowed by filter regex", function(done) {
-        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.html"), SIZE),
-            srcFile2 = testutil.createFileWithData(path.join(DIR, "2.css"), SIZE),
-            srcFile3 = testutil.createFileWithData(path.join(DIR, "3.jade"), SIZE);
+        var srcFile1 = testlib.createFileWithData(path.join(DIR, "1.html"), SIZE),
+            srcFile2 = testlib.createFileWithData(path.join(DIR, "2.css"), SIZE),
+            srcFile3 = testlib.createFileWithData(path.join(DIR, "3.jade"), SIZE);
         var destFile1 = path.join(DIR, "dest1.html"),
             destFile2 = path.join(DIR, "dest2.css"),
             destFile3 = path.join(DIR, "dest3.jade");
@@ -303,9 +290,9 @@ describe('fs-extra', function() {
       });
 
       it("should only copy files allowed by filter fn", function(done) {
-        var srcFile1 = testutil.createFileWithData(path.join(DIR, "1.html"), SIZE),
-            srcFile2 = testutil.createFileWithData(path.join(DIR, "2.css"), SIZE),
-            srcFile3 = testutil.createFileWithData(path.join(DIR, "3.jade"), SIZE);
+        var srcFile1 = testlib.createFileWithData(path.join(DIR, "1.html"), SIZE),
+            srcFile2 = testlib.createFileWithData(path.join(DIR, "2.css"), SIZE),
+            srcFile3 = testlib.createFileWithData(path.join(DIR, "3.jade"), SIZE);
         var destFile1 = path.join(DIR, "dest1.html"),
             destFile2 = path.join(DIR, "dest2.css"),
             destFile3 = path.join(DIR, "dest3.jade");
@@ -342,11 +329,11 @@ describe('fs-extra', function() {
             i, j;
         mkdir.sync(src);
         for (i = 0; i < FILES; ++i)
-          testutil.createFileWithData(path.join(src, i.toString()), SIZE);
+          testlib.createFileWithData(path.join(src, i.toString()), SIZE);
         var subdir = path.join(src, 'subdir');
         mkdir.sync(subdir);
         for (i = 0; i < FILES; ++i)
-          testutil.createFileWithData(path.join(subdir, i.toString()), SIZE);
+          testlib.createFileWithData(path.join(subdir, i.toString()), SIZE);
         fs.copySync(src, dest);
         T (fs.existsSync(dest));
 
@@ -383,13 +370,13 @@ describe('fs-extra', function() {
         mkdir.sync(src);
         
         for (var i = 0; i < FILES; ++i)
-          testutil.createFileWithData(path.join(src, i.toString()), SIZE);
+          testlib.createFileWithData(path.join(src, i.toString()), SIZE);
         
         var subdir = path.join(src, 'subdir');
         mkdir.sync(subdir);
         
         for (i = 0; i < FILES; ++i)
-          testutil.createFileWithData(path.join(subdir, i.toString()), SIZE);
+          testlib.createFileWithData(path.join(subdir, i.toString()), SIZE);
         
         fs.copySync(src, dest, filter);
         
