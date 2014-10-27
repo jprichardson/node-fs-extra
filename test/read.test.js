@@ -4,15 +4,15 @@ var path = require('path')
 var fse = require('../')
 var testutil = require('testutil')
 
-var DIR = ''
+var TEST_DIR = ''
 
 describe('read', function() {
   beforeEach(function() {
-    DIR = testutil.createTestDir('fs-extra')
+    TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
   afterEach(function(done) {
-    fse.remove(DIR, done)
+    fse.remove(TEST_DIR, done)
   })
 
   describe('+ readJSON', function() {
@@ -22,7 +22,7 @@ describe('read', function() {
         lastName: 'Richardson'
       }
 
-      var file = path.join(DIR, 'file.json')
+      var file = path.join(TEST_DIR, 'file.json')
       fs.writeFileSync(file, JSON.stringify(obj1))     
       fse.readJSON(file, function(err, obj2) {
         assert.ifError(err)
@@ -34,7 +34,7 @@ describe('read', function() {
     })
 
     it('should error if it cant parse the json', function(done) {
-      var file = path.join(DIR, 'file2.json')
+      var file = path.join(TEST_DIR, 'file2.json')
       fs.writeFileSync(file, '%asdfasdff444')
       fse.readJSON(file, function(err, obj) {
         assert(err)
