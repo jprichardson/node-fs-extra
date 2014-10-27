@@ -1,18 +1,18 @@
-var fs = require('../lib')
-  , testutil = require('testutil')
-  , path = require('path')
-
-var terst = require('terst')
+var assert = require('assert')
+var fs = require('fs')
+var path = require('path')
+var fse = require('../')
+var testutil = require('testutil')
 
 var DIR = ''
 
-describe('fs-extra', function() {
+describe('read', function() {
   beforeEach(function() {
     DIR = testutil.createTestDir('fs-extra')
   })
 
   afterEach(function(done) {
-    fs.remove(DIR, done)
+    fse.remove(DIR, done)
   })
 
   describe('+ readJSON', function() {
@@ -21,14 +21,13 @@ describe('fs-extra', function() {
         firstName: 'JP',
         lastName: 'Richardson'
       }
+
       var file = path.join(DIR, 'file.json')
-      
-      fs.writeFileSync(file, JSON.stringify(obj1))
-      
-      fs.readJSON(file, function(err, obj2) {
-        F (err != null)
-        T (obj1.firstName === obj2.firstName)
-        T (obj1.lastName === obj2.lastName)
+      fs.writeFileSync(file, JSON.stringify(obj1))     
+      fse.readJSON(file, function(err, obj2) {
+        assert.ifError(err)
+        assert.strictEqual(obj1.firstName, obj2.firstName)
+        assert.strictEqual(obj1.lastName, obj2.lastName)
         
         done()
       })
@@ -37,9 +36,9 @@ describe('fs-extra', function() {
     it('should error if it cant parse the json', function(done) {
       var file = path.join(DIR, 'file2.json')
       fs.writeFileSync(file, '%asdfasdff444')
-      fs.readJSON(file, function(err, obj) {
-        T (err != null)
-        F (obj)
+      fse.readJSON(file, function(err, obj) {
+        assert(err)
+        assert(!obj)
         done()
       })
     })
