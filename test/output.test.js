@@ -1,14 +1,18 @@
-var testutil = require('testutil')
-  , fs = require('../')
-  , path = require('path')
-
+var fs = require('fs')
+var path = require('path')
 var terst = require('terst')
+var testutil = require('testutil')
+var fse = require('../')
 
 var TEST_DIR = ''
 
-describe('fs-extra', function () {
+describe('output', function () {
   beforeEach(function() {
     TEST_DIR = testutil.createTestDir('fs-extra')
+  })
+
+  afterEach(function(done) {
+    fse.remove(TEST_DIR, done)
   })
 
   describe('+ outputFile', function() {
@@ -16,7 +20,7 @@ describe('fs-extra', function () {
       it('should create the file', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-ne', Math.random() + '.txt')
         F (fs.existsSync(file))
-        fs.outputFile(file, 'hi jp', function(err) {
+        fse.outputFile(file, 'hi jp', function(err) {
           F (err)
           T (fs.existsSync(file))
           EQ (fs.readFileSync(file, 'utf8'), 'hi jp')
@@ -28,9 +32,9 @@ describe('fs-extra', function () {
     describe('> when the file does exist', function() {
       it('should still modify the file', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-e', Math.random() + '.txt')
-        fs.mkdirsSync(path.dirname(file))
+        fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
-        fs.outputFile(file, 'hello jp', function(err) {
+        fse.outputFile(file, 'hello jp', function(err) {
           if (err) return done(err)
           EQ (fs.readFileSync(file, 'utf8'), 'hello jp')
           done()
@@ -44,7 +48,7 @@ describe('fs-extra', function () {
       it('should create the file', function() {
         var file = path.join(TEST_DIR, Math.random() + 'ts-ne', Math.random() + '.txt')
         F (fs.existsSync(file))
-        fs.outputFileSync(file, 'hello man')
+        fse.outputFileSync(file, 'hello man')
         T (fs.existsSync(file))
         EQ (fs.readFileSync(file, 'utf8'), 'hello man')
       })
@@ -53,9 +57,9 @@ describe('fs-extra', function () {
     describe('> when the file does exist', function() {
       it('should still modify the file', function() {
         var file = path.join(TEST_DIR, Math.random() + 'ts-e', Math.random() + '.txt')
-        fs.mkdirsSync(path.dirname(file))
+        fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
-        fs.outputFileSync(file, 'hello man')
+        fse.outputFileSync(file, 'hello man')
         EQ (fs.readFileSync(file, 'utf8'), 'hello man')
       })
     })
