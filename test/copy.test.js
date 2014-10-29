@@ -1,6 +1,6 @@
 var crypto = require('crypto')
   , fs = require('../lib')
-  , path = require('path-extra')
+  , path = require('path')
   , testutil = require('testutil')
   , mkdir = require('mkdirp')
   , mkdirp = mkdir
