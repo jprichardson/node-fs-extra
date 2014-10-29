@@ -1,6 +1,6 @@
+var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var terst = require('terst')
 var testutil = require('testutil')
 var fse = require('../')
 
@@ -19,11 +19,11 @@ describe('output', function () {
     describe('> when the file and directory does not exist', function() {
       it('should create the file', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-ne', Math.random() + '.txt')
-        F (fs.existsSync(file))
+        assert(!fs.existsSync(file))
         fse.outputFile(file, 'hi jp', function(err) {
-          F (err)
-          T (fs.existsSync(file))
-          EQ (fs.readFileSync(file, 'utf8'), 'hi jp')
+          assert.ifError(err)
+          assert(fs.existsSync(file))
+          assert.equal(fs.readFileSync(file, 'utf8'), 'hi jp')
           done()
         })
       })
@@ -36,7 +36,7 @@ describe('output', function () {
         fs.writeFileSync(file, 'hello world')
         fse.outputFile(file, 'hello jp', function(err) {
           if (err) return done(err)
-          EQ (fs.readFileSync(file, 'utf8'), 'hello jp')
+          assert.equal(fs.readFileSync(file, 'utf8'), 'hello jp')
           done()
         })
       })
@@ -47,10 +47,10 @@ describe('output', function () {
     describe('> when the file and directory does not exist', function() {
       it('should create the file', function() {
         var file = path.join(TEST_DIR, Math.random() + 'ts-ne', Math.random() + '.txt')
-        F (fs.existsSync(file))
+        assert(!fs.existsSync(file))
         fse.outputFileSync(file, 'hello man')
-        T (fs.existsSync(file))
-        EQ (fs.readFileSync(file, 'utf8'), 'hello man')
+        assert(fs.existsSync(file))
+        assert.equal(fs.readFileSync(file, 'utf8'), 'hello man')
       })
     })
 
@@ -60,7 +60,7 @@ describe('output', function () {
         fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
         fse.outputFileSync(file, 'hello man')
-        EQ (fs.readFileSync(file, 'utf8'), 'hello man')
+        assert.equal(fs.readFileSync(file, 'utf8'), 'hello man')
       })
     })
   })
