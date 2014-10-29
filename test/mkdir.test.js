@@ -1,7 +1,7 @@
+var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
 var testutil = require('testutil')
-var terst = require('terst')
 var fse = require('../')
 
 var TEST_DIR = ''
@@ -19,12 +19,11 @@ describe('fs-extra', function() {
     it('should make the directory', function(done) {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
       
-      F (fs.existsSync(dir))
+      assert(!fs.existsSync(dir))
       
       fse.mkdirs(dir, function(err) {
-        T (err === null)
-        T (fs.existsSync(dir))
-        
+        assert.ifError(err)
+        assert(fs.existsSync(dir))
         done()
       })
     })
@@ -33,12 +32,11 @@ describe('fs-extra', function() {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
       var newDir = path.join(TEST_DIR, 'dfdf', 'ffff', 'aaa')
       
-      F (fs.existsSync(dir))
+      assert(!fs.existsSync(dir))
       
       fse.mkdirs(newDir, function(err) {
-        T (err === null)
-        T (fs.existsSync(newDir))
-        
+        assert.ifError(err)
+        assert(fs.existsSync(newDir))
         done()
       })
     })
@@ -48,9 +46,9 @@ describe('fs-extra', function() {
     it('should make the directory', function(done) {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
       
-      F (fs.existsSync(dir))
+      assert(!fs.existsSync(dir))
       fse.mkdirsSync(dir)
-      T (fs.existsSync(dir))
+      assert(fs.existsSync(dir))
       
       done()
     })
@@ -59,14 +57,13 @@ describe('fs-extra', function() {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
       var newDir = path.join(dir, 'dfdf', 'ffff', 'aaa')
       
-      F (fs.existsSync(dir))
+      assert(!fs.existsSync(dir))
       fse.mkdirsSync(dir)
-      T (fs.existsSync(dir))
+      assert(fs.existsSync(dir))
       
       done()
     })
   })
-
 })
 
 
