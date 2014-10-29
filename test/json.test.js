@@ -1,16 +1,18 @@
-"use strict"
-
+var fs = require('fs')
+var path = require('path')
 var testutil = require('testutil')
-  , fs = require('../lib')
-  , path = require('path')
-
 var terst = require('terst')
+var fse = require('../')
 
 var TEST_DIR = null
 
-describe('fs-extra', function() {
+describe('json', function() {
   beforeEach(function() {
     TEST_DIR = testutil.createTestDir('fs-extra')    
+  })
+
+  afterEach(function(done) {
+    fse.remove(TEST_DIR, done)
   })
 
   describe('+ outputJsonSync(file, data)', function() {
@@ -19,7 +21,7 @@ describe('fs-extra', function() {
       F (fs.existsSync(file))
 
       var data = {name: 'JP'}
-      fs.outputJsonSync(file, data)
+      fse.outputJsonSync(file, data)
       
       T (fs.existsSync(file))
       var newData = JSON.parse(fs.readFileSync(file, 'utf8'))
@@ -34,7 +36,7 @@ describe('fs-extra', function() {
       F (fs.existsSync(file))
 
       var data = {name: 'JP'}
-      fs.outputJson(file, data, function(err) {
+      fse.outputJson(file, data, function(err) {
         if (err) return done(err)
 
         T (fs.existsSync(file))
