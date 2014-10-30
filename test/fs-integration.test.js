@@ -1,7 +1,6 @@
+var path = require('path')
+var fse = require('../')
 var testutil = require('testutil')
-  , fs = require('../')
-  , path = require('path')
-
 var terst = require('terst')
 
 var TEST_DIR;
@@ -11,10 +10,14 @@ describe('native fs', function() {
     TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
+  afterEach(function(done) {
+    fse.remove(TEST_DIR, done)
+  })
+
   it('should use native fs methods', function() {
     var file = path.join(TEST_DIR, 'write.txt')
-    fs.writeFileSync(file, 'hello')
-    var data = fs.readFileSync(file, 'utf8')
+    fse.writeFileSync(file, 'hello')
+    var data = fse.readFileSync(file, 'utf8')
     EQ (data, 'hello')
   })
 })
