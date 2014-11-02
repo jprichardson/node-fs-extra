@@ -1,10 +1,10 @@
-var testutil = require('testutil')
-var fs = require('../')
+var assert = require('assert')
+var fs = require('fs')
 var path = require('path')
+var testutil = require('testutil')
+var fse = require('../')
 
 var TEST_DIR = ''
-
-var terst = require('terst')
 
 describe('fs-extra', function() {
   beforeEach(function() {
@@ -12,7 +12,7 @@ describe('fs-extra', function() {
   })
 
   afterEach(function(done) {
-    fs.remove(TEST_DIR, done)
+    fse.remove(TEST_DIR, done)
   })
 
   describe('+ ensureFile()', function() {
@@ -21,10 +21,10 @@ describe('fs-extra', function() {
         var file = path.join(TEST_DIR, 'file.txt')
         fs.writeFileSync(file, 'blah')
 
-        T (fs.existsSync(file))
-        fs.ensureFile(file, function(err) {
-          F (err)
-          T (fs.existsSync(file))
+        assert(fs.existsSync(file))
+        fse.ensureFile(file, function(err) {
+          assert.ifError(err)
+          assert(fs.existsSync(file))
           done()
         })
       })
@@ -34,10 +34,10 @@ describe('fs-extra', function() {
       it('should create the file', function(done) {
         var file = path.join(TEST_DIR, 'dir/that/does/not/exist', 'file.txt')
 
-        F (fs.existsSync(file))
-        fs.ensureFile(file, function(err) {
-          F (err)
-          T (fs.existsSync(file))
+        assert(!fs.existsSync(file))
+        fse.ensureFile(file, function(err) {
+          assert.ifError(err)
+          assert(fs.existsSync(file))
           done()
         })
       })
@@ -50,9 +50,9 @@ describe('fs-extra', function() {
         var file = path.join(TEST_DIR, 'file.txt')
         fs.writeFileSync(file, 'blah')
 
-        T (fs.existsSync(file))
-        fs.ensureFileSync(file)
-        T (fs.existsSync(file))
+        assert(fs.existsSync(file))
+        fse.ensureFileSync(file)
+        assert(fs.existsSync(file))
       })
     })
 
@@ -60,9 +60,9 @@ describe('fs-extra', function() {
       it('should create the file', function() {
         var file = path.join(TEST_DIR, 'dir/that/does/not/exist', 'file.txt')
 
-        F (fs.existsSync(file))
-        fs.ensureFileSync(file)
-        T (fs.existsSync(file))
+        assert(!fs.existsSync(file))
+        fse.ensureFileSync(file)
+        assert(fs.existsSync(file))
       })
     })
   })
@@ -71,12 +71,12 @@ describe('fs-extra', function() {
     describe('> when dir exists', function() {
       it('should not do anything', function(done) {
         var dir = path.join(TEST_DIR, 'dir/does/not/exist')
-        fs.mkdirpSync(dir)
+        fse.mkdirpSync(dir)
 
-        T (fs.existsSync(dir))
-        fs.ensureDir(dir, function(err) {
-          F (err)
-          T (fs.existsSync(dir))
+        assert(fs.existsSync(dir))
+        fse.ensureDir(dir, function(err) {
+          assert.ifError(err)
+          assert(fs.existsSync(dir))
           done()
         })
       })
@@ -86,10 +86,10 @@ describe('fs-extra', function() {
       it('should create the dir', function(done) {
         var dir = path.join(TEST_DIR, 'dir/that/does/not/exist')
 
-        F (fs.existsSync(dir))
-        fs.ensureDir(dir, function(err) {
-          F (err)
-          T (fs.existsSync(dir))
+        assert(!fs.existsSync(dir))
+        fse.ensureDir(dir, function(err) {
+          assert.ifError(err)
+          assert(fs.existsSync(dir))
           done()
         })
       })
@@ -100,11 +100,11 @@ describe('fs-extra', function() {
     describe('> when dir exists', function() {
       it('should not do anything', function() {
         var dir = path.join(TEST_DIR, 'dir/does/not/exist')
-        fs.mkdirpSync(dir)
+        fse.mkdirpSync(dir)
 
-        T (fs.existsSync(dir))
-        fs.ensureDirSync(dir)
-        T (fs.existsSync(dir))
+        assert(fs.existsSync(dir))
+        fse.ensureDirSync(dir)
+        assert(fs.existsSync(dir))
       })
     })
 
@@ -112,9 +112,9 @@ describe('fs-extra', function() {
       it('should create the dir', function() {
         var dir = path.join(TEST_DIR, 'dir/that/does/not/exist')
 
-        F (fs.existsSync(dir))
-        fs.ensureDirSync(dir)
-        T (fs.existsSync(dir))
+        assert(!fs.existsSync(dir))
+        fse.ensureDirSync(dir)
+        assert(fs.existsSync(dir))
       })
     })
   })
