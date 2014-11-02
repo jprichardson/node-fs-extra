@@ -8,11 +8,11 @@ var terst = require('terst')
 
 describe('fs-extra', function() {
   beforeEach(function() {
-    TEST_DIR = testutil.createTestDir('fs-extra');
+    TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
   afterEach(function(done) {
-    fs.remove(TEST_DIR, done);
+    fs.remove(TEST_DIR, done)
   })
 
   describe('+ ensureFile()', function() {
