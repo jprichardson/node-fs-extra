@@ -1,10 +1,8 @@
+var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
 var testutil = require('testutil')
 var fse = require('../')
-
-
-var terst = require('terst')
 
 var TEST_DIR = ''
 
@@ -21,10 +19,10 @@ describe('fs-extra', function () {
     describe('> when the file and directory does not exist', function() {
       it('should create the file', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-ne', Math.random() + '.txt')
-        F (fs.existsSync(file))
+        assert(!fs.existsSync(file))
         fse.createFile(file, function(err) {
-          F (err)
-          T (fs.existsSync(file))
+          assert.ifError(err)
+          assert(fs.existsSync(file))
           done()
         })
       })
@@ -36,8 +34,8 @@ describe('fs-extra', function () {
         fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
         fse.createFile(file, function(err) {
-          F (err)
-          T (fs.readFileSync(file, 'utf8') === 'hello world')
+          assert.ifError(err)
+          assert.equal(fs.readFileSync(file, 'utf8'), 'hello world')
           done()
         })
       })
@@ -48,9 +46,9 @@ describe('fs-extra', function () {
     describe('> when the file and directory does not exist', function() {
       it('should create the file', function() {
         var file = path.join(TEST_DIR, Math.random() + 'ts-ne', Math.random() + '.txt')
-        F (fs.existsSync(file))
+        assert(!fs.existsSync(file))
         fse.createFileSync(file)
-        T (fs.existsSync(file))
+        assert(fs.existsSync(file))
       })
     })
 
@@ -60,7 +58,7 @@ describe('fs-extra', function () {
         fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
         fse.createFileSync(file)
-        T (fs.readFileSync(file, 'utf8') === 'hello world')
+        assert.equal(fs.readFileSync(file, 'utf8'), 'hello world')
       })
     })
   })
