@@ -1,6 +1,8 @@
+var fs = require('fs')
+var path = require('path')
 var testutil = require('testutil')
-  , fs = require('../')
-  , path = require('path')
+var fse = require('../')
+
 
 var terst = require('terst')
 
@@ -11,12 +13,16 @@ describe('fs-extra', function () {
     TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
+  afterEach(function(done) {
+    fse.remove(TEST_DIR, done)
+  })
+
   describe('+ createFile', function() {
     describe('> when the file and directory does not exist', function() {
       it('should create the file', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-ne', Math.random() + '.txt')
         F (fs.existsSync(file))
-        fs.createFile(file, function(err) {
+        fse.createFile(file, function(err) {
           F (err)
           T (fs.existsSync(file))
           done()
@@ -27,9 +33,9 @@ describe('fs-extra', function () {
     describe('> when the file does exist', function() {
       it('should not modify the file', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-e', Math.random() + '.txt')
-        fs.mkdirsSync(path.dirname(file))
+        fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
-        fs.createFile(file, function(err) {
+        fse.createFile(file, function(err) {
           F (err)
           T (fs.readFileSync(file, 'utf8') === 'hello world')
           done()
@@ -43,7 +49,7 @@ describe('fs-extra', function () {
       it('should create the file', function() {
         var file = path.join(TEST_DIR, Math.random() + 'ts-ne', Math.random() + '.txt')
         F (fs.existsSync(file))
-        fs.createFileSync(file)
+        fse.createFileSync(file)
         T (fs.existsSync(file))
       })
     })
@@ -51,9 +57,9 @@ describe('fs-extra', function () {
     describe('> when the file does exist', function() {
       it('should not modify the file', function() {
         var file = path.join(TEST_DIR, Math.random() + 'ts-e', Math.random() + '.txt')
-        fs.mkdirsSync(path.dirname(file))
+        fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
-        fs.createFileSync(file)
+        fse.createFileSync(file)
         T (fs.readFileSync(file, 'utf8') === 'hello world')
       })
     })
