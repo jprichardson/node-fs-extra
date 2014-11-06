@@ -1,3 +1,4 @@
+var assert = require('assert')
 var crypto = require('crypto')
 var path = require('path')
 var mkdirp = require('mkdirp')
@@ -7,8 +8,6 @@ var userid = require('userid')
 var ncp = require('ncp')
 
 var testlib = require('./lib/util')
-
-var terst = require('terst')
 
 var SIZE = 16 * 64 * 1024 + 7
 var DIR = ''
@@ -29,11 +28,11 @@ describe("+ copySync()", function () {
       var fileSrc = testlib.createFileWithData(fileSrc, SIZE)
       var srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
       var destMd5 = ''
-      
+
       fs.copySync(fileSrc, fileDest)
       
       destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
-      T(srcMd5 === destMd5)
+      assert.strictEqual(srcMd5, destMd5)
     })
 
     it("should follow symlinks", function () {
@@ -47,7 +46,7 @@ describe("+ copySync()", function () {
       fs.symlinkSync(fileSrc, linkSrc)
       fs.copySync(linkSrc, fileDest)
       destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
-      T(srcMd5 === destMd5)
+      assert.strictEqual(srcMd5, destMd5)
     })
 
     it("should maintain file mode", function () {
@@ -60,7 +59,7 @@ describe("+ copySync()", function () {
 
       var statSrc = fs.statSync(fileSrc)
       var statDest = fs.statSync(fileDest)
-      EQ (statSrc.mode, statDest.mode)
+      assert.strictEqual(statSrc.mode, statDest.mode)
     })
 
     it("should only copy files allowed by filter regex", function() {
@@ -76,9 +75,9 @@ describe("+ copySync()", function () {
       fs.copySync(srcFile2, destFile2, filter)
       fs.copySync(srcFile3, destFile3, filter)
       
-      T(fs.existsSync(destFile1))
-      T(fs.existsSync(destFile2))
-      T(!fs.existsSync(destFile3))
+      assert(fs.existsSync(destFile1))
+      assert(fs.existsSync(destFile2))
+      assert(!fs.existsSync(destFile3))
     })
 
     it("should only copy files allowed by filter fn", function() {
@@ -95,9 +94,9 @@ describe("+ copySync()", function () {
       fs.copySync(srcFile2, destFile2, filter)
       fs.copySync(srcFile3, destFile3, filter)
       
-      T(fs.existsSync(destFile1))
-      T(!fs.existsSync(destFile2))
-      T(fs.existsSync(destFile3))
+      assert(fs.existsSync(destFile1))
+      assert(!fs.existsSync(destFile2))
+      assert(fs.existsSync(destFile3))
     })
 
     describe("> when the destination dir does not exist", function () {
@@ -111,7 +110,7 @@ describe("+ copySync()", function () {
         
         var data2 = fs.readFileSync(dest, 'utf8')
         
-        EQ(data, data2)
+        assert.strictEqual(data, data2)
       })
     })
   })
@@ -137,12 +136,14 @@ describe("+ copySync()", function () {
         testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
       
       fs.copySync(src, dest)
-      T (fs.existsSync(dest))
+      assert(fs.existsSync(dest))
 
-      for (i = 0; i < FILES; ++i) T (fs.existsSync(path.join(dest, i.toString())))
+      for (i = 0; i < FILES; ++i) 
+        assert(fs.existsSync(path.join(dest, i.toString())))
 
       var destSub = path.join(dest, 'subdir')
-      for (j = 0; j < FILES; ++j) T (fs.existsSync(path.join(destSub, j.toString())))
+      for (j = 0; j < FILES; ++j) 
+        assert(fs.existsSync(path.join(destSub, j.toString())))
     })
 
     it("should preserve symbolic links", function() {
@@ -157,7 +158,7 @@ describe("+ copySync()", function () {
       fs.copySync(src, dest)
 
       var link = fs.readlinkSync(path.join(dest, 'symlink'))
-      EQ (link, 'destination')
+      assert.strictEqual(link, 'destination')
     })
 
     it("should should apply filter recursively", function() {
@@ -179,14 +180,14 @@ describe("+ copySync()", function () {
       
       fs.copySync(src, dest, filter)
       
-      T (fs.existsSync(dest))
-      T (FILES>1)
+      assert(fs.existsSync(dest))
+      assert(FILES>1)
 
       for (i = 0; i < FILES; ++i) {
         if (i==0) {
-          T (fs.existsSync(path.join(dest, i.toString())))
+          assert(fs.existsSync(path.join(dest, i.toString())))
         } else {
-          T (!fs.existsSync(path.join(dest, i.toString())))
+          assert(!fs.existsSync(path.join(dest, i.toString())))
         }
       }
 
@@ -194,9 +195,9 @@ describe("+ copySync()", function () {
       
       for (var j = 0; j < FILES; ++j) {
         if (j==0) {
-          T (fs.existsSync(path.join(destSub, j.toString())))
+          assert(fs.existsSync(path.join(destSub, j.toString())))
         } else {
-          T (!fs.existsSync(path.join(destSub, j.toString())))
+          assert(!fs.existsSync(path.join(destSub, j.toString())))
         }
       }
     })
@@ -218,8 +219,8 @@ describe("+ copySync()", function () {
         var o1 = fs.readFileSync(path.join(dest, 'f1.txt'), 'utf8')
         var o2 = fs.readFileSync(path.join(dest, 'f2.txt'), 'utf8')
 
-        EQ (d1, o1)
-        EQ (d2, o2)
+        assert.strictEqual(d1, o1)
+        assert.strictEqual(d2, o2)
       })
     })
   })
