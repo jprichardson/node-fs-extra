@@ -4,7 +4,6 @@ var path = require('path')
 var mkdirp = require('mkdirp')
 var fs = require('../lib')
 var testutil = require('testutil')
-var userid = require('userid')
 var ncp = require('ncp')
 
 var testlib = require('./lib/util')

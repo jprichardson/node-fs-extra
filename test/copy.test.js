@@ -3,7 +3,7 @@ var fs = require('../lib')
 var path = require('path')
 var testutil = require('testutil')
 var mkdirp = require('mkdirp')
-var userid = require('userid')
+//var userid = require('userid')
 var ncp = require('ncp')
 
 var testlib = require('./lib/util')
