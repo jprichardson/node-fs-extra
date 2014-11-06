@@ -1,11 +1,10 @@
 var crypto = require('crypto')
-  , fs = require('../lib')
-  , path = require('path')
-  , testutil = require('testutil')
-  , mkdir = require('mkdirp')
-  , mkdirp = mkdir
-  , userid = require('userid')
-  , ncp = require('ncp')
+var fs = require('../lib')
+var path = require('path')
+var testutil = require('testutil')
+var mkdirp = require('mkdirp')
+var userid = require('userid')
+var ncp = require('ncp')
 
 var testlib = require('./lib/util')
 
@@ -17,8 +16,6 @@ var DIR = ''
 describe('fs-extra', function() {
   beforeEach(function() {
     DIR = testutil.createTestDir('fs-extra')
-    //DIR = path.join(DIR, 'copy')
-    //mkdir.sync(DIR)
   })
 
   afterEach(function(done) {
@@ -29,10 +26,10 @@ describe('fs-extra', function() {
     describe('> when the source is a file', function() {
       it('should copy the file asynchronously', function(done) {
         var fileSrc = path.join(DIR, "TEST_fs-extra_src")
-          , fileDest = path.join(DIR, "TEST_fs-extra_copy")
-          , fileSrc = testlib.createFileWithData(fileSrc, SIZE)
-          , srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
-          , destMd5 = ''
+        var fileDest = path.join(DIR, "TEST_fs-extra_copy")
+        var fileSrc = testlib.createFileWithData(fileSrc, SIZE)
+        var srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
+        var destMd5 = ''
 
         fs.copy(fileSrc, fileDest, function(err) {
           destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
@@ -43,8 +40,8 @@ describe('fs-extra', function() {
       
       it('should return an error if the source file does not exist', function(done) {
         var fileSrc = "we-simply-assume-this-file-does-not-exist.bin"
-          , fileDest = path.join(DIR, "TEST_fs-extra_copy")
-          , destMd5 = ''
+        var fileDest = path.join(DIR, "TEST_fs-extra_copy")
+        var destMd5 = ''
 
         fs.copy(fileSrc, fileDest, function(err) {
           T (err)
@@ -103,15 +100,15 @@ describe('fs-extra', function() {
 
       it('should copy the directory asynchronously', function(done) {
         var FILES = 2
-          , src = path.join(DIR, 'src')
-          , dest = path.join(DIR, 'dest')
+        var src = path.join(DIR, 'src')
+        var dest = path.join(DIR, 'dest')
 
-        mkdir(src, function(err) {
+        mkdirp(src, function(err) {
           for (var i = 0; i < FILES; ++i)
             testlib.createFileWithData(path.join(src, i.toString()), SIZE)
 
           var subdir = path.join(src, 'subdir')
-          mkdir(subdir, function(err) {
+          mkdirp(subdir, function(err) {
             for (var i = 0; i < FILES; ++i)
               testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
 
