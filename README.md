@@ -37,7 +37,7 @@ var fs = require('fs') //this is no longer necessary
 you can now do this:
 
 ```javascript
-var fs = require('fs-extra'); //var fs = require('fs')
+var fs = require('fs-extra') //var fs = require('fs')
 ```
 
 or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want 
@@ -76,12 +76,12 @@ Examples:
 var fs = require('fs-extra');
 
 fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err){
-  if (err) return console.error(err);
+  if (err) return console.error(err)
   console.log("success!")
 }); //copies file
 
 fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err){
-  if (err) return console.error(err);
+  if (err) return console.error(err)
   console.log("success!")
 }); //copies directory, even if it has subdirectories or files
 ```
@@ -103,7 +103,7 @@ var fs = require('fs-extra')
 
 var file = '/tmp/this/path/does/not/exist/file.txt'
 fs.ensureFile(file, function(err) {
-  console.log(err); //null
+  console.log(err) // => null
   //file has now been created, including the directory it is to be placed in
 })
 ```
@@ -123,7 +123,7 @@ var fs = require('fs-extra')
 
 var dir = '/tmp/this/path/does/not/exist'
 fs.ensureDir(dir, function(err) {
-  console.log(err); //null
+  console.log(err) // => null
   //dir has now been created, including the directory it is to be placed in
 })
 ```
@@ -144,12 +144,12 @@ Examples:
 ```javascript
 var fs = require('fs-extra');
 
-fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err){
-  if (err) return console.error(err);
+fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err) {
+  if (err) return console.error(err)
   console.log("success!")
-});
+})
 
-fs.mkdirsSync('/tmp/another/path');
+fs.mkdirsSync('/tmp/another/path')
 ```
 
 
@@ -164,12 +164,12 @@ limit (number): number of concurrent moves, see ncp for more information
 Example:
 
 ```javascript
-var fs = require('fs-extra');
+var fs = require('fs-extra')
 
-fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', function(err){
-  if (err) return console.error(err);
+fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', function(err) {
+  if (err) return console.error(err)
   console.log("success!")
-});
+})
 ```
 
 
@@ -187,10 +187,10 @@ var fs = require('fs-extra')
 var file = '/tmp/this/path/does/not/exist/file.txt'
 
 fs.outputFile(file, 'hello!', function(err) {
-  console.log(err); //null
+  console.log(err) // => null
 
   fs.readFile(file, 'utf8', function(err, data) {
-    console.log(data); //hello!
+    console.log(data) // => hello!
   })
 })
 ```
@@ -213,10 +213,10 @@ var fs = require('fs-extra')
 var file = '/tmp/this/path/does/not/exist/file.txt'
 
 fs.outputJson(file, {name: 'JP'}, function(err) {
-  console.log(err); //null
+  console.log(err) // => null
 
   fs.readJson(file, function(err, data) {
-    console.log(data.name); //'JP
+    console.log(data.name) // => JP
   })
 })
 ```
@@ -235,11 +235,11 @@ Sync: `readJsonSync()`, `readJSONSync()`
 Example:
 
 ```javascript
-var fs = require('fs-extra');
+var fs = require('fs-extra')
 
 fs.readJson('./package.json', function(err, packageObj) {
-  console.log(packageObj.version); //0.1.3
-});
+  console.log(packageObj.version) // => 0.1.3
+})
 ```
 
 `readJsonSync()` can take a `throws` option set to `false` and it won't throw if the JSON is invalid. Example:
@@ -267,15 +267,15 @@ Sync: `removeSync()` / `deleteSync()`
 Examples:
 
 ```javascript
-var fs = require('fs-extra');
+var fs = require('fs-extra')
 
-fs.remove('/tmp/myfile', function(err){
-  if (err) return console.error(err);
+fs.remove('/tmp/myfile', function(err) {
+  if (err) return console.error(err)
   
   console.log("success!")
-});
+})
 
-fs.removeSync('/home/jprichardson'); //I just deleted my entire HOME directory. 
+fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory. 
 ```
 
 
@@ -291,10 +291,10 @@ Sync: `writeJsonSync()`, `writeJSONSync()`
 Example:
 
 ```javascript
-var fs = require('fs-extra');
-fs.writeJson('./package.json', {name: 'fs-extra'}, function(err){
-  console.log(err);
-});
+var fs = require('fs-extra')
+fs.writeJson('./package.json', {name: 'fs-extra'}, function(err) {
+  console.log(err)
+})
 ```
 
 
