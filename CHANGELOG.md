@@ -1,6 +1,7 @@
 0.13.0 / 2014-xx-yy
 -------------------
 - removed `touch` and `touchSync` methods
+- updated `"ncp": "^0.6.0"` to `"ncp": "^1.0.1"`
 
 0.12.0 / 2014-09-22
 -------------------
