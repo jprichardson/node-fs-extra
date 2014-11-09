@@ -142,7 +142,7 @@ Sync: `mkdirsSync()` / `mkdirpSync()`
 Examples:
 
 ```javascript
-var fs = require('fs-extra');
+var fs = require('fs-extra')
 
 fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err) {
   if (err) return console.error(err)
