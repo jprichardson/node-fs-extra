@@ -73,14 +73,14 @@ Sync: `copySync()`
 Examples:
 
 ```javascript
-var fs = require('fs-extra');
+var fs = require('fs-extra')
 
-fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err){
+fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err) {
   if (err) return console.error(err)
   console.log("success!")
 }); //copies file
 
-fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err){
+fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err) {
   if (err) return console.error(err)
   console.log("success!")
 }); //copies directory, even if it has subdirectories or files
