@@ -1,10 +1,12 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var mkdirp = require('../../').mkdirp
+var fse = require('../../')
+var testutil = require('testutil')
 
-var ps = [ '', 'tmp' ]
+var TEST_DIR = ''
 
+var ps = []
 for (var i = 0; i < 25; i++) {
   var dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
   ps.push(dir)
@@ -13,27 +15,36 @@ for (var i = 0; i < 25; i++) {
 var file = ps.join('/')
 
 describe('mkdirp / chmod', function() {
+  beforeEach(function() {
+    TEST_DIR = testutil.createTestDir('fs-extra')
+    file = path.join(TEST_DIR, file)
+  })
+
+  afterEach(function(done) {
+    fse.remove(TEST_DIR, done)
+  })
+
   it('chmod-pre', function (done) {
     var mode = 0744
-    mkdirp(file, mode, function (er) {
-      t.ifError(er, 'should not error')
+    fse.mkdirp(file, mode, function (er) {
+      assert.ifError(er, 'should not error')
       fs.stat(file, function (er, stat) {
-        t.ifError(er, 'should exist')
-        t.ok(stat && stat.isDirectory(), 'should be directory')
-        t.equal(stat && stat.mode & 0777, mode, 'should be 0744')
-        t.end()
+        assert.ifError(er, 'should exist')
+        assert.ok(stat && stat.isDirectory(), 'should be directory')
+        assert.equal(stat && stat.mode & 0777, mode, 'should be 0744')
+        done()
       })
     })
   })
 
   it('chmod', function (done) {
     var mode = 0755
-    mkdirp(file, mode, function (er) {
-      t.ifError(er, 'should not error')
+    fse.mkdirp(file, mode, function (er) {
+      assert.ifError(er, 'should not error')
       fs.stat(file, function (er, stat) {
-        t.ifError(er, 'should exist')
-        t.ok(stat && stat.isDirectory(), 'should be directory')
-        t.end()
+        assert.ifError(er, 'should exist')
+        assert.ok(stat && stat.isDirectory(), 'should be directory')
+        done()
       })
     })
   })
