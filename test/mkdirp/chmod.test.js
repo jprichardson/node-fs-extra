@@ -5,7 +5,7 @@ var mkdirp = require('../../').mkdirp
 
 var ps = [ '', 'tmp' ]
 
-for (var i = 0 i < 25 i++) {
+for (var i = 0; i < 25; i++) {
   var dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
   ps.push(dir)
 }
