@@ -1,7 +1,7 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var mkdirp = require('../').mkdirp
+var mkdirp = require('../../').mkdirp
 
 var ps = [ '', 'tmp' ]
 
