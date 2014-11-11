@@ -5,25 +5,29 @@ var fse = require('../../')
 var testutil = require('testutil')
 
 describe('mkdirp / mkdirp', function() {
+  var TEST_DIR
 
-})
+  before(function() {
+    TEST_DIR = testutil.createTestDir('fs-extra')
+  })
 
-test('woo', function (t) {
-  t.plan(5)
-  var x = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
-  var y = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
-  var z = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
-  
-  var file = '/tmp/' + [x,y,z].join('/')
-  
-  mkdirp(file, 0755, function (err) {
-    t.ifError(err)
-    exists(file, function (ex) {
-      t.ok(ex, 'file created')
-      fs.stat(file, function (err, stat) {
-        t.ifError(err)
-        t.equal(stat.mode & 0777, 0755)
-        t.ok(stat.isDirectory(), 'target not a directory')
+  it('woo', function (done) {
+    var x = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
+    var y = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
+    var z = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
+    
+    var file = TEST_DIR + [x,y,z].join('/')
+    
+    fse.mkdirp(file, 0755, function (err) {
+      assert.ifError(err)
+      fs.exists(file, function (ex) {
+        assert.ok(ex, 'file created')
+        fs.stat(file, function (err, stat) {
+          assert.ifError(err)
+          assert.equal(stat.mode & 0777, 0755)
+          assert.ok(stat.isDirectory(), 'target not a directory')
+          done()
+        })
       })
     })
   })
