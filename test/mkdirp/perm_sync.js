@@ -1,34 +1,46 @@
-var mkdirp = require('../');
-var path = require('path');
-var fs = require('fs');
-var exists = fs.exists || path.exists;
-var test = require('tap').test;
+var assert = require('assert')
+var fs = require('fs')
+var path = require('path')
+var fse = require('../../')
+var testutil = require('testutil')
 
-test('sync perm', function (t) {
-    t.plan(4);
-    var file = '/tmp/' + (Math.random() * (1<<30)).toString(16) + '.json';
-    
-    mkdirp.sync(file, 0755);
-    exists(file, function (ex) {
-        t.ok(ex, 'file created');
-        fs.stat(file, function (err, stat) {
-            t.ifError(err);
-            t.equal(stat.mode & 0777, 0755);
-            t.ok(stat.isDirectory(), 'target not a directory');
-        });
-    });
-});
+describe('mkdirp / perm_sync', function() {
+  var TEST_DIR
 
-test('sync root perm', function (t) {
-    t.plan(3);
+  before(function() {
+    TEST_DIR = testutil.createTestDir('fs-extra')
+  })
+
+  afterEach(function(done) {
+    fse.remove(TEST_DIR, done)
+  })
+
+  it('sync perm', function (done) {
+    var file = path.join(TEST_DIR, (Math.random() * (1<<30)).toString(16) + '.json')
     
-    var file = '/tmp';
-    mkdirp.sync(file, 0755);
-    exists(file, function (ex) {
-        t.ok(ex, 'file created');
-        fs.stat(file, function (err, stat) {
-            t.ifError(err);
-            t.ok(stat.isDirectory(), 'target not a directory');
-        })
-    });
-});
+    fse.mkdirpSync(file, 0755)
+    fs.exists(file, function (ex) {
+      assert.ok(ex, 'file created')
+      fs.stat(file, function (err, stat) {
+        assert.ifError(err)
+        assert.equal(stat.mode & 0777, 0755)
+        assert.ok(stat.isDirectory(), 'target not a directory')
+        done()
+      })
+    })
+  })
+
+  it('sync root perm', function (done) {    
+    var file = TEST_DIR
+    fse.mkdirpSync(file, 0755)
+    fs.exists(file, function (ex) {
+      assert.ok(ex, 'file created')
+      fs.stat(file, function (err, stat) {
+        assert.ifError(err)
+        assert.ok(stat.isDirectory(), 'target not a directory')
+        done()
+      })
+    })
+  })
+})
+
