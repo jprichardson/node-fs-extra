@@ -1,40 +1,42 @@
-var mkdirp = require('../').mkdirp;
-var path = require('path');
-var fs = require('fs');
-var exists = fs.exists || path.exists;
-var test = require('tap').test;
+var assert = require('assert')
+var fs = require('fs')
+var path = require('path')
+var fse = require('../../')
+var testutil = require('testutil')
 
-test('race', function (t) {
-    t.plan(6);
-    var ps = [ '', 'tmp' ];
+describe('mkdirp / race', function() {
+  it('race', function (done) {
+
+    var ps = [ '', testutil.createTestDir('fs-extra') ]
     
     for (var i = 0; i < 25; i++) {
-        var dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16);
-        ps.push(dir);
+      var dir = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
+      ps.push(dir)
     }
-    var file = ps.join('/');
+    var file = ps.join('/')
     
-    var res = 2;
+    var res = 2
     mk(file, function () {
-        if (--res === 0) t.end();
-    });
+      if (--res === 0) done()
+    })
     
     mk(file, function () {
-        if (--res === 0) t.end();
-    });
+      if (--res === 0) done()
+    })
     
     function mk (file, cb) {
-        mkdirp(file, 0755, function (err) {
-            t.ifError(err);
-            exists(file, function (ex) {
-                t.ok(ex, 'file created');
-                fs.stat(file, function (err, stat) {
-                    t.ifError(err);
-                    t.equal(stat.mode & 0777, 0755);
-                    t.ok(stat.isDirectory(), 'target not a directory');
-                    if (cb) cb();
-                });
-            })
-        });
+      fse.mkdirp(file, 0755, function (err) {
+        assert.ifError(err)
+        fs.exists(file, function (ex) {
+          assert.ok(ex, 'file created')
+          fs.stat(file, function (err, stat) {
+            assert.ifError(err)
+            assert.equal(stat.mode & 0777, 0755)
+            assert.ok(stat.isDirectory(), 'target not a directory')
+            if (cb) cb()
+          })
+        })
+      })
     }
-});
+  })
+})
