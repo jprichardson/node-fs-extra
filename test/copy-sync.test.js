@@ -4,7 +4,7 @@ var path = require('path')
 var mkdirp = require('mkdirp')
 var fs = require('../lib')
 var testutil = require('testutil')
-var ncp = require('ncp')
+var ncp = require('graceful-ncp')
 
 var testlib = require('./lib/util')
 

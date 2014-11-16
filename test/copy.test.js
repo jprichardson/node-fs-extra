@@ -5,7 +5,7 @@ var path = require('path')
 var testutil = require('testutil')
 var mkdirp = require('mkdirp')
 //var userid = require('userid')
-var ncp = require('ncp')
+var ncp = require('graceful-ncp')
 
 var testlib = require('./lib/util')
 
