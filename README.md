@@ -201,7 +201,7 @@ fs.outputFile(file, 'hello!', function(err) {
 
 Almost the same as `writeJson`, except that if the directory does not exist, it's created.
 
-Alias: `outputJSON()
+Alias: `outputJSON()`
 
 Sync: `outputJsonSync()`, `outputJSONSync()`
 
