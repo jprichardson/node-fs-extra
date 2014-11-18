@@ -1,18 +1,22 @@
-var mkdirp = require('../');
-var path = require('path');
-var fs = require('fs');
-var test = require('tap').test;
+var assert = require('assert')
+var fs = require('fs')
+var path = require('path')
+var fse = require('../../')
+var testutil = require('testutil')
 
-test('root', function (t) {
+describe('mkdirp / root', function () {
+
+  it('should', function(done) {
     // '/' on unix, 'c:/' on windows.
-    var file = path.resolve('/');
+    var file = path.resolve('/')
 
-    mkdirp(file, 0755, function (err) {
-        if (err) throw err
-        fs.stat(file, function (er, stat) {
-            if (er) throw er
-            t.ok(stat.isDirectory(), 'target is a directory');
-            t.end();
-        })
-    });
-});
+    fse.mkdirp(file, 0755, function (err) {
+      if (err) throw err
+      fs.stat(file, function (er, stat) {
+        if (er) throw er
+        assert.ok(stat.isDirectory(), 'target is a directory')
+        done()
+      })
+    })
+  })
+})
