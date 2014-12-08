@@ -29,7 +29,7 @@ describe("+ copySync()", function () {
       var destMd5 = ''
 
       fs.copySync(fileSrc, fileDest)
-      
+
       destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
       assert.strictEqual(srcMd5, destMd5)
     })
@@ -52,7 +52,7 @@ describe("+ copySync()", function () {
       var fileSrc = path.join(DIR, "TEST_fs-extra_src")
       var fileDest = path.join(DIR, "TEST_fs-extra_copy")
       var fileSrc = testlib.createFileWithData(fileSrc, SIZE)
-      
+
       fs.chmodSync(fileSrc, 0750)
       fs.copySync(fileSrc, fileDest)
 
@@ -69,11 +69,11 @@ describe("+ copySync()", function () {
       var destFile2 = path.join(DIR, "dest2.css")
       var destFile3 = path.join(DIR, "dest3.jade")
       var filter = /.html$|.css$/i
-      
+
       fs.copySync(srcFile1, destFile1, filter)
       fs.copySync(srcFile2, destFile2, filter)
       fs.copySync(srcFile3, destFile3, filter)
-      
+
       assert(fs.existsSync(destFile1))
       assert(fs.existsSync(destFile2))
       assert(!fs.existsSync(destFile3))
@@ -86,13 +86,13 @@ describe("+ copySync()", function () {
       var destFile1 = path.join(DIR, "dest1.html")
       var destFile2 = path.join(DIR, "dest2.css")
       var destFile3 = path.join(DIR, "dest3.jade")
-      
+
       var filter = function(s) { return s.split(".").pop() !== "css";}
-      
+
       fs.copySync(srcFile1, destFile1, filter)
       fs.copySync(srcFile2, destFile2, filter)
       fs.copySync(srcFile3, destFile3, filter)
-      
+
       assert(fs.existsSync(destFile1))
       assert(!fs.existsSync(destFile2))
       assert(fs.existsSync(destFile3))
@@ -106,9 +106,9 @@ describe("+ copySync()", function () {
 
         fs.writeFileSync(src, data, 'utf8')
         fs.copySync(src, dest)
-        
+
         var data2 = fs.readFileSync(dest, 'utf8')
-        
+
         assert.strictEqual(data, data2)
       })
     })
@@ -119,21 +119,21 @@ describe("+ copySync()", function () {
       var FILES = 2
       var src = path.join(DIR, 'src')
       var dest = path.join(DIR, 'dest')
-      
+
       var i, j
-      
+
       mkdirp.sync(src)
-      
+
       for (i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(src, i.toString()), SIZE)
-      
+
       var subdir = path.join(src, 'subdir')
-      
+
       mkdirp.sync(subdir)
-      
+
       for (i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
-      
+
       fs.copySync(src, dest)
       assert(fs.existsSync(dest))
 
@@ -167,18 +167,18 @@ describe("+ copySync()", function () {
       var filter = /0$/i
 
       mkdirp.sync(src)
-      
+
       for (var i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(src, i.toString()), SIZE)
-      
+
       var subdir = path.join(src, 'subdir')
       mkdirp.sync(subdir)
-      
+
       for (i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
-      
+
       fs.copySync(src, dest, filter)
-      
+
       assert(fs.existsSync(dest))
       assert(FILES>1)
 
