@@ -1,7 +1,6 @@
 var assert = require('assert')
 var crypto = require('crypto')
 var path = require('path')
-var mkdirp = require('mkdirp')
 var fs = require('../lib')
 var testutil = require('testutil')
 var ncp = require('ncp')
@@ -122,14 +121,14 @@ describe("+ copySync()", function () {
 
       var i, j
 
-      mkdirp.sync(src)
+      fs.mkdirsSync(src)
 
       for (i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(src, i.toString()), SIZE)
 
       var subdir = path.join(src, 'subdir')
 
-      mkdirp.sync(subdir)
+      fs.mkdirsSync(subdir)
 
       for (i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
@@ -151,7 +150,7 @@ describe("+ copySync()", function () {
       var dest = path.join(DIR, 'dest')
       var i, j
 
-      mkdirp.sync(src)
+      fs.mkdirsSync(src)
       fs.symlinkSync('destination', path.join(src, 'symlink'))
 
       fs.copySync(src, dest)
@@ -166,13 +165,13 @@ describe("+ copySync()", function () {
       var dest = path.join(DIR, 'dest')
       var filter = /0$/i
 
-      mkdirp.sync(src)
+      fs.mkdirsSync(src)
 
       for (var i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(src, i.toString()), SIZE)
 
       var subdir = path.join(src, 'subdir')
-      mkdirp.sync(subdir)
+      fs.mkdirsSync(subdir)
 
       for (i = 0; i < FILES; ++i)
         testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
