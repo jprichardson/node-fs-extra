@@ -2,7 +2,7 @@
 -------------------
 - removed `touch` and `touchSync` methods
 - updated `"ncp": "^0.6.0"` to `"ncp": "^1.0.1"`
-- imported `mkdirp` => `minimist` and `mkdirp` are no longer dependences, should now appease people who wanted `mkdirp` to be `--use_strct` safe. See [#59](https://github.com/jprichardson/node-fs-extra/issues/59)
+- imported `mkdirp` => `minimist` and `mkdirp` are no longer dependences, should now appease people who wanted `mkdirp` to be `--use_strict` safe. See [#59](https://github.com/jprichardson/node-fs-extra/issues/59)
 
 0.12.0 / 2014-09-22
 -------------------
