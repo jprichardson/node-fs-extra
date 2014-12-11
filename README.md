@@ -78,12 +78,12 @@ var fs = require('fs-extra')
 fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err) {
   if (err) return console.error(err)
   console.log("success!")
-}); //copies file
+}) //copies file
 
 fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err) {
   if (err) return console.error(err)
   console.log("success!")
-}); //copies directory, even if it has subdirectories or files
+}) //copies directory, even if it has subdirectories or files
 ```
 
 
