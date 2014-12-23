@@ -317,19 +317,14 @@ var fs = Promise.promisifyAll(require("fs-extra"))
 If you like TypeScript, you can use `fs-extra` with it: https://github.com/borisyankov/DefinitelyTyped/tree/master/fs-extra
 
 
+### File / Directory Watching
+
+If you want to watch for changes to files or directories, then you should use [chokidar](https://github.com/paulmillr/chokidar).
+
+
 ### Misc.
 
 - [mfs](https://github.com/cadorn/mfs) - Monitor your fs-extra calls.
-
-
-
-Roadmap
---------
-
-This contains items that I'm considering doing. I'd love community feedback.
-
-* File system walker. I really like this one: https://github.com/daaku/nodejs-walker ... this might be adding too much. Thoughts?
-* File/directory tree watcher. There are quite a few. ... this also might be adding too much. I like this one: https://github.com/paulmillr/chokidar, thoughts?
 
 
 
