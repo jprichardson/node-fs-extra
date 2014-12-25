@@ -2,7 +2,7 @@ var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
 var rimraf = require('rimraf')
-var readDirFiles = require('read-dir-files').read
+var readDirFiles = require('read-dir-files').read //temporary, will remove
 var util = require('util')
 var ncp = require('ncp')
 
