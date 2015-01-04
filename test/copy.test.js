@@ -68,6 +68,16 @@ describe('fs-extra', function() {
         })
       })
 
+      it("accepts options object in place of filter", function(done) {
+        var srcFile1 = testlib.createFileWithData(path.join(DIR, "1.jade"), SIZE)
+        var destFile1 = path.join(DIR, "dest1.jade")
+        var options = {filter: /.html$|.css$/i}
+        fs.copy(srcFile1, destFile1, options, function() {
+          assert(!fs.existsSync(destFile1))
+          done()
+        })
+      })
+
       describe('> when the destination dir does not exist', function() {
         it('should create the destination directory and copy the file', function(done) {
           var src = path.join(DIR, 'file.txt')
