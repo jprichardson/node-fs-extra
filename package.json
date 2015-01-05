@@ -44,7 +44,6 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "mock-fs": "^2.3.2",
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
     "testutil": "^0.7.0"
