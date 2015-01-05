@@ -69,9 +69,9 @@ describe("+ copySync()", function () {
       var destFile3 = path.join(DIR, "dest3.jade")
       var filter = /.html$|.css$/i
 
-      fs.copySync(srcFile1, destFile1, filter)
-      fs.copySync(srcFile2, destFile2, filter)
-      fs.copySync(srcFile3, destFile3, filter)
+      fs.copySync(srcFile1, destFile1, {filter: filter})
+      fs.copySync(srcFile2, destFile2, {filter: filter})
+      fs.copySync(srcFile3, destFile3, {filter: filter})
 
       assert(fs.existsSync(destFile1))
       assert(fs.existsSync(destFile2))
@@ -145,10 +145,8 @@ describe("+ copySync()", function () {
     })
 
     it("should preserve symbolic links", function() {
-      var FILES = 2
       var src = path.join(DIR, 'src')
       var dest = path.join(DIR, 'dest')
-      var i, j
 
       fs.mkdirsSync(src)
       fs.symlinkSync('destination', path.join(src, 'symlink'))
