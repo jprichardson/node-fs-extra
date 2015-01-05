@@ -63,7 +63,7 @@ Methods
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
 
-### copy(src, dest, [filter], callback)
+### copy(src, dest, [options], callback)
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
