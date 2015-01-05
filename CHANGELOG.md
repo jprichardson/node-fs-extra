@@ -1,6 +1,11 @@
+0.14.0 / 2015-01-05
+-------------------
+- changed `copy`/`copySync` from `fs.copy(src, dest, [filters], callback)` to `fs.copy(src, dest, [options], callback)` https://github.com/jprichardson/node-fs-extra/pull/100
+- removed mockfs tests for mkdirp (this may be temporary, but was getting in the way of other tests)
+
 0.13.0 / 2014-12-10
 -------------------
-- removed `touch` and `touchSync` methods
+- removed `touch` and `touchSync` methods (they didn't handle permissions like UNIX touch)
 - updated `"ncp": "^0.6.0"` to `"ncp": "^1.0.1"`
 - imported `mkdirp` => `minimist` and `mkdirp` are no longer dependences, should now appease people who wanted `mkdirp` to be `--use_strict` safe. See [#59](https://github.com/jprichardson/node-fs-extra/issues/59)
 
