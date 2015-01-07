@@ -311,7 +311,7 @@ var Promise = require("bluebird")
 var fs = Promise.promisifyAll(require("fs-extra"))
 ```
 
-Or you can use the package [`fs-extra-promise`](https://github.com/overlookmotel/fs-extra-promise) that marrys the two together.
+Or you can use the package [`fs-extra-promise`](https://github.com/overlookmotel/fs-extra-promise) that marries the two together.
 
 
 ### TypeScript
