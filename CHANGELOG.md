@@ -1,3 +1,9 @@
+0.15.0 / 2015-01-21
+-------------------
+- dropped `ncp`, imported code in
+- because of previous, now supports `io.js`
+- `graceful-fs` is now a dependency
+
 0.14.0 / 2015-01-05
 -------------------
 - changed `copy`/`copySync` from `fs.copy(src, dest, [filters], callback)` to `fs.copy(src, dest, [options], callback)` https://github.com/jprichardson/node-fs-extra/pull/100
