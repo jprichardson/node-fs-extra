@@ -190,6 +190,45 @@ describe('ncp', function () {
         })
       })
     })
+  })
 
+  describe.skip('Issue 71: Odd Async Behaviors', function(cb){
+    var fixtures = path.join(__dirname, 'regular-fixtures'),
+        src = path.join(fixtures, 'src'),
+        out = path.join(fixtures, 'out')
+
+    var totalCallbacks = 0
+    function copyAssertAndCount(cb){
+      // rimraf(out, function() {
+        ncp(src, out, function(err){
+          totalCallbacks += 1
+          readDirFiles(src, 'utf8', function (srcErr, srcFiles) {
+            readDirFiles(out, 'utf8', function (outErr, outFiles) {
+              assert.ifError(srcErr)
+              assert.deepEqual(srcFiles, outFiles)
+              cb()
+            })
+          })
+        })
+      // })
+    }
+
+    describe('when copying a directory of files without cleaning the destination', function () {
+      it('callback fires once per run and directories are equal', function (cb) {
+        var expected = 10
+        var count = 10
+        (function next(){
+          if (count > 0) {
+            count--
+            setTimeout(function(){copyAssertAndCount(next)}, 100)
+
+          } else {
+            console.log('Total callback count is', totalCallbacks)
+            assert.equal(totalCallbacks, expected)
+            cb()
+          }
+        }())
+      })
+    })
   })
 })
