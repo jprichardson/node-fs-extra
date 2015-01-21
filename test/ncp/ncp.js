@@ -4,7 +4,7 @@ var path = require('path')
 var rimraf = require('rimraf')
 var readDirFiles = require('read-dir-files').read //temporary, will remove
 var util = require('util')
-var ncp = require('../../lib/_copy')
+var ncp = require('../../lib/_copy').ncp
 
 var fixturesDir = path.join(__dirname, 'fixtures')
 
