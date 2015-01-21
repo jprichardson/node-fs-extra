@@ -5,7 +5,6 @@ var path = require('path')
 var testutil = require('testutil')
 var mkdirp = fs.mkdirs
 //var userid = require('userid')
-var ncp = require('ncp')
 
 var testlib = require('./lib/util')
 
@@ -216,7 +215,7 @@ describe('fs-extra', function() {
         assert.strictEqual(d2stats.mode - S_IFDIR, 0444)
 
         var destDir = path.join(permDir, 'dest')
-        ncp(srcDir, destDir, function(err) {
+        fs.copy(srcDir, destDir, function(err) {
           assert.ifError(err)
 
           var newf1stats = fs.lstatSync(path.join(permDir, 'dest/f1.txt'))

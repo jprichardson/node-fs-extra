@@ -3,7 +3,6 @@ var crypto = require('crypto')
 var path = require('path')
 var fs = require('../lib')
 var testutil = require('testutil')
-var ncp = require('ncp')
 
 var testlib = require('./lib/util')
 
