@@ -43,7 +43,7 @@
     "rimraf": "^2.2.8"
   },
   "devDependencies": {
-    "mocha": "*",
+    "mocha": "^2.1.0",
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
     "testutil": "^0.7.0"
