@@ -38,6 +38,7 @@
     }
   ],
   "dependencies": {
+    "graceful-fs": "^3.0.5",
     "jsonfile": "^2.0.0",
     "rimraf": "^2.2.8"
   },
