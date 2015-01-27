@@ -2,6 +2,7 @@ var assert = require('assert')
 var path = require('path')
 var rimraf = require('rimraf')
 var fs = require('../')
+var testutil = require('testutil')
 
 var TEST_DIR = ''
 var FIXTURES_DIR = 'test/fixtures'
@@ -18,6 +19,15 @@ mock_fs.rename = function(src, dest, cb) {
 
 
 describe("move", function() {
+  beforeEach(function() {
+    TEST_DIR = testutil.createTestDir('fs-extra')
+  })
+
+  afterEach(function(done) {
+    fs.remove(TEST_DIR, done)
+  })
+
+
   it("should rename a file on the same device", function (done) {
     fs.move(FIXTURES_DIR + '/a-file', FIXTURES_DIR + '/a-file-dest', function (err) {
       assert.ifError(err)
@@ -103,6 +113,23 @@ describe("move", function() {
 
         //restore
         fs.rename = oldRename
+      })
+    })
+  })
+
+  describe('> when trying to a move a folder into itself', function() {
+    it('should produce an error', function(done) {
+      var SRC_DIR = path.join(TEST_DIR, 'test')
+      var DEST_DIR = path.join(TEST_DIR, 'test', 'test')
+
+      assert(!fs.existsSync(SRC_DIR))
+      fs.mkdirSync(SRC_DIR)
+      assert(fs.existsSync(SRC_DIR))
+
+      fs.move(SRC_DIR, DEST_DIR, function(err) {
+        assert(fs.existsSync(SRC_DIR))        
+        assert(err)
+        done()
       })
     })
   })

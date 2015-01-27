@@ -1,3 +1,7 @@
+0.16.0 / 2015-01-**
+-------------------
+- bugfix `fs.move()` into itself. Closes #104
+
 0.15.0 / 2015-01-21
 -------------------
 - dropped `ncp`, imported code in
