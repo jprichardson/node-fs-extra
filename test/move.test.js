@@ -1,118 +1,150 @@
 var assert = require('assert')
 var path = require('path')
 var rimraf = require('rimraf')
-var fs = require('../')
-var testutil = require('testutil')
+var fs =  require('fs')
+var fse = require('../')
+var testutil = require('./lib/util')
 
 var TEST_DIR = ''
-var FIXTURES_DIR = 'test/fixtures'
+var FIXTURES_DIR = ''
+var SRC_FIXTURES_DIR = 'test/fixtures/move'
 
 // makes fs.rename return cross-device error.
 var mock_fs = {}
-mock_fs.rename = function(src, dest, cb) {
+mock_fs.rename = function(src, dest, callback) {
   setTimeout(function() {
     var err = new Error()
     err.code = 'EXDEV'
-    cb(err)
+    callback(err)
   }, 10)
 }
-
 
 describe("move", function() {
   beforeEach(function() {
     TEST_DIR = testutil.createTestDir('fs-extra')
+    TEST_DIR = path.join(TEST_DIR, 'move')
+    if (!fs.existsSync(TEST_DIR))
+      fs.mkdirSync(TEST_DIR)
+    FIXTURES_DIR = path.join(TEST_DIR, 'fixtures')
+    fse.copySync(SRC_FIXTURES_DIR, FIXTURES_DIR)
   })
 
-  afterEach(function(done) {
-    fs.remove(TEST_DIR, done)
+  afterEach(function() {
+    rimraf.sync(TEST_DIR)
   })
-
 
   it("should rename a file on the same device", function (done) {
-    fs.move(FIXTURES_DIR + '/a-file', FIXTURES_DIR + '/a-file-dest', function (err) {
+    var src = FIXTURES_DIR + '/a-file'
+    var dest = FIXTURES_DIR + '/a-file-dest'
+
+    fse.move(src, dest, function (err) {
       assert.ifError(err)
-      fs.readFile(FIXTURES_DIR + "/a-file-dest", 'utf8', function (err, contents) {
+      fs.readFile(dest, 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "sonic the hedgehog\n")
-        // move it back
-        fs.move(FIXTURES_DIR + "/a-file-dest", FIXTURES_DIR + "/a-file", done)
+        done()
       })
     })
   })
 
   it("should not overwrite if clobber = false", function (done) {
-    fs.move(FIXTURES_DIR + "/a-file", FIXTURES_DIR + "/a-folder/another-file", {clobber: false}, function (err) {
+    var src = FIXTURES_DIR + "/a-file"
+    var dest = FIXTURES_DIR + "/a-folder/another-file" 
+
+    // verify file exists already
+    assert(fs.existsSync(dest))
+
+    fse.move(src, dest, {clobber: false}, function (err) {
       assert.ok(err && err.code === 'EEXIST', "throw EEXIST")
       done()
     })
   })
 
   it("should not create directory structure if mkdirp is false", function (done) {
-    fs.move(FIXTURES_DIR + "/a-file", FIXTURES_DIR + "/does/not/exist/a-file-dest", {mkdirp: false}, function (err) {
+    var src = FIXTURES_DIR + "/a-file"
+    var dest = FIXTURES_DIR + "/does/not/exist/a-file-dest"
+
+    // verify dest directory does not exist
+    assert(!fs.existsSync(path.dirname(dest)))
+
+    fse.move(src, dest, {mkdirp: false}, function (err) {
       assert.strictEqual(err.code, 'ENOENT')
       done()
     })
   })
 
   it("should create directory structure by default", function (done) {
-    fs.move(FIXTURES_DIR + "/a-file", FIXTURES_DIR + "/does/not/exist/a-file-dest", function (err) {
+    var src = FIXTURES_DIR + "/a-file"
+    var dest = FIXTURES_DIR + "/does/not/exist/a-file-dest" 
+
+    // verify dest directory does not exist
+    assert(!fs.existsSync(path.dirname(dest)))
+
+    fse.move(src, dest, function (err) {
       assert.ifError(err)
-      fs.readFile(FIXTURES_DIR + "/does/not/exist/a-file-dest", 'utf8', function (err, contents) {
+      fs.readFile(dest, 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "sonic the hedgehog\n")
-        // move it back
-        fs.move(FIXTURES_DIR + "/does/not/exist/a-file-dest", FIXTURES_DIR + "/a-file", function(err) {
-          assert.ifError(err)
-          rimraf(FIXTURES_DIR + "/does", done)
-        })
+        done()
       })
     })
   })
 
   it("should work across devices", function (done) {
+    var src = FIXTURES_DIR + "/a-file"
+    var dest = FIXTURES_DIR + "/a-file-dest"
+
     var oldRename = fs.rename
     fs.rename = mock_fs.rename
 
-    fs.move(FIXTURES_DIR + "/a-file", FIXTURES_DIR + "/a-file-dest", function (err) {
+    fse.move(src, dest, function (err) {
       assert.ifError(err)
-      fs.readFile(FIXTURES_DIR + "/a-file-dest", 'utf8', function (err, contents) {
+      fs.readFile(dest, 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "sonic the hedgehog\n")
-        // move it back
-        fs.move(FIXTURES_DIR + "/a-file-dest", FIXTURES_DIR + "/a-file", done)
-
-        //restore
+        
+        // restore
         fs.rename = oldRename
+
+        done()
       })
     })
   })
 
   it("should move folders", function (done) {
-    fs.move(FIXTURES_DIR + "/a-folder", FIXTURES_DIR + "/a-folder-dest", function (err) {
+    var src = FIXTURES_DIR + "/a-folder"
+    var dest = FIXTURES_DIR + "/a-folder-dest"
+
+    // verify it doesn't exist
+    assert(!fs.existsSync(dest))
+
+    fse.move(src, dest, function (err) {
       assert.ifError(err)
-      fs.readFile(FIXTURES_DIR + "/a-folder-dest/another-file", 'utf8', function (err, contents) {
+      fs.readFile(dest + "/another-file", 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "tails\n")
-        // move it back
-        fs.move(FIXTURES_DIR + "/a-folder-dest", FIXTURES_DIR + "/a-folder", done)
+        done()  
       })
     })
   })
 
   it("should move folders across devices", function (done) {
+    var src = FIXTURES_DIR + "/a-folder"
+    var dest = FIXTURES_DIR + "/a-folder-dest"
+
     var oldRename = fs.rename
     fs.rename = mock_fs.rename
 
-    fs.move(FIXTURES_DIR + "/a-folder", FIXTURES_DIR + "/a-folder-dest", function (err) {
+    fse.move(src, dest, function (err) {
       assert.ifError(err)
-      fs.readFile(FIXTURES_DIR + "/a-folder-dest/another-folder/file3", 'utf8', function (err, contents) {
+      fs.readFile(dest + "/another-folder/file3", 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "knuckles\n")
-        // move it back
-        fs.move(FIXTURES_DIR + "/a-folder-dest", FIXTURES_DIR + "/a-folder", done)
-
-        //restore
+        
+        // restore
         fs.rename = oldRename
+      
+        done()
       })
     })
   })
@@ -126,7 +158,7 @@ describe("move", function() {
       fs.mkdirSync(SRC_DIR)
       assert(fs.existsSync(SRC_DIR))
 
-      fs.move(SRC_DIR, DEST_DIR, function(err) {
+      fse.move(SRC_DIR, DEST_DIR, function(err) {
         assert(fs.existsSync(SRC_DIR))        
         assert(err)
         done()
