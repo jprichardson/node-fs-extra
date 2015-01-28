@@ -16,8 +16,7 @@ function createFileWithData(file, size) {
   return file
 }
 
-function createTestDir() {
-  var app = 'fs-extra'
+function createTestDir(app) {
   var dir = path.join(tmpdir(), 'test-' + app)
   if (fs.existsSync(dir)) {
     var files = fs.readdirSync(dir)
