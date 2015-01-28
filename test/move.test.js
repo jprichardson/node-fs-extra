@@ -178,9 +178,9 @@ describe("move", function() {
 
       // make sure we have permission on device
       try {
-        fs.writeFileSync(path.join(differentDevice, 'file'), 'hi')
+        fs.mkdirSync(path.join(differentDevice, 'dir'))
       } catch (err) {
-        console.log("Can't write to device. Skipping test.")
+        return console.log("Can't write to device. Skipping test.")
       }
 
       var src = '/mnt/some/weird/dir-really-weird'
