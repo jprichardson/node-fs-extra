@@ -43,6 +43,8 @@
     "rimraf": "^2.2.8"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.5",
     "mocha": "^2.1.0",
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
@@ -50,6 +52,8 @@
   },
   "main": "./lib/index",
   "scripts": {
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- --reporter list test/*.js",
+    "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
     "test": "mocha test"
   }
 }
