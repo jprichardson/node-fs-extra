@@ -1,6 +1,7 @@
 0.16.0 / 2015-01-**
 -------------------
 - bugfix `fs.move()` into itself. Closes #104
+- bugfix `fs.move()` moving directory across device. Closes #108
 
 0.15.0 / 2015-01-21
 -------------------
