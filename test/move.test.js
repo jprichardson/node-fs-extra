@@ -168,41 +168,51 @@ describe("move", function() {
 
   // tested on Linux ubuntu 3.13.0-32-generic #57-Ubuntu SMP i686 i686 GNU/Linux
   // this won't trigger a bug on Mac OS X Yosimite with a USB drive (/Volumes)
+  // see issue #108
   describe('> when actually trying to a move a folder across devices', function() {
-    it('should move the folder', function(done) {
-      var differentDevice = '/mnt'
+    var differentDevice = '/mnt'
+    var __skipTests = false
 
-      // must set this up, if not, exit silently
-      if (!fs.existsSync(differentDevice)) {
-        console.log('Skipping cross-device move test')
-        return done()
-      }
+    // must set this up, if not, exit silently
+    if (!fs.existsSync(differentDevice)) {
+      console.log('Skipping cross-device move test')
+      __skipTests = true
+    }
 
-      // make sure we have permission on device
-      try {
-        fs.writeFileSync(path.join(differentDevice, 'file'), 'hi')
-      } catch (err) {
-        console.log("Can't write to device. Skipping test.")
-        return done()
-      }
+    // make sure we have permission on device
+    try {
+      fs.writeFileSync(path.join(differentDevice, 'file'), 'hi')
+    } catch (err) {
+      console.log("Can't write to device. Skipping test.")
+      __skipTests = true
+    }
 
-      var src = '/mnt/some/weird/dir-really-weird'
-      var dest = path.join(TEST_DIR, 'device-weird')
+    var _it = __skipTests ? it.skip : it
 
-      if (!fs.existsSync(src))
-        fse.mkdirpSync(src)
+    describe('> just the folder', function() {
+      _it('should move the folder', function(done) {
+        var src = '/mnt/some/weird/dir-really-weird'
+        var dest = path.join(TEST_DIR, 'device-weird')
 
-      assert(!fs.existsSync(dest))
+        if (!fs.existsSync(src))
+          fse.mkdirpSync(src)
 
-      assert(fs.lstatSync(src).isDirectory())
+        assert(!fs.existsSync(dest))
 
-      fse.move(src, dest, function(err) {
-        assert.ifError(err)
-        assert(fs.existsSync(dest))
-        //console.log(path.normalize(dest))
-        assert(fs.lstatSync(dest).isDirectory())
-        done()
+        assert(fs.lstatSync(src).isDirectory())
+
+        fse.move(src, dest, function(err) {
+          assert.ifError(err)
+          assert(fs.existsSync(dest))
+          //console.log(path.normalize(dest))
+          assert(fs.lstatSync(dest).isDirectory())
+          done()
+        })
       })
+    })
+
+    describe('> a folder with a bunch of stuff', function() {
+      
     })
   })
 })
