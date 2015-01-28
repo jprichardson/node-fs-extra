@@ -183,7 +183,7 @@ describe("move", function() {
         fs.writeFileSync(path.join(differentDevice, 'file'), 'hi')
       } catch (err) {
         console.log("Can't write to device. Skipping test.")
-        return
+        return done()
       }
 
       var src = '/mnt/some/weird/dir-really-weird'
