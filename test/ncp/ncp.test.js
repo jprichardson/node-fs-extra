@@ -85,27 +85,6 @@ describe('ncp', function () {
         }, cb)
       })
     })
-
-    describe('when using rename', function() {
-      it('output files are correctly redirected', function(cb) {
-        ncp(src, out, {
-          rename: function(target) {
-            if(path.basename(target) == 'a') return path.resolve(path.dirname(target), 'z')
-            return target
-          }
-        }, function(err) {
-          if(err) return cb(err)
-
-          readDirFiles(src, 'utf8', function (srcErr, srcFiles) {
-            readDirFiles(out, 'utf8', function (outErr, outFiles) {
-              assert.ifError(srcErr)
-              assert.deepEqual(srcFiles.a, outFiles.z)
-              cb()
-            })
-          })
-        })
-      })
-    })
   })
 
   describe('symlink handling', function () {
