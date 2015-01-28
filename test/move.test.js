@@ -6,6 +6,7 @@ var fse = require('../')
 var testutil = require('./lib/util')
 
 var TEST_DIR = ''
+var EXISTING_DIR = ''
 var FIXTURES_DIR = ''
 var SRC_FIXTURES_DIR = 'test/fixtures/move'
 
@@ -22,6 +23,7 @@ mock_fs.rename = function(src, dest, callback) {
 describe("move", function() {
   beforeEach(function() {
     TEST_DIR = testutil.createTestDir('fs-extra')
+    EXISTING_DIR = testutil.createTestDir('fs-extra-exists')
     TEST_DIR = path.join(TEST_DIR, 'move')
     if (!fs.existsSync(TEST_DIR))
       fs.mkdirSync(TEST_DIR)
@@ -31,6 +33,7 @@ describe("move", function() {
 
   afterEach(function() {
     rimraf.sync(TEST_DIR)
+    rimraf.sync(EXISTING_DIR)
   })
 
   it("should rename a file on the same device", function (done) {
@@ -46,6 +49,21 @@ describe("move", function() {
       })
     })
   })
+  
+  it("should move a file in an existing directory", function (done) {
+    var src = FIXTURES_DIR + '/a-file'
+    var dest = EXISTING_DIR
+
+    fse.move(src, dest, function (err) {
+      assert.ifError(err)
+      fs.readFile(path.join(dest, 'a-file'), 'utf8', function (err, contents) {
+        assert.ifError(err)
+        assert.strictEqual(contents, "sonic the hedgehog\n")
+        done()
+      })
+    })
+  })
+
 
   it("should not overwrite if clobber = false", function (done) {
     var src = FIXTURES_DIR + "/a-file"
