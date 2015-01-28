@@ -1,3 +1,7 @@
+0.16.2 / 2015-01-28
+-------------------
+- fixed `fs.copy` for Node v0.8 (support is temporary and will be removed in the near future)
+
 0.16.1 / 2015-01-28
 -------------------
 - if `setImmediate` is not available, fall back to `process.nextTick`
