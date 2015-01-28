@@ -3,6 +3,7 @@
 - bugfix `fs.move()` into itself. Closes #104
 - bugfix `fs.move()` moving directory across device. Closes #108
 - added coveralls support
+- bugfix: nasty multiple callback `fs.copy()` bug. Closes #98
 
 0.15.0 / 2015-01-21
 -------------------
