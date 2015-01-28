@@ -176,6 +176,13 @@ describe("move", function() {
       if (!fs.existsSync(differentDevice))
         return console.log('Skipping cross-device move test')
 
+      // make sure we have permission on device
+      try {
+        fs.writeFileSync(path.join(differentDevice, 'file'), 'hi')
+      } catch (err) {
+        console.log("Can't write to device. Skipping test.")
+      }
+
       var src = '/mnt/some/weird/dir-really-weird'
       var dest = path.join(TEST_DIR, 'device-weird')
 
