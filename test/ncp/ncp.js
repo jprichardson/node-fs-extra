@@ -192,6 +192,7 @@ describe('ncp', function () {
     })
   })
 
+  // see https://github.com/AvianFlu/ncp/issues/71
   describe('Issue 71: Odd Async Behaviors', function(cb){
     var fixtures = path.join(__dirname, 'fixtures', 'regular-fixtures')
     var src = path.join(fixtures, 'src')
