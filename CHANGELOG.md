@@ -1,3 +1,8 @@
+0.16.3 / 2015-01-28
+-------------------
+- reverted https://github.com/jprichardson/node-fs-extra/commit/1ee77c8a805eba5b99382a2591ff99667847c9c9
+
+
 0.16.2 / 2015-01-28
 -------------------
 - fixed `fs.copy` for Node v0.8 (support is temporary and will be removed in the near future)
