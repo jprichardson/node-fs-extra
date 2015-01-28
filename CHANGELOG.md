@@ -1,3 +1,7 @@
+0.16.1 / 2015-01-28
+-------------------
+- if `setImmediate` is not available, fall back to `process.nextTick`
+
 0.16.0 / 2015-01-28
 -------------------
 - bugfix `fs.move()` into itself. Closes #104
