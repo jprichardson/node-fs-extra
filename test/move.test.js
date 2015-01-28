@@ -165,6 +165,36 @@ describe("move", function() {
       })
     })
   })
+
+  // tested on Linux ubuntu 3.13.0-32-generic #57-Ubuntu SMP i686 i686 GNU/Linux
+  // this won't trigger a bug on Mac OS X Yosimite with a USB drive (/Volumes)
+  describe('> when actually trying to a move a folder across devices', function() {
+    it('should move the folder', function(done) {
+      var differentDevice = '/mnt'
+
+      // must set this up, if not, exit silently
+      if (!fs.existsSync(differentDevice))
+        return console.log('Skipping cross-device move test')
+
+      var src = '/mnt/some/weird/dir-really-weird'
+      var dest = path.join(TEST_DIR, 'device-weird')
+
+      if (!fs.existsSync(src))
+        fse.mkdirpSync(src)
+
+      assert(!fs.existsSync(dest))
+
+      assert(fs.lstatSync(src).isDirectory())
+
+      fse.move(src, dest, function(err) {
+        assert.ifError(err)
+        assert(fs.existsSync(dest))
+        //console.log(path.normalize(dest))
+        assert(fs.lstatSync(dest).isDirectory())
+        done()
+      })
+    })
+  })
 })
 
 
