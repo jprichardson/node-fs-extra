@@ -173,14 +173,17 @@ describe("move", function() {
       var differentDevice = '/mnt'
 
       // must set this up, if not, exit silently
-      if (!fs.existsSync(differentDevice))
-        return console.log('Skipping cross-device move test')
+      if (!fs.existsSync(differentDevice)) {
+        console.log('Skipping cross-device move test')
+        return done()
+      }
 
       // make sure we have permission on device
       try {
-        fs.mkdirSync(path.join(differentDevice, 'dir'))
+        fs.writeFileSync(path.join(differentDevice, 'file'), 'hi')
       } catch (err) {
-        return console.log("Can't write to device. Skipping test.")
+        console.log("Can't write to device. Skipping test.")
+        return
       }
 
       var src = '/mnt/some/weird/dir-really-weird'
