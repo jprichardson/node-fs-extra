@@ -149,7 +149,7 @@ describe("move", function() {
     })
   })
 
-  describe('> when trying to a move a folder into itself', function() {
+  describe.skip('> when trying to a move a folder into itself', function() {
     it('should produce an error', function(done) {
       var SRC_DIR = path.join(TEST_DIR, 'test')
       var DEST_DIR = path.join(TEST_DIR, 'test', 'test')
