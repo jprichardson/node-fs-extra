@@ -192,13 +192,14 @@ describe('ncp', function () {
     })
   })
 
-  describe.skip('Issue 71: Odd Async Behaviors', function(cb){
-    var fixtures = path.join(__dirname, 'regular-fixtures'),
-        src = path.join(fixtures, 'src'),
-        out = path.join(fixtures, 'out')
+  describe('Issue 71: Odd Async Behaviors', function(cb){
+    var fixtures = path.join(__dirname, 'fixtures', 'regular-fixtures')
+    var src = path.join(fixtures, 'src')
+    var out = path.join(fixtures, 'out')
 
     var totalCallbacks = 0
-    function copyAssertAndCount(cb){
+
+    function copyAssertAndCount(callback){
       // rimraf(out, function() {
         ncp(src, out, function(err){
           totalCallbacks += 1
@@ -206,7 +207,7 @@ describe('ncp', function () {
             readDirFiles(out, 'utf8', function (outErr, outFiles) {
               assert.ifError(srcErr)
               assert.deepEqual(srcFiles, outFiles)
-              cb()
+              callback()
             })
           })
         })
@@ -214,20 +215,28 @@ describe('ncp', function () {
     }
 
     describe('when copying a directory of files without cleaning the destination', function () {
-      it('callback fires once per run and directories are equal', function (cb) {
+      it('callback fires once per run and directories are equal', function (done) {
         var expected = 10
         var count = 10
-        (function next(){
+
+        function next() {
           if (count > 0) {
-            count--
-            setTimeout(function(){copyAssertAndCount(next)}, 100)
+            setTimeout(function(){
+              copyAssertAndCount(function() {
+                count -= 1
+                next()
+              })
+            }, 100)
 
           } else {
-            console.log('Total callback count is', totalCallbacks)
+            // console.log('Total callback count is', totalCallbacks)
             assert.equal(totalCallbacks, expected)
-            cb()
+            done()
           }
-        }())
+        }
+
+        next()
+
       })
     })
   })
