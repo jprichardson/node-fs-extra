@@ -146,31 +146,6 @@ describe('ncp', function () {
     })
   })
 
-  describe('modified files copies', function () {
-    var fixtures = path.join(__dirname, 'modified-files'),
-      src = path.join(fixtures, 'src'),
-      out = path.join(fixtures, 'out')
-
-    it.skip('if file not exists copy file to target', function(cb) {
-      rimraf(out, function() {
-        ncp(src, out, {modified: true, clobber: false}, function (err) {
-          assert.equal(fs.existsSync(out), true)
-          cb()
-        })
-      })
-    })
-
-    it.skip('change source file mtime and copy', function(cb) {
-      fs.utimesSync(src+"/a", new Date().getTime()/1000, new Date('2015-01-01 00:00:00').getTime()/1000)
-      ncp(src, out, {modified: true, clobber: false}, function (err) {
-        fs.stat(out+"/a", function(err, stats) {
-          assert.equal(stats.mtime.getTime(), new Date('2015-01-01 00:00:00').getTime())
-          cb()
-        })
-      })
-    })
-  })
-
   // see https://github.com/AvianFlu/ncp/issues/71
   describe('Issue 71: Odd Async Behaviors', function(cb){
     var fixtures = path.join(__dirname, 'fixtures', 'regular-fixtures')
