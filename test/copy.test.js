@@ -10,14 +10,17 @@ var testlib = require('./lib/util')
 
 var SIZE = 16 * 64 * 1024 + 7
 var DIR = ''
+var EXISTING_DIR = ''
 
 describe('fs-extra', function() {
   beforeEach(function() {
     DIR = testutil.createTestDir('fs-extra')
+    EXISTING_DIR = testutil.createTestDir('fs-extra-exists')
   })
 
   afterEach(function() {
     fs.removeSync(DIR)
+    fs.removeSync(EXISTING_DIR)
   })
 
   describe('+ copy()', function() {
@@ -46,6 +49,22 @@ describe('fs-extra', function() {
           done()
         })
       })
+
+      it("should copy a file in an existing directory", function (done) {
+        var fileSrc = path.join(DIR, "TEST_fs-extra_src")
+        var Dest = EXISTING_DIR
+        var fileDest = path.join(EXISTING_DIR, "TEST_fs-extra_src")
+        var fileSrc = testlib.createFileWithData(fileSrc, SIZE)
+        var srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest("hex")
+        var destMd5 = ''
+
+        fs.copy(fileSrc, Dest, function(err) {
+          destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest("hex")
+          assert.strictEqual(srcMd5, destMd5)
+          done()
+        })
+      })
+
 
       it("should only copy files allowed by filter regex", function(done) {
         var srcFile1 = testlib.createFileWithData(path.join(DIR, "1.jade"), SIZE)
