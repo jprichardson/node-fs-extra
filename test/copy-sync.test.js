@@ -12,10 +12,13 @@ var DIR = ''
 describe("+ copySync()", function () {
   beforeEach(function() {
     DIR = testutil.createTestDir('fs-extra')
+    EXISTING_DIR = testutil.createTestDir('fs-extra-exists')
   })
 
   afterEach(function(done) {
-    fs.remove(DIR, done)
+    fs.remove(DIR, function() {
+      fs.remove(EXISTING_DIR, done)
+    })
   })
 
   describe("> when the source is a file", function () {
@@ -104,6 +107,21 @@ describe("+ copySync()", function () {
 
         fs.writeFileSync(src, data, 'utf8')
         fs.copySync(src, dest)
+
+        var data2 = fs.readFileSync(dest, 'utf8')
+
+        assert.strictEqual(data, data2)
+      })
+    })
+
+    describe("> when the destination is an existing directory", function () {
+      it('should copy a file in the existing directory', function () {
+        var src = path.join(DIR, 'file.txt')
+        var dest = path.join(EXISTING_DIR, 'file.txt')
+        var data = "did it copy?\n"
+
+        fs.writeFileSync(src, data, 'utf8')
+        fs.copySync(src, EXISTING_DIR)
 
         var data2 = fs.readFileSync(dest, 'utf8')
 
