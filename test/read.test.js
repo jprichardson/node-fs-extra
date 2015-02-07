@@ -4,6 +4,8 @@ var path = require('path')
 var fse = require('../')
 var testutil = require('testutil')
 
+/* global afterEach, beforeEach, describe, it */
+
 var TEST_DIR = ''
 
 describe('read', function() {
@@ -23,12 +25,12 @@ describe('read', function() {
       }
 
       var file = path.join(TEST_DIR, 'file.json')
-      fs.writeFileSync(file, JSON.stringify(obj1))     
+      fs.writeFileSync(file, JSON.stringify(obj1))
       fse.readJSON(file, function(err, obj2) {
         assert.ifError(err)
         assert.strictEqual(obj1.firstName, obj2.firstName)
         assert.strictEqual(obj1.lastName, obj2.lastName)
-        
+
         done()
       })
     })
@@ -44,5 +46,3 @@ describe('read', function() {
     })
   })
 })
-
-
