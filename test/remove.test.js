@@ -5,16 +5,18 @@ var sr = require('secure-random')
 var testutil = require('testutil')
 var fse = require('../')
 
+/* global afterEach, beforeEach, describe, it */
+
 var TEST_DIR
 
-function buildFixtureDir() {
+function buildFixtureDir () {
   var buf = sr.randomBuffer(5)
-  var baseDir = path.join(TEST_DIR, "TEST_fs-extra_remove-" + Date.now())
-    
+  var baseDir = path.join(TEST_DIR, 'TEST_fs-extra_remove-' + Date.now())
+
   fs.mkdirSync(baseDir)
   fs.writeFileSync(path.join(baseDir, Math.random() + ''), buf)
   fs.writeFileSync(path.join(baseDir, Math.random() + ''), buf)
-  
+
   var subDir = path.join(TEST_DIR, Math.random() + '')
   fs.mkdirSync(subDir)
   fs.writeFileSync(path.join(subDir, Math.random() + ''))
@@ -63,7 +65,7 @@ describe('remove', function() {
     })
 
     it('should delete a directory full of directories and files', function(done) {
-      var dir = buildFixtureDir()
+      buildFixtureDir()
       assert(fs.existsSync(TEST_DIR))
       fse.remove(TEST_DIR, function(err) {
         assert.ifError(err)
@@ -75,7 +77,7 @@ describe('remove', function() {
     it('should delete a file', function(done) {
       var file = path.join(TEST_DIR, 'file')
       fs.writeFileSync(file, 'hello')
-      
+
       assert(fs.existsSync(file))
       fse.remove(file, function(err) {
         assert.ifError(err)
@@ -87,7 +89,7 @@ describe('remove', function() {
     it('should delete without a callback', function(done) {
       var file = path.join(TEST_DIR, 'file')
       fs.writeFileSync(file, 'hello')
-      
+
       assert(fs.existsSync(file))
       var existsChecker = setInterval(function() {
         fs.exists(file, function(itDoes) {
@@ -104,7 +106,7 @@ describe('remove', function() {
   describe('+ delete()', function() {
     it('should delete an empty directory', function(done) {
       assert(fs.existsSync(TEST_DIR))
-      fse["delete"](TEST_DIR, function(err) {
+      fse['delete'](TEST_DIR, function(err) {
         assert.ifError(err)
         assert(!fs.existsSync(TEST_DIR))
         done()
@@ -120,4 +122,3 @@ describe('remove', function() {
     })
   })
 })
-
