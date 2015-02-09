@@ -4,6 +4,8 @@ var path = require('path')
 var testutil = require('testutil')
 var fse = require('../')
 
+/* global afterEach, beforeEach, describe, it */
+
 var TEST_DIR = ''
 
 describe('output', function () {
