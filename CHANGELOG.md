@@ -1,3 +1,7 @@
+0.16.4 / 2015-03-01
+-------------------
+- `fs.mkdirs` fix infinite loop on Windows. See: See https://github.com/substack/node-mkdirp/pull/74 and https://github.com/substack/node-mkdirp/issues/66
+
 0.16.3 / 2015-01-28
 -------------------
 - reverted https://github.com/jprichardson/node-fs-extra/commit/1ee77c8a805eba5b99382a2591ff99667847c9c9
