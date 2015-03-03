@@ -49,7 +49,7 @@ describe("move", function() {
 
   it("should not overwrite if clobber = false", function (done) {
     var src = FIXTURES_DIR + "/a-file"
-    var dest = FIXTURES_DIR + "/a-folder/another-file" 
+    var dest = FIXTURES_DIR + "/a-folder/another-file"
 
     // verify file exists already
     assert(fs.existsSync(dest))
@@ -75,7 +75,7 @@ describe("move", function() {
 
   it("should create directory structure by default", function (done) {
     var src = FIXTURES_DIR + "/a-file"
-    var dest = FIXTURES_DIR + "/does/not/exist/a-file-dest" 
+    var dest = FIXTURES_DIR + "/does/not/exist/a-file-dest"
 
     // verify dest directory does not exist
     assert(!fs.existsSync(path.dirname(dest)))
@@ -102,7 +102,7 @@ describe("move", function() {
       fs.readFile(dest, 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "sonic the hedgehog\n")
-        
+
         // restore
         fs.rename = oldRename
 
@@ -123,7 +123,7 @@ describe("move", function() {
       fs.readFile(dest + "/another-file", 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "tails\n")
-        done()  
+        done()
       })
     })
   })
@@ -140,10 +140,10 @@ describe("move", function() {
       fs.readFile(dest + "/another-folder/file3", 'utf8', function (err, contents) {
         assert.ifError(err)
         assert.strictEqual(contents, "knuckles\n")
-        
+
         // restore
         fs.rename = oldRename
-      
+
         done()
       })
     })
@@ -159,7 +159,7 @@ describe("move", function() {
       assert(fs.existsSync(SRC_DIR))
 
       fse.move(SRC_DIR, DEST_DIR, function(err) {
-        assert(fs.existsSync(SRC_DIR))        
+        assert(fs.existsSync(SRC_DIR))
         assert(err)
         done()
       })
@@ -212,7 +212,7 @@ describe("move", function() {
     })
 
     describe('> a folder with a bunch of stuff', function() {
-      
+
     })
   })
 })
