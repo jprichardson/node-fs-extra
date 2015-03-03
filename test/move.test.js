@@ -214,6 +214,10 @@ describe("move", function() {
     describe('> a folder with a bunch of stuff', function() {
 
     })
+
+    describe('> when clobber = true', function() {
+
+    })
   })
 })
 
