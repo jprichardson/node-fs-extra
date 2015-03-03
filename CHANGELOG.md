@@ -94,7 +94,7 @@ from `~` to `^`. #67
 0.6.3 / 2013-06-28
 ------------------
 * changed JSON spacing default from `4` to `2` to follow Node conventions
-* updated `jsonfile` dep 
+* updated `jsonfile` dep
 * updated `rimraf` dep
 
 0.6.2 / 2013-06-28
@@ -168,7 +168,7 @@ from `~` to `^`. #67
 0.1.0 / 2012-05-31
 ------------------
 * Renamed `copyFile()` to `copy()`. `copy()` can now copy directories (recursively) too.
-* Renamed `rmrf()` to `remove()`. 
+* Renamed `rmrf()` to `remove()`.
 * `remove()` aliased with `delete()`.
 * Added `mkdirp` capabilities. Named: `mkdir()`. Hides Node.js native `mkdir()`.
 * Instead of exporting the native `fs` module with new functions, I now copy over the native methods to a new object and export that instead.
