@@ -1,3 +1,7 @@
+0.16.5 / 2015-03-08
+-------------------
+- fixed `fs.move` when `clobber` is `true` and destination is a directory, it should clobber. https://github.com/jprichardson/node-fs-extra/issues/114
+
 0.16.4 / 2015-03-01
 -------------------
 - `fs.mkdirs` fix infinite loop on Windows. See: See https://github.com/substack/node-mkdirp/pull/74 and https://github.com/substack/node-mkdirp/issues/66
