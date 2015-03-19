@@ -215,8 +215,9 @@ describe('+ copySync()', function () {
 
         var d1 = 'file1'
         var d2 = 'file2'
-        // var f1 = fs.writeFileSync(path.join(src, 'f1.txt'), d1)
-        // var f2 = fs.writeFileSync(path.join(src, 'f2.txt'), d2)
+
+        fs.writeFileSync(path.join(src, 'f1.txt'), d1)
+        fs.writeFileSync(path.join(src, 'f2.txt'), d2)
 
         var dest = path.join(DIR, 'this/path/does/not/exist/outputDir')
 
