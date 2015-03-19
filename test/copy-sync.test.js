@@ -114,6 +114,65 @@ describe('+ copySync()', function () {
         assert.strictEqual(data, data2)
       })
     })
+
+    describe('> when clobber option is passed', function () {
+      var src, dest
+      var srcData = 'some src data'
+
+      beforeEach(function () {
+        src = path.join(DIR, 'src-file')
+        dest = path.join(DIR, 'des-file')
+
+        // source file must always exist in these cases
+        fs.writeFileSync(src, srcData)
+      })
+
+      describe('> when destination file does NOT exist', function () {
+        describe('> when clobber is true', function () {
+          it('should copy the file and not throw an error', function () {
+            fs.copySync(src, dest, {clobber: true})
+            var destData = fs.readFileSync(dest, 'utf8')
+            assert.strictEqual(srcData, destData)
+          })
+        })
+
+        describe('> when clobber is false', function () {
+          it('should copy the file and not throw an error', function () {
+            fs.copySync(src, dest, {clobber: false})
+            var destData = fs.readFileSync(dest, 'utf8')
+            assert.strictEqual(srcData, destData)
+          })
+        })
+      })
+
+      describe('when destination file does exist', function () {
+        var destData
+        beforeEach(function () {
+          destData = 'some dest data'
+          fs.writeFileSync(dest, destData)
+        })
+
+        describe('> when clobber is true', function () {
+          it('should copy the file and not throw an error', function () {
+            fs.copySync(src, dest, {clobber: true})
+            destData = fs.readFileSync(dest, 'utf8')
+            assert.strictEqual(srcData, destData)
+          })
+        })
+
+        describe('> when clobber is false', function () {
+          it('should copy the file and THROW an error', function () {
+            assert.throws(function () {
+              fs.copySync(src, dest, {clobber: false})
+            })
+
+            // copy never happened
+            var destDataNew = fs.readFileSync(dest, 'utf8')
+            assert.strictEqual(destData, destDataNew)
+          })
+        })
+      })
+    })
   })
 
   describe('> when the source is a directory', function () {
