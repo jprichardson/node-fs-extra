@@ -2,7 +2,6 @@ var assert = require('assert')
 var crypto = require('crypto')
 var path = require('path')
 var fs = require('../lib')
-var testutil = require('testutil')
 var testlib = require('./lib/util')
 
 /* global afterEach, beforeEach, describe, it */
@@ -12,11 +11,11 @@ var DIR = ''
 
 describe('+ copySync()', function () {
   beforeEach(function () {
-    DIR = testutil.createTestDir('fs-extra')
+    DIR = testlib.createTestDir()
   })
 
-  afterEach(function (done) {
-    fs.remove(DIR, done)
+  afterEach(function () {
+    fs.removeSync(DIR)
   })
 
   describe('> when the source is a file', function () {
