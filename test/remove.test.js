@@ -23,29 +23,29 @@ function buildFixtureDir () {
   return baseDir
 }
 
-describe('remove', function() {
-  beforeEach(function() {
+describe('remove', function () {
+  beforeEach(function () {
     TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
-  afterEach(function() {
+  afterEach(function () {
     if (fs.existsSync(TEST_DIR)) fse.removeSync(TEST_DIR)
   })
 
-  describe('+ removeSync()', function() {
-    it('should delete directories and files synchronously', function() {
+  describe('+ removeSync()', function () {
+    it('should delete directories and files synchronously', function () {
       assert(fs.existsSync(TEST_DIR))
       fse.removeSync(TEST_DIR)
       assert(!fs.existsSync(TEST_DIR))
     })
 
-    it('should delete an empty directory synchronously', function() {
+    it('should delete an empty directory synchronously', function () {
       assert(fs.existsSync(TEST_DIR))
       fse.removeSync(TEST_DIR)
       assert(!fs.existsSync(TEST_DIR))
     })
 
-    it('should delete a file synchronously', function() {
+    it('should delete a file synchronously', function () {
       var file = path.join(TEST_DIR, 'file')
       fs.writeFileSync(file, 'hello')
       assert(fs.existsSync(file))
@@ -54,45 +54,45 @@ describe('remove', function() {
     })
   })
 
-  describe('+ remove()', function() {
-    it('should delete an empty directory', function(done) {
+  describe('+ remove()', function () {
+    it('should delete an empty directory', function (done) {
       assert(fs.existsSync(TEST_DIR))
-      fse.remove(TEST_DIR, function(err) {
+      fse.remove(TEST_DIR, function (err) {
         assert.ifError(err)
         assert(!fs.existsSync(TEST_DIR))
         done()
       })
     })
 
-    it('should delete a directory full of directories and files', function(done) {
+    it('should delete a directory full of directories and files', function (done) {
       buildFixtureDir()
       assert(fs.existsSync(TEST_DIR))
-      fse.remove(TEST_DIR, function(err) {
+      fse.remove(TEST_DIR, function (err) {
         assert.ifError(err)
         assert(!fs.existsSync(TEST_DIR))
         done()
       })
     })
 
-    it('should delete a file', function(done) {
+    it('should delete a file', function (done) {
       var file = path.join(TEST_DIR, 'file')
       fs.writeFileSync(file, 'hello')
 
       assert(fs.existsSync(file))
-      fse.remove(file, function(err) {
+      fse.remove(file, function (err) {
         assert.ifError(err)
         assert(!fs.existsSync(file))
         done()
       })
     })
 
-    it('should delete without a callback', function(done) {
+    it('should delete without a callback', function (done) {
       var file = path.join(TEST_DIR, 'file')
       fs.writeFileSync(file, 'hello')
 
       assert(fs.existsSync(file))
-      var existsChecker = setInterval(function() {
-        fs.exists(file, function(itDoes) {
+      var existsChecker = setInterval(function () {
+        fs.exists(file, function (itDoes) {
           if (!itDoes) {
             clearInterval(existsChecker)
             done()
@@ -103,10 +103,10 @@ describe('remove', function() {
     })
   })
 
-  describe('+ delete()', function() {
-    it('should delete an empty directory', function(done) {
+  describe('+ delete()', function () {
+    it('should delete an empty directory', function (done) {
       assert(fs.existsSync(TEST_DIR))
-      fse['delete'](TEST_DIR, function(err) {
+      fse['delete'](TEST_DIR, function (err) {
         assert.ifError(err)
         assert(!fs.existsSync(TEST_DIR))
         done()
@@ -114,8 +114,8 @@ describe('remove', function() {
     })
   })
 
-  describe('+ deleteSync()', function() {
-    it('should delete directories and files synchronously', function() {
+  describe('+ deleteSync()', function () {
+    it('should delete directories and files synchronously', function () {
       assert(fs.existsSync(TEST_DIR))
       fse.deleteSync(TEST_DIR)
       assert(!fs.existsSync(TEST_DIR))
