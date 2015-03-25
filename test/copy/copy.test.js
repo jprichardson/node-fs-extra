@@ -1,12 +1,12 @@
 var assert = require('assert')
 var crypto = require('crypto')
-var fs = require('../lib')
+var fs = require('../../')
 var path = require('path')
 var testutil = require('testutil')
 var mkdirp = fs.mkdirs
 //var userid = require('userid')
 
-var testlib = require('./lib/util')
+var testlib = require('../_lib/util')
 
 var SIZE = 16 * 64 * 1024 + 7
 var DIR = ''
@@ -35,7 +35,7 @@ describe('fs-extra', function() {
           done()
         })
       })
-      
+
       it('should return an error if the source file does not exist', function(done) {
         var fileSrc = "we-simply-assume-this-file-does-not-exist.bin"
         var fileDest = path.join(DIR, "TEST_fs-extra_copy")
@@ -228,7 +228,7 @@ describe('fs-extra', function() {
           assert.strictEqual(newf2stats.mode, f2stats.mode)
           assert.strictEqual(newd2stats.mode, d2stats.mode)
 
-          done();  
+          done();
         })
       })
     })

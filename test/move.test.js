@@ -3,7 +3,7 @@ var path = require('path')
 var rimraf = require('rimraf')
 var fs =  require('fs')
 var fse = require('../')
-var testutil = require('./lib/util')
+var testutil = require('./_lib/util')
 
 var TEST_DIR = ''
 var FIXTURES_DIR = ''

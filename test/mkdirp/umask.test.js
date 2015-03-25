@@ -1,7 +1,7 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var testutil = require('../lib/util')
+var testutil = require('../_lib/util')
 var fse = require('../../')
 
 'use strict'

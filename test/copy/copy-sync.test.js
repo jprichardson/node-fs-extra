@@ -1,8 +1,8 @@
 var assert = require('assert')
 var crypto = require('crypto')
 var path = require('path')
-var fs = require('../lib')
-var testlib = require('./lib/util')
+var fs = require('../../')
+var testlib = require('../_lib/util')
 
 /* global afterEach, beforeEach, describe, it */
 
