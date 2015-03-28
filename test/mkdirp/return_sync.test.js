@@ -1,17 +1,17 @@
 var assert = require('assert')
-var fs = require('fs')
-var path = require('path')
 var fse = require('../../')
 var testutil = require('testutil')
 
-describe('mkdirp / return value', function() {
-  it('should', function () {
-    var x = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
-    var y = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
-    var z = Math.floor(Math.random() * Math.pow(16,4)).toString(16)
+/* global describe, it */
 
-    var dir =  testutil.createTestDir('fs-extra') + '/'
-    var file = dir + [x,y,z].join('/')
+describe('mkdirp / return value', function () {
+  it('should', function () {
+    var x = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
+    var y = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
+    var z = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
+
+    var dir = testutil.createTestDir('fs-extra') + '/'
+    var file = dir + [x, y, z].join('/')
 
     // should return the first dir created.
     // By this point, it would be profoundly surprising if /tmp didn't
