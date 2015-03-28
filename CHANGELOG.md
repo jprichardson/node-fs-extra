@@ -1,3 +1,9 @@
+0.17.0 / 2015-03-28
+-------------------
+- `copySync` added `clobber` option (before always would clobber, now if `clobber` is `false` it throws an error if the destination exists).
+**Only works with files at the moment.**
+- `createOutputStream()` added. See: https://github.com/jprichardson/node-fs-extra/pull/118
+
 0.16.5 / 2015-03-08
 -------------------
 - fixed `fs.move` when `clobber` is `true` and destination is a directory, it should clobber. https://github.com/jprichardson/node-fs-extra/issues/114
