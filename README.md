@@ -12,7 +12,7 @@ This module adds a few extra file system methods that aren't included in the nat
 Why?
 ----
 
-I got tired of including `mkdirp`, `rimraf`, and `cp -r` in most of my projects. 
+I got tired of including `mkdirp`, `rimraf`, and `cp -r` in most of my projects.
 
 
 
@@ -41,7 +41,7 @@ you can now do this:
 var fs = require('fs-extra') //var fs = require('fs')
 ```
 
-or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want 
+or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want
 to do this:
 
 ```javascript
@@ -88,7 +88,7 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err) {
 ```
 
 
-### ensureFile(file, callback) 
+### ensureFile(file, callback)
 
 Ensures that the file exists. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is **NOT MODIFIED**.
 
@@ -110,7 +110,7 @@ fs.ensureFile(file, function(err) {
 ```
 
 
-### ensureDir(dir, callback) 
+### ensureDir(dir, callback)
 
 Ensures that the directory exists. If the directory structure does not exist, it is created.
 
@@ -131,7 +131,7 @@ fs.ensureDir(dir, function(err) {
 
 
 
-### mkdirs(dir, callback) 
+### mkdirs(dir, callback)
 
 Creates a directory. If the parent hierarchy doesn't exist, it's created. Like `mkdir -p`.
 
@@ -158,8 +158,8 @@ fs.mkdirsSync('/tmp/another/path')
 
 Moves a file or directory, even across devices.
 
-Options:  
-clobber (boolean): overwrite existing file or directory  
+Options:
+clobber (boolean): overwrite existing file or directory
 limit (number): number of concurrent moves, see ncp for more information
 
 Example:
@@ -224,7 +224,7 @@ fs.outputJson(file, {name: 'JP'}, function(err) {
 
 
 
-### readJson(file, [options], callback) 
+### readJson(file, [options], callback)
 
 Reads a JSON file and then parses it into an object. `options` are the same that you'd pass to `fs.readFile`.
 
@@ -272,16 +272,16 @@ var fs = require('fs-extra')
 
 fs.remove('/tmp/myfile', function(err) {
   if (err) return console.error(err)
-  
+
   console.log("success!")
 })
 
-fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory. 
+fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory.
 ```
 
 
 
-### writeJson(file, object, [options], callback) 
+### writeJson(file, object, [options], callback)
 
 Writes an object to a JSON file. `options` are the same that you'd pass to `fs.readFile`.
 
@@ -348,9 +348,9 @@ For example, `fs.readFile()` and `fs.readdir()`: the **F** is capitalized in *Fi
 
 We have a dilemma though. How do you consistently name methods that perform the following POSIX commands: `cp`, `cp -r`, `mkdir -p`, and `rm -rf`?
 
-My perspective: when in doubt, err on the side of simplicity. A directory is just a hierarchical grouping of directories and files. Consider that for a moment. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too. 
+My perspective: when in doubt, err on the side of simplicity. A directory is just a hierarchical grouping of directories and files. Consider that for a moment. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too.
 
-So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`. 
+So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`.
 
 
 Credit
@@ -397,7 +397,7 @@ Licensed under MIT
 
 Copyright (c) 2011-2014 JP Richardson
 
-[1]: http://nodejs.org/docs/latest/api/fs.html 
+[1]: http://nodejs.org/docs/latest/api/fs.html
 
 
 [jsonfile]: https://github.com/jprichardson/node-jsonfile
