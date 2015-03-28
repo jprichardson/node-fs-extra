@@ -31,27 +31,27 @@ Usage
 
 You don't ever need to include the original `fs` module again:
 
-```javascript
+```js
 var fs = require('fs') //this is no longer necessary
 ```
 
 you can now do this:
 
-```javascript
+```js
 var fs = require('fs-extra') //var fs = require('fs')
 ```
 
 or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want
 to do this:
 
-```javascript
+```js
 //var fs = require('fs')
 var fse = require('fs-extra')
 ```
 
 you can also keep both, but it's redundant:
 
-```javascript
+```js
 var fs = require('fs')
 var fse = require('fs-extra')
 ```
@@ -73,7 +73,7 @@ Sync: `copySync()`
 
 Examples:
 
-```javascript
+```js
 var fs = require('fs-extra')
 
 fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err) {
@@ -119,7 +119,7 @@ Sync: `createFileSync()`,`ensureFileSync()`
 
 Example:
 
-```javascript
+```js
 var fs = require('fs-extra')
 
 var file = '/tmp/this/path/does/not/exist/file.txt'
@@ -139,7 +139,7 @@ Sync: `ensureDirSync()`
 
 Example:
 
-```javascript
+```js
 var fs = require('fs-extra')
 
 var dir = '/tmp/this/path/does/not/exist'
@@ -162,7 +162,7 @@ Sync: `mkdirsSync()` / `mkdirpSync()`
 
 Examples:
 
-```javascript
+```js
 var fs = require('fs-extra')
 
 fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err) {
@@ -184,7 +184,7 @@ limit (number): number of concurrent moves, see ncp for more information
 
 Example:
 
-```javascript
+```js
 var fs = require('fs-extra')
 
 fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', function(err) {
@@ -203,7 +203,7 @@ Sync: `outputFileSync()`
 
 Example:
 
-```javascript
+```js
 var fs = require('fs-extra')
 var file = '/tmp/this/path/does/not/exist/file.txt'
 
@@ -229,7 +229,7 @@ Sync: `outputJsonSync()`, `outputJSONSync()`
 
 Example:
 
-```javascript
+```js
 var fs = require('fs-extra')
 var file = '/tmp/this/path/does/not/exist/file.txt'
 
@@ -255,7 +255,7 @@ Sync: `readJsonSync()`, `readJSONSync()`
 
 Example:
 
-```javascript
+```js
 var fs = require('fs-extra')
 
 fs.readJson('./package.json', function(err, packageObj) {
@@ -287,7 +287,7 @@ Sync: `removeSync()` / `deleteSync()`
 
 Examples:
 
-```javascript
+```js
 var fs = require('fs-extra')
 
 fs.remove('/tmp/myfile', function(err) {
@@ -311,7 +311,7 @@ Sync: `writeJsonSync()`, `writeJSONSync()`
 
 Example:
 
-```javascript
+```js
 var fs = require('fs-extra')
 fs.writeJson('./package.json', {name: 'fs-extra'}, function(err) {
   console.log(err)
