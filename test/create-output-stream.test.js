@@ -22,40 +22,7 @@ describe('createOutputStream', function () {
       it('should create the stream', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-ne', Math.random() + '.txt')
         assert(!fs.existsSync(file))
-        fse.createOutputStream(file, function(err, stream) {
-          if (err) return done(err)
-          stream.end('hi jp', 'utf8', function(){
-            assert(fs.existsSync(file))
-            assert.equal(fs.readFileSync(file, 'utf8'), 'hi jp')
-            done()
-          })
-        })
-      })
-    })
-
-    describe('> when the file does exist', function() {
-      it('should still modify the file', function(done) {
-        var file = path.join(TEST_DIR, Math.random() + 't-e', Math.random() + '.txt')
-        fse.mkdirsSync(path.dirname(file))
-        fs.writeFileSync(file, 'hello world')
-        fse.createOutputStream(file, function(err, stream) {
-          if (err) return done(err)
-          stream.end('hi jp', 'utf8', function(){
-            assert(fs.existsSync(file))
-            assert.equal(fs.readFileSync(file, 'utf8'), 'hi jp')
-            done()
-          })
-        })
-      })
-    })
-  })
-
-  describe('+ createOutputStreamSync', function() {
-    describe('> when the file and directory does not exist', function() {
-      it('should create the stream', function(done) {
-        var file = path.join(TEST_DIR, Math.random() + 't-ne', Math.random() + '.txt')
-        assert(!fs.existsSync(file))
-        stream = fse.createOutputStreamSync(file)
+        stream = fse.createOutputStream(file)
         stream.end('hi jp', 'utf8', function(){
           assert(fs.existsSync(file))
           assert.equal(fs.readFileSync(file, 'utf8'), 'hi jp')
@@ -64,12 +31,12 @@ describe('createOutputStream', function () {
       })
     })
 
-    describe('> when the file does exist', function() {
+    describe('> when the dir does exist', function() {
       it('should still modify the file', function(done) {
         var file = path.join(TEST_DIR, Math.random() + 't-e', Math.random() + '.txt')
         fse.mkdirsSync(path.dirname(file))
         fs.writeFileSync(file, 'hello world')
-        stream = fse.createOutputStreamSync(file)
+        stream = fse.createOutputStream(file)
         stream.end('hi jp', 'utf8', function(){
           assert(fs.existsSync(file))
           assert.equal(fs.readFileSync(file, 'utf8'), 'hi jp')

@@ -88,6 +88,26 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err) {
 ```
 
 
+### createOutputStream(file, [options])
+
+Exactly like `createWriteStream`, but if the directory does not exist, it's created.
+
+Examples:
+
+```js
+var fs = require('fs-extra')
+
+// if /tmp/some does not exist, it is created
+fs.createOutputStream('/tmp/some/file.txt')
+fs.write('hello\n')
+```
+
+Note on naming: you'll notice that fs-extra has some methods like `fs.outputJson`, `fs.outputFile`, etc that use the
+word `output` to denote that if the containing directory does not exist, it should be created. If you can think of a
+better succinct nomenclature for these methods, please open an issue for discussion. Thanks.
+
+
+
 ### ensureFile(file, callback)
 
 Ensures that the file exists. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is **NOT MODIFIED**.
