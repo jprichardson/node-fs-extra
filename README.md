@@ -32,20 +32,19 @@ Usage
 You don't ever need to include the original `fs` module again:
 
 ```js
-var fs = require('fs') //this is no longer necessary
+var fs = require('fs') // this is no longer necessary
 ```
 
 you can now do this:
 
 ```js
-var fs = require('fs-extra') //var fs = require('fs')
+var fs = require('fs-extra')
 ```
 
 or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want
-to do this:
+to name your `fs` variable `fse` like so:
 
 ```js
-//var fs = require('fs')
 var fse = require('fs-extra')
 ```
 
@@ -76,15 +75,15 @@ Examples:
 ```js
 var fs = require('fs-extra')
 
-fs.copy('/tmp/myfile', '/tmp/mynewfile', function(err) {
+fs.copy('/tmp/myfile', '/tmp/mynewfile', function (err) {
   if (err) return console.error(err)
   console.log("success!")
-}) //copies file
+}) // copies file
 
-fs.copy('/tmp/mydir', '/tmp/mynewdir', function(err) {
+fs.copy('/tmp/mydir', '/tmp/mynewdir', function (err) {
   if (err) return console.error(err)
-  console.log("success!")
-}) //copies directory, even if it has subdirectories or files
+  console.log('success!')
+}) // copies directory, even if it has subdirectories or files
 ```
 
 
@@ -123,9 +122,9 @@ Example:
 var fs = require('fs-extra')
 
 var file = '/tmp/this/path/does/not/exist/file.txt'
-fs.ensureFile(file, function(err) {
+fs.ensureFile(file, function (err) {
   console.log(err) // => null
-  //file has now been created, including the directory it is to be placed in
+  // file has now been created, including the directory it is to be placed in
 })
 ```
 
@@ -143,9 +142,9 @@ Example:
 var fs = require('fs-extra')
 
 var dir = '/tmp/this/path/does/not/exist'
-fs.ensureDir(dir, function(err) {
+fs.ensureDir(dir, function (err) {
   console.log(err) // => null
-  //dir has now been created, including the directory it is to be placed in
+  // dir has now been created, including the directory it is to be placed in
 })
 ```
 
@@ -165,7 +164,7 @@ Examples:
 ```js
 var fs = require('fs-extra')
 
-fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function(err) {
+fs.mkdirs('/tmp/some/long/path/that/prob/doesnt/exist', function (err) {
   if (err) return console.error(err)
   console.log("success!")
 })
@@ -187,7 +186,7 @@ Example:
 ```js
 var fs = require('fs-extra')
 
-fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', function(err) {
+fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', function (err) {
   if (err) return console.error(err)
   console.log("success!")
 })
@@ -207,10 +206,10 @@ Example:
 var fs = require('fs-extra')
 var file = '/tmp/this/path/does/not/exist/file.txt'
 
-fs.outputFile(file, 'hello!', function(err) {
+fs.outputFile(file, 'hello!', function (err) {
   console.log(err) // => null
 
-  fs.readFile(file, 'utf8', function(err, data) {
+  fs.readFile(file, 'utf8', function (err, data) {
     console.log(data) // => hello!
   })
 })
@@ -233,7 +232,7 @@ Example:
 var fs = require('fs-extra')
 var file = '/tmp/this/path/does/not/exist/file.txt'
 
-fs.outputJson(file, {name: 'JP'}, function(err) {
+fs.outputJson(file, {name: 'JP'}, function (err) {
   console.log(err) // => null
 
   fs.readJson(file, function(err, data) {
@@ -258,7 +257,7 @@ Example:
 ```js
 var fs = require('fs-extra')
 
-fs.readJson('./package.json', function(err, packageObj) {
+fs.readJson('./package.json', function (err, packageObj) {
   console.log(packageObj.version) // => 0.1.3
 })
 ```
@@ -268,7 +267,7 @@ fs.readJson('./package.json', function(err, packageObj) {
 ```js
 var fs = require('fs-extra')
 var file = path.join('/tmp/some-invalid.json')
-var data = "{not valid JSON"
+var data = '{not valid JSON'
 fs.writeFileSync(file, data)
 
 var obj = fs.readJsonSync(file, {throws: false})
@@ -290,10 +289,10 @@ Examples:
 ```js
 var fs = require('fs-extra')
 
-fs.remove('/tmp/myfile', function(err) {
+fs.remove('/tmp/myfile', function (err) {
   if (err) return console.error(err)
 
-  console.log("success!")
+  console.log('success!')
 })
 
 fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory.
@@ -313,7 +312,7 @@ Example:
 
 ```js
 var fs = require('fs-extra')
-fs.writeJson('./package.json', {name: 'fs-extra'}, function(err) {
+fs.writeJson('./package.json', {name: 'fs-extra'}, function (err) {
   console.log(err)
 })
 ```
@@ -328,8 +327,8 @@ Use [Bluebird](https://github.com/petkaantonov/bluebird). See https://github.com
 explicitly listed as supported.
 
 ```js
-var Promise = require("bluebird")
-var fs = Promise.promisifyAll(require("fs-extra"))
+var Promise = require('bluebird')
+var fs = Promise.promisifyAll(require('fs-extra'))
 ```
 
 Or you can use the package [`fs-extra-promise`](https://github.com/overlookmotel/fs-extra-promise) that marries the two together.
