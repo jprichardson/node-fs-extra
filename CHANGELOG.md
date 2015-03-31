@@ -1,3 +1,7 @@
+0.18.0 / 2015-03-31
+-------------------
+- added `emptyDir()` and `emptyDirSync()`
+
 0.17.0 / 2015-03-28
 -------------------
 - `copySync` added `clobber` option (before always would clobber, now if `clobber` is `false` it throws an error if the destination exists).
