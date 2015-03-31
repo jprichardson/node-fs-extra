@@ -60,6 +60,28 @@ var fse = require('fs-extra')
 Methods
 -------
 
+- [createOutputStream](#createOutputStream)
+- [emptyDir](#emptyDir)
+- [emptyDirSync](#emptyDir)
+- [ensureFile](#ensureFile)
+- [ensureFileSync](#ensureFile)
+- [ensureDir](#ensureDir)
+- [ensureDir](#ensureDir)
+- [mkdirs](#mkdirs)
+- [mkdirsSync](#mkdirsSync)
+- [move](#move)
+- [outputFile](#outputFile)
+- [outputFileSync](#outputFile)
+- [outputJson](#outputJson)
+- [outputJsonSync](#outputJson)
+- [readJson](#readJson)
+- [readJsonSync](#readJson)
+- [remove](#remove)
+- [removeSync](#remove)
+- [writeJson](#writeJson)
+- [writeJsonSync](#writeJson)
+
+
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
 
