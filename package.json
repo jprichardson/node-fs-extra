@@ -52,7 +52,7 @@
   },
   "main": "./lib/index",
   "scripts": {
-    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- --reporter list test/*.js",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha --recursive -- --reporter list",
     "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
     "test": "mocha test"
   }
