@@ -8,35 +8,35 @@ var fse = require('../')
 
 var TEST_DIR = ''
 
-describe('fs-extra', function() {
-  beforeEach(function() {
+describe('fs-extra', function () {
+  beforeEach(function () {
     TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
-  afterEach(function(done) {
+  afterEach(function (done) {
     fse.remove(TEST_DIR, done)
   })
 
-  describe('+ mkdirs()', function() {
-    it('should make the directory', function(done) {
+  describe('+ mkdirs()', function () {
+    it('should make the directory', function (done) {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
 
       assert(!fs.existsSync(dir))
 
-      fse.mkdirs(dir, function(err) {
+      fse.mkdirs(dir, function (err) {
         assert.ifError(err)
         assert(fs.existsSync(dir))
         done()
       })
     })
 
-    it('should make the entire directory path', function(done) {
+    it('should make the entire directory path', function (done) {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
       var newDir = path.join(TEST_DIR, 'dfdf', 'ffff', 'aaa')
 
       assert(!fs.existsSync(dir))
 
-      fse.mkdirs(newDir, function(err) {
+      fse.mkdirs(newDir, function (err) {
         assert.ifError(err)
         assert(fs.existsSync(newDir))
         done()
@@ -44,8 +44,8 @@ describe('fs-extra', function() {
     })
   })
 
-  describe('+ mkdirsSync()', function() {
-    it('should make the directory', function(done) {
+  describe('+ mkdirsSync()', function () {
+    it('should make the directory', function (done) {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
 
       assert(!fs.existsSync(dir))
@@ -55,7 +55,7 @@ describe('fs-extra', function() {
       done()
     })
 
-    it('should make the entire directory path', function(done) {
+    it('should make the entire directory path', function (done) {
       var dir = path.join(TEST_DIR, 'tmp-' + Date.now() + Math.random())
       var newDir = path.join(dir, 'dfdf', 'ffff', 'aaa')
 
