@@ -4,25 +4,27 @@ var path = require('path')
 var testutil = require('testutil')
 var fse = require('../')
 
+/* global afterEach, beforeEach, describe, it */
+
 var TEST_DIR = ''
 
-describe('fs-extra', function() {
-  beforeEach(function() {
+describe('fs-extra', function () {
+  beforeEach(function () {
     TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
-  afterEach(function(done) {
+  afterEach(function (done) {
     fse.remove(TEST_DIR, done)
   })
 
-  describe('+ ensureFile()', function() {
-    describe('> when file exists', function() {
-      it('should not do anything', function(done) {
+  describe('+ ensureFile()', function () {
+    describe('> when file exists', function () {
+      it('should not do anything', function (done) {
         var file = path.join(TEST_DIR, 'file.txt')
         fs.writeFileSync(file, 'blah')
 
         assert(fs.existsSync(file))
-        fse.ensureFile(file, function(err) {
+        fse.ensureFile(file, function (err) {
           assert.ifError(err)
           assert(fs.existsSync(file))
           done()
@@ -30,12 +32,12 @@ describe('fs-extra', function() {
       })
     })
 
-    describe('> when file does not exist', function() {
-      it('should create the file', function(done) {
+    describe('> when file does not exist', function () {
+      it('should create the file', function (done) {
         var file = path.join(TEST_DIR, 'dir/that/does/not/exist', 'file.txt')
 
         assert(!fs.existsSync(file))
-        fse.ensureFile(file, function(err) {
+        fse.ensureFile(file, function (err) {
           assert.ifError(err)
           assert(fs.existsSync(file))
           done()
@@ -44,9 +46,9 @@ describe('fs-extra', function() {
     })
   })
 
-  describe('+ ensureFileSync()', function() {
-    describe('> when file exists', function() {
-      it('should not do anything', function() {
+  describe('+ ensureFileSync()', function () {
+    describe('> when file exists', function () {
+      it('should not do anything', function () {
         var file = path.join(TEST_DIR, 'file.txt')
         fs.writeFileSync(file, 'blah')
 
@@ -56,8 +58,8 @@ describe('fs-extra', function() {
       })
     })
 
-    describe('> when file does not exist', function() {
-      it('should create the file', function() {
+    describe('> when file does not exist', function () {
+      it('should create the file', function () {
         var file = path.join(TEST_DIR, 'dir/that/does/not/exist', 'file.txt')
 
         assert(!fs.existsSync(file))
@@ -67,14 +69,14 @@ describe('fs-extra', function() {
     })
   })
 
-  describe('+ ensureDir()', function() {
-    describe('> when dir exists', function() {
-      it('should not do anything', function(done) {
+  describe('+ ensureDir()', function () {
+    describe('> when dir exists', function () {
+      it('should not do anything', function (done) {
         var dir = path.join(TEST_DIR, 'dir/does/not/exist')
         fse.mkdirpSync(dir)
 
         assert(fs.existsSync(dir))
-        fse.ensureDir(dir, function(err) {
+        fse.ensureDir(dir, function (err) {
           assert.ifError(err)
           assert(fs.existsSync(dir))
           done()
@@ -82,12 +84,12 @@ describe('fs-extra', function() {
       })
     })
 
-    describe('> when dir does not exist', function() {
-      it('should create the dir', function(done) {
+    describe('> when dir does not exist', function () {
+      it('should create the dir', function (done) {
         var dir = path.join(TEST_DIR, 'dir/that/does/not/exist')
 
         assert(!fs.existsSync(dir))
-        fse.ensureDir(dir, function(err) {
+        fse.ensureDir(dir, function (err) {
           assert.ifError(err)
           assert(fs.existsSync(dir))
           done()
@@ -96,9 +98,9 @@ describe('fs-extra', function() {
     })
   })
 
-  describe('+ ensureDirSync()', function() {
-    describe('> when dir exists', function() {
-      it('should not do anything', function() {
+  describe('+ ensureDirSync()', function () {
+    describe('> when dir exists', function () {
+      it('should not do anything', function () {
         var dir = path.join(TEST_DIR, 'dir/does/not/exist')
         fse.mkdirpSync(dir)
 
@@ -108,8 +110,8 @@ describe('fs-extra', function() {
       })
     })
 
-    describe('> when dir does not exist', function() {
-      it('should create the dir', function() {
+    describe('> when dir does not exist', function () {
+      it('should create the dir', function () {
         var dir = path.join(TEST_DIR, 'dir/that/does/not/exist')
 
         assert(!fs.existsSync(dir))
@@ -119,4 +121,3 @@ describe('fs-extra', function() {
     })
   })
 })
-
