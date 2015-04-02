@@ -56,30 +56,30 @@ var fse = require('fs-extra')
 ```
 
 
-
 Methods
 -------
-
-- [createOutputStream](#createOutputStream)
-- [emptyDir](#emptyDir)
-- [emptyDirSync](#emptyDir)
-- [ensureFile](#ensureFile)
-- [ensureFileSync](#ensureFile)
-- [ensureDir](#ensureDir)
-- [ensureDir](#ensureDir)
-- [mkdirs](#mkdirs)
-- [mkdirsSync](#mkdirsSync)
-- [move](#move)
-- [outputFile](#outputFile)
-- [outputFileSync](#outputFile)
-- [outputJson](#outputJson)
-- [outputJsonSync](#outputJson)
-- [readJson](#readJson)
-- [readJsonSync](#readJson)
-- [remove](#remove)
-- [removeSync](#remove)
-- [writeJson](#writeJson)
-- [writeJsonSync](#writeJson)
+- [copy](#copysrc-dest-options-callback)
+- [copySync](#copysrc-dest-options-callback)
+- [createOutputStream](#createoutputstreamfile-options)
+- [emptyDir](#emptydirdir-callback)
+- [emptyDirSync](#emptydirdir-callback)
+- [ensureFile](#ensurefilefile-callback)
+- [ensureFileSync](#ensurefilefile-callback)
+- [ensureDir](#ensuredirdir-callback)
+- [ensureDirSync](#ensuredirdir-callback)
+- [mkdirs](#mkdirsdir-callback)
+- [mkdirsSync](#mkdirsdir-callback)
+- [move](#movesrc-dest-options-callback)
+- [outputFile](#outputfilefile-data-callback)
+- [outputFileSync](#outputfilefile-data-callback)
+- [outputJson](#outputjsonfile-data-callback)
+- [outputJsonSync](#outputjsonfile-data-callback)
+- [readJson](#readjsonfile-options-callback)
+- [readJsonSync](#readjsonfile-options-callback)
+- [remove](#removedir-callback)
+- [removeSync](#removedir-callback)
+- [writeJson](#writejsonfile-object-options-callback)
+- [writeJsonSync](#writejsonfile-object-options-callback)
 
 
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
