@@ -48,12 +48,13 @@
     "mocha": "^2.1.0",
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
+    "standard": "^3.3.1",
     "testutil": "^0.7.0"
   },
   "main": "./lib/index",
   "scripts": {
     "coverage": "istanbul cover ./node_modules/.bin/_mocha --recursive -- --reporter list",
     "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
-    "test": "mocha test"
+    "test": "standard && mocha test"
   }
 }
