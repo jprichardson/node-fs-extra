@@ -393,6 +393,24 @@ If you want to watch for changes to files or directories, then you should use [c
 
 
 
+Hacking on fs-extra
+-------------------
+
+Wanna hack on `fs-extra`? Great! Your help is needed! [fs-extra is one of the most depended upon Node.js package](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true). This project
+uses [JavaScript Standard Style](https://github.com/feross/standard) - if the name or style choices bother you,
+you're gonna have to get over it :) If `standard` is good enough for `npm`, it's good enough for us.
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
+What's needed?
+- More tests for edge cases. Specifically on different platforms. There can never be enough tests.
+- A directory walker. Probably this one: https://github.com/thlorenz/readdirp imported into `fs-extra`.
+- After the directory walker is integrated, any function that needs to traverse directories like
+`copy`, `remove`, or `mkdirs` should be built on top of it.
+- After the aforementioned functions are built on the directory walker, `fs-extra` should then explicitly
+support wildcards.
+
+
 
 Naming
 ------
