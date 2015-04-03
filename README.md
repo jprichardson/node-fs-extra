@@ -405,6 +405,7 @@ you're gonna have to get over it :) If `standard` is good enough for `npm`, it's
 
 What's needed?
 - More tests for edge cases. Specifically on different platforms. There can never be enough tests.
+- Really really help with the Windows tests. See appveyor outputs for more info.
 - A directory walker. Probably this one: https://github.com/thlorenz/readdirp imported into `fs-extra`.
 - After the directory walker is integrated, any function that needs to traverse directories like
 `copy`, `remove`, or `mkdirs` should be built on top of it.
