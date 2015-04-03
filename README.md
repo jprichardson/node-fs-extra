@@ -2,6 +2,7 @@ Node.js: fs-extra
 =================
 
 [![build status](https://secure.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
+[![Windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-fs-extra/master.svg?label=Windows)](https://ci.appveyor.com/project/jprichardson/node-fs-extra/branch/master)
 [![downloads per month](http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
 [![Coverage Status](https://img.shields.io/coveralls/jprichardson/node-fs-extra.svg)](https://coveralls.io/r/jprichardson/node-fs-extra)
 
