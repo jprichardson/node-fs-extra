@@ -2,20 +2,21 @@ var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
 var rimraf = require('rimraf')
-var readDirFiles = require('read-dir-files').read //temporary, will remove
-var util = require('util')
+var readDirFiles = require('read-dir-files').read // temporary, will remove
 var ncp = require('../../../lib/_copy').ncp
+
+/* global before, beforeEach, describe, it */
 
 var fixturesDir = path.join(__dirname, 'fixtures')
 
 describe('ncp', function () {
   describe('regular files and directories', function () {
     var fixtures = path.join(fixturesDir, 'regular-fixtures'),
-        src = path.join(fixtures, 'src'),
-        out = path.join(fixtures, 'out')
+      src = path.join(fixtures, 'src'),
+      out = path.join(fixtures, 'out')
 
     before(function (cb) {
-      rimraf(out, function() {
+      rimraf(out, function () {
         ncp(src, out, cb)
       })
     })
@@ -34,8 +35,8 @@ describe('ncp', function () {
 
     describe('when copying files using filter', function () {
       before(function (cb) {
-        var filter = function(name) {
-          return name.substr(name.length - 1) != 'a'
+        var filter = function (name) {
+          return name.substr(name.length - 1) !== 'a'
         }
         rimraf(out, function () {
           ncp(src, out, {filter: filter}, cb)
@@ -44,13 +45,15 @@ describe('ncp', function () {
 
       it('files are copied correctly', function (cb) {
         readDirFiles(src, 'utf8', function (srcErr, srcFiles) {
-          function filter(files) {
+          function filter (files) {
             for (var fileName in files) {
               var curFile = files[fileName]
-              if (curFile instanceof Object)
+              if (curFile instanceof Object) {
                 return filter(curFile)
-              if (fileName.substr(fileName.length - 1) == 'a')
+              }
+              if (fileName.substr(fileName.length - 1) === 'a') {
                 delete files[fileName]
+              }
             }
           }
           filter(srcFiles)
@@ -65,8 +68,8 @@ describe('ncp', function () {
 
     describe('when using clobber=false', function () {
       it('the copy is completed successfully', function (cb) {
-        ncp(src, out, function() {
-          ncp(src, out, {clobber: false}, function(err) {
+        ncp(src, out, function () {
+          ncp(src, out, {clobber: false}, function (err) {
             assert.ifError(err)
             cb()
           })
@@ -77,11 +80,11 @@ describe('ncp', function () {
     describe('when using transform', function () {
       it('file descriptors are passed correctly', function (cb) {
         ncp(src, out, {
-           transform: function(read,write,file) {
-              assert.notEqual(file.name, undefined)
-              assert.strictEqual(typeof file.mode,'number')
-              read.pipe(write)
-           }
+          transform: function (read, write, file) {
+            assert.notEqual(file.name, undefined)
+            assert.strictEqual(typeof file.mode, 'number')
+            read.pipe(write)
+          }
         }, cb)
       })
     })
@@ -89,8 +92,8 @@ describe('ncp', function () {
 
   describe('symlink handling', function () {
     var fixtures = path.join(fixturesDir, 'symlink-fixtures'),
-        src = path.join(fixtures, 'src'),
-        out = path.join(fixtures, 'out')
+      src = path.join(fixtures, 'src'),
+      out = path.join(fixtures, 'out')
 
     beforeEach(function (cb) {
       rimraf(out, cb)
@@ -107,6 +110,7 @@ describe('ncp', function () {
 
     it('copies file contents when dereference=true', function (cb) {
       ncp(src, out, { dereference: true }, function (err) {
+        assert(!err)
         var fileSymlinkPath = path.join(out, 'file-symlink')
         assert.ok(fs.lstatSync(fileSymlinkPath).isFile())
         assert.equal(fs.readFileSync(fileSymlinkPath), 'foo contents')
@@ -122,8 +126,8 @@ describe('ncp', function () {
 
   describe('broken symlink handling', function () {
     var fixtures = path.join(fixturesDir, 'broken-symlink-fixtures'),
-        src = path.join(fixtures, 'src'),
-        out = path.join(fixtures, 'out')
+      src = path.join(fixtures, 'src'),
+      out = path.join(fixtures, 'out')
 
     beforeEach(function (cb) {
       rimraf(out, cb)
@@ -147,25 +151,26 @@ describe('ncp', function () {
   })
 
   // see https://github.com/AvianFlu/ncp/issues/71
-  describe('Issue 71: Odd Async Behaviors', function(cb){
+  describe('Issue 71: Odd Async Behaviors', function (cb) {
     var fixtures = path.join(__dirname, 'fixtures', 'regular-fixtures')
     var src = path.join(fixtures, 'src')
     var out = path.join(fixtures, 'out')
 
     var totalCallbacks = 0
 
-    function copyAssertAndCount(callback){
+    function copyAssertAndCount (callback) {
       // rimraf(out, function() {
-        ncp(src, out, function(err){
-          totalCallbacks += 1
-          readDirFiles(src, 'utf8', function (srcErr, srcFiles) {
-            readDirFiles(out, 'utf8', function (outErr, outFiles) {
-              assert.ifError(srcErr)
-              assert.deepEqual(srcFiles, outFiles)
-              callback()
-            })
+      ncp(src, out, function (err) {
+        assert(!err)
+        totalCallbacks += 1
+        readDirFiles(src, 'utf8', function (srcErr, srcFiles) {
+          readDirFiles(out, 'utf8', function (outErr, outFiles) {
+            assert.ifError(srcErr)
+            assert.deepEqual(srcFiles, outFiles)
+            callback()
           })
         })
+      })
       // })
     }
 
@@ -174,10 +179,10 @@ describe('ncp', function () {
         var expected = 10
         var count = 10
 
-        function next() {
+        function next () {
           if (count > 0) {
-            setTimeout(function(){
-              copyAssertAndCount(function() {
+            setTimeout(function () {
+              copyAssertAndCount(function () {
                 count -= 1
                 next()
               })

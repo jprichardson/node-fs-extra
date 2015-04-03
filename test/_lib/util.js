@@ -4,24 +4,25 @@ var os = require('os')
 var rimraf = require('rimraf')
 var sr = require('secure-random')
 
-function tmpdir() {
-  if (os.type().toLowerCase().indexOf('win') === 0)
+function tmpdir () {
+  if (os.type().toLowerCase().indexOf('win') === 0) {
     return process.env['TEMP']
-  else
+  } else {
     return '/tmp'
+  }
 }
 
-function createFileWithData(file, size) {
+function createFileWithData (file, size) {
   fs.writeFileSync(file, sr.randomBuffer(size))
   return file
 }
 
-function createTestDir() {
+function createTestDir () {
   var app = 'fs-extra'
   var dir = path.join(tmpdir(), 'test-' + app)
   if (fs.existsSync(dir)) {
     var files = fs.readdirSync(dir)
-    files.forEach(function(file) {
+    files.forEach(function (file) {
       return rimraf.sync(path.join(dir, file))
     })
   } else {
