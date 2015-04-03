@@ -444,29 +444,6 @@ Credit
 - [Andrew Kelley](https://github.com/andrewrk)
 
 
-Contributions
--------------
-
-If you want to contribute, please add a test. Also, don't change the version in `package.json`.
-
-
-### Contributors
-
-- [*] [JP Richardson](https://github.com/jprichardson)
-- [*] [Mike McNeil](https://github.com/mikermcneil)
-- [*] [Ian Crowther](https://github.com/iancrowther)
-- [*] [Stephen Mathieson](https://github.com/stephenmathieson)
-- [*] [Srirangan](https://github.com/Srirangan)
-- [*] [Uli Köhler](https://github.com/ulikoehler)
-- [2] [Sylvain Cleymans](https://github.com/Ackar)
-- [1] [Jim Higson](https://github.com/jimhigson)
-- [1] [PatrickJS](https://github.com/gdi2290)
-- [1] [Michael Tiller](https://github.com/xogeny)
-- [1] [yibuyisheng](https://github.com/yibuyisheng)
-- [1] [overlookmotel](https://github.com/overlookmotel)
-- `<your name here>`
-
-
 
 
 License
@@ -475,7 +452,7 @@ License
 
 Licensed under MIT
 
-Copyright (c) 2011-2014 JP Richardson
+Copyright (c) 2011-2015 JP Richardson
 
 [1]: http://nodejs.org/docs/latest/api/fs.html
 
