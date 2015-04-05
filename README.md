@@ -397,9 +397,9 @@ If you want to watch for changes to files or directories, then you should use [c
 Hacking on fs-extra
 -------------------
 
-Wanna hack on `fs-extra`? Great! Your help is needed! [fs-extra is one of the most depended upon Node.js package](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true). This project
+Wanna hack on `fs-extra`? Great! Your help is needed! [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true). This project
 uses [JavaScript Standard Style](https://github.com/feross/standard) - if the name or style choices bother you,
-you're gonna have to get over it :) If `standard` is good enough for `npm`, it's good enough for us.
+you're gonna have to get over it :) If `standard` is good enough for `npm`, it's good enough for `fs-extra`.
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
