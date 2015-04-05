@@ -2,14 +2,14 @@ var assert = require('assert')
 var path = require('path')
 var rimraf = require('rimraf')
 var fs = require('fs')
-var fse = require('../')
-var testutil = require('./_lib/util')
+var fse = require('../../')
+var testutil = require('../_lib/util')
 
 /* global afterEach, beforeEach, describe, it */
 
 var TEST_DIR = ''
 var FIXTURES_DIR = ''
-var SRC_FIXTURES_DIR = 'test/fixtures/move'
+var SRC_FIXTURES_DIR = path.join(__dirname, './fixtures')
 
 // makes fs.rename return cross-device error.
 var mock_fs = {}
