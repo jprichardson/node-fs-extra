@@ -34,8 +34,8 @@ describe('move', function () {
     fse.copySync(SRC_FIXTURES_DIR, FIXTURES_DIR)
   })
 
-  afterEach(function () {
-    rimraf.sync(TEST_DIR)
+  afterEach(function (done) {
+    rimraf(TEST_DIR, done)
   })
 
   it('should rename a file on the same device', function (done) {

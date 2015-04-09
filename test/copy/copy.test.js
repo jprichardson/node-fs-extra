@@ -20,8 +20,8 @@ describe('fs-extra', function () {
     DIR = testutil.createTestDir('fs-extra')
   })
 
-  afterEach(function () {
-    fs.removeSync(DIR)
+  afterEach(function (done) {
+    fs.remove(DIR, done)
   })
 
   describe('+ copy()', function () {

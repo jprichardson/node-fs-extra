@@ -16,8 +16,8 @@ describe('mkdirp / perm_sync', function () {
     TEST_DIR = testutil.createTestDir('fs-extra')
   })
 
-  afterEach(function () {
-    fse.removeSync(TEST_DIR)
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
   })
 
   it('sync perm', function (done) {

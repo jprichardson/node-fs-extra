@@ -14,8 +14,8 @@ describe('+ copySync()', function () {
     DIR = testlib.createTestDir()
   })
 
-  afterEach(function () {
-    fs.removeSync(DIR)
+  afterEach(function (done) {
+    fs.remove(DIR, done)
   })
 
   describe('> when the source is a file', function () {

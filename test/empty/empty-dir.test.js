@@ -17,8 +17,8 @@ describe('+ emptyDir()', function () {
     fse.ensureDirSync(TEST_DIR)
   })
 
-  afterEach(function () {
-    fse.removeSync(TEST_DIR)
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
   })
 
   describe('> when directory exists and contains items', function () {

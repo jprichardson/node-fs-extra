@@ -31,8 +31,8 @@ describe('mkdirp', function () {
     assert(!fs.existsSync(_rndDir))
   })
 
-  afterEach(function () {
-    fse.removeSync(TEST_DIR)
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
   })
 
   describe('umask', function () {
