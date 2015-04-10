@@ -1,34 +1,31 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var testutil = require('../_lib/util')
+var os = require('os')
 var fse = require('../../')
 
 /* global afterEach, beforeEach, describe, it */
 
-var TEST_DIR = ''
 var oct777 = parseInt('777', 8)
 
 describe('mkdirp', function () {
+  var TEST_DIR
   var _rndDir
 
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir()
-    TEST_DIR = path.join(TEST_DIR, 'mkdirp')
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'mkdirp')
+    fse.emptyDir(TEST_DIR, function () {
+      // for actual tests
+      var x = Math.floor(Math.random() * Math.pow(16, 6)).toString(16)
+      var y = Math.floor(Math.random() * Math.pow(16, 6)).toString(16)
+      var z = Math.floor(Math.random() * Math.pow(16, 6)).toString(16)
 
-    // verify clean directory
-    assert(!fs.existsSync(TEST_DIR))
-    fs.mkdirSync(TEST_DIR)
+      _rndDir = path.join(TEST_DIR, [x, y, z].join(path.sep))
 
-    // for actual tests
-    var x = Math.floor(Math.random() * Math.pow(16, 6)).toString(16)
-    var y = Math.floor(Math.random() * Math.pow(16, 6)).toString(16)
-    var z = Math.floor(Math.random() * Math.pow(16, 6)).toString(16)
-
-    _rndDir = path.join(TEST_DIR, [x, y, z].join(path.sep))
-
-    // just to be safe, although unnecessary
-    assert(!fs.existsSync(_rndDir))
+      // just to be safe, although unnecessary
+      assert(!fs.existsSync(_rndDir))
+      done()
+    })
   })
 
   afterEach(function (done) {
@@ -38,6 +35,8 @@ describe('mkdirp', function () {
   describe('umask', function () {
     describe('async', function () {
       it('should have proper umask', function (done) {
+        process.umask(0)
+
         fse.mkdirp(_rndDir, function (err) {
           assert.ifError(err)
           fs.exists(_rndDir, function (ex) {
@@ -55,6 +54,8 @@ describe('mkdirp', function () {
 
     describe('sync', function () {
       it('should have proper umask', function (done) {
+        process.umask(0)
+
         try {
           fse.mkdirpSync(_rndDir)
         } catch (err) {
