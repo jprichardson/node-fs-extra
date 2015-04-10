@@ -10,7 +10,7 @@ describe('remove / async / dir', function () {
   var TEST_DIR
 
   beforeEach(function (done) {
-    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'remove-alias')
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'remove-async-dir')
     fse.emptyDir(TEST_DIR, done)
   })
 
