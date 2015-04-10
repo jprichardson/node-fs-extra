@@ -3,7 +3,7 @@ var fs = require('fs')
 var path = require('path')
 var sr = require('secure-random')
 var testutil = require('testutil')
-var fse = require('../')
+var fse = require(process.cwd())
 
 /* global afterEach, beforeEach, describe, it */
 
