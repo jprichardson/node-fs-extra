@@ -1,5 +1,5 @@
 --reporter spec
 --ui bdd
 --growl
---timeout 7000
+--timeout 30000
 --recursive
