@@ -1,15 +1,16 @@
 var assert = require('assert')
 var path = require('path')
+var os = require('os')
 var fse = require('../')
-var testutil = require('testutil')
 
 /* global afterEach, beforeEach, describe, it */
 
-var TEST_DIR
-
 describe('native fs', function () {
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir('fs-extra')
+  var TEST_DIR
+
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'native-fs')
+    fse.emptyDir(TEST_DIR, done)
   })
 
   afterEach(function (done) {
