@@ -59,8 +59,8 @@ var fse = require('fs-extra')
 
 Methods
 -------
-- [copy](#copysrc-dest-options-callback)
-- [copySync](#copysrc-dest-options-callback)
+- [copy](#copy)
+- [copySync](#copy)
 - [createOutputStream](#createoutputstreamfile-options)
 - [emptyDir](#emptydirdir-callback)
 - [emptyDirSync](#emptydirdir-callback)
@@ -86,7 +86,10 @@ Methods
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
 
-### copy(src, dest, [options], callback)
+### copy()
+
+    copy(src, dest, [options], callback)
+
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
