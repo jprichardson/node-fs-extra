@@ -120,8 +120,8 @@ Examples:
 var fs = require('fs-extra')
 
 // if /tmp/some does not exist, it is created
-fs.createOutputStream('/tmp/some/file.txt')
-fs.write('hello\n')
+var ws = fs.createOutputStream('/tmp/some/file.txt')
+ws.write('hello\n')
 ```
 
 Note on naming: you'll notice that fs-extra has some methods like `fs.outputJson`, `fs.outputFile`, etc that use the
