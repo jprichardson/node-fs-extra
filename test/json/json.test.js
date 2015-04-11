@@ -2,7 +2,7 @@ var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
 var testutil = require('testutil')
-var fse = require('../')
+var fse = require(process.cwd())
 
 /* global afterEach, beforeEach, describe, it */
 
