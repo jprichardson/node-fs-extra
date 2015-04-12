@@ -9,12 +9,14 @@ var fse = require(process.cwd())
 describe('move / clobber', function () {
   var TEST_DIR, FIXTURES_DIR
 
-  beforeEach(function () {
+  beforeEach(function (done) {
     TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'move')
-    fse.emptyDirSync(TEST_DIR)
+    fse.emptyDir(TEST_DIR, function (err) {
+      assert.ifError(err)
 
-    FIXTURES_DIR = path.join(TEST_DIR, 'fixtures')
-    fse.copySync(path.join(__dirname, './fixtures'), FIXTURES_DIR)
+      FIXTURES_DIR = path.join(TEST_DIR, 'fixtures')
+      fse.copySync(path.join(__dirname, './fixtures'), FIXTURES_DIR)
+    })
   })
 
   afterEach(function (done) {
