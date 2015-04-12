@@ -16,6 +16,7 @@ describe('move / clobber', function () {
 
       FIXTURES_DIR = path.join(TEST_DIR, 'fixtures')
       fse.copySync(path.join(__dirname, './fixtures'), FIXTURES_DIR)
+      done()
     })
   })
 
