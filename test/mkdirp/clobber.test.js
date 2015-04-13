@@ -1,35 +1,41 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
+var os = require('os')
 var fse = require(process.cwd())
-var testutil = require('testutil')
 
 /* global before, describe, it */
 
 var o755 = parseInt('755', 8)
 
 describe('mkdirp / clobber', function () {
+  var TEST_DIR
   var ps, file, itw
 
   before(function (done) {
-    ps = ['', testutil.createTestDir('fs-extra')]
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp-clobber')
+    fse.emptyDir(TEST_DIR, function (err) {
+      assert.ifError(err)
 
-    for (var i = 0; i < 25; i++) {
-      var dir = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
-      ps.push(dir)
-    }
+      ps = ['', TEST_DIR]
 
-    file = ps.join(path.sep)
+      for (var i = 0; i < 15; i++) {
+        var dir = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
+        ps.push(dir)
+      }
 
-    // a file in the way
-    itw = ps.slice(0, 3).join(path.sep)
+      file = ps.join(path.sep)
 
-    fs.writeFileSync(itw, 'I AM IN THE WAY, THE TRUTH, AND THE LIGHT.')
+      // a file in the way
+      itw = ps.slice(0, 3).join(path.sep)
 
-    fs.stat(itw, function (er, stat) {
-      assert.ifError(er)
-      assert.ok(stat && stat.isFile(), 'should be file')
-      done()
+      fs.writeFileSync(itw, 'I AM IN THE WAY, THE TRUTH, AND THE LIGHT.')
+
+      fs.stat(itw, function (er, stat) {
+        assert.ifError(er)
+        assert.ok(stat && stat.isFile(), 'should be file')
+        done()
+      })
     })
   })
 
