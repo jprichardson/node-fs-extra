@@ -15,8 +15,11 @@ describe('move / clobber', function () {
       assert.ifError(err)
 
       FIXTURES_DIR = path.join(TEST_DIR, 'fixtures')
-      fse.copySync(path.join(__dirname, './fixtures'), FIXTURES_DIR)
-      done()
+      fse.remove(FIXTURES_DIR, function (err) {
+        assert.ifError(err)
+        fse.copySync(path.join(__dirname, './fixtures'), FIXTURES_DIR)
+        done()
+      })
     })
   })
 
