@@ -42,10 +42,10 @@ describe('mkdirp / clobber', function () {
   it('should clobber', function (done) {
     fse.mkdirp(file, o755, function (err) {
       assert.ok(err)
-      if (os.platform() !== 'windows') {
-        assert.equal(err.code, 'ENOTDIR')
-      } else {
+      if (os.platform().indexOf('win') === 0) {
         assert.equal(err.code, 'EEXIST')
+      } else {
+        assert.equal(err.code, 'ENOTDIR')
       }
       done()
     })
