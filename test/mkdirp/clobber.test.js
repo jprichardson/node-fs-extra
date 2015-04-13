@@ -10,14 +10,14 @@ var o755 = parseInt('755', 8)
 
 describe('mkdirp / clobber', function () {
   var TEST_DIR
-  var ps, file, itw
+  var file
 
   before(function (done) {
     TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp-clobber')
     fse.emptyDir(TEST_DIR, function (err) {
       assert.ifError(err)
 
-      ps = ['', TEST_DIR]
+      var ps = [TEST_DIR]
 
       for (var i = 0; i < 15; i++) {
         var dir = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
@@ -27,7 +27,7 @@ describe('mkdirp / clobber', function () {
       file = ps.join(path.sep)
 
       // a file in the way
-      itw = ps.slice(0, 3).join(path.sep)
+      var itw = ps.slice(0, 2).join(path.sep)
 
       fs.writeFileSync(itw, 'I AM IN THE WAY, THE TRUTH, AND THE LIGHT.')
 
