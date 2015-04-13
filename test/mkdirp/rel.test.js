@@ -17,7 +17,7 @@ describe('mkdirp / rel', function () {
     var cwd = process.cwd()
     process.chdir(testutil.createTestDir('fs-extra'))
 
-    var file = [x, y, z].join('/')
+    var file = [x, y, z].join(path.sep)
 
     fse.mkdirp(file, o755, function (err) {
       assert.ifError(err)

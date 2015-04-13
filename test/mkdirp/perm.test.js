@@ -1,6 +1,7 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
+var os = require('os')
 var fse = require('../../')
 var testutil = require('testutil')
 
@@ -38,7 +39,7 @@ describe('mkdirp / perm', function () {
   })
 
   it('async root perm', function (done) {
-    fse.mkdirp('/tmp', o755, function (err) {
+    fse.mkdirp(path.join(os.tmpdir(), 'tmp'), o755, function (err) {
       assert.ifError(err)
       done()
     })

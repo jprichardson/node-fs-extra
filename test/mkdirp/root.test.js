@@ -10,7 +10,7 @@ var o755 = parseInt('755', 8)
 describe('mkdirp / root', function () {
   it('should', function (done) {
     // '/' on unix, 'c:/' on windows.
-    var file = path.resolve('/')
+    var file = path.resolve(path.sep)
 
     fse.mkdirp(file, o755, function (err) {
       if (err) throw err

@@ -16,7 +16,7 @@ describe('mkdirp / race', function () {
       var dir = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
       ps.push(dir)
     }
-    var file = ps.join('/')
+    var file = ps.join(path.sep)
 
     var res = 2
     mk(file, function () {

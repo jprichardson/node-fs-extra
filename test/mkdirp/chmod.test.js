@@ -21,7 +21,7 @@ describe('mkdirp / chmod', function () {
       ps.push(dir)
     }
 
-    TEST_SUBDIR = ps.join('/')
+    TEST_SUBDIR = ps.join(path.sep)
 
     TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp-chmod')
     TEST_SUBDIR = path.join(TEST_DIR, TEST_SUBDIR)

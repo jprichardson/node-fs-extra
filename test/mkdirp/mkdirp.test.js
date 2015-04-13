@@ -20,7 +20,7 @@ describe('mkdirp / mkdirp', function () {
     var y = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
     var z = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
 
-    var file = TEST_DIR + [x, y, z].join('/')
+    var file = TEST_DIR + [x, y, z].join(path.sep)
 
     fse.mkdirp(file, o755, function (err) {
       assert.ifError(err)

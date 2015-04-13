@@ -14,7 +14,7 @@ describe('mkdirp / sync', function () {
     var y = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
     var z = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
 
-    var file = testutil.createTestDir('fs-extra') + '/' + [x, y, z].join('/')
+    var file = testutil.createTestDir('fs-extra') + path.sep + [x, y, z].join(path.sep)
 
     try {
       fse.mkdirpSync(file, o755)

@@ -18,10 +18,10 @@ describe('mkdirp / clobber', function () {
       ps.push(dir)
     }
 
-    file = ps.join('/')
+    file = ps.join(path.sep)
 
     // a file in the way
-    itw = ps.slice(0, 3).join('/')
+    itw = ps.slice(0, 3).join(path.sep)
 
     fs.writeFileSync(itw, 'I AM IN THE WAY, THE TRUTH, AND THE LIGHT.')
 
