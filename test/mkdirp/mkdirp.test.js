@@ -1,5 +1,6 @@
 var assert = require('assert')
 var fs = require('fs')
+var path = require('path')
 var fse = require(process.cwd())
 var testutil = require('testutil')
 
