@@ -42,7 +42,13 @@ describe('mkdirp / sync', function () {
       assert.ok(ex, 'file created')
       fs.stat(file, function (err, stat) {
         assert.ifError(err)
-        assert.equal(stat.mode & o777, o755)
+        // http://stackoverflow.com/questions/592448/c-how-to-set-file-permissions-cross-platform
+        if (os.platform().indexOf('win') === 0) {
+          assert.equal(stat.mode & o777, o777)
+        } else {
+          assert.equal(stat.mode & o777, o755)
+        }
+
         assert.ok(stat.isDirectory(), 'target not a directory')
         done()
       })
