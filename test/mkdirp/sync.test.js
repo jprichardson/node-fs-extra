@@ -8,6 +8,7 @@ var fse = require(process.cwd())
 
 var o755 = parseInt('755', 8)
 var o777 = parseInt('777', 8)
+var o666 = parseInt('666', 8)
 
 describe('mkdirp / sync', function () {
   var TEST_DIR, file
@@ -44,7 +45,7 @@ describe('mkdirp / sync', function () {
         assert.ifError(err)
         // http://stackoverflow.com/questions/592448/c-how-to-set-file-permissions-cross-platform
         if (os.platform().indexOf('win') === 0) {
-          assert.equal(stat.mode & o777, o777)
+          assert.equal(stat.mode & o777, o666)
         } else {
           assert.equal(stat.mode & o777, o755)
         }
