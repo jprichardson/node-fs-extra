@@ -1,22 +1,37 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var fse = require('../../')
-var testutil = require('testutil')
+var os = require('os')
+var fse = require(process.cwd())
 
-/* global describe, it */
+/* global afterEach, beforeEach, describe, it */
 
 var o755 = parseInt('755', 8)
 var o777 = parseInt('777', 8)
 
 describe('mkdirp / sync', function () {
+  var TEST_DIR, file
+
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp-sync')
+    fse.emptyDir(TEST_DIR, function (err) {
+      assert.ifError(err)
+
+      var x = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
+      var y = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
+      var z = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
+
+      file = path.join(TEST_DIR, x, y, z)
+
+      done()
+    })
+  })
+
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
+  })
+
   it('should', function (done) {
-    var x = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
-    var y = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
-    var z = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
-
-    var file = testutil.createTestDir('fs-extra') + path.sep + [x, y, z].join(path.sep)
-
     try {
       fse.mkdirpSync(file, o755)
     } catch (err) {
