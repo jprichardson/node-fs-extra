@@ -23,19 +23,19 @@ describe('ncp broken symlink', function () {
     fse.remove(TEST_DIR, done)
   })
 
-  it('copies broken symlinks by default', function (cb) {
+  it('should copy broken symlinks by default', function (done) {
     ncp(src, out, function (err) {
-      if (err) return cb(err)
+      if (err) return done(err)
       assert.equal(fs.readlinkSync(path.join(out, 'broken-symlink')), path.join(src, 'does-not-exist'))
-      cb()
+      done()
     })
   })
 
-  it('returns an error when dereference=true', function (cb) {
+  it('should return an error when dereference=true', function (done) {
     ncp(src, out, {dereference: true}, function (err) {
       assert.equal(err.length, 1)
       assert.equal(err[0].code, 'ENOENT')
-      cb()
+      done()
     })
   })
 })
