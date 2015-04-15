@@ -1,8 +1,8 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var fse = require('../../')
-var testutil = require('testutil')
+var os = require('os')
+var fse = require(process.cwd())
 
 /* global afterEach, beforeEach, describe, it */
 
@@ -12,8 +12,9 @@ var o777 = parseInt('777', 8)
 describe('mkdirp / perm_sync', function () {
   var TEST_DIR
 
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir('fs-extra')
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp-perm-sync')
+    fse.emptyDir(TEST_DIR, done)
   })
 
   afterEach(function (done) {

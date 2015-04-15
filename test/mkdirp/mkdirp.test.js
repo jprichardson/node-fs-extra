@@ -1,10 +1,10 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
+var os = require('os')
 var fse = require(process.cwd())
-var testutil = require('testutil')
 
-/* global beforeEach, describe, it */
+/* global afterEach, beforeEach, describe, it */
 
 var o755 = parseInt('755', 8)
 var o777 = parseInt('777', 8)
@@ -12,11 +12,16 @@ var o777 = parseInt('777', 8)
 describe('mkdirp / mkdirp', function () {
   var TEST_DIR
 
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir('fs-extra')
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp')
+    fse.emptyDir(TEST_DIR, done)
   })
 
-  it('woo', function (done) {
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
+  })
+
+  it('should make the dir', function (done) {
     var x = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
     var y = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
     var z = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)

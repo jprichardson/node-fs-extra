@@ -3,7 +3,6 @@ var fs = require('fs')
 var path = require('path')
 var os = require('os')
 var fse = require('../../')
-var testutil = require('testutil')
 
 /* global afterEach, beforeEach, describe, it */
 
@@ -13,8 +12,9 @@ var o777 = parseInt('777', 8)
 describe('mkdirp / perm', function () {
   var TEST_DIR
 
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir('fs-extra')
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp-perm')
+    fse.emptyDir(TEST_DIR, done)
   })
 
   afterEach(function (done) {
