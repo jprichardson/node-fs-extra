@@ -1,3 +1,8 @@
+0.18.1 / 2015-04-15
+-------------------
+- improved windows support for `move()` a bit. https://github.com/jprichardson/node-fs-extra/commit/92838980f25dc2ee4ec46b43ee14d3c4a1d30c1b
+- fixed a lot of tests for Windows (appveyor)
+
 0.18.0 / 2015-03-31
 -------------------
 - added `emptyDir()` and `emptyDirSync()`
