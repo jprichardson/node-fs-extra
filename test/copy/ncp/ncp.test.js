@@ -90,40 +90,6 @@ describe('ncp', function () {
     })
   })
 
-  describe('symlink handling', function () {
-    var fixtures = path.join(fixturesDir, 'symlink-fixtures'),
-      src = path.join(fixtures, 'src'),
-      out = path.join(fixtures, 'out')
-
-    beforeEach(function (cb) {
-      rimraf(out, cb)
-    })
-
-    it('copies symlinks by default', function (cb) {
-      ncp(src, out, function (err) {
-        if (err) return cb(err)
-        assert.equal(fs.readlinkSync(path.join(out, 'file-symlink')), 'foo')
-        assert.equal(fs.readlinkSync(path.join(out, 'dir-symlink')), 'dir')
-        cb()
-      })
-    })
-
-    it('copies file contents when dereference=true', function (cb) {
-      ncp(src, out, { dereference: true }, function (err) {
-        assert(!err)
-        var fileSymlinkPath = path.join(out, 'file-symlink')
-        assert.ok(fs.lstatSync(fileSymlinkPath).isFile())
-        assert.equal(fs.readFileSync(fileSymlinkPath), 'foo contents')
-
-        var dirSymlinkPath = path.join(out, 'dir-symlink')
-        assert.ok(fs.lstatSync(dirSymlinkPath).isDirectory())
-        assert.deepEqual(fs.readdirSync(dirSymlinkPath), ['bar'])
-
-        cb()
-      })
-    })
-  })
-
   describe('broken symlink handling', function () {
     var fixtures = path.join(fixturesDir, 'broken-symlink-fixtures'),
       src = path.join(fixtures, 'src'),
