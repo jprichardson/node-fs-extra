@@ -1,34 +1,43 @@
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var rimraf = require('rimraf')
+var os = require('os')
+var fse = require(process.cwd())
 var ncp = require('../../../lib/_copy').ncp
 
-/* global beforeEach, describe, it */
-
-var fixturesDir = path.join(__dirname, 'fixtures')
+/* global afterEach, beforeEach, describe, it */
 
 describe('ncp / symlink', function () {
-  var fixtures = path.join(fixturesDir, 'symlink-fixtures')
-  var src = path.join(fixtures, 'src')
-  var out = path.join(fixtures, 'out')
+  var TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'ncp-symlinks')
+  var src = path.join(TEST_DIR, 'src')
+  var out = path.join(TEST_DIR, 'out')
 
-  beforeEach(function (cb) {
-    rimraf(out, cb)
-  })
-
-  it('copies symlinks by default', function (cb) {
-    ncp(src, out, function (err) {
-      if (err) return cb(err)
-      assert.equal(fs.readlinkSync(path.join(out, 'file-symlink')), 'foo')
-      assert.equal(fs.readlinkSync(path.join(out, 'dir-symlink')), 'dir')
-      cb()
+  beforeEach(function (done) {
+    fse.emptyDir(TEST_DIR, function (err) {
+      assert.ifError(err)
+      createFixtures(src, done)
     })
   })
 
-  it('copies file contents when dereference=true', function (cb) {
-    ncp(src, out, { dereference: true }, function (err) {
-      assert(!err)
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
+  })
+
+  it('copies symlinks by default', function (done) {
+    ncp(src, out, function (err) {
+      assert.ifError(err)
+
+      assert.equal(fs.readlinkSync(path.join(out, 'file-symlink')), path.join(src, 'foo'))
+      assert.equal(fs.readlinkSync(path.join(out, 'dir-symlink')), path.join(src, 'dir'))
+
+      done()
+    })
+  })
+
+  it('copies file contents when dereference=true', function (done) {
+    ncp(src, out, {dereference: true}, function (err) {
+      assert.ifError(err)
+
       var fileSymlinkPath = path.join(out, 'file-symlink')
       assert.ok(fs.lstatSync(fileSymlinkPath).isFile())
       assert.equal(fs.readFileSync(fileSymlinkPath), 'foo contents')
@@ -37,7 +46,33 @@ describe('ncp / symlink', function () {
       assert.ok(fs.lstatSync(dirSymlinkPath).isDirectory())
       assert.deepEqual(fs.readdirSync(dirSymlinkPath), ['bar'])
 
-      cb()
+      done()
     })
   })
 })
+
+function createFixtures (srcDir, callback) {
+  fs.mkdir(srcDir, function (err) {
+    if (err) return callback(err)
+
+    // note: third parameter in symlinkSync is type e.g. 'file' or 'dir'
+    // https://nodejs.org/api/fs.html#fs_fs_symlink_srcpath_dstpath_type_callback
+    try {
+      var fooFile = path.join(srcDir, 'foo')
+      var fooFileLink = path.join(srcDir, 'file-symlink')
+      fs.writeFileSync(fooFile, 'foo contents')
+      fs.symlinkSync(fooFile, fooFileLink, 'file')
+
+      var dir = path.join(srcDir, 'dir')
+      var dirFile = path.join(dir, 'bar')
+      var dirLink = path.join(srcDir, 'dir-symlink')
+      fs.mkdirSync(dir)
+      fs.writeFileSync(dirFile, 'bar contents')
+      fs.symlinkSync(dir, dirLink, 'dir')
+    } catch (err) {
+      callback(err)
+    }
+
+    callback()
+  })
+}
