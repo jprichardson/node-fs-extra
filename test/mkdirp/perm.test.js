@@ -8,6 +8,7 @@ var fse = require('../../')
 
 var o755 = parseInt('755', 8)
 var o777 = parseInt('777', 8)
+var o666 = parseInt('666', 8)
 
 describe('mkdirp / perm', function () {
   var TEST_DIR
@@ -30,7 +31,13 @@ describe('mkdirp / perm', function () {
         assert.ok(ex, 'file created')
         fs.stat(file, function (err, stat) {
           assert.ifError(err)
-          assert.equal(stat.mode & o777, o755)
+
+          if (os.platform().indexOf('win') === 0) {
+            assert.equal(stat.mode & o777, o666)
+          } else {
+            assert.equal(stat.mode & o777, o755)
+          }
+
           assert.ok(stat.isDirectory(), 'target not a directory')
           done()
         })

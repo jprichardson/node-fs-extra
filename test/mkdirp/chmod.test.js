@@ -9,6 +9,7 @@ var fse = require('../../')
 var o755 = parseInt('755', 8)
 var o744 = parseInt('744', 8)
 var o777 = parseInt('777', 8)
+var o666 = parseInt('666', 8)
 
 describe('mkdirp / chmod', function () {
   var TEST_DIR
@@ -40,7 +41,13 @@ describe('mkdirp / chmod', function () {
       fs.stat(TEST_SUBDIR, function (er, stat) {
         assert.ifError(er, 'should exist')
         assert.ok(stat && stat.isDirectory(), 'should be directory')
-        assert.equal(stat && stat.mode & o777, mode, 'should be 0744')
+
+        if (os.platform().indexOf('win') === 0) {
+          assert.equal(stat && stat.mode & o777, o666, 'windows shit')
+        } else {
+          assert.equal(stat && stat.mode & o777, mode, 'should be 0744')
+        }
+
         done()
       })
     })
