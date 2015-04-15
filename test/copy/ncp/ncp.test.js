@@ -1,11 +1,11 @@
 var assert = require('assert')
-var fs = require('fs')
+// var fs = require('fs')
 var path = require('path')
 var rimraf = require('rimraf')
 var readDirFiles = require('read-dir-files').read // temporary, will remove
 var ncp = require('../../../lib/_copy').ncp
 
-/* global before, beforeEach, describe, it */
+/* global before, describe, it */
 
 var fixturesDir = path.join(__dirname, 'fixtures')
 
@@ -86,32 +86,6 @@ describe('ncp', function () {
             read.pipe(write)
           }
         }, cb)
-      })
-    })
-  })
-
-  describe('broken symlink handling', function () {
-    var fixtures = path.join(fixturesDir, 'broken-symlink-fixtures'),
-      src = path.join(fixtures, 'src'),
-      out = path.join(fixtures, 'out')
-
-    beforeEach(function (cb) {
-      rimraf(out, cb)
-    })
-
-    it('copies broken symlinks by default', function (cb) {
-      ncp(src, out, function (err) {
-        if (err) return cb(err)
-        assert.equal(fs.readlinkSync(path.join(out, 'broken-symlink')), 'does-not-exist')
-        cb()
-      })
-    })
-
-    it('returns an error when dereference=true', function (cb) {
-      ncp(src, out, {dereference: true}, function (err) {
-        assert.equal(err.length, 1)
-        assert.equal(err[0].code, 'ENOENT')
-        cb()
       })
     })
   })
