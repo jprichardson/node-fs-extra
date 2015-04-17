@@ -1,6 +1,7 @@
 var assert = require('assert')
 var path = require('path')
 var os = require('os')
+var fs = require('fs')
 var fse = require('../')
 
 /* global afterEach, beforeEach, describe, it */
@@ -22,5 +23,12 @@ describe('native fs', function () {
     fse.writeFileSync(file, 'hello')
     var data = fse.readFileSync(file, 'utf8')
     assert.equal(data, 'hello')
+  })
+
+  it('should have native fs constants', function () {
+    // Node.js v0.12 / IO.js
+    if ('F_OK' in fs) {
+      assert.equal(fse.F_OK, fs.F_OK)
+    }
   })
 })
