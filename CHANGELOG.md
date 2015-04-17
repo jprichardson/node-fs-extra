@@ -1,3 +1,7 @@
+0.18.2 / 2015-04-17
+-------------------
+- bugfix: allow `F_OK` (https://github.com/jprichardson/node-fs-extra/issues/120)
+
 0.18.1 / 2015-04-15
 -------------------
 - improved windows support for `move()` a bit. https://github.com/jprichardson/node-fs-extra/commit/92838980f25dc2ee4ec46b43ee14d3c4a1d30c1b
