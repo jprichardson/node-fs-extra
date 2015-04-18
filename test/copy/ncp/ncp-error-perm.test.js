@@ -19,6 +19,8 @@ describe('ncp / error / dest-permission', function () {
   var src = path.join(TEST_DIR, 'src')
   var dest = path.join(TEST_DIR, 'dest')
 
+  if (os.platform().indexOf('win') === 0) return
+
   beforeEach(function (done) {
     fse.emptyDir(TEST_DIR, function (err) {
       assert.ifError(err)
