@@ -1,10 +1,9 @@
 // relevant: https://github.com/jprichardson/node-fs-extra/issues/89
 // come up with better file name
 
-var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var os =  require('os')
+var os = require('os')
 var fse = require(process.cwd())
 
 /* global afterEach, beforeEach, describe, it */
@@ -17,7 +16,7 @@ describe('copy / gh #89', function () {
   })
 
   afterEach(function (done) {
-    fse.remove(DIR, done)
+    fse.remove(TEST_DIR, done)
   })
 
   it('should...', function (done) {
@@ -37,5 +36,7 @@ describe('copy / gh #89', function () {
     fs.writeFileSync(four, '4')
 
     // shit
+    // TODO: decide behavior
+    done()
   })
 })
