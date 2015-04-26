@@ -33,18 +33,6 @@ describe('remove', function () {
   })
 
   describe('+ removeSync()', function () {
-    it('should delete directories and files synchronously', function () {
-      assert(fs.existsSync(TEST_DIR))
-      fse.removeSync(TEST_DIR)
-      assert(!fs.existsSync(TEST_DIR))
-    })
-
-    it('should delete an empty directory synchronously', function () {
-      assert(fs.existsSync(TEST_DIR))
-      fse.removeSync(TEST_DIR)
-      assert(!fs.existsSync(TEST_DIR))
-    })
-
     it('should delete a file synchronously', function () {
       var file = path.join(TEST_DIR, 'file')
       fs.writeFileSync(file, 'hello')
