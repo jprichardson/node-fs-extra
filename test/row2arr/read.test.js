@@ -19,7 +19,7 @@ describe('read', function () {
   })
 
   describe('+ readJSON', function () {
-    it('should read a file and parse the json', function (done) {
+    it('should read a file and convert row to arr', function (done) {
       var text = "aaaa\nbbbb\ncccc\ndddd"
 
       var file = path.join(TEST_DIR, 'file.txt')
@@ -29,9 +29,23 @@ describe('read', function () {
         assert.ifError(err)
         assert.strictEqual(arr[0], "aaaa")
         assert.strictEqual(arr[1], "bbbb")
+        assert.strictEqual(arr[2], "cccc")
 
         done()
       })
+    })
+
+    it('should read a file and convert row to arr by sync', function () {
+      var text = "aaaa\nbbbb\ncccc\ndddd"
+
+      var file = path.join(TEST_DIR, 'file.txt')
+      fs.writeFileSync(file, text)
+
+      var rowarr = fse.readRow2ArrSync(file)
+
+      assert.strictEqual(rowarr[0], "aaaa")
+      assert.strictEqual(rowarr[1], "bbbb")
+      assert.strictEqual(rowarr[2], "cccc")
     })
   })
 })
