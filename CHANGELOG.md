@@ -1,3 +1,7 @@
+0.18.3 / 2015-05-08
+-------------------
+- bugfix: handle `EEXIST` when clobbering on some Linux systems. https://github.com/jprichardson/node-fs-extra/pull/134
+
 0.18.2 / 2015-04-17
 -------------------
 - bugfix: allow `F_OK` (https://github.com/jprichardson/node-fs-extra/issues/120)
