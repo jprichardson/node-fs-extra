@@ -9,3 +9,4 @@ env:
   - TEST_SUITE=test
   - TEST_SUITE=coveralls
 script: "npm run-script $TEST_SUITE"
+sudo: false
