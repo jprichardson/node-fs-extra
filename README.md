@@ -68,6 +68,8 @@ Methods
 - [ensureFileSync](#ensurefilefile-callback)
 - [ensureDir](#ensuredirdir-callback)
 - [ensureDirSync](#ensuredirdir-callback)
+- [isDirectory](#isdirectoryfile-callback)
+- [isDirectorySync](#isdirectoryfile-callback)
 - [mkdirs](#mkdirsdir-callback)
 - [mkdirsSync](#mkdirsdir-callback)
 - [move](#movesrc-dest-options-callback)
@@ -192,6 +194,28 @@ var dir = '/tmp/this/path/does/not/exist'
 fs.ensureDir(dir, function (err) {
   console.log(err) // => null
   // dir has now been created, including the directory it is to be placed in
+})
+```
+
+
+
+### isDirectory(file, callback)
+
+Check if a file is a directory. Shortcut for `fs.stat()` followed by running `isDirectory()` on the result.
+
+Alias: `isDir()`
+
+Sync: `isDirectorySync()` (alias `isDirSync()`)
+
+
+Example:
+
+```js
+var fs = require('fs-extra')
+
+var file = '/tmp/path/to/a/file'
+fs.isDirectory(file, function (err, isDir) {
+  console.log(isDir) // => true if is directory, false if not
 })
 ```
 
