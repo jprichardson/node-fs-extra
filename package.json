@@ -31,12 +31,7 @@
     "move"
   ],
   "author": "JP Richardson <jprichardson@gmail.com>",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/jprichardson/node-fs-extra/raw/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "dependencies": {
     "graceful-fs": "^3.0.5",
     "jsonfile": "^2.0.0",
