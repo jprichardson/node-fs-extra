@@ -1,3 +1,7 @@
+0.18.4 / 2015-05-22
+-------------------
+- fixed license field according to this: https://github.com/jprichardson/node-fs-extra/pull/136 and https://github.com/npm/npm/releases/tag/v2.10.0
+
 0.18.3 / 2015-05-08
 -------------------
 - bugfix: handle `EEXIST` when clobbering on some Linux systems. https://github.com/jprichardson/node-fs-extra/pull/134
