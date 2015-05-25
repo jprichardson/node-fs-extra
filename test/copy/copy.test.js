@@ -1,9 +1,10 @@
 var assert = require('assert')
 var crypto = require('crypto')
-var fs = require('../../')
+var fs = require('fs')
+var os = require('os')
 var path = require('path')
-var testutil = require('testutil')
-var mkdirp = fs.mkdirs
+var fse = require('../../')
+var mkdirp = fse.mkdirs
 var testlib = require('../_lib/util')
 
 /* global afterEach, beforeEach, describe, it */
@@ -13,27 +14,28 @@ var o666 = parseInt('666', 8)
 var o444 = parseInt('444', 8)
 
 var SIZE = 16 * 64 * 1024 + 7
-var DIR = ''
+var TEST_DIR = ''
 
 describe('fs-extra', function () {
-  beforeEach(function () {
-    DIR = testutil.createTestDir('fs-extra')
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'copy')
+    fse.emptyDir(TEST_DIR, done)
   })
 
   afterEach(function (done) {
-    fs.remove(DIR, done)
+    fse.remove(TEST_DIR, done)
   })
 
   describe('+ copy()', function () {
     describe('> when the source is a file', function () {
       it('should copy the file asynchronously', function (done) {
-        var fileSrc = path.join(DIR, 'TEST_fs-extra_src')
-        var fileDest = path.join(DIR, 'TEST_fs-extra_copy')
+        var fileSrc = path.join(TEST_DIR, 'TEST_fs-extra_src')
+        var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
         testlib.createFileWithData(fileSrc, SIZE)
         var srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest('hex')
         var destMd5 = ''
 
-        fs.copy(fileSrc, fileDest, function (err) {
+        fse.copy(fileSrc, fileDest, function (err) {
           assert(!err)
           destMd5 = crypto.createHash('md5').update(fs.readFileSync(fileDest)).digest('hex')
           assert.strictEqual(srcMd5, destMd5)
@@ -43,39 +45,39 @@ describe('fs-extra', function () {
 
       it('should return an error if the source file does not exist', function (done) {
         var fileSrc = 'we-simply-assume-this-file-does-not-exist.bin'
-        var fileDest = path.join(DIR, 'TEST_fs-extra_copy')
+        var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
 
-        fs.copy(fileSrc, fileDest, function (err) {
+        fse.copy(fileSrc, fileDest, function (err) {
           assert(err)
           done()
         })
       })
 
       it('should only copy files allowed by filter regex', function (done) {
-        var srcFile1 = testlib.createFileWithData(path.join(DIR, '1.jade'), SIZE)
-        var destFile1 = path.join(DIR, 'dest1.jade')
+        var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.jade'), SIZE)
+        var destFile1 = path.join(TEST_DIR, 'dest1.jade')
         var filter = /.html$|.css$/i
-        fs.copy(srcFile1, destFile1, filter, function () {
+        fse.copy(srcFile1, destFile1, filter, function () {
           assert(!fs.existsSync(destFile1))
           done()
         })
       })
 
       it('should only copy files allowed by filter fn', function (done) {
-        var srcFile1 = testlib.createFileWithData(path.join(DIR, '1.css'), SIZE)
-        var destFile1 = path.join(DIR, 'dest1.css')
+        var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.css'), SIZE)
+        var destFile1 = path.join(TEST_DIR, 'dest1.css')
         var filter = function (s) { return s.split('.').pop() !== 'css'}
-        fs.copy(srcFile1, destFile1, filter, function () {
+        fse.copy(srcFile1, destFile1, filter, function () {
           assert(!fs.existsSync(destFile1))
           done()
         })
       })
 
       it('accepts options object in place of filter', function (done) {
-        var srcFile1 = testlib.createFileWithData(path.join(DIR, '1.jade'), SIZE)
-        var destFile1 = path.join(DIR, 'dest1.jade')
+        var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.jade'), SIZE)
+        var destFile1 = path.join(TEST_DIR, 'dest1.jade')
         var options = {filter: /.html$|.css$/i}
-        fs.copy(srcFile1, destFile1, options, function () {
+        fse.copy(srcFile1, destFile1, options, function () {
           assert(!fs.existsSync(destFile1))
           done()
         })
@@ -83,13 +85,13 @@ describe('fs-extra', function () {
 
       describe('> when the destination dir does not exist', function () {
         it('should create the destination directory and copy the file', function (done) {
-          var src = path.join(DIR, 'file.txt')
-          var dest = path.join(DIR, 'this/path/does/not/exist/copied.txt')
+          var src = path.join(TEST_DIR, 'file.txt')
+          var dest = path.join(TEST_DIR, 'this/path/does/not/exist/copied.txt')
           var data = 'did it copy?\n'
 
           fs.writeFileSync(src, data, 'utf8')
 
-          fs.copy(src, dest, function (err) {
+          fse.copy(src, dest, function (err) {
             var data2 = fs.readFileSync(dest, 'utf8')
             assert.strictEqual(data, data2)
             done(err)
@@ -101,9 +103,9 @@ describe('fs-extra', function () {
     describe('> when the source is a directory', function () {
       describe('> when the source directory does not exist', function () {
         it('should return an error', function (done) {
-          var ts = path.join(DIR, 'this_dir_does_not_exist')
-          var td = path.join(DIR, 'this_dir_really_does_not_matter')
-          fs.copy(ts, td, function (err) {
+          var ts = path.join(TEST_DIR, 'this_dir_does_not_exist')
+          var td = path.join(TEST_DIR, 'this_dir_really_does_not_matter')
+          fse.copy(ts, td, function (err) {
             assert(err)
             done()
           })
@@ -112,10 +114,10 @@ describe('fs-extra', function () {
 
       it('should copy the directory asynchronously', function (done) {
         var FILES = 2
-        var src = path.join(DIR, 'src')
-        var dest = path.join(DIR, 'dest')
+        var src = path.join(TEST_DIR, 'src')
+        var dest = path.join(TEST_DIR, 'dest')
 
-        mkdirp(src, function (err) {
+        fse.mkdirs(src, function (err) {
           assert(!err)
           for (var i = 0; i < FILES; ++i) {
             testlib.createFileWithData(path.join(src, i.toString()), SIZE)
@@ -128,7 +130,7 @@ describe('fs-extra', function () {
               testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
             }
 
-            fs.copy(src, dest, function (err) {
+            fse.copy(src, dest, function (err) {
               assert.ifError(err)
               assert(fs.existsSync(dest))
 
@@ -149,17 +151,17 @@ describe('fs-extra', function () {
 
       describe('> when the destination dir does not exist', function () {
         it('should create the destination directory and copy the file', function (done) {
-          var src = path.join(DIR, 'data/')
-          fs.mkdirsSync(src)
+          var src = path.join(TEST_DIR, 'data/')
+          fse.mkdirsSync(src)
           var d1 = 'file1'
           var d2 = 'file2'
 
           fs.writeFileSync(path.join(src, 'f1.txt'), d1)
           fs.writeFileSync(path.join(src, 'f2.txt'), d2)
 
-          var dest = path.join(DIR, 'this/path/does/not/exist/outputDir')
+          var dest = path.join(TEST_DIR, 'this/path/does/not/exist/outputDir')
 
-          fs.copy(src, dest, function (err) {
+          fse.copy(src, dest, function (err) {
             var o1 = fs.readFileSync(path.join(dest, 'f1.txt'), 'utf8')
             var o2 = fs.readFileSync(path.join(dest, 'f2.txt'), 'utf8')
 
@@ -173,7 +175,7 @@ describe('fs-extra', function () {
 
       describe('> when src dir does not exist', function () {
         it('should return an error', function (done) {
-          fs.copy('/does/not/exist', '/something/else', function (err) {
+          fse.copy('/does/not/exist', '/something/else', function (err) {
             assert(err instanceof Error)
             done()
           })
@@ -190,7 +192,7 @@ describe('fs-extra', function () {
         var S_IFREG = parseInt('0100000', 8) // regular file
         var S_IFDIR = parseInt('0040000', 8) // directory
 
-        var permDir = path.join(DIR, 'perms')
+        var permDir = path.join(TEST_DIR, 'perms')
         fs.mkdirSync(permDir)
 
         var srcDir = path.join(permDir, 'src')
@@ -225,7 +227,7 @@ describe('fs-extra', function () {
         assert.strictEqual(d2stats.mode - S_IFDIR, o444)
 
         var destDir = path.join(permDir, 'dest')
-        fs.copy(srcDir, destDir, function (err) {
+        fse.copy(srcDir, destDir, function (err) {
           assert.ifError(err)
 
           var newf1stats = fs.lstatSync(path.join(permDir, 'dest/f1.txt'))
