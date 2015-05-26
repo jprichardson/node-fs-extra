@@ -1,8 +1,8 @@
 var assert = require('assert')
 var fs = require('fs')
+var os = require('os')
 var path = require('path')
 var sr = require('secure-random')
-var testutil = require('testutil')
 var fse = require(process.cwd())
 
 /* global afterEach, beforeEach, describe, it */
@@ -24,12 +24,13 @@ function buildFixtureDir () {
 }
 
 describe('remove', function () {
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir('fs-extra')
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'remove')
+    fse.emptyDir(TEST_DIR, done)
   })
 
-  afterEach(function () {
-    if (fs.existsSync(TEST_DIR)) fse.removeSync(TEST_DIR)
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
   })
 
   describe('+ remove()', function () {

@@ -1,16 +1,17 @@
 var assert = require('assert')
 var fs = require('fs')
+var os = require('os')
 var path = require('path')
-var testutil = require('testutil')
 var fse = require(process.cwd())
 
 /* global afterEach, beforeEach, describe, it */
 
-var TEST_DIR = null
-
 describe('json', function () {
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir('fs-extra')
+  var TEST_DIR
+
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'json')
+    fse.emptyDir(TEST_DIR, done)
   })
 
   afterEach(function (done) {

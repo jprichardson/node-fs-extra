@@ -1,17 +1,28 @@
 var assert = require('assert')
+var os = require('os')
 var path = require('path')
 var fse = require('../../')
-var testutil = require('testutil')
 
-/* global describe, it */
+/* global afterEach, beforeEach, describe, it */
 
 describe('mkdirp / return value', function () {
+  var TEST_DIR
+
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'mkdirp-return')
+    fse.emptyDir(TEST_DIR, done)
+  })
+
+  afterEach(function (done) {
+    fse.remove(TEST_DIR, done)
+  })
+
   it('should', function (done) {
     var x = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
     var y = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
     var z = Math.floor(Math.random() * Math.pow(16, 4)).toString(16)
 
-    var dir = testutil.createTestDir('fs-extra') + path.sep
+    var dir = TEST_DIR + path.sep
     var file = dir + [x, y, z].join(path.sep)
 
     // should return the first dir created.

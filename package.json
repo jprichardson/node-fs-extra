@@ -43,8 +43,7 @@
     "mocha": "^2.1.0",
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
-    "standard": "^3.3.1",
-    "testutil": "^0.7.0"
+    "standard": "^3.3.1"
   },
   "main": "./lib/index",
   "scripts": {
