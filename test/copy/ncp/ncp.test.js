@@ -1,11 +1,11 @@
 var assert = require('assert')
-// var fs = require('fs')
+var fs = require('fs')
 var path = require('path')
 var rimraf = require('rimraf')
 var readDirFiles = require('read-dir-files').read // temporary, will remove
 var ncp = require('../../../lib/_copy').ncp
 
-/* global before, describe, it */
+/* global after, before, describe, it */
 
 var fixturesDir = path.join(__dirname, 'fixtures')
 
@@ -62,6 +62,26 @@ describe('ncp', function () {
             assert.deepEqual(srcFiles, outFiles)
             cb()
           })
+        })
+      })
+    })
+
+    describe('when using clobber=true', function () {
+      before(function () {
+        this.originalCreateReadStream = fs.createReadStream
+      })
+
+      after(function () {
+        fs.createReadStream = this.originalCreateReadStream
+      })
+
+      it('the copy is complete after callback', function (done) {
+        ncp(src, out, {clobber: true}, function (err) {
+          fs.createReadStream = function () {
+            done(new Error('createReadStream after callback'))
+          }
+          assert.ifError(err)
+          process.nextTick(done)
         })
       })
     })
