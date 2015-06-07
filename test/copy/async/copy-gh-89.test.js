@@ -1,6 +1,7 @@
 // relevant: https://github.com/jprichardson/node-fs-extra/issues/89
 // come up with better file name
 
+var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
 var os = require('os')
@@ -35,8 +36,20 @@ describe('copy / gh #89', function () {
     fs.writeFileSync(three, '3')
     fs.writeFileSync(four, '4')
 
-    // shit
-    // TODO: decide behavior
-    done()
+    var C = path.join(TEST_DIR, 'C')
+    fse.copy(A, C, function (err) {
+      if (err) return done(err)
+
+      fse.copy(B, C, function (err) {
+        if (err) return done(err)
+
+        assert(fs.existsSync(path.join(C, 'one.txt')))
+        assert(fs.existsSync(path.join(C, 'two.txt')))
+        assert(fs.existsSync(path.join(C, 'three.txt')))
+        assert(fs.existsSync(path.join(C, 'four.txt')))
+        done()
+      })
+    })
+
   })
 })
