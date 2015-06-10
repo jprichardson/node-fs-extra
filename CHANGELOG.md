@@ -1,3 +1,7 @@
+0.19.0 / 2015-06-08
+-------------------
+- `fs.copy()` had support for Node v0.8, dropped support
+
 0.18.4 / 2015-05-22
 -------------------
 - fixed license field according to this: https://github.com/jprichardson/node-fs-extra/pull/136 and https://github.com/npm/npm/releases/tag/v2.10.0
