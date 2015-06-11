@@ -3,7 +3,7 @@ var fs = require('fs')
 var path = require('path')
 var rimraf = require('rimraf')
 var readDirFiles = require('read-dir-files').read // temporary, will remove
-var ncp = require('../../../lib/copy/_copy').ncp
+var ncp = require('../../../lib/copy/ncp')
 
 /* global after, before, describe, it */
 
