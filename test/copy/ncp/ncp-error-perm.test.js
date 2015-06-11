@@ -5,7 +5,7 @@ var fs = require('fs')
 var path = require('path')
 var os = require('os')
 var fse = require(process.cwd())
-var ncp = require('../../../lib/_copy').ncp
+var ncp = require('../../../lib/copy/_copy').ncp
 
 /* global afterEach, beforeEach, describe, it */
 
