@@ -49,6 +49,7 @@
   "scripts": {
     "coverage": "istanbul cover ./node_modules/.bin/_mocha --recursive -- --reporter list",
     "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
-    "test": "standard && mocha test"
+    "test": "standard && mocha test",
+    "test-windows": "Get-ChildItem -Path .\test\ -Filter *.test.js -Recurse | %{mocha $_}"
   }
 }
