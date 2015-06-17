@@ -20,7 +20,7 @@ test_script:
   - node --version
   - npm --version
   # run tests
-  - npm test-windows
+  - npm run test-windows
 
 # Don't actually build.
 build: off
