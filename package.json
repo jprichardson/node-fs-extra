@@ -47,9 +47,8 @@
   },
   "main": "./lib/index",
   "scripts": {
-    "coverage": "istanbul cover ./node_modules/.bin/_mocha --recursive -- --reporter list",
+    "coverage": "istanbul cover test.js",
     "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
-    "test": "standard && mocha test",
-    "test-windows": "node test.js"
+    "test": "standard && node test.js"
   }
 }
