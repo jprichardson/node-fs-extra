@@ -264,9 +264,10 @@ fs.outputFile(file, 'hello!', function (err) {
 
 
 
-### outputJson(file, data, callback)
+### outputJson(file, data, [options], callback)
 
 Almost the same as `writeJson`, except that if the directory does not exist, it's created.
+`options` are what you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-jsonfile#writefilefilename-options-callback).
 
 Alias: `outputJSON()`
 
@@ -292,7 +293,8 @@ fs.outputJson(file, {name: 'JP'}, function (err) {
 
 ### readJson(file, [options], callback)
 
-Reads a JSON file and then parses it into an object. `options` are the same that you'd pass to `fs.readFile`.
+Reads a JSON file and then parses it into an object. `options` are the same
+that you'd pass to [`jsonFile.readFile`](https://github.com/jprichardson/node-jsonfile#readfilefilename-options-callback).
 
 Alias: `readJSON()`
 
@@ -349,7 +351,8 @@ fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory.
 
 ### writeJson(file, object, [options], callback)
 
-Writes an object to a JSON file. `options` are the same that you'd pass to `fs.readFile`.
+Writes an object to a JSON file. `options` are the same that
+you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-jsonfile#writefilefilename-options-callback).
 
 Alias: `writeJSON()`
 

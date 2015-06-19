@@ -4,6 +4,7 @@
 this package had both `fs.readJsonFile` and `fs.readJson` that were aliases to each other, now use `fs.readJson`.
 - preliminary walker created. Intentionally not documented. If you use it, it will almost certainly change and break your code.
 - started moving tests inline
+- upgraded to `jsonfile@2.1.0`, can now pass JSON revivers/replacers to `readJson()`, `writeJson()`, `outputJson()`
 
 0.19.0 / 2015-06-08
 -------------------
