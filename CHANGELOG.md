@@ -1,4 +1,4 @@
-0.20.0 / 2015-06-xx
+0.20.0 / 2015-06-19
 -------------------
 - removed `jsonfile` aliases with `File` in the name, they weren't documented and probably weren't in use e.g.
 this package had both `fs.readJsonFile` and `fs.readJson` that were aliases to each other, now use `fs.readJson`.
