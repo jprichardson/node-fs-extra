@@ -7,14 +7,11 @@ var mocha = new Mocha({
   timeout: 30000
 })
 
-var filter = function (item, stat) {
-  if (stat.isDirectory()) return true
-  return item.lastIndexOf('.test.js') === (item.length - '.test.js'.length)
-}
-
-walk('./test', filter)
+walk('./')
   .on('data', function (item, stat) {
     if (!stat.isFile()) return
+    if (item.indexOf('node_modules') >= 0) return
+    if (item.lastIndexOf('.test.js') !== (item.length - '.test.js'.length)) return
     mocha.addFile(item)
   })
   .on('end', function () {

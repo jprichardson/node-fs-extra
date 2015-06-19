@@ -2,3 +2,4 @@ coverage/
 test/
 .travis.yml
 appveyor.yml
+lib/**/__tests__/

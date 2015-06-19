@@ -3,6 +3,7 @@
 - removed `jsonfile` aliases with `File` in the name, they weren't documented and probably weren't in use e.g.
 this package had both `fs.readJsonFile` and `fs.readJson` that were aliases to each other, now use `fs.readJson`.
 - preliminary walker created. Intentionally not documented.
+- started moving tests inline
 
 0.19.0 / 2015-06-08
 -------------------
