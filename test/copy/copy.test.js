@@ -4,8 +4,6 @@ var fs = require('fs')
 var os = require('os')
 var path = require('path')
 var fse = require('../../')
-var mkdirp = fse.mkdirs
-var testlib = require('../_lib/util')
 
 /* global afterEach, beforeEach, describe, it */
 
@@ -31,7 +29,7 @@ describe('fs-extra', function () {
       it('should copy the file asynchronously', function (done) {
         var fileSrc = path.join(TEST_DIR, 'TEST_fs-extra_src')
         var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
-        testlib.createFileWithData(fileSrc, SIZE)
+        fs.writeFileSync(fileSrc, crypto.randomBytes(SIZE))
         var srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest('hex')
         var destMd5 = ''
 
@@ -54,7 +52,8 @@ describe('fs-extra', function () {
       })
 
       it('should only copy files allowed by filter regex', function (done) {
-        var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.jade'), SIZE)
+        var srcFile1 = path.join(TEST_DIR, '1.jade')
+        fs.writeFileSync(srcFile1, '')
         var destFile1 = path.join(TEST_DIR, 'dest1.jade')
         var filter = /.html$|.css$/i
         fse.copy(srcFile1, destFile1, filter, function () {
@@ -64,7 +63,8 @@ describe('fs-extra', function () {
       })
 
       it('should only copy files allowed by filter fn', function (done) {
-        var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.css'), SIZE)
+        var srcFile1 = path.join(TEST_DIR, '1.css')
+        fs.writeFileSync(srcFile1, '')
         var destFile1 = path.join(TEST_DIR, 'dest1.css')
         var filter = function (s) { return s.split('.').pop() !== 'css'}
         fse.copy(srcFile1, destFile1, filter, function () {
@@ -74,7 +74,8 @@ describe('fs-extra', function () {
       })
 
       it('accepts options object in place of filter', function (done) {
-        var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.jade'), SIZE)
+        var srcFile1 = path.join(TEST_DIR, '1.jade')
+        fs.writeFileSync(srcFile1, '')
         var destFile1 = path.join(TEST_DIR, 'dest1.jade')
         var options = {filter: /.html$|.css$/i}
         fse.copy(srcFile1, destFile1, options, function () {
@@ -120,14 +121,14 @@ describe('fs-extra', function () {
         fse.mkdirs(src, function (err) {
           assert(!err)
           for (var i = 0; i < FILES; ++i) {
-            testlib.createFileWithData(path.join(src, i.toString()), SIZE)
+            fs.writeFileSync(path.join(src, i.toString()), crypto.randomBytes(SIZE))
           }
 
           var subdir = path.join(src, 'subdir')
-          mkdirp(subdir, function (err) {
+          fse.mkdirs(subdir, function (err) {
             assert(!err)
             for (var i = 0; i < FILES; ++i) {
-              testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
+              fs.writeFileSync(path.join(subdir, i.toString()), crypto.randomBytes(SIZE))
             }
 
             fse.copy(src, dest, function (err) {
