@@ -3,7 +3,6 @@ var crypto = require('crypto')
 var os = require('os')
 var path = require('path')
 var fs = require(process.cwd())
-var testlib = require('../../_lib/util')
 
 /* global afterEach, beforeEach, describe, it */
 
@@ -26,7 +25,7 @@ describe('+ copySync()', function () {
       var fileSrc = path.join(TEST_DIR, 'TEST_fs-extra_src')
       var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
 
-      fileSrc = testlib.createFileWithData(fileSrc, SIZE)
+      fs.writeFileSync(fileSrc, crypto.randomBytes(SIZE))
 
       var srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest('hex')
       var destMd5 = ''
@@ -42,7 +41,7 @@ describe('+ copySync()', function () {
       var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
       var linkSrc = path.join(TEST_DIR, 'TEST_fs-extra_copy_link')
 
-      fileSrc = testlib.createFileWithData(fileSrc, SIZE)
+      fs.writeFileSync(fileSrc, crypto.randomBytes(SIZE))
 
       var srcMd5 = crypto.createHash('md5').update(fs.readFileSync(fileSrc)).digest('hex')
       var destMd5 = ''
@@ -56,7 +55,7 @@ describe('+ copySync()', function () {
     it('should maintain file mode', function () {
       var fileSrc = path.join(TEST_DIR, 'TEST_fs-extra_src')
       var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
-      fileSrc = testlib.createFileWithData(fileSrc, SIZE)
+      fs.writeFileSync(fileSrc, crypto.randomBytes(SIZE))
 
       fs.chmodSync(fileSrc, parseInt('750', 8))
       fs.copySync(fileSrc, fileDest)
@@ -67,9 +66,14 @@ describe('+ copySync()', function () {
     })
 
     it('should only copy files allowed by filter regex', function () {
-      var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.html'), SIZE)
-      var srcFile2 = testlib.createFileWithData(path.join(TEST_DIR, '2.css'), SIZE)
-      var srcFile3 = testlib.createFileWithData(path.join(TEST_DIR, '3.jade'), SIZE)
+      var srcFile1 = path.join(TEST_DIR, '1.html')
+      var srcFile2 = path.join(TEST_DIR, '2.css')
+      var srcFile3 = path.join(TEST_DIR, '3.jade')
+
+      fs.writeFileSync(srcFile1, '')
+      fs.writeFileSync(srcFile2, '')
+      fs.writeFileSync(srcFile3, '')
+
       var destFile1 = path.join(TEST_DIR, 'dest1.html')
       var destFile2 = path.join(TEST_DIR, 'dest2.css')
       var destFile3 = path.join(TEST_DIR, 'dest3.jade')
@@ -85,9 +89,14 @@ describe('+ copySync()', function () {
     })
 
     it('should only copy files allowed by filter fn', function () {
-      var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.html'), SIZE)
-      var srcFile2 = testlib.createFileWithData(path.join(TEST_DIR, '2.css'), SIZE)
-      var srcFile3 = testlib.createFileWithData(path.join(TEST_DIR, '3.jade'), SIZE)
+      var srcFile1 = path.join(TEST_DIR, '1.html')
+      var srcFile2 = path.join(TEST_DIR, '2.css')
+      var srcFile3 = path.join(TEST_DIR, '3.jade')
+
+      fs.writeFileSync(srcFile1, '')
+      fs.writeFileSync(srcFile2, '')
+      fs.writeFileSync(srcFile3, '')
+
       var destFile1 = path.join(TEST_DIR, 'dest1.html')
       var destFile2 = path.join(TEST_DIR, 'dest2.css')
       var destFile3 = path.join(TEST_DIR, 'dest3.jade')
@@ -189,7 +198,7 @@ describe('+ copySync()', function () {
       fs.mkdirsSync(src)
 
       for (i = 0; i < FILES; ++i) {
-        testlib.createFileWithData(path.join(src, i.toString()), SIZE)
+        fs.writeFileSync(path.join(src, i.toString()), crypto.randomBytes(SIZE))
       }
 
       var subdir = path.join(src, 'subdir')
@@ -197,7 +206,7 @@ describe('+ copySync()', function () {
       fs.mkdirsSync(subdir)
 
       for (i = 0; i < FILES; ++i) {
-        testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
+        fs.writeFileSync(path.join(subdir, i.toString()), crypto.randomBytes(SIZE))
       }
 
       fs.copySync(src, dest)
@@ -235,14 +244,14 @@ describe('+ copySync()', function () {
       fs.mkdirsSync(src)
 
       for (var i = 0; i < FILES; ++i) {
-        testlib.createFileWithData(path.join(src, i.toString()), SIZE)
+        fs.writeFileSync(path.join(src, i.toString()), crypto.randomBytes(SIZE))
       }
 
       var subdir = path.join(src, 'subdir')
       fs.mkdirsSync(subdir)
 
       for (i = 0; i < FILES; ++i) {
-        testlib.createFileWithData(path.join(subdir, i.toString()), SIZE)
+        fs.writeFileSync(path.join(subdir, i.toString()), crypto.randomBytes(SIZE))
       }
 
       fs.copySync(src, dest, filter)
