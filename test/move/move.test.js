@@ -1,13 +1,12 @@
 var assert = require('assert')
+var os = require('os')
 var path = require('path')
 var rimraf = require('rimraf')
 var fs = require('fs')
-var fse = require('../../')
-var testutil = require('../_lib/util')
+var fse = require(process.cwd())
 
 /* global afterEach, beforeEach, describe, it */
 
-var TEST_DIR = ''
 var FIXTURES_DIR = ''
 var SRC_FIXTURES_DIR = path.join(__dirname, './fixtures')
 
@@ -22,13 +21,12 @@ mock_fs.rename = function (src, dest, callback) {
 }
 
 describe('move', function () {
-  beforeEach(function () {
-    TEST_DIR = testutil.createTestDir('fs-extra')
-    TEST_DIR = path.join(TEST_DIR, 'move')
+  var TEST_DIR
 
-    if (!fs.existsSync(TEST_DIR)) {
-      fs.mkdirSync(TEST_DIR)
-    }
+  beforeEach(function () {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'move')
+
+    fse.emptyDirSync(TEST_DIR)
 
     FIXTURES_DIR = path.join(TEST_DIR, 'fixtures')
     fse.copySync(SRC_FIXTURES_DIR, FIXTURES_DIR)

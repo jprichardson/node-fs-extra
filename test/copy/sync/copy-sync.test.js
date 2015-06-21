@@ -1,27 +1,30 @@
 var assert = require('assert')
 var crypto = require('crypto')
+var os = require('os')
 var path = require('path')
-var fs = require('../../../')
+var fs = require(process.cwd())
 var testlib = require('../../_lib/util')
 
 /* global afterEach, beforeEach, describe, it */
 
 var SIZE = 16 * 64 * 1024 + 7
-var DIR = ''
 
 describe('+ copySync()', function () {
-  beforeEach(function () {
-    DIR = testlib.createTestDir()
+  var TEST_DIR
+
+  beforeEach(function (done) {
+    TEST_DIR = path.join(os.tmpdir(), 'fs-extra', 'copy-sync')
+    fs.emptyDir(TEST_DIR, done)
   })
 
   afterEach(function (done) {
-    fs.remove(DIR, done)
+    fs.remove(TEST_DIR, done)
   })
 
   describe('> when the source is a file', function () {
     it('should copy the file synchronously', function () {
-      var fileSrc = path.join(DIR, 'TEST_fs-extra_src')
-      var fileDest = path.join(DIR, 'TEST_fs-extra_copy')
+      var fileSrc = path.join(TEST_DIR, 'TEST_fs-extra_src')
+      var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
 
       fileSrc = testlib.createFileWithData(fileSrc, SIZE)
 
@@ -35,9 +38,9 @@ describe('+ copySync()', function () {
     })
 
     it('should follow symlinks', function () {
-      var fileSrc = path.join(DIR, 'TEST_fs-extra_src')
-      var fileDest = path.join(DIR, 'TEST_fs-extra_copy')
-      var linkSrc = path.join(DIR, 'TEST_fs-extra_copy_link')
+      var fileSrc = path.join(TEST_DIR, 'TEST_fs-extra_src')
+      var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
+      var linkSrc = path.join(TEST_DIR, 'TEST_fs-extra_copy_link')
 
       fileSrc = testlib.createFileWithData(fileSrc, SIZE)
 
@@ -51,8 +54,8 @@ describe('+ copySync()', function () {
     })
 
     it('should maintain file mode', function () {
-      var fileSrc = path.join(DIR, 'TEST_fs-extra_src')
-      var fileDest = path.join(DIR, 'TEST_fs-extra_copy')
+      var fileSrc = path.join(TEST_DIR, 'TEST_fs-extra_src')
+      var fileDest = path.join(TEST_DIR, 'TEST_fs-extra_copy')
       fileSrc = testlib.createFileWithData(fileSrc, SIZE)
 
       fs.chmodSync(fileSrc, parseInt('750', 8))
@@ -64,12 +67,12 @@ describe('+ copySync()', function () {
     })
 
     it('should only copy files allowed by filter regex', function () {
-      var srcFile1 = testlib.createFileWithData(path.join(DIR, '1.html'), SIZE)
-      var srcFile2 = testlib.createFileWithData(path.join(DIR, '2.css'), SIZE)
-      var srcFile3 = testlib.createFileWithData(path.join(DIR, '3.jade'), SIZE)
-      var destFile1 = path.join(DIR, 'dest1.html')
-      var destFile2 = path.join(DIR, 'dest2.css')
-      var destFile3 = path.join(DIR, 'dest3.jade')
+      var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.html'), SIZE)
+      var srcFile2 = testlib.createFileWithData(path.join(TEST_DIR, '2.css'), SIZE)
+      var srcFile3 = testlib.createFileWithData(path.join(TEST_DIR, '3.jade'), SIZE)
+      var destFile1 = path.join(TEST_DIR, 'dest1.html')
+      var destFile2 = path.join(TEST_DIR, 'dest2.css')
+      var destFile3 = path.join(TEST_DIR, 'dest3.jade')
       var filter = /.html$|.css$/i
 
       fs.copySync(srcFile1, destFile1, {filter: filter})
@@ -82,12 +85,12 @@ describe('+ copySync()', function () {
     })
 
     it('should only copy files allowed by filter fn', function () {
-      var srcFile1 = testlib.createFileWithData(path.join(DIR, '1.html'), SIZE)
-      var srcFile2 = testlib.createFileWithData(path.join(DIR, '2.css'), SIZE)
-      var srcFile3 = testlib.createFileWithData(path.join(DIR, '3.jade'), SIZE)
-      var destFile1 = path.join(DIR, 'dest1.html')
-      var destFile2 = path.join(DIR, 'dest2.css')
-      var destFile3 = path.join(DIR, 'dest3.jade')
+      var srcFile1 = testlib.createFileWithData(path.join(TEST_DIR, '1.html'), SIZE)
+      var srcFile2 = testlib.createFileWithData(path.join(TEST_DIR, '2.css'), SIZE)
+      var srcFile3 = testlib.createFileWithData(path.join(TEST_DIR, '3.jade'), SIZE)
+      var destFile1 = path.join(TEST_DIR, 'dest1.html')
+      var destFile2 = path.join(TEST_DIR, 'dest2.css')
+      var destFile3 = path.join(TEST_DIR, 'dest3.jade')
 
       var filter = function (s) {return s.split('.').pop() !== 'css'}
 
@@ -102,8 +105,8 @@ describe('+ copySync()', function () {
 
     describe('> when the destination dir does not exist', function () {
       it('should create the destination directory and copy the file', function () {
-        var src = path.join(DIR, 'file.txt')
-        var dest = path.join(DIR, 'this/path/does/not/exist/copied.txt')
+        var src = path.join(TEST_DIR, 'file.txt')
+        var dest = path.join(TEST_DIR, 'this/path/does/not/exist/copied.txt')
         var data = 'did it copy?\n'
 
         fs.writeFileSync(src, data, 'utf8')
@@ -120,8 +123,8 @@ describe('+ copySync()', function () {
       var srcData = 'some src data'
 
       beforeEach(function () {
-        src = path.join(DIR, 'src-file')
-        dest = path.join(DIR, 'des-file')
+        src = path.join(TEST_DIR, 'src-file')
+        dest = path.join(TEST_DIR, 'des-file')
 
         // source file must always exist in these cases
         fs.writeFileSync(src, srcData)
@@ -178,8 +181,8 @@ describe('+ copySync()', function () {
   describe('> when the source is a directory', function () {
     it('should copy the directory synchronously', function () {
       var FILES = 2
-      var src = path.join(DIR, 'src')
-      var dest = path.join(DIR, 'dest')
+      var src = path.join(TEST_DIR, 'src')
+      var dest = path.join(TEST_DIR, 'dest')
 
       var i, j
 
@@ -211,8 +214,8 @@ describe('+ copySync()', function () {
     })
 
     it('should preserve symbolic links', function () {
-      var src = path.join(DIR, 'src')
-      var dest = path.join(DIR, 'dest')
+      var src = path.join(TEST_DIR, 'src')
+      var dest = path.join(TEST_DIR, 'dest')
 
       fs.mkdirsSync(src)
       fs.symlinkSync('destination', path.join(src, 'symlink'))
@@ -225,8 +228,8 @@ describe('+ copySync()', function () {
 
     it('should should apply filter recursively', function () {
       var FILES = 2
-      var src = path.join(DIR, 'src')
-      var dest = path.join(DIR, 'dest')
+      var src = path.join(TEST_DIR, 'src')
+      var dest = path.join(TEST_DIR, 'dest')
       var filter = /0$/i
 
       fs.mkdirsSync(src)
@@ -268,7 +271,7 @@ describe('+ copySync()', function () {
 
     describe('> when the destination dir does not exist', function () {
       it('should create the destination directory and copy the file', function () {
-        var src = path.join(DIR, 'data/')
+        var src = path.join(TEST_DIR, 'data/')
         fs.mkdirSync(src)
 
         var d1 = 'file1'
@@ -277,7 +280,7 @@ describe('+ copySync()', function () {
         fs.writeFileSync(path.join(src, 'f1.txt'), d1)
         fs.writeFileSync(path.join(src, 'f2.txt'), d2)
 
-        var dest = path.join(DIR, 'this/path/does/not/exist/outputDir')
+        var dest = path.join(TEST_DIR, 'this/path/does/not/exist/outputDir')
 
         fs.copySync(src, dest)
 
