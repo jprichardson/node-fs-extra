@@ -3,7 +3,7 @@ var walk = require('./lib/walk/')
 
 var mocha = new Mocha({
   ui: 'bdd',
-  reporter: 'list',
+  reporter: 'dot',
   timeout: 30000
 })
 
