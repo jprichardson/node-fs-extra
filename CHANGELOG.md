@@ -1,3 +1,7 @@
+0.20.1 / 2015-06-23
+-------------------
+- fixed regression caused by latest jsonfile update: See: https://github.com/jprichardson/node-jsonfile/issues/26
+
 0.20.0 / 2015-06-19
 -------------------
 - removed `jsonfile` aliases with `File` in the name, they weren't documented and probably weren't in use e.g.
