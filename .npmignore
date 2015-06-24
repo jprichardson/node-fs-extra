@@ -3,3 +3,5 @@ test/
 .travis.yml
 appveyor.yml
 lib/**/__tests__/
+test/readme.md
+test.js
