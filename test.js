@@ -1,3 +1,5 @@
+var os = require('os')
+var path = require('path')
 var Mocha = require('mocha')
 var walk = require('./lib/walk/')
 
@@ -16,6 +18,8 @@ walk('./')
   })
   .on('end', function () {
     mocha.run(function (failures) {
-      process.exit(failures)
+      require('./').remove(path.join(os.tmpdir(), 'fs-extra'), function () {
+        process.exit(failures)
+      })
     })
   })
