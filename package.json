@@ -50,6 +50,7 @@
   "scripts": {
     "coverage": "istanbul cover test.js",
     "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
+    "test-find": "find ./lib/**/__tests__ -name *.test.js | xargs mocha",
     "test": "standard && node test.js"
   }
 }
