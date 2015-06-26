@@ -14,7 +14,7 @@ install:
   - ps: Install-Product node $env:nodejs_version
   # install modules
   - npm config set loglevel warn
-  - npm install
+  - npm install --silent
 
 # Post-install test scripts.
 test_script:
