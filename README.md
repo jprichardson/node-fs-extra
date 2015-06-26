@@ -94,7 +94,7 @@ Methods
 
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
- 
+
 Options:
 clobber (boolean): overwrite existing file or directory
 preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
