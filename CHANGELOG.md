@@ -1,3 +1,7 @@
+0.21.0 / 2015-yy-xx
+-------------------
+- add option to preserve timestamps in `copy()` and `copySync()`. See: https://github.com/jprichardson/node-fs-extra/pull/141
+
 0.20.1 / 2015-06-23
 -------------------
 - fixed regression caused by latest jsonfile update: See: https://github.com/jprichardson/node-jsonfile/issues/26
