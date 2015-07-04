@@ -1,4 +1,4 @@
-0.21.0 / 2015-yy-xx
+0.21.0 / 2015-07-04
 -------------------
 - add option to preserve timestamps in `copy()` and `copySync()`. See: https://github.com/jprichardson/node-fs-extra/pull/141
 - updated `graceful-fs@3.x` to `4.x`. This brings in features from `amazing-graceful-fs` (much cleaner code / less hacks)
