@@ -1,3 +1,8 @@
+0.22.1 / 2015-07-09
+-------------------
+- Prevent calling `hasMillisResSync()` on module load. See: https://github.com/jprichardson/node-fs-extra/issues/149.
+Fixes regression that was introduced in `0.21.0`.
+
 0.22.0 / 2015-07-09
 -------------------
 - preserve permissions / ownership in `copy()`. See: https://github.com/jprichardson/node-fs-extra/issues/54
