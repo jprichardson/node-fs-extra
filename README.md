@@ -424,6 +424,7 @@ What's needed?
 - After the aforementioned functions are built on the directory walker, `fs-extra` should then explicitly
 support wildcards.
 
+Note: If you make any big changes, **you should definitely post an issue for discussion first.**
 
 
 Naming
