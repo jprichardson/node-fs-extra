@@ -1,6 +1,6 @@
-0.22.0 / 2015-xx-yy
+0.22.0 / 2015-07-09
 -------------------
-- preserve mode in `copy()`
+- preserve permissions / ownership in `copy()`. See: https://github.com/jprichardson/node-fs-extra/issues/54
 
 0.21.0 / 2015-07-04
 -------------------
