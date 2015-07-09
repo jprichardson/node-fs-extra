@@ -415,6 +415,7 @@ you're gonna have to get over it :) If `standard` is good enough for `npm`, it's
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 What's needed?
+- First, take a look at existing issues. Those are probably going to be where the priority lies.
 - More tests for edge cases. Specifically on different platforms. There can never be enough tests.
 - Really really help with the Windows tests. See appveyor outputs for more info.
 - Improve test coverage. See coveralls output for more info.
