@@ -1,7 +1,7 @@
-var assign = require('object-assign')
 var os = require('os')
 var path = require('path')
 var Mocha = require('mocha')
+var assign = require('./lib/util/assign')
 var walk = require('./lib/walk/')
 
 var argv = require('minimist')(process.argv.slice(2))

@@ -42,7 +42,6 @@
     "istanbul": "^0.3.5",
     "minimist": "^1.1.1",
     "mocha": "^2.1.0",
-    "object-assign": "^3.0.0",
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
     "semver": "^4.3.6",
