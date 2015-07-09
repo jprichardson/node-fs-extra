@@ -1,13 +1,18 @@
+var assign = require('object-assign')
 var os = require('os')
 var path = require('path')
 var Mocha = require('mocha')
 var walk = require('./lib/walk/')
 
-var mocha = new Mocha({
+var argv = require('minimist')(process.argv.slice(2))
+
+var mochaOpts = assign({
   ui: 'bdd',
   reporter: 'dot',
   timeout: 30000
-})
+}, argv)
+
+var mocha = new Mocha(mochaOpts)
 
 walk('./lib')
   .on('data', function (item, stat) {
