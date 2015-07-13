@@ -15,10 +15,10 @@ var mochaOpts = assign({
 var mocha = new Mocha(mochaOpts)
 
 walk('./lib')
-  .on('data', function (item, stat) {
-    if (!stat.isFile()) return
-    if (item.lastIndexOf('.test.js') !== (item.length - '.test.js'.length)) return
-    mocha.addFile(item)
+  .on('data', function (item) {
+    if (!item.stat.isFile()) return
+    if (item.path.lastIndexOf('.test.js') !== (item.path.length - '.test.js'.length)) return
+    mocha.addFile(item.path)
   })
   .on('end', function () {
     mocha.run(function (failures) {
