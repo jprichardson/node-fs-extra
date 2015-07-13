@@ -465,10 +465,9 @@ Credit
 License
 -------
 
-
 Licensed under MIT
 
-Copyright (c) 2011-2015 JP Richardson
+Copyright (c) 2011-2015 [JP Richardson](https://github.com/jprichardson)
 
 [1]: http://nodejs.org/docs/latest/api/fs.html
 
