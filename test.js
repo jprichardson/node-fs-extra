@@ -14,16 +14,37 @@ var mochaOpts = assign({
 
 var mocha = new Mocha(mochaOpts)
 
-walk('./lib')
+/* walk('./lib')
   .on('data', function (item) {
     if (!item.stat.isFile()) return
     if (item.path.lastIndexOf('.test.js') !== (item.path.length - '.test.js'.length)) return
     mocha.addFile(item.path)
+    console.log(item.path)
   })
   .on('end', function () {
+    console.log('done')
     mocha.run(function (failures) {
       require('./').remove(path.join(os.tmpdir(), 'fs-extra'), function () {
         process.exit(failures)
       })
     })
+  })*/
+
+/* eslint-disable no-cond-assign */
+walk('./lib').on('readable', function () {
+  var item
+  while (item = this.read()) {
+    if (!item.stat.isFile()) return
+    if (item.path.lastIndexOf('.test.js') !== (item.path.length - '.test.js'.length)) return
+    mocha.addFile(item.path)
+  }
+}).on('end', function () {
+  console.log('done')
+  mocha.run(function (failures) {
+    require('./').remove(path.join(os.tmpdir(), 'fs-extra'), function () {
+      process.exit(failures)
+    })
   })
+})
+/* eslint-enable no-cond-assign */
+
