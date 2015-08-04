@@ -69,6 +69,10 @@ Methods
 - [ensureFileSync](#ensurefilefile-callback)
 - [ensureDir](#ensuredirdir-callback)
 - [ensureDirSync](#ensuredirdir-callback)
+- [ensureLink](#ensurelinksrcpath-dstpath-callback)
+- [ensureLinkSync](#ensurelinksrcpath-dstpath-callback)
+- [ensureSymlink](#ensuresymlinksrcpath-dstpath-type-callback)
+- [ensureSymlinkSync](#ensuresymlinksrcpath-dstpath-type-callback)
 - [mkdirs](#mkdirsdir-callback)
 - [mkdirsSync](#mkdirsdir-callback)
 - [move](#movesrc-dest-options-callback)
@@ -137,7 +141,6 @@ word `output` to denote that if the containing directory does not exist, it shou
 better succinct nomenclature for these methods, please open an issue for discussion. Thanks.
 
 
-
 ### emptyDir(dir, [callback])
 
 Ensures that a directory is empty. If the directory does not exist, it is created. The directory itself is not deleted.
@@ -156,7 +159,6 @@ fs.emptyDir('/tmp/some/dir', function (err) {
   if (!err) console.log('success!')
 })
 ```
-
 
 
 ### ensureFile(file, callback)
@@ -200,6 +202,47 @@ fs.ensureDir(dir, function (err) {
 })
 ```
 
+
+### ensureLink(srcpath, dstpath, callback)
+
+Ensures that the link exists. If the directory structure does not exist, it is created.
+
+Sync: `ensureLinkSync()`
+
+
+Example:
+
+```js
+var fs = require('fs-extra')
+
+var srcpath = '/tmp/file.txt'
+var dstpath = '/tmp/this/path/does/not/exist/file.txt'
+fs.ensureLink(srcpath, dstpath, function (err) {
+  console.log(err) // => null
+  // link has now been created, including the directory it is to be placed in
+})
+```
+
+
+### ensureSymlink(srcpath, dstpath, [type], callback)
+
+Ensures that the symlink exists. If the directory structure does not exist, it is created.
+
+Sync: `ensureSymlinkSync()`
+
+
+Example:
+
+```js
+var fs = require('fs-extra')
+
+var srcpath = '/tmp/file.txt'
+var dstpath = '/tmp/this/path/does/not/exist/file.txt'
+fs.ensureSymlink(srcpath, dstpath, function (err) {
+  console.log(err) // => null
+  // symlink has now been created, including the directory it is to be placed in
+})
+```
 
 
 ### mkdirs(dir, callback)
@@ -473,11 +516,3 @@ Copyright (c) 2011-2015 [JP Richardson](https://github.com/jprichardson)
 
 
 [jsonfile]: https://github.com/jprichardson/node-jsonfile
-
-
-
-
-
-
-
-
