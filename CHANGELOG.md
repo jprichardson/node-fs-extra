@@ -1,3 +1,7 @@
+0.23.0 / 2015-08-06
+-------------------
+- added `ensureLink{Sync}()` and `ensureSymlink{Sync}()`. See: https://github.com/jprichardson/node-fs-extra/pull/165
+
 0.22.1 / 2015-07-09
 -------------------
 - Prevent calling `hasMillisResSync()` on module load. See: https://github.com/jprichardson/node-fs-extra/issues/149.
