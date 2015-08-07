@@ -1,3 +1,8 @@
+0.23.1 / 2015-08-07
+-------------------
+- Better handling of errors for `move()` when moving across devices. https://github.com/jprichardson/node-fs-extra/pull/170
+- `ensureSymlink()` and `ensureLink()` should not throw errors if link exists. https://github.com/jprichardson/node-fs-extra/pull/169
+
 0.23.0 / 2015-08-06
 -------------------
 - added `ensureLink{Sync}()` and `ensureSymlink{Sync}()`. See: https://github.com/jprichardson/node-fs-extra/pull/165
