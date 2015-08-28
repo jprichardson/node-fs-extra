@@ -46,7 +46,7 @@
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
     "semver": "^4.3.6",
-    "standard": "4.x"
+    "standard": "5.x"
   },
   "main": "./lib/index",
   "scripts": {
