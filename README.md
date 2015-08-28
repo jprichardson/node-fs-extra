@@ -376,9 +376,7 @@ console.log(obj) // => null
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
 
-Alias: `delete()`
-
-Sync: `removeSync()` / `deleteSync()`
+Sync: `removeSync()`
 
 
 Examples:
@@ -489,7 +487,7 @@ We have a dilemma though. How do you consistently name methods that perform the 
 
 My perspective: when in doubt, err on the side of simplicity. A directory is just a hierarchical grouping of directories and files. Consider that for a moment. So when you want to copy it or remove it, in most cases you'll want to copy or remove all of its contents. When you want to create a directory, if the directory that it's suppose to be contained in does not exist, then in most cases you'll want to create that too.
 
-So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)` or its alias `fs.delete(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`.
+So, if you want to remove a file or a directory regardless of whether it has contents, just call `fs.remove(path)`. If you want to copy a file or a directory whether it has contents, just call `fs.copy(source, destination)`. If you want to create a directory regardless of whether its parent directories exist, just call `fs.mkdirs(path)` or `fs.mkdirp(path)`.
 
 
 Credit
