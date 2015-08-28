@@ -1,7 +1,7 @@
 Node.js: fs-extra
 =================
 
-[![build status](https://secure.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
+[![build status](https://api.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
 [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-fs-extra/master.svg?label=windows%20build)](https://ci.appveyor.com/project/jprichardson/node-fs-extra/branch/master)
 [![downloads per month](http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
 [![Coverage Status](https://img.shields.io/coveralls/jprichardson/node-fs-extra.svg)](https://coveralls.io/r/jprichardson/node-fs-extra)
@@ -99,8 +99,9 @@ Methods
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
 Options:
-clobber (boolean): overwrite existing file or directory
-preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
+clobber (boolean): overwrite existing file or directory  
+preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.  
+filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
 
 Sync: `copySync()`
 
