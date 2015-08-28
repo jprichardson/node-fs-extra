@@ -1,3 +1,7 @@
+0.24.0 / 2015-08-28
+-------------------
+- removed alias `delete()` and `deleteSync()`. See: https://github.com/jprichardson/node-fs-extra/issues/171
+
 0.23.1 / 2015-08-07
 -------------------
 - Better handling of errors for `move()` when moving across devices. https://github.com/jprichardson/node-fs-extra/pull/170
