@@ -464,8 +464,6 @@ What's needed?
 - A directory walker. Probably this one: https://github.com/thlorenz/readdirp imported into `fs-extra`.
 - After the directory walker is integrated, any function that needs to traverse directories like
 `copy`, `remove`, or `mkdirs` should be built on top of it.
-- After the aforementioned functions are built on the directory walker, `fs-extra` should then explicitly
-support wildcards.
 
 Note: If you make any big changes, **you should definitely post an issue for discussion first.**
 
