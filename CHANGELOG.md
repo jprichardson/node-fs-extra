@@ -1,3 +1,7 @@
+0.25.0 / 2015-10-24
+-------------------
+- now has a file walker `walk()`
+
 0.24.0 / 2015-08-28
 -------------------
 - removed alias `delete()` and `deleteSync()`. See: https://github.com/jprichardson/node-fs-extra/issues/171
