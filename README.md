@@ -84,6 +84,7 @@ Methods
 - [readJsonSync](#readjsonfile-options-callback)
 - [remove](#removedir-callback)
 - [removeSync](#removedir-callback)
+- [walk](#walk)
 - [writeJson](#writejsonfile-object-options-callback)
 - [writeJsonSync](#writejsonfile-object-options-callback)
 
@@ -392,6 +393,81 @@ fs.remove('/tmp/myfile', function (err) {
 })
 
 fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory.
+```
+
+### walk()
+
+**walk(dir)**
+
+Returns a [Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) that iterates
+through every file and directory starting with `dir` as the root. Every `read()` or `data` event
+returns an object with two properties: `path` and `stats`. `path` is the full path of the file and
+`stats` is an instance of [fs.Stats](https://nodejs.org/api/fs.html#fs_class_fs_stats).
+
+Streams 1 (push) example:
+
+```js
+var items = [] // files, directories, symlinks, etc
+fse.walk(TEST_DIR)
+  .on('data', function (item) {
+    items.push(item.path)
+  })
+  .on('end', function () {
+    console.dir(items) // => [ ... array of files]
+  })
+```
+
+Streams 2 & 3 (pull) example:
+
+```js
+var items = [] // files, directories, symlinks, etc
+fse.walk(TEST_DIR)
+  .on('readable', function () {
+    var item
+    while ((item = this.read())) {
+      items.push(item.path)
+    }
+  })
+  .on('end', function () {
+    console.dir(items) // => [ ... array of files]
+  })
+```
+
+If you're not sure of the differences on Node.js streams 1, 2, 3 then I'd
+recommend this resource as a good starting point: https://strongloop.com/strongblog/whats-new-io-js-beta-streams3/.
+
+#### Filtering the file walker stream
+
+On many occasions you may want to filter files based upon size, extension, etc.
+You should use the module [`through2`](https://www.npmjs.com/package/through2) to easily
+accomplish this.
+
+Example (skipping directories):
+
+first:
+
+    npm i --save through2
+
+
+```js
+var fs = require('fs-extra')
+var through2 = require('through2')
+
+var excludeDirFilter = through2.obj(function (item, enc, next) {
+  if (!item.stat.isDirectory()) this.push(item)
+  next()
+})
+
+var items = [] // files, directories, symlinks, etc
+fse.walk(TEST_DIR)
+  .pipe(excludeDirFilter)
+  .on('data', function (item) {
+    items.push(item.path)
+  })
+  .on('end', function () {
+    console.dir(items) // => [ ... array of files without directories]
+  })
+
 ```
 
 
