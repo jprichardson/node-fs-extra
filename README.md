@@ -397,7 +397,9 @@ fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory.
 
 ### walk()
 
-**walk(dir)**
+**walk(dir, [streamOptions])**
+
+The function `walk()` from the module [`klaw`](https://github.com/jprichardson/node-klaw).
 
 Returns a [Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) that iterates
 through every file and directory starting with `dir` as the root. Every `read()` or `data` event
@@ -436,40 +438,7 @@ fse.walk(TEST_DIR)
 If you're not sure of the differences on Node.js streams 1, 2, 3 then I'd
 recommend this resource as a good starting point: https://strongloop.com/strongblog/whats-new-io-js-beta-streams3/.
 
-#### Filtering the file walker stream
-
-On many occasions you may want to filter files based upon size, extension, etc.
-You should use the module [`through2`](https://www.npmjs.com/package/through2) to easily
-accomplish this.
-
-Example (skipping directories):
-
-first:
-
-    npm i --save through2
-
-
-```js
-var fs = require('fs-extra')
-var through2 = require('through2')
-
-var excludeDirFilter = through2.obj(function (item, enc, next) {
-  if (!item.stat.isDirectory()) this.push(item)
-  next()
-})
-
-var items = [] // files, directories, symlinks, etc
-fse.walk(TEST_DIR)
-  .pipe(excludeDirFilter)
-  .on('data', function (item) {
-    items.push(item.path)
-  })
-  .on('end', function () {
-    console.dir(items) // => [ ... array of files without directories]
-  })
-
-```
-
+**See [`klaw` documentation](https://github.com/jprichardson/node-klaw) for more detailed usage.**
 
 
 ### writeJson(file, object, [options], callback)
