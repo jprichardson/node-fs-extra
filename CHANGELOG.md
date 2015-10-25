@@ -1,3 +1,7 @@
+0.26.0 / 2015-10-25
+-------------------
+- extracted the `walk()` function into its own module [`klaw`](https://github.com/jprichardson/node-klaw).
+
 0.25.0 / 2015-10-24
 -------------------
 - now has a file walker `walk()`
