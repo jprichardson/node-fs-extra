@@ -1,3 +1,7 @@
+0.26.1 / 2015-11-02
+-------------------
+- fixed `copySync()` when `clogger=true` and the destination is read only. See: https://github.com/jprichardson/node-fs-extra/pull/190
+
 0.26.0 / 2015-10-25
 -------------------
 - extracted the `walk()` function into its own module [`klaw`](https://github.com/jprichardson/node-klaw).
