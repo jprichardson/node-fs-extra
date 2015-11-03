@@ -1,3 +1,7 @@
+0.26.2 / 2015-11-02
+-------------------
+- fixed `outputJson{Sync}()` spacing adherence to `fs.spaces`
+
 0.26.1 / 2015-11-02
 -------------------
 - fixed `copySync()` when `clogger=true` and the destination is read only. See: https://github.com/jprichardson/node-fs-extra/pull/190
