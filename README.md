@@ -163,9 +163,9 @@ fs.emptyDir('/tmp/some/dir', function (err) {
 ```
 
 
-### ensureFile(file, callback)
+### ensureFile(file, [data], callback)
 
-Ensures that the file exists. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is **NOT MODIFIED**.
+Ensures that the file exists. If `data` is provided, it will be written to the created file, otherwise an empty file will be written. If the file that is requested to be created is in directories that do not exist, these directories are created. If the file already exists, it is **NOT MODIFIED**.
 
 Alias: `createFile()`
 
