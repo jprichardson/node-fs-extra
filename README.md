@@ -61,7 +61,7 @@ var fse = require('fs-extra')
 Methods
 -------
 - [copy](#copy)
-- [copySync](#copy)
+- [copySync](#copySync)
 - [createOutputStream](#createoutputstreamfile-options)
 - [emptyDir](#emptydirdir-callback)
 - [emptyDirSync](#emptydirdir-callback)
@@ -104,10 +104,7 @@ clobber (boolean): overwrite existing file or directory
 preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.  
 filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
 
-Sync: `copySync()`
-
-
-Examples:
+Example:
 
 ```js
 var fs = require('fs-extra')
@@ -122,6 +119,26 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function (err) {
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
 ```
+
+### copySync()
+
+**copySync(src, dest, [options])**
+
+Synchronously copies a file or directory. The directory can have contents.
+
+
+Example:
+
+```js
+var fs = require('fs-extra')
+
+try {
+  fs.copySync('/tmp/mydir', '/tmp/mynewdir'
+} catch (err) {
+  console.error('Oh no, there was an error: ' + err.message)
+}
+```
+
 
 
 ### createOutputStream(file, [options])
