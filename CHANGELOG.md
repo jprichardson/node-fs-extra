@@ -1,3 +1,7 @@
+0.26.3 / 2015-12-17
+-------------------
+- fixed `copy()` hangup in copying blockDevice / characterDevice / `/dev/null`. See: https://github.com/jprichardson/node-fs-extra/issues/193
+
 0.26.2 / 2015-11-02
 -------------------
 - fixed `outputJson{Sync}()` spacing adherence to `fs.spaces`
