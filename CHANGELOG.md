@@ -1,3 +1,7 @@
+0.26.4 / 2016-01-05
+-------------------
+- `copySync()` made `preserveTimestamps` default consistent with `copy()` which is `false`. See: https://github.com/jprichardson/node-fs-extra/pull/208
+
 0.26.3 / 2015-12-17
 -------------------
 - fixed `copy()` hangup in copying blockDevice / characterDevice / `/dev/null`. See: https://github.com/jprichardson/node-fs-extra/issues/193
