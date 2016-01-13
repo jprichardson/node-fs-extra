@@ -9,6 +9,10 @@ Node.js: fs-extra
 
 `fs-extra` adds file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
 
+**NOTE (2016-01-13):** Node v0.10 will be unsupported AFTER Ubuntu LTS releases their next version AND [Amazon Lambda
+upgrades](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html) its Node.js runtime from v0.10.
+I anticipate this will happen around April 2016. Please prepare accordingly. After this, we'll make a strong push
+for a 1.0.0 release.
 
 
 Why?
