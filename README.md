@@ -65,7 +65,7 @@ var fse = require('fs-extra')
 Methods
 -------
 - [copy](#copy)
-- [copySync](#copySync)
+- [copySync](#copysync)
 - [createOutputStream](#createoutputstreamfile-options)
 - [emptyDir](#emptydirdir-callback)
 - [emptyDirSync](#emptydirdir-callback)
