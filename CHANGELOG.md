@@ -1,3 +1,7 @@
+0.26.5 / 2016-01-27
+-------------------
+- `copy()` with two arguments (w/o callback) was broken. See: [#215][#215]
+
 0.26.4 / 2016-01-05
 -------------------
 - `copySync()` made `preserveTimestamps` default consistent with `copy()` which is `false`. See: [#208][#208]
@@ -284,6 +288,16 @@ from `~` to `^`. #67
 * Added methods rmrf and rmrfSync
 * Moved tests from Jasmine to Mocha
 
+<!--- fse.copy throws error when only src and dest provided [bug, documentation, feature-copy] -->
+[#215]: https://github.com/jprichardson/node-fs-extra/pull/215
+<!--- Fixing copySync anchor tag -->
+[#214]: https://github.com/jprichardson/node-fs-extra/pull/214
+<!--- Merge extfs with this repo -->
+[#213]: https://github.com/jprichardson/node-fs-extra/issues/213
+<!--- Update year to 2016 in README.md and LICENSE -->
+[#212]: https://github.com/jprichardson/node-fs-extra/pull/212
+<!--- Not copying all files -->
+[#211]: https://github.com/jprichardson/node-fs-extra/issues/211
 <!--- copy/copySync behave differently when copying a symbolic file [bug, documentation, feature-copy] -->
 [#210]: https://github.com/jprichardson/node-fs-extra/issues/210
 <!--- In Windows invalid directory name causes infinite loop in ensureDir(). [bug] -->
