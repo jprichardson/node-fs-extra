@@ -137,7 +137,7 @@ Example:
 var fs = require('fs-extra')
 
 try {
-  fs.copySync('/tmp/mydir', '/tmp/mynewdir'
+  fs.copySync('/tmp/mydir', '/tmp/mynewdir')
 } catch (err) {
   console.error('Oh no, there was an error: ' + err.message)
 }
