@@ -107,6 +107,7 @@ Options:
 clobber (boolean): overwrite existing file or directory  
 preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.  
 filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as   function, where `filter` is `filter.test`.  
+passStats (boolean): where a function is being used for `filter`, pass the file stats as a second argument to the handler.
 
 Example:
 
@@ -122,6 +123,16 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function (err) {
   if (err) return console.error(err)
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
+
+fs.copy('/tmp/mydir', '/tmp/mynewdir', {
+  filter: function (p, stats) {
+    return stats.isDirectory()
+  },
+  passStats: true
+}, function (err) {
+  if (err) return console.error(err)
+  console.log('success!')
+}) // ignores files and only copies directories
 ```
 
 ### copySync()
