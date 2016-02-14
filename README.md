@@ -61,11 +61,35 @@ var fs = require('fs')
 var fse = require('fs-extra')
 ```
 
+Sync vs Async
+-------------
+Most methods are async by default (they take a callback with an `Error` as first argument).
+
+Sync methods on the other hand will throw if an error occurs.
+
+Example:
+
+```js
+var fs = require('fs-extra')
+
+fs.copy('/tmp/myfile', '/tmp/mynewfile', function (err) {
+  if (err) return console.error(err)
+  console.log("success!")
+});
+
+try {
+  fs.copySync('/tmp/myfile', '/tmp/mynewfile')
+  console.log("success!")
+} catch (err) {
+  console.error(err)
+}
+```
+
 
 Methods
 -------
 - [copy](#copy)
-- [copySync](#copysync)
+- [copySync](#copy)
 - [createOutputStream](#createoutputstreamfile-options)
 - [emptyDir](#emptydirdir-callback)
 - [emptyDirSync](#emptydirdir-callback)
@@ -80,10 +104,10 @@ Methods
 - [mkdirs](#mkdirsdir-callback)
 - [mkdirsSync](#mkdirsdir-callback)
 - [move](#movesrc-dest-options-callback)
-- [outputFile](#outputfilefile-data-callback)
-- [outputFileSync](#outputfilefile-data-callback)
-- [outputJson](#outputjsonfile-data-callback)
-- [outputJsonSync](#outputjsonfile-data-callback)
+- [outputFile](#outputfilefile-data-options-callback)
+- [outputFileSync](#outputfilefile-data-options-callback)
+- [outputJson](#outputjsonfile-data-options-callback)
+- [outputJsonSync](#outputjsonfile-data-options-callback)
 - [readJson](#readjsonfile-options-callback)
 - [readJsonSync](#readjsonfile-options-callback)
 - [remove](#removedir-callback)
@@ -104,9 +128,11 @@ Methods
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
 Options:
-clobber (boolean): overwrite existing file or directory
-preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
-filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
+- clobber (boolean): overwrite existing file or directory
+- preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
+- filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
+
+Sync: `copySync()`
 
 Example:
 
@@ -123,27 +149,6 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function (err) {
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
 ```
-
-### copySync()
-
-**copySync(src, dest, [options])**
-
-Synchronously copies a file or directory. The directory can have contents.
-
-
-Example:
-
-```js
-var fs = require('fs-extra')
-
-try {
-  fs.copySync('/tmp/mydir', '/tmp/mynewdir')
-} catch (err) {
-  console.error('Oh no, there was an error: ' + err.message)
-}
-```
-
-
 
 ### createOutputStream(file, [options])
 
@@ -296,8 +301,8 @@ fs.mkdirsSync('/tmp/another/path')
 Moves a file or directory, even across devices.
 
 Options:
-clobber (boolean): overwrite existing file or directory
-limit (number): number of concurrent moves, see ncp for more information
+- clobber (boolean): overwrite existing file or directory
+- limit (number): number of concurrent moves, see ncp for more information
 
 Example:
 
