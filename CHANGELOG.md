@@ -1,3 +1,7 @@
+0.26.6 / 2016-03-25
+-------------------
+- fixed if `emptyDir()` does not have a callback: [#229][#229]
+
 0.26.5 / 2016-01-27
 -------------------
 - `copy()` with two arguments (w/o callback) was broken. See: [#215][#215]
