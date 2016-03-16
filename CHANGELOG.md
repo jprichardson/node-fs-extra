@@ -1,4 +1,8 @@
-0.26.6 / 2016-03-25
+0.26.7 / 2016-03-16
+-------------------
+- fixed `copy()` if source and dest are the same. [#230][#230]
+
+0.26.6 / 2016-03-15
 -------------------
 - fixed if `emptyDir()` does not have a callback: [#229][#229]
 
