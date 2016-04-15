@@ -129,6 +129,7 @@ Copy a file or directory. The directory can have contents. Like `cp -r`.
 
 Options:
 - clobber (boolean): overwrite existing file or directory
+- dereference (boolean): dereference symlinks
 - preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
 - filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
 
