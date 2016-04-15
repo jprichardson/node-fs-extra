@@ -1,3 +1,7 @@
+0.27.0 / 2016-04-15
+-------------------
+- add `dereference` option to `copySync()`. [#235][#235]
+
 0.26.7 / 2016-03-16
 -------------------
 - fixed `copy()` if source and dest are the same. [#230][#230]
@@ -296,6 +300,46 @@ from `~` to `^`. #67
 * Added methods rmrf and rmrfSync
 * Moved tests from Jasmine to Mocha
 
+<!--- Adds symlink dereference option to `fse.copySync` (#191) -->
+[#235]: https://github.com/jprichardson/node-fs-extra/pull/235
+<!--- ensureDirSync fails silent when EACCES: permission denied on travis-ci -->
+[#234]: https://github.com/jprichardson/node-fs-extra/issues/234
+<!--- please make sure the first argument in callback is error object [feature-copy] -->
+[#233]: https://github.com/jprichardson/node-fs-extra/issues/233
+<!--- Copy a folder content  to its child folder.   -->
+[#232]: https://github.com/jprichardson/node-fs-extra/issues/232
+<!--- Adding read/write/output functions for YAML -->
+[#231]: https://github.com/jprichardson/node-fs-extra/issues/231
+<!--- throw error if src and dest are the same to avoid zeroing out + test -->
+[#230]: https://github.com/jprichardson/node-fs-extra/pull/230
+<!--- fix 'TypeError: callback is not a function' in emptyDir -->
+[#229]: https://github.com/jprichardson/node-fs-extra/pull/229
+<!--- Throw error when target is empty so file is not accidentally zeroed out -->
+[#228]: https://github.com/jprichardson/node-fs-extra/pull/228
+<!--- Uncatchable errors when there are invalid arguments [feature-move] -->
+[#227]: https://github.com/jprichardson/node-fs-extra/issues/227
+<!--- Moving to the current directory -->
+[#226]: https://github.com/jprichardson/node-fs-extra/issues/226
+<!--- EBUSY: resource busy or locked, unlink -->
+[#225]: https://github.com/jprichardson/node-fs-extra/issues/225
+<!--- fse.copy ENOENT error -->
+[#224]: https://github.com/jprichardson/node-fs-extra/issues/224
+<!--- Suspicious behavior of fs.existsSync -->
+[#223]: https://github.com/jprichardson/node-fs-extra/issues/223
+<!--- A clearer description of emtpyDir function -->
+[#222]: https://github.com/jprichardson/node-fs-extra/pull/222
+<!--- Update README.md -->
+[#221]: https://github.com/jprichardson/node-fs-extra/pull/221
+<!--- Non-breaking feature: add option 'passStats' to copy methods. -->
+[#220]: https://github.com/jprichardson/node-fs-extra/pull/220
+<!--- Add closing parenthesis in copySync example -->
+[#219]: https://github.com/jprichardson/node-fs-extra/pull/219
+<!--- fix #187 #70 options.filter bug -->
+[#218]: https://github.com/jprichardson/node-fs-extra/pull/218
+<!--- fix #187 #70 options.filter bug -->
+[#217]: https://github.com/jprichardson/node-fs-extra/pull/217
+<!--- fix #187 #70 options.filter bug -->
+[#216]: https://github.com/jprichardson/node-fs-extra/pull/216
 <!--- fse.copy throws error when only src and dest provided [bug, documentation, feature-copy] -->
 [#215]: https://github.com/jprichardson/node-fs-extra/pull/215
 <!--- Fixing copySync anchor tag -->
