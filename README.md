@@ -1,16 +1,18 @@
 Node.js: fs-extra
 =================
 
+`fs-extra` adds file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
+
+[![npm Package](https://img.shields.io/npm/v/fs-extra.svg?style=flat-square)](https://www.npmjs.org/package/fs-extra)
 [![build status](https://api.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
 [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-fs-extra/master.svg?label=windows%20build)](https://ci.appveyor.com/project/jprichardson/node-fs-extra/branch/master)
 [![downloads per month](http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
 [![Coverage Status](https://img.shields.io/coveralls/jprichardson/node-fs-extra.svg)](https://coveralls.io/r/jprichardson/node-fs-extra)
 
+<a href="https://github.com/feross/standard"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
 
-`fs-extra` adds file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
-
-**NOTE (2016-01-13):** Node v0.10 will be unsupported AFTER Ubuntu LTS releases their next version AND [Amazon Lambda
-upgrades](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html) its Node.js runtime from v0.10.
+**NOTE (2016-04-16):** Node v0.10 (and possibly v0.12) will be unsupported AFTER Ubuntu LTS releases their next version ~~AND [Amazon Lambda
+upgrades](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html) its Node.js runtime from v0.10~~.
 I anticipate this will happen around late spring / summer 2016. Please prepare accordingly. After this, we'll make a strong push
 for a 1.0.0 release.
 
@@ -18,7 +20,7 @@ for a 1.0.0 release.
 Why?
 ----
 
-I got tired of including `mkdirp`, `rimraf`, and `cp -r` in most of my projects.
+I got tired of including `mkdirp`, `rimraf`, and `ncp` in most of my projects.
 
 
 
