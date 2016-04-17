@@ -300,471 +300,238 @@ from `~` to `^`. #67
 * Added methods rmrf and rmrfSync
 * Moved tests from Jasmine to Mocha
 
-<!--- Adds symlink dereference option to `fse.copySync` (#191) -->
-[#235]: https://github.com/jprichardson/node-fs-extra/pull/235
-<!--- ensureDirSync fails silent when EACCES: permission denied on travis-ci -->
-[#234]: https://github.com/jprichardson/node-fs-extra/issues/234
-<!--- please make sure the first argument in callback is error object [feature-copy] -->
-[#233]: https://github.com/jprichardson/node-fs-extra/issues/233
-<!--- Copy a folder content  to its child folder.   -->
-[#232]: https://github.com/jprichardson/node-fs-extra/issues/232
-<!--- Adding read/write/output functions for YAML -->
-[#231]: https://github.com/jprichardson/node-fs-extra/issues/231
-<!--- throw error if src and dest are the same to avoid zeroing out + test -->
-[#230]: https://github.com/jprichardson/node-fs-extra/pull/230
-<!--- fix 'TypeError: callback is not a function' in emptyDir -->
-[#229]: https://github.com/jprichardson/node-fs-extra/pull/229
-<!--- Throw error when target is empty so file is not accidentally zeroed out -->
-[#228]: https://github.com/jprichardson/node-fs-extra/pull/228
-<!--- Uncatchable errors when there are invalid arguments [feature-move] -->
-[#227]: https://github.com/jprichardson/node-fs-extra/issues/227
-<!--- Moving to the current directory -->
-[#226]: https://github.com/jprichardson/node-fs-extra/issues/226
-<!--- EBUSY: resource busy or locked, unlink -->
-[#225]: https://github.com/jprichardson/node-fs-extra/issues/225
-<!--- fse.copy ENOENT error -->
-[#224]: https://github.com/jprichardson/node-fs-extra/issues/224
-<!--- Suspicious behavior of fs.existsSync -->
-[#223]: https://github.com/jprichardson/node-fs-extra/issues/223
-<!--- A clearer description of emtpyDir function -->
-[#222]: https://github.com/jprichardson/node-fs-extra/pull/222
-<!--- Update README.md -->
-[#221]: https://github.com/jprichardson/node-fs-extra/pull/221
-<!--- Non-breaking feature: add option 'passStats' to copy methods. -->
-[#220]: https://github.com/jprichardson/node-fs-extra/pull/220
-<!--- Add closing parenthesis in copySync example -->
-[#219]: https://github.com/jprichardson/node-fs-extra/pull/219
-<!--- fix #187 #70 options.filter bug -->
-[#218]: https://github.com/jprichardson/node-fs-extra/pull/218
-<!--- fix #187 #70 options.filter bug -->
-[#217]: https://github.com/jprichardson/node-fs-extra/pull/217
-<!--- fix #187 #70 options.filter bug -->
-[#216]: https://github.com/jprichardson/node-fs-extra/pull/216
-<!--- fse.copy throws error when only src and dest provided [bug, documentation, feature-copy] -->
-[#215]: https://github.com/jprichardson/node-fs-extra/pull/215
-<!--- Fixing copySync anchor tag -->
-[#214]: https://github.com/jprichardson/node-fs-extra/pull/214
-<!--- Merge extfs with this repo -->
-[#213]: https://github.com/jprichardson/node-fs-extra/issues/213
-<!--- Update year to 2016 in README.md and LICENSE -->
-[#212]: https://github.com/jprichardson/node-fs-extra/pull/212
-<!--- Not copying all files -->
-[#211]: https://github.com/jprichardson/node-fs-extra/issues/211
-<!--- copy/copySync behave differently when copying a symbolic file [bug, documentation, feature-copy] -->
-[#210]: https://github.com/jprichardson/node-fs-extra/issues/210
-<!--- In Windows invalid directory name causes infinite loop in ensureDir(). [bug] -->
-[#209]: https://github.com/jprichardson/node-fs-extra/issues/209
-<!--- fix options.preserveTimestamps to false in copy-sync by default [feature-copy] -->
-[#208]: https://github.com/jprichardson/node-fs-extra/pull/208
-<!--- Add `compare` suite of functions -->
-[#207]: https://github.com/jprichardson/node-fs-extra/issues/207
-<!--- outputFileSync -->
-[#206]: https://github.com/jprichardson/node-fs-extra/issues/206
-<!--- fix documents about copy/copySync [documentation, feature-copy] -->
-[#205]: https://github.com/jprichardson/node-fs-extra/issues/205
-<!--- allow copy of block and character device files -->
-[#204]: https://github.com/jprichardson/node-fs-extra/pull/204
-<!--- copy method's argument options couldn't be undefined [bug, feature-copy] -->
-[#203]: https://github.com/jprichardson/node-fs-extra/issues/203
-<!--- why there is not a walkSync method? -->
-[#202]: https://github.com/jprichardson/node-fs-extra/issues/202
-<!--- clobber for directories [feature-copy, future] -->
-[#201]: https://github.com/jprichardson/node-fs-extra/issues/201
-<!--- 'copySync' doesn't work in sync -->
-[#200]: https://github.com/jprichardson/node-fs-extra/issues/200
-<!--- fs.copySync fails if user does not own file [bug, feature-copy] -->
-[#199]: https://github.com/jprichardson/node-fs-extra/issues/199
-<!--- handle copying between identical files [feature-copy] -->
-[#198]: https://github.com/jprichardson/node-fs-extra/issues/198
-<!--- Missing documentation for `outputFile` `options` 3rd parameter [documentation] -->
-[#197]: https://github.com/jprichardson/node-fs-extra/issues/197
-<!--- copy filter: async function and/or function called with `fs.stat` result [future] -->
-[#196]: https://github.com/jprichardson/node-fs-extra/issues/196
-<!--- How to override with outputFile? -->
-[#195]: https://github.com/jprichardson/node-fs-extra/issues/195
-<!--- allow ensureFile(Sync) to provide data to be written to created file -->
-[#194]: https://github.com/jprichardson/node-fs-extra/pull/194
-<!--- `fs.copy` fails silently if source file is /dev/null [bug, feature-copy] -->
-[#193]: https://github.com/jprichardson/node-fs-extra/issues/193
-<!--- Remove fs.createOutputStream() -->
-[#192]: https://github.com/jprichardson/node-fs-extra/issues/192
-<!--- How to copy symlinks to target as normal folders [feature-copy] -->
-[#191]: https://github.com/jprichardson/node-fs-extra/issues/191
-<!--- copySync to overwrite destination file if readonly and clobber true -->
-[#190]: https://github.com/jprichardson/node-fs-extra/pull/190
-<!--- move.test fix to support CRLF on Windows -->
-[#189]: https://github.com/jprichardson/node-fs-extra/pull/189
-<!--- move.test failing on windows platform -->
-[#188]: https://github.com/jprichardson/node-fs-extra/issues/188
-<!--- Not filter each file, stops on first false -->
-[#187]: https://github.com/jprichardson/node-fs-extra/issues/187
-<!--- Do you need a .size() function in this module? [future] -->
-[#186]: https://github.com/jprichardson/node-fs-extra/issues/186
-<!--- Doesn't work on NodeJS v4.x -->
-[#185]: https://github.com/jprichardson/node-fs-extra/issues/185
-<!--- CLI equivalent for fs-extra -->
-[#184]: https://github.com/jprichardson/node-fs-extra/issues/184
-<!--- with clobber true, copy and copySync behave differently if destination file is read only [bug, feature-copy] -->
-[#183]: https://github.com/jprichardson/node-fs-extra/issues/183
-<!--- ensureDir(dir, callback) second callback parameter not specified -->
-[#182]: https://github.com/jprichardson/node-fs-extra/issues/182
-<!--- Add ability to remove file securely [enhancement, wont-fix] -->
-[#181]: https://github.com/jprichardson/node-fs-extra/issues/181
-<!--- Filter option doesn't work the same way in copy and copySync [bug, feature-copy] -->
-[#180]: https://github.com/jprichardson/node-fs-extra/issues/180
-<!--- Include opendir -->
-[#179]: https://github.com/jprichardson/node-fs-extra/issues/179
-<!--- ENOTEMPTY is thrown on removeSync  -->
-[#178]: https://github.com/jprichardson/node-fs-extra/issues/178
-<!--- fix `remove()` wildcards (introduced by rimraf) [feature-remove] -->
-[#177]: https://github.com/jprichardson/node-fs-extra/issues/177
-<!--- createOutputStream doesn't emit 'end' event -->
-[#176]: https://github.com/jprichardson/node-fs-extra/issues/176
-<!--- [Feature Request].moveSync support [feature-move, future] -->
-[#175]: https://github.com/jprichardson/node-fs-extra/issues/175
-<!--- Fix copy formatting and document options.filter -->
-[#174]: https://github.com/jprichardson/node-fs-extra/pull/174
-<!--- Feature Request: writeJson should mkdirs -->
-[#173]: https://github.com/jprichardson/node-fs-extra/issues/173
-<!--- rename `clobber` flags to `overwrite` -->
-[#172]: https://github.com/jprichardson/node-fs-extra/issues/172
-<!--- remove unnecessary aliases -->
-[#171]: https://github.com/jprichardson/node-fs-extra/issues/171
-<!--- More robust handling of errors moving across virtual drives -->
-[#170]: https://github.com/jprichardson/node-fs-extra/pull/170
-<!--- suppress ensureLink & ensureSymlink dest exists error -->
-[#169]: https://github.com/jprichardson/node-fs-extra/pull/169
-<!--- suppress ensurelink dest exists error -->
-[#168]: https://github.com/jprichardson/node-fs-extra/pull/168
-<!--- Adds basic (string, buffer) support for ensureFile content [future] -->
-[#167]: https://github.com/jprichardson/node-fs-extra/pull/167
-<!--- Adds basic (string, buffer) support for ensureFile content -->
-[#166]: https://github.com/jprichardson/node-fs-extra/pull/166
-<!--- ensure for link & symlink -->
-[#165]: https://github.com/jprichardson/node-fs-extra/pull/165
-<!--- Feature Request: ensureFile to take optional argument for file content -->
-[#164]: https://github.com/jprichardson/node-fs-extra/issues/164
-<!--- ouputJson not formatted out of the box [bug] -->
-[#163]: https://github.com/jprichardson/node-fs-extra/issues/163
-<!--- ensure symlink & link -->
-[#162]: https://github.com/jprichardson/node-fs-extra/pull/162
-<!--- ensure symlink & link -->
-[#161]: https://github.com/jprichardson/node-fs-extra/pull/161
-<!--- ensure symlink & link -->
-[#160]: https://github.com/jprichardson/node-fs-extra/pull/160
-<!--- ensure symlink & link -->
-[#159]: https://github.com/jprichardson/node-fs-extra/pull/159
-<!--- Feature Request: ensureLink and ensureSymlink methods -->
-[#158]: https://github.com/jprichardson/node-fs-extra/issues/158
-<!--- writeJson isn't formatted -->
-[#157]: https://github.com/jprichardson/node-fs-extra/issues/157
-<!--- Promise.promisifyAll doesn't work for some methods -->
-[#156]: https://github.com/jprichardson/node-fs-extra/issues/156
-<!--- Readme -->
-[#155]: https://github.com/jprichardson/node-fs-extra/issues/155
-<!--- /tmp/millis-test-sync -->
-[#154]: https://github.com/jprichardson/node-fs-extra/issues/154
-<!--- Make preserveTimes also work on read-only files. Closes #152 -->
-[#153]: https://github.com/jprichardson/node-fs-extra/pull/153
-<!--- fs.copy fails for read-only files with preserveTimestamp=true [feature-copy] -->
-[#152]: https://github.com/jprichardson/node-fs-extra/issues/152
-<!--- TOC does not work correctly on npm [documentation] -->
-[#151]: https://github.com/jprichardson/node-fs-extra/issues/151
-<!--- Remove test file fixtures, create with code. -->
-[#150]: https://github.com/jprichardson/node-fs-extra/issues/150
-<!--- /tmp/millis-test-sync -->
-[#149]: https://github.com/jprichardson/node-fs-extra/issues/149
-<!--- split out `Sync` methods in documentation -->
-[#148]: https://github.com/jprichardson/node-fs-extra/issues/148
-<!--- Adding rmdirIfEmpty -->
-[#147]: https://github.com/jprichardson/node-fs-extra/issues/147
-<!--- ensure test.js works -->
-[#146]: https://github.com/jprichardson/node-fs-extra/pull/146
-<!--- Add `fs.exists` and `fs.existsSync` if it doesn't exist. -->
-[#145]: https://github.com/jprichardson/node-fs-extra/issues/145
-<!--- tests failing -->
-[#144]: https://github.com/jprichardson/node-fs-extra/issues/144
-<!--- update graceful-fs -->
-[#143]: https://github.com/jprichardson/node-fs-extra/issues/143
-<!--- PrependFile Feature -->
-[#142]: https://github.com/jprichardson/node-fs-extra/issues/142
-<!--- Add option to preserve timestamps -->
-[#141]: https://github.com/jprichardson/node-fs-extra/pull/141
-<!--- Json file reading fails with 'utf8' -->
-[#140]: https://github.com/jprichardson/node-fs-extra/issues/140
-<!--- Preserve file timestamp on copy. Closes #138 -->
-[#139]: https://github.com/jprichardson/node-fs-extra/pull/139
-<!--- Preserve timestamps on copying files -->
-[#138]: https://github.com/jprichardson/node-fs-extra/issues/138
-<!--- outputFile/outputJson: Unexpected end of input -->
-[#137]: https://github.com/jprichardson/node-fs-extra/issues/137
-<!--- Update license attribute -->
-[#136]: https://github.com/jprichardson/node-fs-extra/pull/136
-<!--- emptyDir throws Error if no callback is provided -->
-[#135]: https://github.com/jprichardson/node-fs-extra/issues/135
-<!--- Handle EEXIST error when clobbering dir -->
-[#134]: https://github.com/jprichardson/node-fs-extra/pull/134
-<!--- Travis runs with `sudo: false` -->
-[#133]: https://github.com/jprichardson/node-fs-extra/pull/133
-<!--- isDirectory method -->
-[#132]: https://github.com/jprichardson/node-fs-extra/pull/132
-<!--- copySync is not working iojs 1.8.4 on linux [feature-copy] -->
-[#131]: https://github.com/jprichardson/node-fs-extra/issues/131
-<!--- Please review additional features. -->
-[#130]: https://github.com/jprichardson/node-fs-extra/pull/130
-<!--- can you review this feature? -->
-[#129]: https://github.com/jprichardson/node-fs-extra/pull/129
-<!--- fsExtra.move(filepath, newPath) broken; -->
-[#128]: https://github.com/jprichardson/node-fs-extra/issues/128
-<!--- consider using fs.access to remove deprecated warnings for fs.exists -->
-[#127]: https://github.com/jprichardson/node-fs-extra/issues/127
-<!---  TypeError: Object #<Object> has no method 'access' -->
-[#126]: https://github.com/jprichardson/node-fs-extra/issues/126
-<!--- Question: What do the *Sync function do different from non-sync -->
-[#125]: https://github.com/jprichardson/node-fs-extra/issues/125
-<!--- move with clobber option 'ENOTEMPTY' -->
-[#124]: https://github.com/jprichardson/node-fs-extra/issues/124
-<!--- Only copy the content of a directory -->
-[#123]: https://github.com/jprichardson/node-fs-extra/issues/123
-<!--- Update section links in README to match current section ids. -->
-[#122]: https://github.com/jprichardson/node-fs-extra/pull/122
-<!--- emptyDir is undefined -->
-[#121]: https://github.com/jprichardson/node-fs-extra/issues/121
-<!--- usage bug caused by shallow cloning methods of 'graceful-fs' -->
-[#120]: https://github.com/jprichardson/node-fs-extra/issues/120
-<!--- mkdirs and ensureDir never invoke callback and consume CPU indefinitely if provided a path with invalid characters on Windows -->
-[#119]: https://github.com/jprichardson/node-fs-extra/issues/119
-<!--- createOutputStream -->
-[#118]: https://github.com/jprichardson/node-fs-extra/pull/118
-<!--- Fixed issue with slash separated paths on windows -->
-[#117]: https://github.com/jprichardson/node-fs-extra/pull/117
-<!--- copySync can only copy directories not files [documentation, feature-copy] -->
-[#116]: https://github.com/jprichardson/node-fs-extra/issues/116
-<!--- .Copy & .CopySync [feature-copy] -->
-[#115]: https://github.com/jprichardson/node-fs-extra/issues/115
-<!--- Fails to move (rename) directory to non-empty directory even with clobber: true -->
-[#114]: https://github.com/jprichardson/node-fs-extra/issues/114
-<!--- fs.copy seems to callback early if the destination file already exists -->
-[#113]: https://github.com/jprichardson/node-fs-extra/issues/113
-<!--- Copying a file into an existing directory -->
-[#112]: https://github.com/jprichardson/node-fs-extra/pull/112
-<!--- Moving a file into an existing directory  -->
-[#111]: https://github.com/jprichardson/node-fs-extra/pull/111
-<!--- Moving a file into an existing directory -->
-[#110]: https://github.com/jprichardson/node-fs-extra/pull/110
-<!--- fs.move across windows drives fails -->
-[#109]: https://github.com/jprichardson/node-fs-extra/issues/109
-<!--- fse.move directories across multiple devices doesn't work -->
-[#108]: https://github.com/jprichardson/node-fs-extra/issues/108
-<!--- Check if dest path is an existing dir and copy or move source in it -->
-[#107]: https://github.com/jprichardson/node-fs-extra/pull/107
-<!--- fse.copySync crashes while copying across devices D: [feature-copy] -->
-[#106]: https://github.com/jprichardson/node-fs-extra/issues/106
-<!--- fs.copy hangs on iojs -->
-[#105]: https://github.com/jprichardson/node-fs-extra/issues/105
-<!--- fse.move deletes folders [bug] -->
-[#104]: https://github.com/jprichardson/node-fs-extra/issues/104
-<!--- Error: EMFILE with copy -->
-[#103]: https://github.com/jprichardson/node-fs-extra/issues/103
-<!--- touch / touchSync was removed ? -->
-[#102]: https://github.com/jprichardson/node-fs-extra/issues/102
-<!--- fs-extra promisified -->
-[#101]: https://github.com/jprichardson/node-fs-extra/issues/101
-<!--- copy: options object or filter to pass to ncp -->
-[#100]: https://github.com/jprichardson/node-fs-extra/pull/100
-<!--- ensureDir() modes [future] -->
-[#99]: https://github.com/jprichardson/node-fs-extra/issues/99
-<!--- fs.copy() incorrect async behavior [bug] -->
-[#98]: https://github.com/jprichardson/node-fs-extra/issues/98
-<!--- use path.join; fix copySync bug -->
-[#97]: https://github.com/jprichardson/node-fs-extra/pull/97
-<!--- destFolderExists in copySync is always undefined. -->
-[#96]: https://github.com/jprichardson/node-fs-extra/issues/96
-<!--- Using graceful-ncp instead of ncp -->
-[#95]: https://github.com/jprichardson/node-fs-extra/pull/95
-<!--- Error: EEXIST, file already exists '../mkdirp/bin/cmd.js' on fs.copySync() [enhancement, feature-copy] -->
-[#94]: https://github.com/jprichardson/node-fs-extra/issues/94
-<!--- Confusing error if drive not mounted [enhancement] -->
-[#93]: https://github.com/jprichardson/node-fs-extra/issues/93
-<!--- Problems with Bluebird -->
-[#92]: https://github.com/jprichardson/node-fs-extra/issues/92
-<!--- fs.copySync('/test', '/haha') is different with 'cp -r /test /haha' [enhancement] -->
-[#91]: https://github.com/jprichardson/node-fs-extra/issues/91
-<!--- Folder creation and file copy is Happening in 64 bit machine but not in 32 bit machine -->
-[#90]: https://github.com/jprichardson/node-fs-extra/issues/90
-<!--- Error: EEXIST using fs-extra's fs.copy to copy a directory on Windows -->
-[#89]: https://github.com/jprichardson/node-fs-extra/issues/89
-<!--- Stacking those libraries -->
-[#88]: https://github.com/jprichardson/node-fs-extra/issues/88
-<!--- createWriteStream + outputFile = ? -->
-[#87]: https://github.com/jprichardson/node-fs-extra/issues/87
-<!--- no moveSync? -->
-[#86]: https://github.com/jprichardson/node-fs-extra/issues/86
-<!--- Copy symlinks in copySync -->
-[#85]: https://github.com/jprichardson/node-fs-extra/pull/85
-<!--- Push latest version to npm ? -->
-[#84]: https://github.com/jprichardson/node-fs-extra/issues/84
-<!--- Prevent copying a directory into itself [feature-copy] -->
-[#83]: https://github.com/jprichardson/node-fs-extra/issues/83
-<!--- README updates for move -->
-[#82]: https://github.com/jprichardson/node-fs-extra/pull/82
-<!--- fd leak after fs.move -->
-[#81]: https://github.com/jprichardson/node-fs-extra/issues/81
-<!--- Preserve file mode in copySync -->
-[#80]: https://github.com/jprichardson/node-fs-extra/pull/80
-<!--- fs.copy only .html file empty -->
-[#79]: https://github.com/jprichardson/node-fs-extra/issues/79
-<!--- copySync was not applying filters to directories -->
-[#78]: https://github.com/jprichardson/node-fs-extra/pull/78
-<!--- Create README reference to bluebird -->
-[#77]: https://github.com/jprichardson/node-fs-extra/issues/77
-<!--- Create README reference to typescript -->
-[#76]: https://github.com/jprichardson/node-fs-extra/issues/76
-<!--- add glob as a dep? [question] -->
-[#75]: https://github.com/jprichardson/node-fs-extra/issues/75
-<!--- including new emptydir module -->
-[#74]: https://github.com/jprichardson/node-fs-extra/pull/74
-<!--- add dependency status in readme -->
-[#73]: https://github.com/jprichardson/node-fs-extra/pull/73
-<!--- Use svg instead of png to get better image quality -->
-[#72]: https://github.com/jprichardson/node-fs-extra/pull/72
-<!--- fse.copy not working on Windows 7 x64 OS, but, copySync does work -->
-[#71]: https://github.com/jprichardson/node-fs-extra/issues/71
-<!--- Not filter each file, stops on first false [bug] -->
-[#70]: https://github.com/jprichardson/node-fs-extra/issues/70
-<!--- How to check if folder exist and read the folder name -->
-[#69]: https://github.com/jprichardson/node-fs-extra/issues/69
-<!--- consider flag to readJsonSync (throw false) [enhancement] -->
-[#68]: https://github.com/jprichardson/node-fs-extra/issues/68
-<!--- docs for readJson incorrectly states that is accepts options -->
-[#67]: https://github.com/jprichardson/node-fs-extra/issues/67
-<!--- ENAMETOOLONG -->
-[#66]: https://github.com/jprichardson/node-fs-extra/issues/66
-<!--- exclude filter in fs.copy -->
-[#65]: https://github.com/jprichardson/node-fs-extra/issues/65
-<!--- Announce: mfs - monitor your fs-extra calls -->
-[#64]: https://github.com/jprichardson/node-fs-extra/issues/64
-<!--- Walk -->
-[#63]: https://github.com/jprichardson/node-fs-extra/issues/63
-<!--- npm install fs-extra doesn't work -->
-[#62]: https://github.com/jprichardson/node-fs-extra/issues/62
-<!--- No longer supports node 0.8 due to use of `^` in package.json dependencies -->
-[#61]: https://github.com/jprichardson/node-fs-extra/issues/61
-<!--- chmod & chown for mkdirs -->
-[#60]: https://github.com/jprichardson/node-fs-extra/issues/60
-<!--- Consider including mkdirp and making fs-extra "--use_strict" safe [question] -->
-[#59]: https://github.com/jprichardson/node-fs-extra/issues/59
-<!--- Stack trace not included in fs.copy error -->
-[#58]: https://github.com/jprichardson/node-fs-extra/issues/58
-<!--- Possible to include wildcards in delete? -->
-[#57]: https://github.com/jprichardson/node-fs-extra/issues/57
-<!--- Crash when have no access to write to destination file in copy  -->
-[#56]: https://github.com/jprichardson/node-fs-extra/issues/56
-<!--- Is it possible to have any console output similar to Grunt copy module? -->
-[#55]: https://github.com/jprichardson/node-fs-extra/issues/55
-<!--- `copy` does not preserve file ownership and permissons -->
-[#54]: https://github.com/jprichardson/node-fs-extra/issues/54
-<!--- outputFile() - ability to write data in appending mode -->
-[#53]: https://github.com/jprichardson/node-fs-extra/issues/53
-<!--- This fixes (what I think) is a bug in copySync -->
-[#52]: https://github.com/jprichardson/node-fs-extra/pull/52
-<!--- Add a Bitdeli Badge to README -->
-[#51]: https://github.com/jprichardson/node-fs-extra/pull/51
-<!--- Replace mechanism in createFile -->
-[#50]: https://github.com/jprichardson/node-fs-extra/issues/50
-<!--- update rimraf to v2.2.6 -->
-[#49]: https://github.com/jprichardson/node-fs-extra/pull/49
-<!--- fs.copy issue [bug] -->
-[#48]: https://github.com/jprichardson/node-fs-extra/issues/48
-<!--- Bug in copy - callback called on readStream "close" - Fixed in ncp 0.5.0 -->
-[#47]: https://github.com/jprichardson/node-fs-extra/issues/47
-<!--- update copyright year -->
-[#46]: https://github.com/jprichardson/node-fs-extra/pull/46
-<!--- Added note about fse.outputFile() being the one that overwrites -->
-[#45]: https://github.com/jprichardson/node-fs-extra/pull/45
-<!--- Proposal: Stream support -->
-[#44]: https://github.com/jprichardson/node-fs-extra/pull/44
-<!--- Better error reporting  -->
-[#43]: https://github.com/jprichardson/node-fs-extra/issues/43
-<!--- Performance issue? -->
-[#42]: https://github.com/jprichardson/node-fs-extra/issues/42
-<!--- There does seem to be a synchronous version now -->
-[#41]: https://github.com/jprichardson/node-fs-extra/pull/41
-<!--- fs.copy throw unexplained error ENOENT, utime  -->
-[#40]: https://github.com/jprichardson/node-fs-extra/issues/40
-<!--- Added regression test for copy() return callback on error -->
-[#39]: https://github.com/jprichardson/node-fs-extra/pull/39
-<!--- Return err in copy() fstat cb, because stat could be undefined or null -->
-[#38]: https://github.com/jprichardson/node-fs-extra/pull/38
-<!--- Maybe include a line reader? [enhancement, question] -->
-[#37]: https://github.com/jprichardson/node-fs-extra/issues/37
-<!--- `filter` parameter `fs.copy` and `fs.copySync` -->
-[#36]: https://github.com/jprichardson/node-fs-extra/pull/36
-<!--- `filter` parameter `fs.copy` and `fs.copySync`  -->
-[#35]: https://github.com/jprichardson/node-fs-extra/pull/35
-<!--- update docs to include options for JSON methods [enhancement] -->
-[#34]: https://github.com/jprichardson/node-fs-extra/issues/34
-<!--- fs_extra.copySync -->
-[#33]: https://github.com/jprichardson/node-fs-extra/pull/33
-<!--- update to latest jsonfile [enhancement] -->
-[#32]: https://github.com/jprichardson/node-fs-extra/issues/32
-<!--- Add ensure methods [enhancement] -->
-[#31]: https://github.com/jprichardson/node-fs-extra/issues/31
-<!--- update package.json optional dep `graceful-fs` -->
-[#30]: https://github.com/jprichardson/node-fs-extra/issues/30
-<!--- Copy failing if dest directory doesn't exist. Is this intended? -->
-[#29]: https://github.com/jprichardson/node-fs-extra/issues/29
-<!--- homepage field must be a string url. Deleted. -->
-[#28]: https://github.com/jprichardson/node-fs-extra/issues/28
-<!--- Update Readme -->
-[#27]: https://github.com/jprichardson/node-fs-extra/issues/27
-<!--- Add readdir recursive method. [enhancement] -->
-[#26]: https://github.com/jprichardson/node-fs-extra/issues/26
-<!--- adding an `.npmignore` file -->
-[#25]: https://github.com/jprichardson/node-fs-extra/pull/25
-<!--- [bug] cannot run in strict mode [bug] -->
-[#24]: https://github.com/jprichardson/node-fs-extra/issues/24
-<!--- `writeJSON()` should create parent directories -->
-[#23]: https://github.com/jprichardson/node-fs-extra/issues/23
-<!--- Add a limit option to mkdirs() -->
-[#22]: https://github.com/jprichardson/node-fs-extra/pull/22
-<!--- touch() in 0.10.0 -->
-[#21]: https://github.com/jprichardson/node-fs-extra/issues/21
-<!--- fs.remove yields callback before directory is really deleted -->
-[#20]: https://github.com/jprichardson/node-fs-extra/issues/20
-<!--- fs.copy err is empty array -->
-[#19]: https://github.com/jprichardson/node-fs-extra/issues/19
-<!--- Exposed copyFile Function -->
-[#18]: https://github.com/jprichardson/node-fs-extra/pull/18
-<!--- Use `require("graceful-fs")` if found instead of `require("fs")` -->
-[#17]: https://github.com/jprichardson/node-fs-extra/issues/17
-<!--- Update README.md -->
-[#16]: https://github.com/jprichardson/node-fs-extra/pull/16
-<!--- Implement cp -r but sync aka copySync. [enhancement] -->
-[#15]: https://github.com/jprichardson/node-fs-extra/issues/15
-<!--- fs.mkdirSync is broken in 0.3.1 -->
-[#14]: https://github.com/jprichardson/node-fs-extra/issues/14
-<!--- Thoughts on including a directory tree / file watcher? [enhancement, question] -->
-[#13]: https://github.com/jprichardson/node-fs-extra/issues/13
-<!--- copyFile & copyFileSync are global -->
-[#12]: https://github.com/jprichardson/node-fs-extra/issues/12
-<!--- Thoughts on including a file walker? [enhancement, question] -->
-[#11]: https://github.com/jprichardson/node-fs-extra/issues/11
-<!--- move / moveFile API [enhancement] -->
-[#10]: https://github.com/jprichardson/node-fs-extra/issues/10
-<!--- don't import normal fs stuff into fs-extra -->
-[#9]: https://github.com/jprichardson/node-fs-extra/issues/9
-<!--- Update rimraf to latest version -->
-[#8]: https://github.com/jprichardson/node-fs-extra/pull/8
-<!--- Remove CoffeeScript development dependency -->
-[#6]: https://github.com/jprichardson/node-fs-extra/issues/6
-<!--- comments on naming -->
-[#5]: https://github.com/jprichardson/node-fs-extra/issues/5
-<!--- version bump to 0.2 -->
-[#4]: https://github.com/jprichardson/node-fs-extra/issues/4
-<!--- Hi! I fixed some code for you! -->
-[#3]: https://github.com/jprichardson/node-fs-extra/pull/3
-<!--- Merge with fs.extra and mkdirp -->
-[#2]: https://github.com/jprichardson/node-fs-extra/issues/2
-<!--- file-extra npm !exist -->
-[#1]: https://github.com/jprichardson/node-fs-extra/issues/1
+[#236]: https://github.com/jprichardson/node-fs-extra/issues/236    "[Removed] Filed under wrong repo"
+[#235]: https://github.com/jprichardson/node-fs-extra/pull/235      "Adds symlink dereference option to `fse.copySync` (#191)"
+[#234]: https://github.com/jprichardson/node-fs-extra/issues/234    "ensureDirSync fails silent when EACCES: permission denied on travis-ci"
+[#233]: https://github.com/jprichardson/node-fs-extra/issues/233    "please make sure the first argument in callback is error object [feature-copy]"
+[#232]: https://github.com/jprichardson/node-fs-extra/issues/232    "Copy a folder content  to its child folder.  "
+[#231]: https://github.com/jprichardson/node-fs-extra/issues/231    "Adding read/write/output functions for YAML"
+[#230]: https://github.com/jprichardson/node-fs-extra/pull/230      "throw error if src and dest are the same to avoid zeroing out + test"
+[#229]: https://github.com/jprichardson/node-fs-extra/pull/229      "fix 'TypeError: callback is not a function' in emptyDir"
+[#228]: https://github.com/jprichardson/node-fs-extra/pull/228      "Throw error when target is empty so file is not accidentally zeroed out"
+[#227]: https://github.com/jprichardson/node-fs-extra/issues/227    "Uncatchable errors when there are invalid arguments [feature-move]"
+[#226]: https://github.com/jprichardson/node-fs-extra/issues/226    "Moving to the current directory"
+[#225]: https://github.com/jprichardson/node-fs-extra/issues/225    "EBUSY: resource busy or locked, unlink"
+[#224]: https://github.com/jprichardson/node-fs-extra/issues/224    "fse.copy ENOENT error"
+[#223]: https://github.com/jprichardson/node-fs-extra/issues/223    "Suspicious behavior of fs.existsSync"
+[#222]: https://github.com/jprichardson/node-fs-extra/pull/222      "A clearer description of emtpyDir function"
+[#221]: https://github.com/jprichardson/node-fs-extra/pull/221      "Update README.md"
+[#220]: https://github.com/jprichardson/node-fs-extra/pull/220      "Non-breaking feature: add option 'passStats' to copy methods."
+[#219]: https://github.com/jprichardson/node-fs-extra/pull/219      "Add closing parenthesis in copySync example"
+[#218]: https://github.com/jprichardson/node-fs-extra/pull/218      "fix #187 #70 options.filter bug"
+[#217]: https://github.com/jprichardson/node-fs-extra/pull/217      "fix #187 #70 options.filter bug"
+[#216]: https://github.com/jprichardson/node-fs-extra/pull/216      "fix #187 #70 options.filter bug"
+[#215]: https://github.com/jprichardson/node-fs-extra/pull/215      "fse.copy throws error when only src and dest provided [bug, documentation, feature-copy]"
+[#214]: https://github.com/jprichardson/node-fs-extra/pull/214      "Fixing copySync anchor tag"
+[#213]: https://github.com/jprichardson/node-fs-extra/issues/213    "Merge extfs with this repo"
+[#212]: https://github.com/jprichardson/node-fs-extra/pull/212      "Update year to 2016 in README.md and LICENSE"
+[#211]: https://github.com/jprichardson/node-fs-extra/issues/211    "Not copying all files"
+[#210]: https://github.com/jprichardson/node-fs-extra/issues/210    "copy/copySync behave differently when copying a symbolic file [bug, documentation, feature-copy]"
+[#209]: https://github.com/jprichardson/node-fs-extra/issues/209    "In Windows invalid directory name causes infinite loop in ensureDir(). [bug]"
+[#208]: https://github.com/jprichardson/node-fs-extra/pull/208      "fix options.preserveTimestamps to false in copy-sync by default [feature-copy]"
+[#207]: https://github.com/jprichardson/node-fs-extra/issues/207    "Add `compare` suite of functions"
+[#206]: https://github.com/jprichardson/node-fs-extra/issues/206    "outputFileSync"
+[#205]: https://github.com/jprichardson/node-fs-extra/issues/205    "fix documents about copy/copySync [documentation, feature-copy]"
+[#204]: https://github.com/jprichardson/node-fs-extra/pull/204      "allow copy of block and character device files"
+[#203]: https://github.com/jprichardson/node-fs-extra/issues/203    "copy method's argument options couldn't be undefined [bug, feature-copy]"
+[#202]: https://github.com/jprichardson/node-fs-extra/issues/202    "why there is not a walkSync method?"
+[#201]: https://github.com/jprichardson/node-fs-extra/issues/201    "clobber for directories [feature-copy, future]"
+[#200]: https://github.com/jprichardson/node-fs-extra/issues/200    "'copySync' doesn't work in sync"
+[#199]: https://github.com/jprichardson/node-fs-extra/issues/199    "fs.copySync fails if user does not own file [bug, feature-copy]"
+[#198]: https://github.com/jprichardson/node-fs-extra/issues/198    "handle copying between identical files [feature-copy]"
+[#197]: https://github.com/jprichardson/node-fs-extra/issues/197    "Missing documentation for `outputFile` `options` 3rd parameter [documentation]"
+[#196]: https://github.com/jprichardson/node-fs-extra/issues/196    "copy filter: async function and/or function called with `fs.stat` result [future]"
+[#195]: https://github.com/jprichardson/node-fs-extra/issues/195    "How to override with outputFile?"
+[#194]: https://github.com/jprichardson/node-fs-extra/pull/194      "allow ensureFile(Sync) to provide data to be written to created file"
+[#193]: https://github.com/jprichardson/node-fs-extra/issues/193    "`fs.copy` fails silently if source file is /dev/null [bug, feature-copy]"
+[#192]: https://github.com/jprichardson/node-fs-extra/issues/192    "Remove fs.createOutputStream()"
+[#191]: https://github.com/jprichardson/node-fs-extra/issues/191    "How to copy symlinks to target as normal folders [feature-copy]"
+[#190]: https://github.com/jprichardson/node-fs-extra/pull/190      "copySync to overwrite destination file if readonly and clobber true"
+[#189]: https://github.com/jprichardson/node-fs-extra/pull/189      "move.test fix to support CRLF on Windows"
+[#188]: https://github.com/jprichardson/node-fs-extra/issues/188    "move.test failing on windows platform"
+[#187]: https://github.com/jprichardson/node-fs-extra/issues/187    "Not filter each file, stops on first false [feature-copy]"
+[#186]: https://github.com/jprichardson/node-fs-extra/issues/186    "Do you need a .size() function in this module? [future]"
+[#185]: https://github.com/jprichardson/node-fs-extra/issues/185    "Doesn't work on NodeJS v4.x"
+[#184]: https://github.com/jprichardson/node-fs-extra/issues/184    "CLI equivalent for fs-extra"
+[#183]: https://github.com/jprichardson/node-fs-extra/issues/183    "with clobber true, copy and copySync behave differently if destination file is read only [bug, feature-copy]"
+[#182]: https://github.com/jprichardson/node-fs-extra/issues/182    "ensureDir(dir, callback) second callback parameter not specified"
+[#181]: https://github.com/jprichardson/node-fs-extra/issues/181    "Add ability to remove file securely [enhancement, wont-fix]"
+[#180]: https://github.com/jprichardson/node-fs-extra/issues/180    "Filter option doesn't work the same way in copy and copySync [bug, feature-copy]"
+[#179]: https://github.com/jprichardson/node-fs-extra/issues/179    "Include opendir"
+[#178]: https://github.com/jprichardson/node-fs-extra/issues/178    "ENOTEMPTY is thrown on removeSync "
+[#177]: https://github.com/jprichardson/node-fs-extra/issues/177    "fix `remove()` wildcards (introduced by rimraf) [feature-remove]"
+[#176]: https://github.com/jprichardson/node-fs-extra/issues/176    "createOutputStream doesn't emit 'end' event"
+[#175]: https://github.com/jprichardson/node-fs-extra/issues/175    "[Feature Request].moveSync support [feature-move, future]"
+[#174]: https://github.com/jprichardson/node-fs-extra/pull/174      "Fix copy formatting and document options.filter"
+[#173]: https://github.com/jprichardson/node-fs-extra/issues/173    "Feature Request: writeJson should mkdirs"
+[#172]: https://github.com/jprichardson/node-fs-extra/issues/172    "rename `clobber` flags to `overwrite`"
+[#171]: https://github.com/jprichardson/node-fs-extra/issues/171    "remove unnecessary aliases"
+[#170]: https://github.com/jprichardson/node-fs-extra/pull/170      "More robust handling of errors moving across virtual drives"
+[#169]: https://github.com/jprichardson/node-fs-extra/pull/169      "suppress ensureLink & ensureSymlink dest exists error"
+[#168]: https://github.com/jprichardson/node-fs-extra/pull/168      "suppress ensurelink dest exists error"
+[#167]: https://github.com/jprichardson/node-fs-extra/pull/167      "Adds basic (string, buffer) support for ensureFile content [future]"
+[#166]: https://github.com/jprichardson/node-fs-extra/pull/166      "Adds basic (string, buffer) support for ensureFile content"
+[#165]: https://github.com/jprichardson/node-fs-extra/pull/165      "ensure for link & symlink"
+[#164]: https://github.com/jprichardson/node-fs-extra/issues/164    "Feature Request: ensureFile to take optional argument for file content"
+[#163]: https://github.com/jprichardson/node-fs-extra/issues/163    "ouputJson not formatted out of the box [bug]"
+[#162]: https://github.com/jprichardson/node-fs-extra/pull/162      "ensure symlink & link"
+[#161]: https://github.com/jprichardson/node-fs-extra/pull/161      "ensure symlink & link"
+[#160]: https://github.com/jprichardson/node-fs-extra/pull/160      "ensure symlink & link"
+[#159]: https://github.com/jprichardson/node-fs-extra/pull/159      "ensure symlink & link"
+[#158]: https://github.com/jprichardson/node-fs-extra/issues/158    "Feature Request: ensureLink and ensureSymlink methods"
+[#157]: https://github.com/jprichardson/node-fs-extra/issues/157    "writeJson isn't formatted"
+[#156]: https://github.com/jprichardson/node-fs-extra/issues/156    "Promise.promisifyAll doesn't work for some methods"
+[#155]: https://github.com/jprichardson/node-fs-extra/issues/155    "Readme"
+[#154]: https://github.com/jprichardson/node-fs-extra/issues/154    "/tmp/millis-test-sync"
+[#153]: https://github.com/jprichardson/node-fs-extra/pull/153      "Make preserveTimes also work on read-only files. Closes #152"
+[#152]: https://github.com/jprichardson/node-fs-extra/issues/152    "fs.copy fails for read-only files with preserveTimestamp=true [feature-copy]"
+[#151]: https://github.com/jprichardson/node-fs-extra/issues/151    "TOC does not work correctly on npm [documentation]"
+[#150]: https://github.com/jprichardson/node-fs-extra/issues/150    "Remove test file fixtures, create with code."
+[#149]: https://github.com/jprichardson/node-fs-extra/issues/149    "/tmp/millis-test-sync"
+[#148]: https://github.com/jprichardson/node-fs-extra/issues/148    "split out `Sync` methods in documentation"
+[#147]: https://github.com/jprichardson/node-fs-extra/issues/147    "Adding rmdirIfEmpty"
+[#146]: https://github.com/jprichardson/node-fs-extra/pull/146      "ensure test.js works"
+[#145]: https://github.com/jprichardson/node-fs-extra/issues/145    "Add `fs.exists` and `fs.existsSync` if it doesn't exist."
+[#144]: https://github.com/jprichardson/node-fs-extra/issues/144    "tests failing"
+[#143]: https://github.com/jprichardson/node-fs-extra/issues/143    "update graceful-fs"
+[#142]: https://github.com/jprichardson/node-fs-extra/issues/142    "PrependFile Feature"
+[#141]: https://github.com/jprichardson/node-fs-extra/pull/141      "Add option to preserve timestamps"
+[#140]: https://github.com/jprichardson/node-fs-extra/issues/140    "Json file reading fails with 'utf8'"
+[#139]: https://github.com/jprichardson/node-fs-extra/pull/139      "Preserve file timestamp on copy. Closes #138"
+[#138]: https://github.com/jprichardson/node-fs-extra/issues/138    "Preserve timestamps on copying files"
+[#137]: https://github.com/jprichardson/node-fs-extra/issues/137    "outputFile/outputJson: Unexpected end of input"
+[#136]: https://github.com/jprichardson/node-fs-extra/pull/136      "Update license attribute"
+[#135]: https://github.com/jprichardson/node-fs-extra/issues/135    "emptyDir throws Error if no callback is provided"
+[#134]: https://github.com/jprichardson/node-fs-extra/pull/134      "Handle EEXIST error when clobbering dir"
+[#133]: https://github.com/jprichardson/node-fs-extra/pull/133      "Travis runs with `sudo: false`"
+[#132]: https://github.com/jprichardson/node-fs-extra/pull/132      "isDirectory method"
+[#131]: https://github.com/jprichardson/node-fs-extra/issues/131    "copySync is not working iojs 1.8.4 on linux [feature-copy]"
+[#130]: https://github.com/jprichardson/node-fs-extra/pull/130      "Please review additional features."
+[#129]: https://github.com/jprichardson/node-fs-extra/pull/129      "can you review this feature?"
+[#128]: https://github.com/jprichardson/node-fs-extra/issues/128    "fsExtra.move(filepath, newPath) broken;"
+[#127]: https://github.com/jprichardson/node-fs-extra/issues/127    "consider using fs.access to remove deprecated warnings for fs.exists"
+[#126]: https://github.com/jprichardson/node-fs-extra/issues/126    " TypeError: Object #<Object> has no method 'access'"
+[#125]: https://github.com/jprichardson/node-fs-extra/issues/125    "Question: What do the *Sync function do different from non-sync"
+[#124]: https://github.com/jprichardson/node-fs-extra/issues/124    "move with clobber option 'ENOTEMPTY'"
+[#123]: https://github.com/jprichardson/node-fs-extra/issues/123    "Only copy the content of a directory"
+[#122]: https://github.com/jprichardson/node-fs-extra/pull/122      "Update section links in README to match current section ids."
+[#121]: https://github.com/jprichardson/node-fs-extra/issues/121    "emptyDir is undefined"
+[#120]: https://github.com/jprichardson/node-fs-extra/issues/120    "usage bug caused by shallow cloning methods of 'graceful-fs'"
+[#119]: https://github.com/jprichardson/node-fs-extra/issues/119    "mkdirs and ensureDir never invoke callback and consume CPU indefinitely if provided a path with invalid characters on Windows"
+[#118]: https://github.com/jprichardson/node-fs-extra/pull/118      "createOutputStream"
+[#117]: https://github.com/jprichardson/node-fs-extra/pull/117      "Fixed issue with slash separated paths on windows"
+[#116]: https://github.com/jprichardson/node-fs-extra/issues/116    "copySync can only copy directories not files [documentation, feature-copy]"
+[#115]: https://github.com/jprichardson/node-fs-extra/issues/115    ".Copy & .CopySync [feature-copy]"
+[#114]: https://github.com/jprichardson/node-fs-extra/issues/114    "Fails to move (rename) directory to non-empty directory even with clobber: true"
+[#113]: https://github.com/jprichardson/node-fs-extra/issues/113    "fs.copy seems to callback early if the destination file already exists"
+[#112]: https://github.com/jprichardson/node-fs-extra/pull/112      "Copying a file into an existing directory"
+[#111]: https://github.com/jprichardson/node-fs-extra/pull/111      "Moving a file into an existing directory "
+[#110]: https://github.com/jprichardson/node-fs-extra/pull/110      "Moving a file into an existing directory"
+[#109]: https://github.com/jprichardson/node-fs-extra/issues/109    "fs.move across windows drives fails"
+[#108]: https://github.com/jprichardson/node-fs-extra/issues/108    "fse.move directories across multiple devices doesn't work"
+[#107]: https://github.com/jprichardson/node-fs-extra/pull/107      "Check if dest path is an existing dir and copy or move source in it"
+[#106]: https://github.com/jprichardson/node-fs-extra/issues/106    "fse.copySync crashes while copying across devices D: [feature-copy]"
+[#105]: https://github.com/jprichardson/node-fs-extra/issues/105    "fs.copy hangs on iojs"
+[#104]: https://github.com/jprichardson/node-fs-extra/issues/104    "fse.move deletes folders [bug]"
+[#103]: https://github.com/jprichardson/node-fs-extra/issues/103    "Error: EMFILE with copy"
+[#102]: https://github.com/jprichardson/node-fs-extra/issues/102    "touch / touchSync was removed ?"
+[#101]: https://github.com/jprichardson/node-fs-extra/issues/101    "fs-extra promisified"
+[#100]: https://github.com/jprichardson/node-fs-extra/pull/100      "copy: options object or filter to pass to ncp"
+[#99]: https://github.com/jprichardson/node-fs-extra/issues/99      "ensureDir() modes [future]"
+[#98]: https://github.com/jprichardson/node-fs-extra/issues/98      "fs.copy() incorrect async behavior [bug]"
+[#97]: https://github.com/jprichardson/node-fs-extra/pull/97        "use path.join; fix copySync bug"
+[#96]: https://github.com/jprichardson/node-fs-extra/issues/96      "destFolderExists in copySync is always undefined."
+[#95]: https://github.com/jprichardson/node-fs-extra/pull/95        "Using graceful-ncp instead of ncp"
+[#94]: https://github.com/jprichardson/node-fs-extra/issues/94      "Error: EEXIST, file already exists '../mkdirp/bin/cmd.js' on fs.copySync() [enhancement, feature-copy]"
+[#93]: https://github.com/jprichardson/node-fs-extra/issues/93      "Confusing error if drive not mounted [enhancement]"
+[#92]: https://github.com/jprichardson/node-fs-extra/issues/92      "Problems with Bluebird"
+[#91]: https://github.com/jprichardson/node-fs-extra/issues/91      "fs.copySync('/test', '/haha') is different with 'cp -r /test /haha' [enhancement]"
+[#90]: https://github.com/jprichardson/node-fs-extra/issues/90      "Folder creation and file copy is Happening in 64 bit machine but not in 32 bit machine"
+[#89]: https://github.com/jprichardson/node-fs-extra/issues/89      "Error: EEXIST using fs-extra's fs.copy to copy a directory on Windows"
+[#88]: https://github.com/jprichardson/node-fs-extra/issues/88      "Stacking those libraries"
+[#87]: https://github.com/jprichardson/node-fs-extra/issues/87      "createWriteStream + outputFile = ?"
+[#86]: https://github.com/jprichardson/node-fs-extra/issues/86      "no moveSync?"
+[#85]: https://github.com/jprichardson/node-fs-extra/pull/85        "Copy symlinks in copySync"
+[#84]: https://github.com/jprichardson/node-fs-extra/issues/84      "Push latest version to npm ?"
+[#83]: https://github.com/jprichardson/node-fs-extra/issues/83      "Prevent copying a directory into itself [feature-copy]"
+[#82]: https://github.com/jprichardson/node-fs-extra/pull/82        "README updates for move"
+[#81]: https://github.com/jprichardson/node-fs-extra/issues/81      "fd leak after fs.move"
+[#80]: https://github.com/jprichardson/node-fs-extra/pull/80        "Preserve file mode in copySync"
+[#79]: https://github.com/jprichardson/node-fs-extra/issues/79      "fs.copy only .html file empty"
+[#78]: https://github.com/jprichardson/node-fs-extra/pull/78        "copySync was not applying filters to directories"
+[#77]: https://github.com/jprichardson/node-fs-extra/issues/77      "Create README reference to bluebird"
+[#76]: https://github.com/jprichardson/node-fs-extra/issues/76      "Create README reference to typescript"
+[#75]: https://github.com/jprichardson/node-fs-extra/issues/75      "add glob as a dep? [question]"
+[#74]: https://github.com/jprichardson/node-fs-extra/pull/74        "including new emptydir module"
+[#73]: https://github.com/jprichardson/node-fs-extra/pull/73        "add dependency status in readme"
+[#72]: https://github.com/jprichardson/node-fs-extra/pull/72        "Use svg instead of png to get better image quality"
+[#71]: https://github.com/jprichardson/node-fs-extra/issues/71      "fse.copy not working on Windows 7 x64 OS, but, copySync does work"
+[#70]: https://github.com/jprichardson/node-fs-extra/issues/70      "Not filter each file, stops on first false [bug]"
+[#69]: https://github.com/jprichardson/node-fs-extra/issues/69      "How to check if folder exist and read the folder name"
+[#68]: https://github.com/jprichardson/node-fs-extra/issues/68      "consider flag to readJsonSync (throw false) [enhancement]"
+[#67]: https://github.com/jprichardson/node-fs-extra/issues/67      "docs for readJson incorrectly states that is accepts options"
+[#66]: https://github.com/jprichardson/node-fs-extra/issues/66      "ENAMETOOLONG"
+[#65]: https://github.com/jprichardson/node-fs-extra/issues/65      "exclude filter in fs.copy"
+[#64]: https://github.com/jprichardson/node-fs-extra/issues/64      "Announce: mfs - monitor your fs-extra calls"
+[#63]: https://github.com/jprichardson/node-fs-extra/issues/63      "Walk"
+[#62]: https://github.com/jprichardson/node-fs-extra/issues/62      "npm install fs-extra doesn't work"
+[#61]: https://github.com/jprichardson/node-fs-extra/issues/61      "No longer supports node 0.8 due to use of `^` in package.json dependencies"
+[#60]: https://github.com/jprichardson/node-fs-extra/issues/60      "chmod & chown for mkdirs"
+[#59]: https://github.com/jprichardson/node-fs-extra/issues/59      "Consider including mkdirp and making fs-extra "--use_strict" safe [question]"
+[#58]: https://github.com/jprichardson/node-fs-extra/issues/58      "Stack trace not included in fs.copy error"
+[#57]: https://github.com/jprichardson/node-fs-extra/issues/57      "Possible to include wildcards in delete?"
+[#56]: https://github.com/jprichardson/node-fs-extra/issues/56      "Crash when have no access to write to destination file in copy "
+[#55]: https://github.com/jprichardson/node-fs-extra/issues/55      "Is it possible to have any console output similar to Grunt copy module?"
+[#54]: https://github.com/jprichardson/node-fs-extra/issues/54      "`copy` does not preserve file ownership and permissons"
+[#53]: https://github.com/jprichardson/node-fs-extra/issues/53      "outputFile() - ability to write data in appending mode"
+[#52]: https://github.com/jprichardson/node-fs-extra/pull/52        "This fixes (what I think) is a bug in copySync"
+[#51]: https://github.com/jprichardson/node-fs-extra/pull/51        "Add a Bitdeli Badge to README"
+[#50]: https://github.com/jprichardson/node-fs-extra/issues/50      "Replace mechanism in createFile"
+[#49]: https://github.com/jprichardson/node-fs-extra/pull/49        "update rimraf to v2.2.6"
+[#48]: https://github.com/jprichardson/node-fs-extra/issues/48      "fs.copy issue [bug]"
+[#47]: https://github.com/jprichardson/node-fs-extra/issues/47      "Bug in copy - callback called on readStream "close" - Fixed in ncp 0.5.0"
+[#46]: https://github.com/jprichardson/node-fs-extra/pull/46        "update copyright year"
+[#45]: https://github.com/jprichardson/node-fs-extra/pull/45        "Added note about fse.outputFile() being the one that overwrites"
+[#44]: https://github.com/jprichardson/node-fs-extra/pull/44        "Proposal: Stream support"
+[#43]: https://github.com/jprichardson/node-fs-extra/issues/43      "Better error reporting "
+[#42]: https://github.com/jprichardson/node-fs-extra/issues/42      "Performance issue?"
+[#41]: https://github.com/jprichardson/node-fs-extra/pull/41        "There does seem to be a synchronous version now"
+[#40]: https://github.com/jprichardson/node-fs-extra/issues/40      "fs.copy throw unexplained error ENOENT, utime "
+[#39]: https://github.com/jprichardson/node-fs-extra/pull/39        "Added regression test for copy() return callback on error"
+[#38]: https://github.com/jprichardson/node-fs-extra/pull/38        "Return err in copy() fstat cb, because stat could be undefined or null"
+[#37]: https://github.com/jprichardson/node-fs-extra/issues/37      "Maybe include a line reader? [enhancement, question]"
+[#36]: https://github.com/jprichardson/node-fs-extra/pull/36        "`filter` parameter `fs.copy` and `fs.copySync`"
+[#35]: https://github.com/jprichardson/node-fs-extra/pull/35        "`filter` parameter `fs.copy` and `fs.copySync` "
+[#34]: https://github.com/jprichardson/node-fs-extra/issues/34      "update docs to include options for JSON methods [enhancement]"
+[#33]: https://github.com/jprichardson/node-fs-extra/pull/33        "fs_extra.copySync"
+[#32]: https://github.com/jprichardson/node-fs-extra/issues/32      "update to latest jsonfile [enhancement]"
+[#31]: https://github.com/jprichardson/node-fs-extra/issues/31      "Add ensure methods [enhancement]"
+[#30]: https://github.com/jprichardson/node-fs-extra/issues/30      "update package.json optional dep `graceful-fs`"
+[#29]: https://github.com/jprichardson/node-fs-extra/issues/29      "Copy failing if dest directory doesn't exist. Is this intended?"
+[#28]: https://github.com/jprichardson/node-fs-extra/issues/28      "homepage field must be a string url. Deleted."
+[#27]: https://github.com/jprichardson/node-fs-extra/issues/27      "Update Readme"
+[#26]: https://github.com/jprichardson/node-fs-extra/issues/26      "Add readdir recursive method. [enhancement]"
+[#25]: https://github.com/jprichardson/node-fs-extra/pull/25        "adding an `.npmignore` file"
+[#24]: https://github.com/jprichardson/node-fs-extra/issues/24      "[bug] cannot run in strict mode [bug]"
+[#23]: https://github.com/jprichardson/node-fs-extra/issues/23      "`writeJSON()` should create parent directories"
+[#22]: https://github.com/jprichardson/node-fs-extra/pull/22        "Add a limit option to mkdirs()"
+[#21]: https://github.com/jprichardson/node-fs-extra/issues/21      "touch() in 0.10.0"
+[#20]: https://github.com/jprichardson/node-fs-extra/issues/20      "fs.remove yields callback before directory is really deleted"
+[#19]: https://github.com/jprichardson/node-fs-extra/issues/19      "fs.copy err is empty array"
+[#18]: https://github.com/jprichardson/node-fs-extra/pull/18        "Exposed copyFile Function"
+[#17]: https://github.com/jprichardson/node-fs-extra/issues/17      "Use `require("graceful-fs")` if found instead of `require("fs")`"
+[#16]: https://github.com/jprichardson/node-fs-extra/pull/16        "Update README.md"
+[#15]: https://github.com/jprichardson/node-fs-extra/issues/15      "Implement cp -r but sync aka copySync. [enhancement]"
+[#14]: https://github.com/jprichardson/node-fs-extra/issues/14      "fs.mkdirSync is broken in 0.3.1"
+[#13]: https://github.com/jprichardson/node-fs-extra/issues/13      "Thoughts on including a directory tree / file watcher? [enhancement, question]"
+[#12]: https://github.com/jprichardson/node-fs-extra/issues/12      "copyFile & copyFileSync are global"
+[#11]: https://github.com/jprichardson/node-fs-extra/issues/11      "Thoughts on including a file walker? [enhancement, question]"
+[#10]: https://github.com/jprichardson/node-fs-extra/issues/10      "move / moveFile API [enhancement]"
+[#9]: https://github.com/jprichardson/node-fs-extra/issues/9        "don't import normal fs stuff into fs-extra"
+[#8]: https://github.com/jprichardson/node-fs-extra/pull/8          "Update rimraf to latest version"
+[#6]: https://github.com/jprichardson/node-fs-extra/issues/6        "Remove CoffeeScript development dependency"
+[#5]: https://github.com/jprichardson/node-fs-extra/issues/5        "comments on naming"
+[#4]: https://github.com/jprichardson/node-fs-extra/issues/4        "version bump to 0.2"
+[#3]: https://github.com/jprichardson/node-fs-extra/pull/3          "Hi! I fixed some code for you!"
+[#2]: https://github.com/jprichardson/node-fs-extra/issues/2        "Merge with fs.extra and mkdirp"
+[#1]: https://github.com/jprichardson/node-fs-extra/issues/1        "file-extra npm !exist"
