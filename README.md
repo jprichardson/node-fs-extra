@@ -533,13 +533,34 @@ you're gonna have to get over it :) If `standard` is good enough for `npm`, it's
 What's needed?
 - First, take a look at existing issues. Those are probably going to be where the priority lies.
 - More tests for edge cases. Specifically on different platforms. There can never be enough tests.
-- Really really help with the Windows tests. See appveyor outputs for more info.
 - Improve test coverage. See coveralls output for more info.
-- A directory walker. Probably this one: https://github.com/thlorenz/readdirp imported into `fs-extra`.
 - After the directory walker is integrated, any function that needs to traverse directories like
 `copy`, `remove`, or `mkdirs` should be built on top of it.
 
-Note: If you make any big changes, **you should definitely post an issue for discussion first.**
+Note: If you make any big changes, **you should definitely file an issue for discussion first.**
+
+### Running the Test Suite
+
+fs-extra contains hundreds of tests.
+
+- `npm run lint`: runs the linter ([standard](http://standardjs.com/))
+- `npm run unit`: runs the unit tests
+- `npm test`: runs both the linter and the tests
+
+
+### Windows
+
+If you run the tests on the Windows and receive a lot of symbolic link `EPERM` permission errors, it's
+because on Windows you need elevated privilege to create symbolic links. You can add this to your Windows's
+account by following the instructions here: http://superuser.com/questions/104845/permission-to-make-symbolic-links-in-windows-7
+However, I didn't have much luck doing this.
+
+Since I develop on Mac OS X, I use VMWare Fusion for Windows testing. I create a shared folder that I map to a drive on Windows.
+I open the `Node.js command prompt` and run as `Administrator`. I then map the network drive running the following command:
+
+    net use z: "\\vmware-host\Shared Folders"
+
+I can then navigate to my `fs-extra` directory and run the tests.
 
 
 Naming
