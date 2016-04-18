@@ -1,3 +1,9 @@
+0.28.0 / 2016-04-17
+-------------------
+- removed `createOutputStream()`. Use https://www.npmjs.com/package/create-output-stream. See: [#192][#192]
+- `mkdirs()/mkdirsSync()` check for invalid win32 path chars. See: [#209][#209], [#237][#237]
+- `mkdirs()/mkdirsSync()` if drive not mounted, error. See: [#93][#93]
+
 0.27.0 / 2016-04-15
 -------------------
 - add `dereference` option to `copySync()`. [#235][#235]
@@ -300,6 +306,8 @@ from `~` to `^`. #67
 * Added methods rmrf and rmrfSync
 * Moved tests from Jasmine to Mocha
 
+[#238]: https://github.com/jprichardson/node-fs-extra/issues/238    "Can't write to files while in a worker thread."
+[#237]: https://github.com/jprichardson/node-fs-extra/issues/237    ".ensureDir(..) fails silently when passed an invalid path..."
 [#236]: https://github.com/jprichardson/node-fs-extra/issues/236    "[Removed] Filed under wrong repo"
 [#235]: https://github.com/jprichardson/node-fs-extra/pull/235      "Adds symlink dereference option to `fse.copySync` (#191)"
 [#234]: https://github.com/jprichardson/node-fs-extra/issues/234    "ensureDirSync fails silent when EACCES: permission denied on travis-ci"
