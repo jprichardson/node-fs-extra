@@ -1,6 +1,6 @@
 0.28.0 / 2016-04-17
 -------------------
-- removed `createOutputStream()`. Use https://www.npmjs.com/package/create-output-stream. See: [#192][#192]
+- **BREAKING**: removed `createOutputStream()`. Use https://www.npmjs.com/package/create-output-stream. See: [#192][#192]
 - `mkdirs()/mkdirsSync()` check for invalid win32 path chars. See: [#209][#209], [#237][#237]
 - `mkdirs()/mkdirsSync()` if drive not mounted, error. See: [#93][#93]
 
