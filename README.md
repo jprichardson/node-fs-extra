@@ -92,7 +92,6 @@ Methods
 -------
 - [copy](#copy)
 - [copySync](#copy)
-- [createOutputStream](#createoutputstreamfile-options)
 - [emptyDir](#emptydirdir-callback)
 - [emptyDirSync](#emptydirdir-callback)
 - [ensureFile](#ensurefilefile-callback)
