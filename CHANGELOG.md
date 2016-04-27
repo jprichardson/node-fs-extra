@@ -1,6 +1,6 @@
 0.29.0 / 2016-04-27
 -------------------
-- **BREAKING**: removed support for Node v0.10. Everything should work except for `ensureLink()/ensureSymlink()`. Node v0.12 is still supported but will be dropped in the near future as well.
+- **BREAKING**: removed support for Node v0.10. If you still want to use Node v0.10, everything should work except for `ensureLink()/ensureSymlink()`. Node v0.12 is still supported but will be dropped in the near future as well.
 
 0.28.0 / 2016-04-17
 -------------------
