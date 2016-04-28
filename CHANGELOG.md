@@ -1,3 +1,7 @@
+0.30.0 / 2016-04-28
+-------------------
+- Brought back Node v0.10 support. I didn't realize there was still demand. Official support will end **2016-10-01**.
+
 0.29.0 / 2016-04-27
 -------------------
 - **BREAKING**: removed support for Node v0.10. If you still want to use Node v0.10, everything should work except for `ensureLink()/ensureSymlink()`. Node v0.12 is still supported but will be dropped in the near future as well.
