@@ -11,10 +11,7 @@ Node.js: fs-extra
 
 <a href="https://github.com/feross/standard"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
 
-**NOTE ~~(2016-01-13)~~(2016-04-16):** Node v0.10 (and possibly v0.12) will be unsupported AFTER Ubuntu LTS releases their next version ~~AND [Amazon Lambda
-upgrades](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html) its Node.js runtime from v0.10~~ (see: https://aws.amazon.com/blogs/compute/node-js-4-3-2-runtime-now-available-on-lambda/).
-I anticipate this will happen around late spring / summer 2016. Please prepare accordingly. After this, we'll make a strong push
-for a 1.0.0 release.
+**NOTE (2016-04-28):** Node v0.10 will be unsupported 2016-10-01. Node v0.12 will be unsupported on 2017-04-01.
 
 
 Why?
