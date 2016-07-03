@@ -416,8 +416,9 @@ returns an object with two properties: `path` and `stats`. `path` is the full pa
 Streams 1 (push) example:
 
 ```js
+var fs = require('fs-extra')
 var items = [] // files, directories, symlinks, etc
-fse.walk(TEST_DIR)
+fs.walk(TEST_DIR)
   .on('data', function (item) {
     items.push(item.path)
   })
@@ -430,7 +431,8 @@ Streams 2 & 3 (pull) example:
 
 ```js
 var items = [] // files, directories, symlinks, etc
-fse.walk(TEST_DIR)
+var fs = require('fs-extra')
+fs.walk(TEST_DIR)
   .on('readable', function () {
     var item
     while ((item = this.read())) {
