@@ -1,24 +1,23 @@
 Node.js: fs-extra
 =================
 
+`fs-extra` adds file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
+
+[![npm Package](https://img.shields.io/npm/v/fs-extra.svg?style=flat-square)](https://www.npmjs.org/package/fs-extra)
 [![build status](https://api.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
 [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-fs-extra/master.svg?label=windows%20build)](https://ci.appveyor.com/project/jprichardson/node-fs-extra/branch/master)
 [![downloads per month](http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
 [![Coverage Status](https://img.shields.io/coveralls/jprichardson/node-fs-extra.svg)](https://coveralls.io/r/jprichardson/node-fs-extra)
 
+<a href="https://github.com/feross/standard"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
 
-`fs-extra` adds file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
-
-**NOTE (2016-01-13):** Node v0.10 will be unsupported AFTER Ubuntu LTS releases their next version AND [Amazon Lambda
-upgrades](http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html) its Node.js runtime from v0.10.
-I anticipate this will happen around late spring / summer 2016. Please prepare accordingly. After this, we'll make a strong push
-for a 1.0.0 release.
+**NOTE (2016-04-28):** Node v0.10 will be unsupported 2016-10-01. Node v0.12 will be unsupported on 2017-04-01.
 
 
 Why?
 ----
 
-I got tired of including `mkdirp`, `rimraf`, and `cp -r` in most of my projects.
+I got tired of including `mkdirp`, `rimraf`, and `ncp` in most of my projects.
 
 
 
@@ -61,12 +60,35 @@ var fs = require('fs')
 var fse = require('fs-extra')
 ```
 
+Sync vs Async
+-------------
+Most methods are async by default (they take a callback with an `Error` as first argument).
+
+Sync methods on the other hand will throw if an error occurs.
+
+Example:
+
+```js
+var fs = require('fs-extra')
+
+fs.copy('/tmp/myfile', '/tmp/mynewfile', function (err) {
+  if (err) return console.error(err)
+  console.log("success!")
+});
+
+try {
+  fs.copySync('/tmp/myfile', '/tmp/mynewfile')
+  console.log("success!")
+} catch (err) {
+  console.error(err)
+}
+```
+
 
 Methods
 -------
 - [copy](#copy)
-- [copySync](#copysync)
-- [createOutputStream](#createoutputstreamfile-options)
+- [copySync](#copy)
 - [emptyDir](#emptydirdir-callback)
 - [emptyDirSync](#emptydirdir-callback)
 - [ensureFile](#ensurefilefile-callback)
@@ -80,10 +102,10 @@ Methods
 - [mkdirs](#mkdirsdir-callback)
 - [mkdirsSync](#mkdirsdir-callback)
 - [move](#movesrc-dest-options-callback)
-- [outputFile](#outputfilefile-data-callback)
-- [outputFileSync](#outputfilefile-data-callback)
-- [outputJson](#outputjsonfile-data-callback)
-- [outputJsonSync](#outputjsonfile-data-callback)
+- [outputFile](#outputfilefile-data-options-callback)
+- [outputFileSync](#outputfilefile-data-options-callback)
+- [outputJson](#outputjsonfile-data-options-callback)
+- [outputJsonSync](#outputjsonfile-data-options-callback)
 - [readJson](#readjsonfile-options-callback)
 - [readJsonSync](#readjsonfile-options-callback)
 - [remove](#removedir-callback)
@@ -96,18 +118,18 @@ Methods
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
 
-### copy()
-
-**copy(src, dest, [options], callback)**
-
+### copy(src, dest, [options], callback)
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
-Options:  
-clobber (boolean): overwrite existing file or directory  
-preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.  
-filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as   function, where `filter` is `filter.test`.  
+Options:
+- clobber (boolean): overwrite existing file or directory
+- dereference (boolean): dereference symlinks
+- preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
+- filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
 passStats (boolean): where a function is being used for `filter`, pass the file stats as a second argument to the handler.
+
+Sync: `copySync()`
 
 Example:
 
@@ -135,49 +157,10 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', {
 }) // ignores files and only copies directories
 ```
 
-### copySync()
-
-**copySync(src, dest, [options])**
-
-Synchronously copies a file or directory. The directory can have contents.
-
-
-Example:
-
-```js
-var fs = require('fs-extra')
-
-try {
-  fs.copySync('/tmp/mydir', '/tmp/mynewdir')
-} catch (err) {
-  console.error('Oh no, there was an error: ' + err.message)
-}
-```
-
-
-
-### createOutputStream(file, [options])
-
-Exactly like `createWriteStream`, but if the directory does not exist, it's created.
-
-Examples:
-
-```js
-var fs = require('fs-extra')
-
-// if /tmp/some does not exist, it is created
-var ws = fs.createOutputStream('/tmp/some/file.txt')
-ws.write('hello\n')
-```
-
-Note on naming: you'll notice that fs-extra has some methods like `fs.outputJson`, `fs.outputFile`, etc that use the
-word `output` to denote that if the containing directory does not exist, it should be created. If you can think of a
-better succinct nomenclature for these methods, please open an issue for discussion. Thanks.
-
 
 ### emptyDir(dir, [callback])
 
-Ensures that a directory is empty. If the directory does not exist, it is created. The directory itself is not deleted.
+Ensures that a directory is empty. Deletes directory contents if the directory is not empty. If the directory does not exist, it is created. The directory itself is not deleted.
 
 Alias: `emptydir()`
 
@@ -307,8 +290,8 @@ fs.mkdirsSync('/tmp/another/path')
 Moves a file or directory, even across devices.
 
 Options:
-clobber (boolean): overwrite existing file or directory
-limit (number): number of concurrent moves, see ncp for more information
+- clobber (boolean): overwrite existing file or directory
+- limit (number): number of concurrent moves, see ncp for more information
 
 Example:
 
@@ -441,8 +424,9 @@ returns an object with two properties: `path` and `stats`. `path` is the full pa
 Streams 1 (push) example:
 
 ```js
+var fs = require('fs-extra')
 var items = [] // files, directories, symlinks, etc
-fse.walk(TEST_DIR)
+fs.walk(TEST_DIR)
   .on('data', function (item) {
     items.push(item.path)
   })
@@ -455,7 +439,8 @@ Streams 2 & 3 (pull) example:
 
 ```js
 var items = [] // files, directories, symlinks, etc
-fse.walk(TEST_DIR)
+var fs = require('fs-extra')
+fs.walk(TEST_DIR)
   .on('readable', function () {
     var item
     while ((item = this.read())) {
@@ -536,13 +521,34 @@ you're gonna have to get over it :) If `standard` is good enough for `npm`, it's
 What's needed?
 - First, take a look at existing issues. Those are probably going to be where the priority lies.
 - More tests for edge cases. Specifically on different platforms. There can never be enough tests.
-- Really really help with the Windows tests. See appveyor outputs for more info.
 - Improve test coverage. See coveralls output for more info.
-- A directory walker. Probably this one: https://github.com/thlorenz/readdirp imported into `fs-extra`.
 - After the directory walker is integrated, any function that needs to traverse directories like
 `copy`, `remove`, or `mkdirs` should be built on top of it.
 
-Note: If you make any big changes, **you should definitely post an issue for discussion first.**
+Note: If you make any big changes, **you should definitely file an issue for discussion first.**
+
+### Running the Test Suite
+
+fs-extra contains hundreds of tests.
+
+- `npm run lint`: runs the linter ([standard](http://standardjs.com/))
+- `npm run unit`: runs the unit tests
+- `npm test`: runs both the linter and the tests
+
+
+### Windows
+
+If you run the tests on the Windows and receive a lot of symbolic link `EPERM` permission errors, it's
+because on Windows you need elevated privilege to create symbolic links. You can add this to your Windows's
+account by following the instructions here: http://superuser.com/questions/104845/permission-to-make-symbolic-links-in-windows-7
+However, I didn't have much luck doing this.
+
+Since I develop on Mac OS X, I use VMWare Fusion for Windows testing. I create a shared folder that I map to a drive on Windows.
+I open the `Node.js command prompt` and run as `Administrator`. I then map the network drive running the following command:
+
+    net use z: "\\vmware-host\Shared Folders"
+
+I can then navigate to my `fs-extra` directory and run the tests.
 
 
 Naming
