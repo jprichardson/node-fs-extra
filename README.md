@@ -111,7 +111,7 @@ Methods
 - [remove](#removedir-callback)
 - [removeSync](#removedir-callback)
 - [walk](#walk)
-- [walkSync](#walk)
+- [walkSync](#walkSyncDir)
 - [writeJson](#writejsonfile-object-options-callback)
 - [writeJsonSync](#writejsonfile-object-options-callback)
 
