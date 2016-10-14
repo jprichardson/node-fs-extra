@@ -111,6 +111,7 @@ Methods
 - [remove](#removedir-callback)
 - [removeSync](#removedir-callback)
 - [walk](#walk)
+- [walkSync](#walk)
 - [writeJson](#writejsonfile-object-options-callback)
 - [writeJsonSync](#writejsonfile-object-options-callback)
 
@@ -449,6 +450,18 @@ recommend this resource as a good starting point: https://strongloop.com/strongb
 
 **See [`klaw` documentation](https://github.com/jprichardson/node-klaw) for more detailed usage.**
 
+### walkSync(dir)
+
+Lists all files inside a directory recursively
+
+Examples:
+
+```js
+var fs = require('fs-extra')
+
+var files = fs.walkSync('/home/jprichardson')
+// files = ['/home/jprichardson/file1', '/home/jprichardson/dir1/file2']
+```
 
 ### writeJson(file, object, [options], callback)
 
