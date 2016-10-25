@@ -44,6 +44,7 @@
     "istanbul": "^0.3.5",
     "minimist": "^1.1.1",
     "mocha": "^2.1.0",
+    "proxyquire": "^1.7.10",
     "read-dir-files": "^0.1.1",
     "secure-random": "^1.1.1",
     "semver": "^4.3.6",
