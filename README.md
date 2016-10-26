@@ -118,10 +118,7 @@ Methods
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
 
-### copy()
-
-**copy(src, dest, [options], callback)**
-
+### copy(src, dest, [options], callback)
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
@@ -130,6 +127,7 @@ Options:
 - dereference (boolean): dereference symlinks, default is `false`.
 - preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
 - filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
+passStats (boolean): where a function is being used for `filter`, pass the file stats as a second argument to the handler.
 
 Sync: `copySync()`
 
@@ -147,6 +145,16 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function (err) {
   if (err) return console.error(err)
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
+
+fs.copy('/tmp/mydir', '/tmp/mynewdir', {
+  filter: function (p, stats) {
+    return stats.isDirectory()
+  },
+  passStats: true
+}, function (err) {
+  if (err) return console.error(err)
+  console.log('success!')
+}) // ignores files and only copies directories
 ```
 
 
