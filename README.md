@@ -129,7 +129,7 @@ Options:
 - clobber (boolean): overwrite existing file or directory, default is `true`.
 - dereference (boolean): dereference symlinks, default is `false`.
 - preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
-- filter: Function or RegExp to filter copied files. If function, return true to include, false to exclude. If RegExp, same as function, where `filter` is `filter.test`.
+- filter: Function to filter copied files. Return `true` to include, `false` to exclude. This can also be a RegExp, however this is depreciated (See [issue #239](https://github.com/jprichardson/node-fs-extra/issues/239) for background).
 
 Sync: `copySync()`
 
