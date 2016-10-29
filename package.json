@@ -35,8 +35,7 @@
   "dependencies": {
     "graceful-fs": "^4.1.2",
     "jsonfile": "^2.1.0",
-    "klaw": "^1.0.0",
-    "path-is-absolute": "^1.0.0"
+    "klaw": "^1.0.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
