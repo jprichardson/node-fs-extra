@@ -14,3 +14,5 @@ matrix:
 env:
   - TEST_SUITE=unit
 script: npm run-script $TEST_SUITE
+after_success:
+  - npm run coveralls
