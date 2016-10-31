@@ -51,7 +51,7 @@
   },
   "main": "./lib/index",
   "scripts": {
-    "coverage": "istanbul cover test.js",
+    "coverage": "istanbul cover -i 'lib/**' -x '**/__tests__/**' test.js",
     "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
     "lint": "standard",
     "test-find": "find ./lib/**/__tests__ -name *.test.js | xargs mocha",
