@@ -1,3 +1,36 @@
+Unreleased
+----------
+
+### Added
+
+### Removed
+
+### Changed
+
+### Fixed
+
+
+1.0.0 / 2016-11-01
+------------------
+
+After five years of development, we finally have reach the 1.0.0 milestone! Big thanks goes
+to [Ryan Zim](https://github.com/RyanZim) for leading the charge on this release!
+
+### Added
+- `walkSync()`
+
+### Changed
+- **BREAKING**: dropped Node v0.10 support.
+- disabled `rimaf` globbing, wasn't used. [#280]
+- deprecate `copy()/copySync()` option `filter` if it's a `RegExp`. `filter` should now be a function.
+- inline `rimraf`. This is temporary and was done because `rimraf` depended upon the beefy `glob` which `fs-extra` does not use. [#300]
+
+### Fixed
+- bug fix proper closing of file handle on `utimesMillis()` [#271]
+- proper escaping of files with dollar signs [#291]
+- `copySync()` failed if user didn't own file. [#199], [#301]
+
+
 0.30.0 / 2016-04-28
 -------------------
 - Brought back Node v0.10 support. I didn't realize there was still demand. Official support will end **2016-10-01**.
