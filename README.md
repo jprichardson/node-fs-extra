@@ -494,7 +494,10 @@ var Promise = require('bluebird')
 var fs = Promise.promisifyAll(require('fs-extra'))
 ```
 
-Or you can use the package [`fs-extra-promise`](https://github.com/overlookmotel/fs-extra-promise) that marries the two together.
+Or you can use a dedicated package:
+
+- [`fs-extra-promise`](https://github.com/overlookmotel/fs-extra-promise) uses Bluebird.
+- [`fs-promise`](https://github.com/kevinbeaty/fs-promise) uses Any-Promise and also covers [`mz/fs`](https://github.com/normalize/mz/blob/master/fs.js).
 
 
 ### TypeScript
