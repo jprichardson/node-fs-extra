@@ -127,8 +127,8 @@ Methods
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
 Options:
-- clobber (boolean): overwrite existing file or directory, default is `true`. _Note that the copy operation will silently fail if you set this to `false` and the destination exists._ Use the `errorOnExist` option to change this behavior.
-- errorOnExist (boolean): when `clobber` is `false` and the destination exists, throw an error. Default is `false`.
+- overwrite (boolean): overwrite existing file or directory, default is `true`. _Note that the copy operation will silently fail if you set this to `false` and the destination exists._ Use the `errorOnExist` option to change this behavior.
+- errorOnExist (boolean): when `overwrite` is `false` and the destination exists, throw an error. Default is `false`.
 - dereference (boolean): dereference symlinks, default is `false`.
 - preserveTimestamps (boolean): will set last modification and access times to the ones of the original source files, default is `false`.
 - filter: Function to filter copied files. Return `true` to include, `false` to exclude. This can also be a RegExp, however this is deprecated (See [issue #239](https://github.com/jprichardson/node-fs-extra/issues/239) for background). _Warning: `copySync` currently applies the filter only to files (see [#180](https://github.com/jprichardson/node-fs-extra/issues/180)). This will be fixed in a future release._
@@ -284,7 +284,7 @@ fs.mkdirsSync('/tmp/another/path')
 Moves a file or directory, even across devices.
 
 Options:
-- clobber (boolean): overwrite existing file or directory
+- overwrite (boolean): overwrite existing file or directory, default is `false`
 
 Example:
 
