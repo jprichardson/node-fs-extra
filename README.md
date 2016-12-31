@@ -452,7 +452,11 @@ recommend this resource as a good starting point: https://strongloop.com/strongb
 
 ### walkSync(dir)
 
-Lists all files inside a directory recursively
+Lists all files and directories along with their `fs.stats`, inside a directory recursively.
+
+Returns an array of objects. Each object has `path` and `stats` properties.
+
+`@return: [{path: '', stats: {}}]`.
 
 Examples:
 
@@ -460,7 +464,7 @@ Examples:
 var fs = require('fs-extra')
 
 var files = fs.walkSync('/home/jprichardson')
-// files = ['/home/jprichardson/file1', '/home/jprichardson/dir1/file2']
+// files = [{path: '/home/jprichardson/dir1', stats: {}}, {path: '/home/jprichardson/file1', stats: {}}]
 ```
 
 ### writeJson(file, object, [options], callback)
