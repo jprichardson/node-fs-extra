@@ -452,7 +452,7 @@ recommend this resource as a good starting point: https://strongloop.com/strongb
 
 ### walkSync(dir)
 
-Lists all files and directories along with their `fs.stats`, inside a directory recursively.
+Lists all files and directories inside a directory recursively.
 
 Returns an array of objects. Each object has `path` and `stats` properties.
 
