@@ -11,8 +11,6 @@ Node.js: fs-extra
 
 <a href="https://github.com/feross/standard"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
 
-**NOTE (2016-11-01):**  Node v0.12 will be unsupported on 2016-12-31.
-
 
 Why?
 ----
