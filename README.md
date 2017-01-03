@@ -403,65 +403,6 @@ fs.remove('/tmp/myfile', function (err) {
 fs.removeSync('/home/jprichardson') //I just deleted my entire HOME directory.
 ```
 
-### walk()
-
-**walk(dir, [streamOptions])**
-
-The function `walk()` from the module [`klaw`](https://github.com/jprichardson/node-klaw).
-
-Returns a [Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) that iterates
-through every file and directory starting with `dir` as the root. Every `read()` or `data` event
-returns an object with two properties: `path` and `stats`. `path` is the full path of the file and
-`stats` is an instance of [fs.Stats](https://nodejs.org/api/fs.html#fs_class_fs_stats).
-
-Streams 1 (push) example:
-
-```js
-var fs = require('fs-extra')
-var items = [] // files, directories, symlinks, etc
-fs.walk(TEST_DIR)
-  .on('data', function (item) {
-    items.push(item.path)
-  })
-  .on('end', function () {
-    console.dir(items) // => [ ... array of files]
-  })
-```
-
-Streams 2 & 3 (pull) example:
-
-```js
-var items = [] // files, directories, symlinks, etc
-var fs = require('fs-extra')
-fs.walk(TEST_DIR)
-  .on('readable', function () {
-    var item
-    while ((item = this.read())) {
-      items.push(item.path)
-    }
-  })
-  .on('end', function () {
-    console.dir(items) // => [ ... array of files]
-  })
-```
-
-If you're not sure of the differences on Node.js streams 1, 2, 3 then I'd
-recommend this resource as a good starting point: https://strongloop.com/strongblog/whats-new-io-js-beta-streams3/.
-
-**See [`klaw` documentation](https://github.com/jprichardson/node-klaw) for more detailed usage.**
-
-### walkSync(dir)
-
-Lists all files inside a directory recursively
-
-Examples:
-
-```js
-var fs = require('fs-extra')
-
-var files = fs.walkSync('/home/jprichardson')
-// files = ['/home/jprichardson/file1', '/home/jprichardson/dir1/file2']
-```
 
 ### writeJson(file, object, [options], callback)
 
@@ -527,8 +468,6 @@ What's needed?
 - First, take a look at existing issues. Those are probably going to be where the priority lies.
 - More tests for edge cases. Specifically on different platforms. There can never be enough tests.
 - Improve test coverage. See coveralls output for more info.
-- After the directory walker is integrated, any function that needs to traverse directories like
-`copy`, `remove`, or `mkdirs` should be built on top of it.
 
 Note: If you make any big changes, **you should definitely file an issue for discussion first.**
 
