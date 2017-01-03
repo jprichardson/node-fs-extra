@@ -2,7 +2,7 @@ var os = require('os')
 var path = require('path')
 var Mocha = require('mocha')
 var assign = require('./lib/util/assign')
-var fs = require('./')
+var klaw = require('klaw')
 
 var argv = require('minimist')(process.argv.slice(2))
 
@@ -14,7 +14,7 @@ var mochaOpts = assign({
 
 var mocha = new Mocha(mochaOpts)
 
-fs.walk('./lib').on('readable', function () {
+klaw('./lib').on('readable', function () {
   var item
   while ((item = this.read())) {
     if (!item.stats.isFile()) return
