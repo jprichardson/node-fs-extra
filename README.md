@@ -114,6 +114,10 @@ Methods
 
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
+### What happened to `walk()`?
+
+It was removed from `fs-extra` in v2.0.0. If you need the functionality, `walk` is available as a separate package, [`klaw`](https://github.com/jprichardson/node-klaw).
+
 
 Third Party
 -----------
