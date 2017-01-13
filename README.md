@@ -114,9 +114,9 @@ Methods
 
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
 
-### What happened to `walk()`?
+### What happened to `walk()` and `walkSync()`?
 
-It was removed from `fs-extra` in v2.0.0. If you need the functionality, `walk` is available as a separate package, [`klaw`](https://github.com/jprichardson/node-klaw).
+They were removed from `fs-extra` in v2.0.0. If you need the functionality, `walk` and `walkSync` are available as separate packages, [`klaw`](https://github.com/jprichardson/node-klaw) and [`klaw-sync`](https://github.com/mawni/node-klaw-sync).
 
 
 Third Party
