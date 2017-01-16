@@ -10,6 +10,25 @@ Unreleased
 ### Fixed
 
 
+2.0.0 / 2017-01-16
+------------------
+
+### Removed
+- **BREAKING:** Removed support for Node `v0.12`. The Node foundation stopped officially supporting it
+on Jan 1st, 2017.
+- **BREAKING:** Remove `walk()` and `walkSync()`. `walkSync()` was only part of `fs-extra` for a little
+over two months. Use [klaw](https://github.com/jprichardson/node-klaw) instead of `walk()`, in fact, `walk()` was just
+an alias to klaw. For `walkSync()` use [klaw-sync](https://github.com/mawni/node-klaw-sync). See: [#338], [#339]
+
+### Changed
+- **BREAKING:** Renamed `clobber` to `overwrite`. This affects `copy()`, `copySync()`, and `move()`. [#330], [#333]
+- Moved docs, to `docs/`. [#340]
+
+### Fixed
+- Apply filters to directories in `copySync()` like in `copy()`. [#324]
+- A specific condition when disk is under heavy use, `copy()` can fail. [#326]
+
+
 1.0.0 / 2016-11-01
 ------------------
 
