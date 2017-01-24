@@ -138,6 +138,7 @@ Or you can use a dedicated package:
 - [`fs-promise`](https://github.com/kevinbeaty/fs-promise) uses
   [Any Promise](https://github.com/kevinbeaty/any-promise) and also covers
   [`mz/fs`](https://github.com/normalize/mz/blob/master/fs.js).
+- [`fs-p`](https://github.com/grammarly/fs-p) - TypeScript-friendly promises implementation
 
 
 ### TypeScript
