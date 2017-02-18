@@ -35,27 +35,27 @@ Usage
 You don't ever need to include the original `fs` module again:
 
 ```js
-var fs = require('fs') // this is no longer necessary
+const fs = require('fs') // this is no longer necessary
 ```
 
 you can now do this:
 
 ```js
-var fs = require('fs-extra')
+const fs = require('fs-extra')
 ```
 
 or if you prefer to make it clear that you're using `fs-extra` and not `fs`, you may want
 to name your `fs` variable `fse` like so:
 
 ```js
-var fse = require('fs-extra')
+const fse = require('fs-extra')
 ```
 
 you can also keep both, but it's redundant:
 
 ```js
-var fs = require('fs')
-var fse = require('fs-extra')
+const fs = require('fs')
+const fse = require('fs-extra')
 ```
 
 Sync vs Async
@@ -67,9 +67,9 @@ Sync methods on the other hand will throw if an error occurs.
 Example:
 
 ```js
-var fs = require('fs-extra')
+const fs = require('fs-extra')
 
-fs.copy('/tmp/myfile', '/tmp/mynewfile', function (err) {
+fs.copy('/tmp/myfile', '/tmp/mynewfile', err => {
   if (err) return console.error(err)
   console.log("success!")
 });
@@ -128,8 +128,8 @@ Use [Bluebird](https://github.com/petkaantonov/bluebird). See https://github.com
 explicitly listed as supported.
 
 ```js
-var Promise = require('bluebird')
-var fs = Promise.promisifyAll(require('fs-extra'))
+const Promise = require('bluebird')
+const fs = Promise.promisifyAll(require('fs-extra'))
 ```
 
 Or you can use a dedicated package:
