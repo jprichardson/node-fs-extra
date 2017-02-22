@@ -6,14 +6,13 @@ Ensures that the directory exists. If the directory structure does not exist, it
 
 **Sync:** `ensureDirSync()`, `mkdirsSync()`, `mkdirpSync()`
 
-
 ## Example:
 
 ```js
-var fs = require('fs-extra')
+const fs = require('fs-extra')
 
-var dir = '/tmp/this/path/does/not/exist'
-fs.ensureDir(dir, function (err) {
+const dir = '/tmp/this/path/does/not/exist'
+fs.ensureDir(dir, err => {
   console.log(err) // => null
   // dir has now been created, including the directory it is to be placed in
 })

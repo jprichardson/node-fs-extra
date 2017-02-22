@@ -7,13 +7,12 @@ that you'd pass to [`jsonFile.readFile`](https://github.com/jprichardson/node-js
 
 **Sync:** `readJsonSync()`, `readJSONSync()`
 
-
 ## Example:
 
 ```js
-var fs = require('fs-extra')
+const fs = require('fs-extra')
 
-fs.readJson('./package.json', function (err, packageObj) {
+fs.readJson('./package.json', (err, packageObj) => {
   console.log(packageObj.version) // => 0.1.3
 })
 ```
@@ -23,11 +22,11 @@ fs.readJson('./package.json', function (err, packageObj) {
 `readJsonSync()` can take a `throws` option set to `false` and it won't throw if the JSON is invalid. Example:
 
 ```js
-var fs = require('fs-extra')
-var file = path.join('/tmp/some-invalid.json')
-var data = '{not valid JSON'
+const fs = require('fs-extra')
+const file = path.join('/tmp/some-invalid.json')
+const data = '{not valid JSON'
 fs.writeFileSync(file, data)
 
-var obj = fs.readJsonSync(file, {throws: false})
+const obj = fs.readJsonSync(file, {throws: false})
 console.log(obj) // => null
 ```

@@ -9,10 +9,12 @@ Ensures that a directory is empty. Deletes directory contents if the directory i
 ## Example:
 
 ```js
-var fs = require('fs-extra')
+const fs = require('fs-extra')
 
 // assume this directory has a lot of files and folders
-fs.emptyDir('/tmp/some/dir', function (err) {
-  if (!err) console.log('success!')
+fs.emptyDir('/tmp/some/dir', err => {
+  if (err) return console.error(err)
+
+  console.log('success!')
 })
 ```

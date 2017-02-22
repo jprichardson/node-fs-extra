@@ -4,17 +4,16 @@ Almost the same as `writeFile` (i.e. it [overwrites](http://pages.citebite.com/v
 
 **Sync:** `outputFileSync()`
 
-
 ## Example:
 
 ```js
-var fs = require('fs-extra')
-var file = '/tmp/this/path/does/not/exist/file.txt'
+const fs = require('fs-extra')
 
-fs.outputFile(file, 'hello!', function (err) {
+const file = '/tmp/this/path/does/not/exist/file.txt'
+fs.outputFile(file, 'hello!', err => {
   console.log(err) // => null
 
-  fs.readFile(file, 'utf8', function (err, data) {
+  fs.readFile(file, 'utf8', (err, data) => {
     console.log(data) // => hello!
   })
 })

@@ -7,17 +7,16 @@ Almost the same as [`writeJson`](writeJson.md), except that if the directory doe
 
 **Sync:** `outputJsonSync()`, `outputJSONSync()`
 
-
 ## Example:
 
 ```js
-var fs = require('fs-extra')
-var file = '/tmp/this/path/does/not/exist/file.txt'
+const fs = require('fs-extra')
 
-fs.outputJson(file, {name: 'JP'}, function (err) {
+const file = '/tmp/this/path/does/not/exist/file.txt'
+fs.outputJson(file, {name: 'JP'}, err => {
   console.log(err) // => null
 
-  fs.readJson(file, function(err, data) {
+  fs.readJson(file, (err, data) => {
     console.log(data.name) // => JP
   })
 })

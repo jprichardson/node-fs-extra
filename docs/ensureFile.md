@@ -6,14 +6,13 @@ Ensures that the file exists. If the file that is requested to be created is in 
 
 **Sync:** `createFileSync()`,`ensureFileSync()`
 
-
 ## Example:
 
 ```js
-var fs = require('fs-extra')
+const fs = require('fs-extra')
 
-var file = '/tmp/this/path/does/not/exist/file.txt'
-fs.ensureFile(file, function (err) {
+const file = '/tmp/this/path/does/not/exist/file.txt'
+fs.ensureFile(file, err => {
   console.log(err) // => null
   // file has now been created, including the directory it is to be placed in
 })
