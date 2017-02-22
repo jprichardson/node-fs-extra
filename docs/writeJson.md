@@ -10,9 +10,12 @@ you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-json
 ## Example:
 
 ```js
-var fs = require('fs-extra')
-fs.writeJson('./package.json', {name: 'fs-extra'}, function (err) {
-  console.log(err)
+const fs = require('fs-extra')
+
+fs.writeJson('./package.json', {name: 'fs-extra'}, err => {
+  if (err) return console.error(err)
+
+  console.log('success!')
 })
 ```
 
