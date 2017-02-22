@@ -32,13 +32,9 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', function (err) {
 ```js
 var fs = require('fs-extra')
 
-var mtimeCondition = new Date(2016, 11, 17).getTime()
-
 var filterFunc = function (src, dest) {
-  fs.lstat(dest, function (err, destStat) {
-    if (err) return false
-    return src.indexOf('node_modules') < 0 && destStat.mtime.getTime() > mtimeCondition
-  })
+  // your logic here
+  // if return true, it will be copied otherwise it won't
 }
 
 fs.copy('/tmp/mydir', '/tmp/mynewdir', { filter: filterFunc }, function (err) {
