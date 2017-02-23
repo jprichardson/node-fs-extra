@@ -32,15 +32,16 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', err => {
 **Using filter function**
 
 ```js
-var fs = require('fs-extra')
+const fs = require('fs-extra')
 
-var filterFunc = function (src, dest) {
+const filterFunc = (src, dest) => {
   // your logic here
   // it will be copied if return true
 }
 
-fs.copy('/tmp/mydir', '/tmp/mynewdir', { filter: filterFunc }, function (err) {
+fs.copy('/tmp/mydir', '/tmp/mynewdir', { filter: filterFunc }, err => {
   if (err) return console.error(err)
+
   console.log('success!')
 })
 ```
