@@ -28,3 +28,19 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', err => {
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
 ```
+
+**Using filter function**
+
+```js
+var fs = require('fs-extra')
+
+var filterFunc = function (src, dest) {
+  // your logic here
+  // it will be copied if return true
+}
+
+fs.copy('/tmp/mydir', '/tmp/mynewdir', { filter: filterFunc }, function (err) {
+  if (err) return console.error(err)
+  console.log('success!')
+})
+```
