@@ -1,4 +1,4 @@
-# remove(dir, callback)
+# removeSync(dir)
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
 
@@ -7,11 +7,8 @@ Removes a file or directory. The directory can have contents. Like `rm -rf`.
 ```js
 const fs = require('fs-extra')
 
-fs.remove('/tmp/myfile', err => {
-  if (err) return console.error(err)
-
-  console.log('success!')
-})
+// remove file
+fs.removeSync('/tmp/myfile')
 
 fs.removeSync('/home/jprichardson') // I just deleted my entire HOME directory.
 ```

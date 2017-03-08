@@ -1,18 +1,17 @@
-# readJson(file, [options], callback)
+# readJsonSync(file, [options])
 
 Reads a JSON file and then parses it into an object. `options` are the same
-that you'd pass to [`jsonFile.readFile`](https://github.com/jprichardson/node-jsonfile#readfilefilename-options-callback).
+that you'd pass to [`jsonFile.readFileSync`](https://github.com/jprichardson/node-jsonfile#readfilesyncfilename-options).
 
-**Alias:** `readJSON()`
+**Alias:** `readJSONSync()`
 
 ## Example:
 
 ```js
 const fs = require('fs-extra')
 
-fs.readJson('./package.json', (err, packageObj) => {
-  console.log(packageObj.version) // => 0.1.3
-})
+const packageObj = fs.readJsonSync('./package.json')
+console.log(packageObj.version) // => 2.0.0
 ```
 
 ---
@@ -25,6 +24,6 @@ const file = path.join('/tmp/some-invalid.json')
 const data = '{not valid JSON'
 fs.writeFileSync(file, data)
 
-const obj = fs.readJsonSync(file, {throws: false})
+const obj = fs.readJsonSync(file, { throws: false })
 console.log(obj) // => null
 ```

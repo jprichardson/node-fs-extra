@@ -12,7 +12,7 @@ Almost the same as [`writeJson`](writeJson.md), except that if the directory doe
 ```js
 const fs = require('fs-extra')
 
-const file = '/tmp/this/path/does/not/exist/file.txt'
+const file = '/tmp/this/path/does/not/exist/file.json'
 fs.outputJson(file, {name: 'JP'}, err => {
   console.log(err) // => null
 
