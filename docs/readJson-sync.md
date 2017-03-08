@@ -20,7 +20,8 @@ console.log(packageObj.version) // => 2.0.0
 
 ```js
 const fs = require('fs-extra')
-const file = path.join('/tmp/some-invalid.json')
+
+const file = '/tmp/some-invalid.json'
 const data = '{not valid JSON'
 fs.writeFileSync(file, data)
 
