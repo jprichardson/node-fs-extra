@@ -16,3 +16,13 @@ fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', err => {
   console.log('success!')
 })
 ```
+
+```js
+const fs = require('fs-extra')
+
+fs.move('/tmp/somedir', '/tmp/may/already/existed/somedir', { overwrite: true }, err => {
+  if (err) return console.error(err)
+
+  console.log('success!')
+})
+```

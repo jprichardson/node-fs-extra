@@ -1,4 +1,4 @@
-# copy(src, dest, [options], callback)
+# copySync(src, dest, [options])
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
@@ -14,17 +14,11 @@ Copy a file or directory. The directory can have contents. Like `cp -r`.
 ```js
 const fs = require('fs-extra')
 
-fs.copy('/tmp/myfile', '/tmp/mynewfile', err => {
-  if (err) return console.error(err)
+// copy file
+fs.copySync('/tmp/myfile', '/tmp/mynewfile')
 
-  console.log('success!')
-}) // copies file
-
-fs.copy('/tmp/mydir', '/tmp/mynewdir', err => {
-  if (err) return console.error(err)
-
-  console.log('success!')
-}) // copies directory, even if it has subdirectories or files
+// copy directory, even if it has subdirectories or files
+fs.copySync('/tmp/mydir', '/tmp/mynewdir')
 ```
 
 **Using filter function**
@@ -37,9 +31,5 @@ const filterFunc = (src, dest) => {
   // it will be copied if return true
 }
 
-fs.copy('/tmp/mydir', '/tmp/mynewdir', { filter: filterFunc }, err => {
-  if (err) return console.error(err)
-
-  console.log('success!')
-})
+fs.copySync('/tmp/mydir', '/tmp/mynewdir', { filter: filterFunc })
 ```

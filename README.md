@@ -85,31 +85,38 @@ try {
 
 Methods
 -------
+
+### Async
+
 - [copy](docs/copy.md)
-- [copySync](docs/copy.md)
 - [emptyDir](docs/emptyDir.md)
-- [emptyDirSync](docs/emptyDir.md)
 - [ensureFile](docs/ensureFile.md)
-- [ensureFileSync](docs/ensureFile.md)
 - [ensureDir](docs/ensureDir.md)
-- [ensureDirSync](docs/ensureDir.md)
 - [ensureLink](docs/ensureLink.md)
-- [ensureLinkSync](docs/ensureLink.md)
 - [ensureSymlink](docs/ensureSymlink.md)
-- [ensureSymlinkSync](docs/ensureSymlink.md)
 - [mkdirs](docs/ensureDir.md)
-- [mkdirsSync](docs/ensureDir.md)
 - [move](docs/move.md)
 - [outputFile](docs/outputFile.md)
-- [outputFileSync](docs/outputFile.md)
 - [outputJson](docs/outputJson.md)
-- [outputJsonSync](docs/outputJson.md)
 - [readJson](docs/readJson.md)
-- [readJsonSync](docs/readJson.md)
 - [remove](docs/remove.md)
-- [removeSync](docs/remove.md)
 - [writeJson](docs/writeJson.md)
-- [writeJsonSync](docs/writeJson.md)
+
+### Sync
+
+- [copySync](docs/copy-sync.md)
+- [emptyDirSync](docs/emptyDir-sync.md)
+- [ensureFileSync](docs/ensureFile-sync.md)
+- [ensureDirSync](docs/ensureDir-sync.md)
+- [ensureLinkSync](docs/ensureLink-sync.md)
+- [ensureSymlinkSync](docs/ensureSymlink-sync.md)
+- [mkdirsSync](docs/ensureDir-sync.md)
+- [moveSync](docs/move-sync.md)
+- [outputFileSync](docs/outputFile-sync.md)
+- [outputJsonSync](docs/outputJson-sync.md)
+- [readJsonSync](docs/readJson-sync.md)
+- [removeSync](docs/remove-sync.md)
+- [writeJsonSync](docs/writeJson-sync.md)
 
 
 **NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.

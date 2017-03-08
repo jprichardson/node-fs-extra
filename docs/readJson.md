@@ -5,8 +5,6 @@ that you'd pass to [`jsonFile.readFile`](https://github.com/jprichardson/node-js
 
 **Alias:** `readJSON()`
 
-**Sync:** `readJsonSync()`, `readJSONSync()`
-
 ## Example:
 
 ```js

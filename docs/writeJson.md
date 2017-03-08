@@ -5,8 +5,6 @@ you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-json
 
 **Alias:** `writeJSON()`
 
-**Sync:** `writeJsonSync()`, `writeJSONSync()`
-
 ## Example:
 
 ```js
