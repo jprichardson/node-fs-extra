@@ -5,6 +5,10 @@ you'd pass to [`jsonFile.writeFileSync()`](https://github.com/jprichardson/node-
 
 **Alias:** `writeJSONSync()`
 
+- `file` `<String>`
+- `object` `<Object>`
+- `options` `<Object>`
+
 ## Example:
 
 ```js

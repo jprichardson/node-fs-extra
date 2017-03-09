@@ -5,6 +5,9 @@ that you'd pass to [`jsonFile.readFileSync`](https://github.com/jprichardson/nod
 
 **Alias:** `readJSONSync()`
 
+- `file` `<String>`
+- `options` `<Object>`
+
 ## Example:
 
 ```js

@@ -2,6 +2,11 @@
 
 Ensures that the symlink exists. If the directory structure does not exist, it is created.
 
+- `srcpath` `<String>`
+- `dstpath` `<String>`
+- `type` `<String>`
+- `callback` `<Function>`
+
 ## Example:
 
 ```js

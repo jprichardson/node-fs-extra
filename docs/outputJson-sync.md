@@ -1,9 +1,13 @@
-# outputJsonSync(file, data, [options])
+# outputJsonSync(file, object, [options])
 
 Almost the same as [`writeJsonSync`](writeJson-sync.md), except that if the directory does not exist, it's created.
 `options` are what you'd pass to [`jsonFile.writeFileSync()`](https://github.com/jprichardson/node-jsonfile#writefilesyncfilename-obj-options).
 
 **Alias:** `outputJSONSync()`
+
+- `file` `<String>`
+- `object` `<Object>`
+- `options` `<Object>`
 
 ## Example:
 

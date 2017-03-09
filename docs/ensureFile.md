@@ -4,6 +4,9 @@ Ensures that the file exists. If the file that is requested to be created is in 
 
 **Alias:** `createFile()`
 
+- `file` `<String>`
+- `callback` `<Function>`
+
 ## Example:
 
 ```js

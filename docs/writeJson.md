@@ -5,6 +5,11 @@ you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-json
 
 **Alias:** `writeJSON()`
 
+- `file` `<String>`
+- `object` `<Object>`
+- `options` `<Object>`
+- `callback` `<Function>`
+
 ## Example:
 
 ```js
