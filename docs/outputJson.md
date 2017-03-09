@@ -1,11 +1,14 @@
-# outputJson(file, data, [options], callback)
+# outputJson(file, object, [options], callback)
 
 Almost the same as [`writeJson`](writeJson.md), except that if the directory does not exist, it's created.
 `options` are what you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-jsonfile#writefilefilename-options-callback).
 
 **Alias:** `outputJSON()`
 
-**Sync:** `outputJsonSync()`, `outputJSONSync()`
+- `file` `<String>`
+- `object` `<Object>`
+- `options` `<Object>`
+- `callback` `<Function>`
 
 ## Example:
 

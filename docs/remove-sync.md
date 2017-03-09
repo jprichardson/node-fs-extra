@@ -2,6 +2,8 @@
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
 
+- `dir` `<String>`
+
 ## Example:
 
 ```js

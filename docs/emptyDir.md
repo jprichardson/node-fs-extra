@@ -4,6 +4,9 @@ Ensures that a directory is empty. Deletes directory contents if the directory i
 
 **Alias:** `emptydir()`
 
+- `dir` `<String>`
+- `callback` `<Function>`
+
 ## Example:
 
 ```js

@@ -4,6 +4,8 @@ Ensures that a directory is empty. Deletes directory contents if the directory i
 
 **Alias:** `emptydirSync()`
 
+- `dir` `<String>`
+
 ## Example:
 
 ```js

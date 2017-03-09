@@ -2,8 +2,10 @@
 
 Moves a file or directory, even across devices.
 
-## Options:
-- overwrite (boolean): overwrite existing file or directory, default is `false`
+- `src` `<String>`
+- `dest` `<String>`
+- `options` `<Object>`
+  - `overwrite` `<boolean>`: overwrite existing file or directory, default is `false`.
 
 ## Example:
 
@@ -12,6 +14,8 @@ const fs = require('fs-extra')
 
 fs.moveSync('/tmp/somefile', '/tmp/does/not/exist/yet/somefile')
 ```
+
+**Using `overwrite` option**
 
 ```js
 const fs = require('fs-extra')

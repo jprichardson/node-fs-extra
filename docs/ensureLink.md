@@ -2,6 +2,10 @@
 
 Ensures that the link exists. If the directory structure does not exist, it is created.
 
+- `srcpath` `<String>`
+- `dstpath` `<String>`
+- `callback` `<Function>`
+
 ## Example:
 
 ```js
