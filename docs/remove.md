@@ -1,8 +1,8 @@
-# remove(dir, callback)
+# remove(path, callback)
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
 
-- `dir` `<String>`
+- `path` `<String>`
 - `callback` `<Function>`
 
 ## Example:
