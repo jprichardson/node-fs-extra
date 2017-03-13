@@ -1,14 +1,16 @@
-Unreleased
-----------
+2.1.0 / 2017-03-14
+------------------
+
+Thanks to [Mani Maghsoudlou (@manidlou)](https://github.com/manidlou) & [Jan Peer Stöcklmair (@JPeer264)](https://github.com/JPeer264) for their extraordinary help with this release!
 
 ### Added
-
-### Removed
+- `moveSync()` See [#309], [#381]. ([@manidlou](https://github.com/manidlou))
+- `copy()` and `copySync()`'s `filter` option now gets the destination path passed as the second parameter. [#366] ([@manidlou](https://github.com/manidlou))
 
 ### Changed
-
-### Fixed
-
+- Use `Buffer.alloc()` instead of deprecated `new Buffer()` in `copySync()`. [#380] ([@manidlou](https://github.com/manidlou))
+- Refactored entire codebase to use ES6 features supported by Node.js v4+ ([#355]). [(@JPeer264)](https://github.com/JPeer264)
+- Refactored docs. ([@manidlou](https://github.com/manidlou))
 
 2.0.0 / 2017-01-16
 ------------------
