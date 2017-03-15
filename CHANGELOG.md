@@ -1,16 +1,20 @@
-2.1.0 / 2017-03-14
+2.1.0 / 2017-03-15
 ------------------
 
 Thanks to [Mani Maghsoudlou (@manidlou)](https://github.com/manidlou) & [Jan Peer Stöcklmair (@JPeer264)](https://github.com/JPeer264) for their extraordinary help with this release!
 
 ### Added
-- `moveSync()` See [#309], [#381]. ([@manidlou](https://github.com/manidlou))
-- `copy()` and `copySync()`'s `filter` option now gets the destination path passed as the second parameter. [#366] ([@manidlou](https://github.com/manidlou))
+- `moveSync()` See [#309], [#381](https://github.com/jprichardson/node-fs-extra/pull/381). ([@manidlou](https://github.com/manidlou))
+- `copy()` and `copySync()`'s `filter` option now gets the destination path passed as the second parameter. [#366](https://github.com/jprichardson/node-fs-extra/pull/366) ([@manidlou](https://github.com/manidlou))
 
 ### Changed
-- Use `Buffer.alloc()` instead of deprecated `new Buffer()` in `copySync()`. [#380] ([@manidlou](https://github.com/manidlou))
-- Refactored entire codebase to use ES6 features supported by Node.js v4+ ([#355]). [(@JPeer264)](https://github.com/JPeer264)
+- Use `Buffer.alloc()` instead of deprecated `new Buffer()` in `copySync()`. [#380](https://github.com/jprichardson/node-fs-extra/pull/380) ([@manidlou](https://github.com/manidlou))
+- Refactored entire codebase to use ES6 features supported by Node.js v4+ [#355](https://github.com/jprichardson/node-fs-extra/issues/355). [(@JPeer264)](https://github.com/JPeer264)
 - Refactored docs. ([@manidlou](https://github.com/manidlou))
+
+### Fixed
+
+- `move()` shouldn't error out when source and dest are the same. [#377](https://github.com/jprichardson/node-fs-extra/issues/377), [#378](https://github.com/jprichardson/node-fs-extra/pull/378) ([@jdalton](https://github.com/jdalton))
 
 2.0.0 / 2017-01-16
 ------------------
