@@ -1,3 +1,11 @@
+2.1.1 / 2017-03-15
+------------------
+
+### Fixed
+
+- Reverted [`5597bd`](https://github.com/jprichardson/node-fs-extra/commit/5597bd5b67f7d060f5f5bf26e9635be48330f5d7), this broke compatibility with Node.js versions v4+ but less than `v4.5.0`.
+- Remove `Buffer.alloc()` usage in `moveSync()`.
+
 2.1.0 / 2017-03-15
 ------------------
 
