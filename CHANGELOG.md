@@ -1,3 +1,10 @@
+2.1.2 / 2017-03-16
+------------------
+
+### Fixed
+
+- Weird windows bug that resulted in `ensureDir()`'s callback being called twice in some cases. This bug may have also affected `remove()`. See [#392](https://github.com/jprichardson/node-fs-extra/issues/392), [#393](https://github.com/jprichardson/node-fs-extra/pull/393)
+
 2.1.1 / 2017-03-15
 ------------------
 
