@@ -1,4 +1,4 @@
-# ensureLink(srcpath, dstpath, callback)
+# ensureLink(srcpath, dstpath, [callback])
 
 Ensures that the link exists. If the directory structure does not exist, it is created.
 
@@ -16,5 +16,14 @@ const dstpath = '/tmp/this/path/does/not/exist/file.txt'
 fs.ensureLink(srcpath, dstpath, err => {
   console.log(err) // => null
   // link has now been created, including the directory it is to be placed in
+})
+
+// With Promises:
+fs.ensureLink(srcpath, dstpath)
+.then(() => {
+  console.log('success!')
+})
+.catch(err => {
+  // handle error
 })
 ```
