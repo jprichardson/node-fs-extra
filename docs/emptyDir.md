@@ -18,4 +18,13 @@ fs.emptyDir('/tmp/some/dir', err => {
 
   console.log('success!')
 })
+
+// With promises
+fs.emptyDir('/tmp/some/dir')
+.then(() => {
+  console.log('success!')
+})
+.catch(err => {
+  // handle error
+})
 ```

@@ -1,4 +1,4 @@
-# copy(src, dest, [options], callback)
+# copy(src, dest, [options, callback])
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
@@ -28,6 +28,15 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', err => {
 
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
+
+// Promise usage:
+fs.copy('/tmp/myfile', '/tmp/mynewfile')
+.then(() => {
+  console.log('success!')
+})
+.catch(err => {
+  // handle error
+})
 ```
 
 **Using filter function**

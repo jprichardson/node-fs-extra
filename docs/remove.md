@@ -1,4 +1,4 @@
-# remove(path, callback)
+# remove(path, [callback])
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
 
@@ -21,5 +21,14 @@ fs.remove('/home/jprichardson', err => {
   if (err) return console.error(err)
 
   console.log('success!') // I just deleted my entire HOME directory.
+})
+
+// Promise Usage
+fs.remove('/tmp/myfile')
+.then(() => {
+  console.log('success!')
+})
+.catch(err => {
+  // handle error
 })
 ```

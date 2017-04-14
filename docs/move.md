@@ -1,4 +1,4 @@
-# move(src, dest, [options], callback)
+# move(src, dest, [options, callback])
 
 Moves a file or directory, even across devices.
 
@@ -17,6 +17,14 @@ fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', err => {
   if (err) return console.error(err)
 
   console.log('success!')
+})
+
+fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile')
+.then(() => {
+  console.log('success!')
+})
+.catch(err => {
+  // handle error
 })
 ```
 
