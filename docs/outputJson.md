@@ -1,4 +1,4 @@
-# outputJson(file, object, [options], callback)
+# outputJson(file, object, [options, callback])
 
 Almost the same as [`writeJson`](writeJson.md), except that if the directory does not exist, it's created.
 `options` are what you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-jsonfile#writefilefilename-options-callback).
@@ -22,5 +22,15 @@ fs.outputJson(file, {name: 'JP'}, err => {
   fs.readJson(file, (err, data) => {
     console.log(data.name) // => JP
   })
+})
+
+// With Promises:
+fs.outputJson(file, {name: 'JP'})
+.then(() => fs.readJson(file))
+.then(data => {
+  console.log(data.name) // => JP
+})
+.catch(err => {
+  // handle error
 })
 ```

@@ -1,4 +1,4 @@
-# readJson(file, [options], callback)
+# readJson(file, [options, callback])
 
 Reads a JSON file and then parses it into an object. `options` are the same
 that you'd pass to [`jsonFile.readFile`](https://github.com/jprichardson/node-jsonfile#readfilefilename-options-callback).
@@ -16,8 +16,17 @@ const fs = require('fs-extra')
 
 fs.readJson('./package.json', (err, packageObj) => {
   if (err) console.error(err)
-  
+
   console.log(packageObj.version) // => 0.1.3
+})
+
+// Promise Usage
+fs.readJson('./package.json')
+.then(packageObj => {
+  console.log(packageObj.version) // => 0.1.3
+})
+.catch(err => {
+  // handle error
 })
 ```
 
@@ -36,5 +45,14 @@ fs.readJson(file, { throws: false }, (err, obj) => {
   if (err) console.error(err)
 
   console.log(obj) // => null
+})
+
+// Promise Usage
+fs.readJson(file, { throws: false })
+.then(obj => {
+  console.log(obj) // => null
+})
+.catch(err => {
+  // Not called
 })
 ```
