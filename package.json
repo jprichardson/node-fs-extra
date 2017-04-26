@@ -48,7 +48,7 @@
     "read-dir-files": "^0.1.1",
     "rimraf": "^2.2.8",
     "secure-random": "^1.1.1",
-    "standard": "^8.5.0"
+    "standard": "^10.0.2"
   },
   "main": "./lib/index",
   "scripts": {
