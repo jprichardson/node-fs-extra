@@ -1,3 +1,26 @@
+3.0.0 / 2017-04-27
+------------------
+
+### Added
+
+- **BREAKING:** Added Promise support. All asynchronous native fs methods and fs-extra methods now return a promise if the callback is not passed. [#403](https://github.com/jprichardson/node-fs-extra/pull/403)
+- `pathExists()`, a replacement for the deprecated `fs.exists`. `pathExists` has a normal error-first callback signature. Also added `pathExistsSync`, an alias to `fs.existsSync`, for completeness. [#406](https://github.com/jprichardson/node-fs-extra/pull/406)
+
+### Removed
+
+- **BREAKING:** Removed support for setting the default spaces for `writeJson()`, `writeJsonSync()`, `outputJson()`, & `outputJsonSync()`. This was undocumented. [#402](https://github.com/jprichardson/node-fs-extra/pull/402)
+
+### Changed
+
+- Upgraded jsonfile dependency to v3.0.0:
+  - **BREAKING:** Changed behavior of `throws` option for `readJsonSync()`; now does not throw filesystem errors when `throws` is `false`.
+- **BREAKING:** `writeJson()`, `writeJsonSync()`, `outputJson()`, & `outputJsonSync()` now output minified JSON by default for consistency with `JSON.stringify()`; set the `spaces` option to `2` to override this new behavior. [#402](https://github.com/jprichardson/node-fs-extra/pull/402)
+- Use `Buffer.allocUnsafe()` instead of `new Buffer()` in environments that support it. [#394](https://github.com/jprichardson/node-fs-extra/pull/394)
+
+### Fixed
+
+- `removeSync()` silently failed on Windows in some cases. Now throws an `EBUSY` error. [#408](https://github.com/jprichardson/node-fs-extra/pull/408)
+
 2.1.2 / 2017-03-16
 ------------------
 
