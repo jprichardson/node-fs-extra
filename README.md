@@ -1,7 +1,7 @@
 Node.js: fs-extra
 =================
 
-`fs-extra` adds file system methods that aren't included in the native `fs` module. It is a drop in replacement for `fs`.
+`fs-extra` adds file system methods that aren't included in the native `fs` module and adds promise support to the `fs` methods. It should be a drop in replacement for `fs`.
 
 [![npm Package](https://img.shields.io/npm/v/fs-extra.svg?style=flat-square)](https://www.npmjs.org/package/fs-extra)
 [![build status](https://api.travis-ci.org/jprichardson/node-fs-extra.svg)](http://travis-ci.org/jprichardson/node-fs-extra)
@@ -30,7 +30,7 @@ Installation
 Usage
 -----
 
-`fs-extra` is a drop in replacement for native `fs`. All methods in `fs` are unmodified and attached to `fs-extra`.
+`fs-extra` is a drop in replacement for native `fs`. All methods in `fs` are attached to `fs-extra`. All `fs` methods return promises if the callback isn't passed.
 
 You don't ever need to include the original `fs` module again:
 
@@ -60,7 +60,7 @@ const fse = require('fs-extra')
 
 Sync vs Async
 -------------
-Most methods are async by default (they take a callback with an `Error` as first argument).
+Most methods are async by default. All async methods will return a promise if the callback isn't passed.
 
 Sync methods on the other hand will throw if an error occurs.
 
@@ -69,14 +69,23 @@ Example:
 ```js
 const fs = require('fs-extra')
 
+// Async with promises:
+fs.copy('/tmp/myfile', '/tmp/mynewfile')
+  .then(() => console.log('success!'))
+  .catch(err => {
+    // Handle error
+  })
+
+// Async with callbacks:
 fs.copy('/tmp/myfile', '/tmp/mynewfile', err => {
   if (err) return console.error(err)
-  console.log("success!")
-});
+  console.log('success!')
+})
 
+// Sync:
 try {
   fs.copySync('/tmp/myfile', '/tmp/mynewfile')
-  console.log("success!")
+  console.log('success!')
 } catch (err) {
   console.error(err)
 }
@@ -98,6 +107,7 @@ Methods
 - [move](docs/move.md)
 - [outputFile](docs/outputFile.md)
 - [outputJson](docs/outputJson.md)
+- [pathExists](docs/pathExists.md)
 - [readJson](docs/readJson.md)
 - [remove](docs/remove.md)
 - [writeJson](docs/writeJson.md)
@@ -114,12 +124,13 @@ Methods
 - [moveSync](docs/move-sync.md)
 - [outputFileSync](docs/outputFile-sync.md)
 - [outputJsonSync](docs/outputJson-sync.md)
+- [pathExistsSync](docs/pathExists-sync.md)
 - [readJsonSync](docs/readJson-sync.md)
 - [removeSync](docs/remove-sync.md)
 - [writeJsonSync](docs/writeJson-sync.md)
 
 
-**NOTE:** You can still use the native Node.js methods. They are copied over to `fs-extra`.
+**NOTE:** You can still use the native Node.js methods. They are promisified and copied over to `fs-extra`.
 
 ### What happened to `walk()` and `walkSync()`?
 
@@ -128,24 +139,6 @@ They were removed from `fs-extra` in v2.0.0. If you need the functionality, `wal
 
 Third Party
 -----------
-
-### Promises
-
-Use [Bluebird](https://github.com/petkaantonov/bluebird). See https://github.com/petkaantonov/bluebird/blob/master/API.md#promisification. `fs-extra` is
-explicitly listed as supported.
-
-```js
-const Promise = require('bluebird')
-const fs = Promise.promisifyAll(require('fs-extra'))
-```
-
-Or you can use a dedicated package:
-
-- [`fs-extra-promise`](https://github.com/overlookmotel/fs-extra-promise) uses Bluebird.
-- [`fs-promise`](https://github.com/kevinbeaty/fs-promise) uses
-  [Any Promise](https://github.com/kevinbeaty/any-promise) and also covers
-  [`mz/fs`](https://github.com/normalize/mz/blob/master/fs.js).
-- [`fs-p`](https://github.com/grammarly/fs-p) - TypeScript-friendly promises implementation
 
 
 ### TypeScript

@@ -1,6 +1,8 @@
-# removeSync(dir)
+# removeSync(path)
 
 Removes a file or directory. The directory can have contents. Like `rm -rf`.
+
+- `path` `<String>`
 
 ## Example:
 

@@ -4,6 +4,9 @@ Ensures that a directory is empty. Deletes directory contents if the directory i
 
 **Alias:** `emptydir()`
 
+- `dir` `<String>`
+- `callback` `<Function>`
+
 ## Example:
 
 ```js
@@ -14,5 +17,14 @@ fs.emptyDir('/tmp/some/dir', err => {
   if (err) return console.error(err)
 
   console.log('success!')
+})
+
+// With promises
+fs.emptyDir('/tmp/some/dir')
+.then(() => {
+  console.log('success!')
+})
+.catch(err => {
+  // handle error
 })
 ```

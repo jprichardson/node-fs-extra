@@ -4,6 +4,8 @@ Ensures that the directory exists. If the directory structure does not exist, it
 
 **Aliases:** `mkdirsSync()`, `mkdirpSync()`
 
+- `dir` `<String>`
+
 ## Example:
 
 ```js
