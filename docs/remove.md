@@ -29,6 +29,6 @@ fs.remove('/tmp/myfile')
   console.log('success!')
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```

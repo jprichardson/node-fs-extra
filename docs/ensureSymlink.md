@@ -25,6 +25,6 @@ fs.ensureSymlink(srcpath, dstpath)
   console.log('success!')
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```

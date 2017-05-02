@@ -17,6 +17,7 @@ fs.outputFile(file, 'hello!', err => {
   console.log(err) // => null
 
   fs.readFile(file, 'utf8', (err, data) => {
+    if (err) return console.error(err)
     console.log(data) // => hello!
   })
 })
@@ -28,6 +29,6 @@ fs.outputFile(file, 'hello!')
   console.log(data) // => hello!
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```

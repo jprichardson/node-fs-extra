@@ -20,6 +20,7 @@ fs.outputJson(file, {name: 'JP'}, err => {
   console.log(err) // => null
 
   fs.readJson(file, (err, data) => {
+    if (err) return console.error(err)
     console.log(data.name) // => JP
   })
 })
@@ -31,6 +32,6 @@ fs.outputJson(file, {name: 'JP'})
   console.log(data.name) // => JP
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```

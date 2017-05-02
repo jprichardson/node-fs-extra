@@ -35,7 +35,7 @@ fs.copy('/tmp/myfile', '/tmp/mynewfile')
   console.log('success!')
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```
 
