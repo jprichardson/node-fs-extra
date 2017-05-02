@@ -26,7 +26,7 @@ fs.readJson('./package.json')
   console.log(packageObj.version) // => 0.1.3
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```
 
@@ -53,6 +53,6 @@ fs.readJson(file, { throws: false })
   console.log(obj) // => null
 })
 .catch(err => {
-  // Not called
+  console.error(err) // Not called
 })
 ```

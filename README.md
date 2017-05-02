@@ -72,9 +72,7 @@ const fs = require('fs-extra')
 // Async with promises:
 fs.copy('/tmp/myfile', '/tmp/mynewfile')
   .then(() => console.log('success!'))
-  .catch(err => {
-    // Handle error
-  })
+  .catch(err => console.error(err))
 
 // Async with callbacks:
 fs.copy('/tmp/myfile', '/tmp/mynewfile', err => {

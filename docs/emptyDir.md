@@ -25,6 +25,6 @@ fs.emptyDir('/tmp/some/dir')
   console.log('success!')
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```

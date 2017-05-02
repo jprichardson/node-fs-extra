@@ -27,7 +27,7 @@ fs.writeJson('./package.json', {name: 'fs-extra'})
   console.log('success!')
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```
 

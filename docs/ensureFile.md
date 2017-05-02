@@ -24,6 +24,6 @@ fs.ensureFile(file)
   console.log('success!')
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```

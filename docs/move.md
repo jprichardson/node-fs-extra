@@ -24,7 +24,7 @@ fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile')
   console.log('success!')
 })
 .catch(err => {
-  // handle error
+  console.error(err)
 })
 ```
 
