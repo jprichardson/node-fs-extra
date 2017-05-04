@@ -1,3 +1,8 @@
+3.0.1 / 2017-05-04
+------------------
+
+- Fix bug in `move()` & `moveSync()` when source and destination are the same, and source does not exist. [#415](https://github.com/jprichardson/node-fs-extra/pull/415)
+
 3.0.0 / 2017-04-27
 ------------------
 
