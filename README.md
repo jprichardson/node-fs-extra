@@ -141,7 +141,7 @@ Third Party
 
 ### TypeScript
 
-If you like TypeScript, you can use `fs-extra` with it: https://github.com/borisyankov/DefinitelyTyped/tree/master/fs-extra
+If you like TypeScript, you can use `fs-extra` with it: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/fs-extra
 
 
 ### File / Directory Watching
