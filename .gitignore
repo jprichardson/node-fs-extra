@@ -5,3 +5,13 @@ node_modules/
 .idea
 *.iml
 npm-debug.log
+
+.git/
+.vs/
+
+*.sdf
+*.sln
+*.opendb
+*.user
+*.vcxproj
+*.filters
