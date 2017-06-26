@@ -48,6 +48,7 @@
     "read-dir-files": "^0.1.1",
     "rimraf": "^2.2.8",
     "secure-random": "^1.1.1",
+    "semver": "^5.3.0",
     "standard": "^10.0.2",
     "standard-markdown": "^2.3.0"
   },
