@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/jprichardson/node-fs-extra"
   },
+  "engines": {
+    "node": ">=4.5"
+  },
   "keywords": [
     "fs",
     "file",
