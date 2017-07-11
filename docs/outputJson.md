@@ -1,13 +1,15 @@
 # outputJson(file, object, [options, callback])
 
 Almost the same as [`writeJson`](writeJson.md), except that if the directory does not exist, it's created.
-`options` are what you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-jsonfile#writefilefilename-options-callback).
 
 **Alias:** `outputJSON()`
 
 - `file` `<String>`
 - `object` `<Object>`
 - `options` `<Object>`
+  - `spaces` `<Number|String>` Number of spaces to indent; or a string to use for indentation (i.e. pass `'\t'` for tab indentation). See [the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_space_argument) for more info.
+  - `replacer` [JSON replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter)
+  - Also accepts [`fs.writeFile` options](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
 - `callback` `<Function>`
 
 ## Example:

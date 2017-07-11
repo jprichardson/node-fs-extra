@@ -1,13 +1,15 @@
 # writeJson(file, object, [options, callback])
 
-Writes an object to a JSON file. `options` are the same that
-you'd pass to [`jsonFile.writeFile()`](https://github.com/jprichardson/node-jsonfile#writefilefilename-options-callback).
+Writes an object to a JSON file.
 
 **Alias:** `writeJSON()`
 
 - `file` `<String>`
 - `object` `<Object>`
 - `options` `<Object>`
+  - `spaces` `<Number|String>` Number of spaces to indent; or a string to use for indentation (i.e. pass `'\t'` for tab indentation). See [the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_space_argument) for more info.
+  - `replacer` [JSON replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter)
+  - Also accepts [`fs.writeFile` options](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
 - `callback` `<Function>`
 
 ## Example:
