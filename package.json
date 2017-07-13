@@ -49,7 +49,7 @@
     "rimraf": "^2.2.8",
     "secure-random": "^1.1.1",
     "standard": "^10.0.2",
-    "standard-markdown": "^2.3.0"
+    "standard-markdown": "^4.0.1"
   },
   "main": "./lib/index",
   "scripts": {
