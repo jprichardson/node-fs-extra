@@ -1,3 +1,18 @@
+4.0.0 / 2017-07-14
+------------------
+
+### Changed
+
+- **BREAKING:** The promisified versions of `fs.read()` & `fs.write()` now return objects. See [the docs](docs/fs-read-write.md) for details.
+- `fs.move()` now errors out when source and destination are the same.
+- Applied upstream fixes from `rimraf` to `fs.remove()` & `fs.removeSync()`.
+
+### Fixed
+
+- Got `fs.outputJSONSync()` working again; it was broken due to refactoring.
+
+Also clarified the docs in a few places.
+
 3.0.1 / 2017-05-04
 ------------------
 
