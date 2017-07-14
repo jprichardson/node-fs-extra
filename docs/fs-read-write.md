@@ -18,7 +18,7 @@ fs.read(fd, buffer, offset, length, position)
 
 // Async/await usage:
 async function example () {
-  const { bytesRead, buffer } = await fs.read(fd, buffer, offset, length, position)
+  const { bytesRead, buffer } = await fs.read(fd, Buffer.alloc(length), offset, length, position)
 }
 ```
 
@@ -34,6 +34,6 @@ fs.write(fd, buffer, offset, length, position)
 
 // Async/await usage:
 async function example () {
-  const { bytesWritten, buffer } = await fs.write(fd, buffer, offset, length, position)
+  const { bytesWritten, buffer } = await fs.write(fd, Buffer.alloc(length), offset, length, position)
 }
 ```
