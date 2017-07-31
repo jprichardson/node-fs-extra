@@ -3,13 +3,13 @@
 
 ### Changed
 
-- **BREAKING:** The promisified versions of `fs.read()` & `fs.write()` now return objects. See [the docs](docs/fs-read-write.md) for details.
-- `fs.move()` now errors out when destination is a subdirectory of source.
-- Applied upstream fixes from `rimraf` to `fs.remove()` & `fs.removeSync()`.
+- **BREAKING:** The promisified versions of `fs.read()` & `fs.write()` now return objects. See [the docs](docs/fs-read-write.md) for details. [#436](https://github.com/jprichardson/node-fs-extra/issues/436), [#449](https://github.com/jprichardson/node-fs-extra/pull/449)
+- `fs.move()` now errors out when destination is a subdirectory of source. [#458](https://github.com/jprichardson/node-fs-extra/pull/458)
+- Applied upstream fixes from `rimraf` to `fs.remove()` & `fs.removeSync()`. [#459](https://github.com/jprichardson/node-fs-extra/pull/459)
 
 ### Fixed
 
-- Got `fs.outputJSONSync()` working again; it was broken due to refactoring.
+- Got `fs.outputJSONSync()` working again; it was broken due to refactoring. [#428](https://github.com/jprichardson/node-fs-extra/pull/428)
 
 Also clarified the docs in a few places.
 
