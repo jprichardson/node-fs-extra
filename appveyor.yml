@@ -4,6 +4,7 @@ environment:
     # node.js
     - nodejs_version: "4"
     - nodejs_version: "6"
+    - nodejs_version: "8"
 
 # Install scripts. (runs after repo cloning)
 install:
@@ -18,8 +19,8 @@ test_script:
   # Output useful info for debugging.
   - node --version
   - npm --version
-  # run tests
-  - npm test
+  # run only unit tests; travis does the linting
+  - npm run unit
 
 # Don't actually build.
 build: off
