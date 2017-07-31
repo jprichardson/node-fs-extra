@@ -1,3 +1,10 @@
+4.0.1 / 2017-07-31
+------------------
+
+### Fixed
+
+- Previously, `ensureFile()` & `ensureFileSync()` would do nothing if the path was a directory. Now, they error out for consistency with `ensureDir()`. [#465](https://github.com/jprichardson/node-fs-extra/issues/465), [#466](https://github.com/jprichardson/node-fs-extra/pull/466), [#470](https://github.com/jprichardson/node-fs-extra/issues/470)
+
 4.0.0 / 2017-07-14
 ------------------
 
