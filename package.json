@@ -52,7 +52,7 @@
     "standard": "^10.0.2",
     "standard-markdown": "^4.0.1"
   },
-  "main": "./lib/index",
+  "main": "./lib/index.js",
   "scripts": {
     "coverage": "istanbul cover -i 'lib/**' -x '**/__tests__/**' test.js",
     "coveralls": "coveralls < coverage/lcov.info",
