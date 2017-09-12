@@ -1,3 +1,10 @@
+4.0.2 / 2017-09-12
+------------------
+
+- Added `EOL` option to `writeJson*` & `outputJson*` (via upgrade to jsonfile v4)
+- Added promise support to [`fs.copyFile()`](https://nodejs.org/api/fs.html#fs_fs_copyfile_src_dest_flags_callback) in Node 8.5+
+- Added `.js` extension to `main` field in `package.json` for better tooling compatibility. [#485](https://github.com/jprichardson/node-fs-extra/pull/485)
+
 4.0.1 / 2017-07-31
 ------------------
 
