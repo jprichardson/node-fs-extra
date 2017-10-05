@@ -3,7 +3,7 @@
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
 - `src` `<String>`
-- `dest` `<String>`
+- `dest` `<String>` Note that if `src` is a file, `dest` cannot be a directory (see [issue #323](https://github.com/jprichardson/node-fs-extra/issues/323)).
 - `options` `<Object>`
   - `overwrite` `<boolean>`: overwrite existing file or directory, default is `true`. _Note that the copy operation will silently fail if you set this to `false` and the destination exists._ Use the `errorOnExist` option to change this behavior.
   - `errorOnExist` `<boolean>`: when `overwrite` is `false` and the destination exists, throw an error. Default is `false`.
