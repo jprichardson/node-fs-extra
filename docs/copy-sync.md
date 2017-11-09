@@ -9,7 +9,7 @@ Copy a file or directory. The directory can have contents. Like `cp -r`.
   - `errorOnExist` `<boolean>`: when `overwrite` is `false` and the destination exists, throw an error. Default is `false`.
   - `dereference` `<boolean>`: dereference symlinks, default is `false`.
   - `preserveTimestamps` `<boolean>`: will set last modification and access times to the ones of the original source files, default is `false`.
-  - `filter` `<Function>`: Function to filter copied files. Return `true` to include, `false` to exclude. This can also be a RegExp, however this is deprecated (See [issue #239](https://github.com/jprichardson/node-fs-extra/issues/239) for background).
+  - `filter` `<Function>`: Function to filter copied files. Return `true` to include, `false` to exclude.
 
 ## Example:
 
