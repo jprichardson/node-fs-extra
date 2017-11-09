@@ -1,5 +1,4 @@
-Please specify the following supporting information if it applies to your issue:
-
-- `Operating System`:
-- `node version`:
-- `fs-extra version`:
+<!-- Please fill out the following information if it applies to your issue: -->
+- **Operating System:**
+- **Node.js version:**
+- **`fs-extra` version:**
