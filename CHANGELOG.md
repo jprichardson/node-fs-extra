@@ -1,3 +1,9 @@
+4.0.3 / 2017-12-05
+------------------
+
+- Fix wrong `chmod` values in `fs.remove()` [#501](https://github.com/jprichardson/node-fs-extra/pull/501)
+- Fix `TypeError` on systems that don't have some `fs` operations like `lchown` [#520](https://github.com/jprichardson/node-fs-extra/pull/520)
+
 4.0.2 / 2017-09-12
 ------------------
 
