@@ -1,3 +1,19 @@
+5.0.0 / 2017-12-11
+------------------
+
+Significant refactor of `copy()` & `copySync()`, including breaking changes. No changes to other functions in this release.
+
+Huge thanks to **[@manidlou](https://github.com/manidlou)** for doing most of the work on this release.
+
+- The `filter` option can no longer be a RegExp (must be a function). This was deprecated since fs-extra v1.0.0. [#512](https://github.com/jprichardson/node-fs-extra/pull/512)
+- `copy()`'s `filter` option can now be a function that returns a Promise. [#518](https://github.com/jprichardson/node-fs-extra/pull/518)
+- `copy()` & `copySync()` now use `fs.copyFile()`/`fs.copyFileSync()` in environments that support it (currently Node 8.5.0+). Older Node versions still get the old implementation. [#505](https://github.com/jprichardson/node-fs-extra/pull/505)
+- Don't allow copying a directory into itself. [#83](https://github.com/jprichardson/node-fs-extra/issues/83)
+- Handle copying between identical files. [#198](https://github.com/jprichardson/node-fs-extra/issues/198)
+- Error out when copying an empty folder to a path that already exists. [#464](https://github.com/jprichardson/node-fs-extra/issues/464)
+- Don't create `dest`'s parent if the `filter` function aborts the `copy()` operation. [#517](https://github.com/jprichardson/node-fs-extra/pull/517)
+- Fix `writeStream` not being closed if there was an error in `copy()`. [#516](https://github.com/jprichardson/node-fs-extra/pull/516)
+
 4.0.3 / 2017-12-05
 ------------------
 
