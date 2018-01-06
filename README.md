@@ -148,6 +148,9 @@ If you like TypeScript, you can use `fs-extra` with it: https://github.com/Defin
 
 If you want to watch for changes to files or directories, then you should use [chokidar](https://github.com/paulmillr/chokidar).
 
+### Obtain Filesystem (Devices, Partitions) Information
+
+[fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) allows you to read the state of the filesystem of the host on which it is run. It returns information about both the devices and the partitions (volumes) of the system.
 
 ### Misc.
 
