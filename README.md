@@ -91,7 +91,7 @@ try {
 }
 
 // Async/Await:
-const copyFiles = async () => {
+async function copyFiles () {
   try {
     await fs.copy('/tmp/myfile', '/tmp/mynewfile')
     console.log('success!')
