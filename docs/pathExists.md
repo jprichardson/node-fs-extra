@@ -26,7 +26,7 @@ fs.pathExists(file)
 async function example (f) {
   const exists = await fs.pathExists(f)
 
-  console.error(exists) // => false
+  console.log(exists) // => false
 }
 
 example(file)
