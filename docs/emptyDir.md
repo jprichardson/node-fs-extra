@@ -13,13 +13,14 @@ Ensures that a directory is empty. Deletes directory contents if the directory i
 const fs = require('fs-extra')
 
 // assume this directory has a lot of files and folders
+// With a callback:
 fs.emptyDir('/tmp/some/dir', err => {
   if (err) return console.error(err)
 
   console.log('success!')
 })
 
-// With promises
+// With Promises:
 fs.emptyDir('/tmp/some/dir')
 .then(() => {
   console.log('success!')
@@ -27,4 +28,16 @@ fs.emptyDir('/tmp/some/dir')
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example () {
+  try {
+    await fs.emptyDir('/tmp/some/dir')
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example()
 ```

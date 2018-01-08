@@ -13,6 +13,8 @@ Ensures that the directory exists. If the directory structure does not exist, it
 const fs = require('fs-extra')
 
 const dir = '/tmp/this/path/does/not/exist'
+
+// With a callback:
 fs.ensureDir(dir, err => {
   console.log(err) // => null
   // dir has now been created, including the directory it is to be placed in
@@ -26,4 +28,16 @@ fs.ensureDir(dir)
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example (directory) {
+  try {
+    await fs.ensureDir(directory)
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example(dir)
 ```

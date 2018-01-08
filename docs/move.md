@@ -13,19 +13,36 @@ Moves a file or directory, even across devices.
 ```js
 const fs = require('fs-extra')
 
-fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile', err => {
+const srcpath = '/tmp/file.txt'
+const dstpath = '/tmp/this/path/does/not/exist/file.txt'
+
+// With a callback:
+fs.move(srcpath, dstpath, err => {
   if (err) return console.error(err)
 
   console.log('success!')
 })
 
-fs.move('/tmp/somefile', '/tmp/does/not/exist/yet/somefile')
+// With Promises:
+fs.move(srcpath, dstpath)
 .then(() => {
   console.log('success!')
 })
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example (src, dest) {
+  try {
+    await fs.move(srcpath, dstpath)
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example(srcpath, dstpath)
 ```
 
 **Using `overwrite` option**

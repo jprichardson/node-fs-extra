@@ -11,6 +11,7 @@ Removes a file or directory. The directory can have contents. Like `rm -rf`.
 const fs = require('fs-extra')
 
 // remove file
+// With a callback:
 fs.remove('/tmp/myfile', err => {
   if (err) return console.error(err)
 
@@ -23,7 +24,7 @@ fs.remove('/home/jprichardson', err => {
   console.log('success!') // I just deleted my entire HOME directory.
 })
 
-// Promise Usage
+// With Promises:
 fs.remove('/tmp/myfile')
 .then(() => {
   console.log('success!')
@@ -31,4 +32,16 @@ fs.remove('/tmp/myfile')
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example (src, dest) {
+  try {
+    await fs.remove('/tmp/myfile')
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example()
 ```
