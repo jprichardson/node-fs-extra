@@ -13,6 +13,8 @@ const fs = require('fs-extra')
 
 const srcpath = '/tmp/file.txt'
 const dstpath = '/tmp/this/path/does/not/exist/file.txt'
+
+// With a callback:
 fs.ensureLink(srcpath, dstpath, err => {
   console.log(err) // => null
   // link has now been created, including the directory it is to be placed in
@@ -26,4 +28,16 @@ fs.ensureLink(srcpath, dstpath)
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example (src, dest) {
+  try {
+    await fs.ensureLink(src, dest)
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example(srcpath, dstpath)
 ```

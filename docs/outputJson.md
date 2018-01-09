@@ -19,6 +19,8 @@ Almost the same as [`writeJson`](writeJson.md), except that if the directory doe
 const fs = require('fs-extra')
 
 const file = '/tmp/this/path/does/not/exist/file.json'
+
+// With a callback:
 fs.outputJson(file, {name: 'JP'}, err => {
   console.log(err) // => null
 
@@ -37,4 +39,19 @@ fs.outputJson(file, {name: 'JP'})
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example (f) {
+  try {
+    await fs.outputJson(f, {name: 'JP'})
+
+    const data = await fs.readJson(f)
+
+    console.log(data.name) // => JP
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example(file)
 ```

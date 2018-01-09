@@ -13,6 +13,8 @@ Almost the same as `writeFile` (i.e. it [overwrites](http://pages.citebite.com/v
 const fs = require('fs-extra')
 
 const file = '/tmp/this/path/does/not/exist/file.txt'
+
+// With a callback:
 fs.outputFile(file, 'hello!', err => {
   console.log(err) // => null
 
@@ -31,4 +33,19 @@ fs.outputFile(file, 'hello!')
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example (f) {
+  try {
+    await fs.outputFile(f, 'hello!')
+
+    const data = await fs.readFile(f, 'utf8')
+
+    console.log(data) // => hello!
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example(file)
 ```

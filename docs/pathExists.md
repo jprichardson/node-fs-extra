@@ -11,12 +11,23 @@ Test whether or not the given path exists by checking with the file system. Like
 const fs = require('fs-extra')
 
 const file = '/tmp/this/path/does/not/exist/file.txt'
-// Promise usage:
-fs.pathExists(file)
-  .then(exists => console.log(exists)) // => false
-// Callback usage:
+
+// With a callback:
 fs.pathExists(file, (err, exists) => {
   console.log(err) // => null
   console.log(exists) // => false
 })
+
+// Promise usage:
+fs.pathExists(file)
+  .then(exists => console.log(exists)) // => false
+
+// With async/await:
+async function example (f) {
+  const exists = await fs.pathExists(f)
+
+  console.log(exists) // => false
+}
+
+example(file)
 ```

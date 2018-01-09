@@ -58,11 +58,13 @@ const fs = require('fs')
 const fse = require('fs-extra')
 ```
 
-Sync vs Async
+Sync vs Async vs Async/Await
 -------------
 Most methods are async by default. All async methods will return a promise if the callback isn't passed.
 
 Sync methods on the other hand will throw if an error occurs.
+
+Also Async/Await will throw an error if one occurs.
 
 Example:
 
@@ -87,6 +89,18 @@ try {
 } catch (err) {
   console.error(err)
 }
+
+// Async/Await:
+async function copyFiles () {
+  try {
+    await fs.copy('/tmp/myfile', '/tmp/mynewfile')
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+copyFiles()
 ```
 
 

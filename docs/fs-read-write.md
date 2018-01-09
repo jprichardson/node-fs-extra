@@ -9,14 +9,14 @@ Here's the example promise usage:
 ## `fs.read()`
 
 ```js
-// Basic promises
+// With Promises:
 fs.read(fd, buffer, offset, length, position)
   .then(results => {
     console.log(results)
     // { bytesRead: 20, buffer: <Buffer 0f 34 5d ...> }
   })
 
-// Async/await usage:
+// With async/await:
 async function example () {
   const { bytesRead, buffer } = await fs.read(fd, Buffer.alloc(length), offset, length, position)
 }
@@ -25,14 +25,14 @@ async function example () {
 ## `fs.write()`
 
 ```js
-// Basic promises
+// With Promises:
 fs.write(fd, buffer, offset, length, position)
   .then(results => {
     console.log(results)
     // { bytesWritten: 20, buffer: <Buffer 0f 34 5d ...> }
   })
 
-// Async/await usage:
+// With async/await:
 async function example () {
   const { bytesWritten, buffer } = await fs.write(fd, Buffer.alloc(length), offset, length, position)
 }

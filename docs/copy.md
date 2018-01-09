@@ -17,6 +17,7 @@ Copy a file or directory. The directory can have contents. Like `cp -r`.
 ```js
 const fs = require('fs-extra')
 
+// With a callback:
 fs.copy('/tmp/myfile', '/tmp/mynewfile', err => {
   if (err) return console.error(err)
 
@@ -29,7 +30,7 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', err => {
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
 
-// Promise usage:
+// With Promises:
 fs.copy('/tmp/myfile', '/tmp/mynewfile')
 .then(() => {
   console.log('success!')
@@ -37,6 +38,18 @@ fs.copy('/tmp/myfile', '/tmp/mynewfile')
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example () {
+  try {
+    await fs.copy('/tmp/myfile', '/tmp/mynewfile')
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example()
 ```
 
 **Using filter function**

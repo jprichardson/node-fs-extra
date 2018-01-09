@@ -18,13 +18,14 @@ Writes an object to a JSON file.
 ```js
 const fs = require('fs-extra')
 
+// With a callback:
 fs.writeJson('./package.json', {name: 'fs-extra'}, err => {
   if (err) return console.error(err)
 
   console.log('success!')
 })
 
-// With Promises
+// With Promises:
 fs.writeJson('./package.json', {name: 'fs-extra'})
 .then(() => {
   console.log('success!')
@@ -32,6 +33,18 @@ fs.writeJson('./package.json', {name: 'fs-extra'})
 .catch(err => {
   console.error(err)
 })
+
+// With async/await:
+async function example () {
+  try {
+    await fs.writeJson('./package.json', {name: 'fs-extra'})
+    console.log('success!')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+example()
 ```
 
 ---
