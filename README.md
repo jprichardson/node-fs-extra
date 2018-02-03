@@ -167,6 +167,7 @@ If you want to watch for changes to files or directories, then you should use [c
 
 ### Misc.
 
+- [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) - Send your fs-extra calls to [debug](https://npmjs.org/package/debug).
 - [mfs](https://github.com/cadorn/mfs) - Monitor your fs-extra calls.
 
 
