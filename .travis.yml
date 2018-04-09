@@ -1,18 +1,21 @@
 sudo: false
 language: node_js
+os:
+  - linux
+  - osx
+node_js:
+  - 6
+  - 8
+  - 9
+env: TEST_SUITE=unit
 matrix:
+  exclude:
+    - os: linux
+      node_js: 8
   include:
-    - node_js: "4"
-    - node_js: "5"
-    # We run both lint and unit on Node 6
-    - node_js: "6"
-      env: TEST_SUITE=test
-    - node_js: "7"
-    # We run coverage on Node 8
-    - node_js: "8"
-      env: TEST_SUITE=coverage
-env:
-  - TEST_SUITE=unit
+    - os: linux
+      node_js: 8
+      env: TEST_SUITE=full-ci
 script: npm run-script $TEST_SUITE
 after_success:
-  - if [ $TEST_SUITE = coverage ]; then npm run coveralls; fi
+  - if [ $TEST_SUITE = full-ci ]; then npm run coveralls; fi

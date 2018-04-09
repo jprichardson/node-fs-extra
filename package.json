@@ -54,6 +54,7 @@
   },
   "main": "./lib/index.js",
   "scripts": {
+    "full-ci": "npm run lint && npm run coverage",
     "coverage": "istanbul cover -i 'lib/**' -x '**/__tests__/**' test.js",
     "coveralls": "coveralls < coverage/lcov.info",
     "lint": "standard && standard-markdown",
