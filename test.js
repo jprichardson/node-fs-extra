@@ -4,11 +4,10 @@ const os = require('os')
 const path = require('path')
 const klaw = require('klaw')
 const Mocha = require('mocha')
-const assign = require('./lib/util/assign')
 
 const argv = require('minimist')(process.argv.slice(2))
 
-const mochaOpts = assign({
+const mochaOpts = Object.assign({
   ui: 'bdd',
   reporter: 'dot',
   timeout: 30000
