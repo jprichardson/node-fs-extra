@@ -1,7 +1,7 @@
 Node.js: fs-extra
 =================
 
-`fs-extra` adds file system methods that aren't included in the native `fs` module and adds promise support to the `fs` methods. It should be a drop in replacement for `fs`.
+`fs-extra` adds file system methods that aren't included in the native `fs` module and adds promise support to the `fs` methods. It also uses [`graceful-fs`](https://github.com/isaacs/node-graceful-fs) to prevent `EMFILE` errors. It should be a drop in replacement for `fs`.
 
 [![npm Package](https://img.shields.io/npm/v/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
 [![License](https://img.shields.io/npm/l/express.svg)](https://github.com/jprichardson/node-fs-extra/blob/master/LICENSE)
