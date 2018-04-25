@@ -7,6 +7,7 @@ node_js:
   - 6
   - 8
   - 9
+  - 10
 env: TEST_SUITE=unit
 matrix:
   exclude:
