@@ -1,3 +1,13 @@
+6.0.0 / 2018-05-01
+------------------
+
+- Drop support for Node.js versions 4, 5, & 7 ([#564](https://github.com/jprichardson/node-fs-extra/pull/564))
+- Rewrite `move` to use `fs.rename` where possible ([#549](https://github.com/jprichardson/node-fs-extra/pull/549))
+- Don't convert relative paths to absolute paths for `filter` ([#554](https://github.com/jprichardson/node-fs-extra/pull/554))
+- `copy*`'s behavior when `preserveTimestamps` is `false` has been OS-dependent since 5.0.0, but that's now explicitly noted in the docs ([#563](https://github.com/jprichardson/node-fs-extra/pull/563))
+- Fix subdirectory detection for `copy*` & `move*` ([#541](https://github.com/jprichardson/node-fs-extra/pull/541))
+- Handle case-insensitive paths correctly in `copy*` ([#568](https://github.com/jprichardson/node-fs-extra/pull/568))
+
 5.0.0 / 2017-12-11
 ------------------
 
