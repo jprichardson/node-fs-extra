@@ -1,3 +1,8 @@
+6.0.1 / 2018-05-09
+------------------
+
+- Fix `fs.promises` `ExperimentalWarning` on Node v10.1.0 ([#578](https://github.com/jprichardson/node-fs-extra/pull/578))
+
 6.0.0 / 2018-05-01
 ------------------
 
