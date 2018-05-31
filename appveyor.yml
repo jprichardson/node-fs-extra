@@ -24,3 +24,6 @@ test_script:
 
 # Don't actually build.
 build: off
+
+cache:
+  - node_modules

@@ -20,3 +20,6 @@ matrix:
 script: npm run-script $TEST_SUITE
 after_success:
   - if [ $TEST_SUITE = full-ci ]; then npm run coveralls; fi
+cache:
+  directories:
+    - node_modules
