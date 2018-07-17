@@ -1,3 +1,11 @@
+7.0.0 / 2018-07-16
+------------------
+
+- **BREAKING:** Refine `copy*()` handling of symlinks to properly detect symlinks that point to the same file. ([#582](https://github.com/jprichardson/node-fs-extra/pull/582))
+- Fix bug with copying write-protected directories ([#600](https://github.com/jprichardson/node-fs-extra/pull/600))
+- Universalify `fs.lchmod()` ([#596](https://github.com/jprichardson/node-fs-extra/pull/596))
+- Add `engines` field to `package.json` ([#580](https://github.com/jprichardson/node-fs-extra/pull/580))
+
 6.0.1 / 2018-05-09
 ------------------
 
