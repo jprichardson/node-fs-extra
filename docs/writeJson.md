@@ -1,4 +1,4 @@
-# writeJson(file, object, [options, callback])
+# writeJson(file, object[, options][, callback])
 
 Writes an object to a JSON file.
 

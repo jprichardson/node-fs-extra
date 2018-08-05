@@ -1,4 +1,4 @@
-# ensureDir(dir, [callback])
+# ensureDir(dir[, callback])
 
 Ensures that the directory exists. If the directory structure does not exist, it is created. Like `mkdir -p`.
 

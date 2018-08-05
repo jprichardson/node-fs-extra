@@ -1,4 +1,4 @@
-# writeJsonSync(file, object, [options])
+# writeJsonSync(file, object[, options])
 
 Writes an object to a JSON file.
 

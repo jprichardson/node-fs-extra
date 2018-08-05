@@ -1,4 +1,4 @@
-# ensureSymlinkSync(srcpath, dstpath, [type])
+# ensureSymlinkSync(srcpath, dstpath[, type])
 
 Ensures that the symlink exists. If the directory structure does not exist, it is created.
 

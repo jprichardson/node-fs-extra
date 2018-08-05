@@ -1,4 +1,4 @@
-# ensureLink(srcpath, dstpath, [callback])
+# ensureLink(srcpath, dstpath[, callback])
 
 Ensures that the link exists. If the directory structure does not exist, it is created.
 
