@@ -1,4 +1,4 @@
-# moveSync(src, dest, [options])
+# moveSync(src, dest[, options])
 
 Moves a file or directory, even across devices.
 

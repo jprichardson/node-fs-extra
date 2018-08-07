@@ -1,4 +1,4 @@
-# readJson(file, [options, callback])
+# readJson(file[, options][, callback])
 
 Reads a JSON file and then parses it into an object. `options` are the same
 that you'd pass to [`jsonFile.readFile`](https://github.com/jprichardson/node-jsonfile#readfilefilename-options-callback).

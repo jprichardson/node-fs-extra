@@ -1,4 +1,4 @@
-# move(src, dest, [options, callback])
+# move(src, dest[, options][, callback])
 
 Moves a file or directory, even across devices.
 
