@@ -1,4 +1,4 @@
-# outputJson(file, object, [options, callback])
+# outputJson(file, object[, options][, callback])
 
 Almost the same as [`writeJson`](writeJson.md), except that if the directory does not exist, it's created.
 

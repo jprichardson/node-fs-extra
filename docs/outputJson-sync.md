@@ -1,4 +1,4 @@
-# outputJsonSync(file, object, [options])
+# outputJsonSync(file, object[, options])
 
 Almost the same as [`writeJsonSync`](writeJson-sync.md), except that if the directory does not exist, it's created.
 

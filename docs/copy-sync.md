@@ -1,4 +1,4 @@
-# copySync(src, dest, [options])
+# copySync(src, dest[, options])
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
