@@ -33,21 +33,21 @@ fs.ensureDir(dir, desiredMode, err => {
 
 // With Promises:
 fs.ensureDir(dir)
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With Promises and a mode integer:
 fs.ensureDir(dir, desiredMode)
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example (directory) {

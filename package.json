@@ -53,7 +53,7 @@
     "secure-random": "^1.1.1",
     "semver": "^5.3.0",
     "standard": "^12.0.1",
-    "standard-markdown": "^4.0.1"
+    "standard-markdown": "^5.0.0"
   },
   "main": "./lib/index.js",
   "scripts": {

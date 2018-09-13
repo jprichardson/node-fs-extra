@@ -17,7 +17,7 @@ Writes an object to a JSON file.
 ```js
 const fs = require('fs-extra')
 
-fs.writeJsonSync('./package.json', {name: 'fs-extra'})
+fs.writeJsonSync('./package.json', { name: 'fs-extra' })
 ```
 ---
 

@@ -23,12 +23,12 @@ fs.ensureSymlink(srcpath, dstpath, err => {
 
 // With Promises:
 fs.ensureSymlink(srcpath, dstpath)
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example (src, dest) {

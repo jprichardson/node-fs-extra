@@ -19,25 +19,25 @@ Writes an object to a JSON file.
 const fs = require('fs-extra')
 
 // With a callback:
-fs.writeJson('./package.json', {name: 'fs-extra'}, err => {
+fs.writeJson('./package.json', { name: 'fs-extra' }, err => {
   if (err) return console.error(err)
 
   console.log('success!')
 })
 
 // With Promises:
-fs.writeJson('./package.json', {name: 'fs-extra'})
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+fs.writeJson('./package.json', { name: 'fs-extra' })
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example () {
   try {
-    await fs.writeJson('./package.json', {name: 'fs-extra'})
+    await fs.writeJson('./package.json', { name: 'fs-extra' })
     console.log('success!')
   } catch (err) {
     console.error(err)

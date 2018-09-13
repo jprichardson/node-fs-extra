@@ -22,12 +22,12 @@ fs.emptyDir('/tmp/some/dir', err => {
 
 // With Promises:
 fs.emptyDir('/tmp/some/dir')
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example () {

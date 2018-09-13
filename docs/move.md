@@ -25,12 +25,12 @@ fs.move(srcpath, dstpath, err => {
 
 // With Promises:
 fs.move(srcpath, dstpath)
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example (src, dest) {

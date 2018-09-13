@@ -18,7 +18,7 @@ Almost the same as [`writeJsonSync`](writeJson-sync.md), except that if the dire
 const fs = require('fs-extra')
 
 const file = '/tmp/this/path/does/not/exist/file.json'
-fs.outputJsonSync(file, {name: 'JP'})
+fs.outputJsonSync(file, { name: 'JP' })
 
 const data = fs.readJsonSync(file)
 console.log(data.name) // => JP
