@@ -21,7 +21,7 @@ const options = {
 fs.ensureDirSync(dir)
 // dir has now been created, including the directory it is to be placed in
 
-fs.ensureDirSync(dir, desiredMod)
+fs.ensureDirSync(dir, desiredMode)
 // dir has now been created, including the directory it is to be placed in with permission 0o2775
 
 fs.ensureDirSync(dir, options)
