@@ -32,12 +32,12 @@ fs.copy('/tmp/mydir', '/tmp/mynewdir', err => {
 
 // With Promises:
 fs.copy('/tmp/myfile', '/tmp/mynewfile')
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example () {

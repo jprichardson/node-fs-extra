@@ -26,13 +26,13 @@ fs.outputFile(file, 'hello!', err => {
 
 // With Promises:
 fs.outputFile(file, 'hello!')
-.then(() => fs.readFile(file, 'utf8'))
-.then(data => {
-  console.log(data) // => hello!
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => fs.readFile(file, 'utf8'))
+  .then(data => {
+    console.log(data) // => hello!
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example (f) {

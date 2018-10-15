@@ -23,12 +23,12 @@ fs.readJson('./package.json', (err, packageObj) => {
 
 // With Promises:
 fs.readJson('./package.json')
-.then(packageObj => {
-  console.log(packageObj.version) // => 0.1.3
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(packageObj => {
+    console.log(packageObj.version) // => 0.1.3
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example () {
@@ -62,14 +62,14 @@ fs.readJson(file, { throws: false }, (err, obj) => {
   console.log(obj) // => null
 })
 
-// Wtih Promises:
+// With Promises:
 fs.readJson(file, { throws: false })
-.then(obj => {
-  console.log(obj) // => null
-})
-.catch(err => {
-  console.error(err) // Not called
-})
+  .then(obj => {
+    console.log(obj) // => null
+  })
+  .catch(err => {
+    console.error(err) // Not called
+  })
 
 // With async/await:
 async function example (f) {

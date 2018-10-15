@@ -26,12 +26,12 @@ fs.remove('/home/jprichardson', err => {
 
 // With Promises:
 fs.remove('/tmp/myfile')
-.then(() => {
-  console.log('success!')
-})
-.catch(err => {
-  console.error(err)
-})
+  .then(() => {
+    console.log('success!')
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // With async/await:
 async function example (src, dest) {
