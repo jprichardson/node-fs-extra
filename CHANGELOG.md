@@ -1,3 +1,10 @@
+7.0.1 / 2018-11-07
+------------------
+
+- Fix `removeSync()` on Windows, in some cases, it would error out with `ENOTEMPTY` ([#646](https://github.com/jprichardson/node-fs-extra/pull/646))
+- Document `mode` option for `ensureDir*()` ([#587](https://github.com/jprichardson/node-fs-extra/pull/587))
+- Don't include documentation files in npm package tarball ([#642](https://github.com/jprichardson/node-fs-extra/issues/642), [#643](https://github.com/jprichardson/node-fs-extra/pull/643))
+
 7.0.0 / 2018-07-16
 ------------------
 
