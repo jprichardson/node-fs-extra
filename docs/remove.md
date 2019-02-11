@@ -5,6 +5,10 @@ Removes a file or directory. The directory can have contents. Like `rm -rf`.
 - `path` `<String>`
 - `callback` `<Function>`
 
+After completion, the callback is called with `undefined`.
+
+If the path does not exist, that is not an error; the callback will be called with the first argument `null`.
+
 ## Example:
 
 ```js
