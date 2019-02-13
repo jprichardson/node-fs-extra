@@ -9,7 +9,7 @@ steps:
 - script: npm install
   displayName: 'Install dependencies'
 
-- script: npm run $(test_suite) -- -- --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml
+- script: npm run $(test_suite) -- --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml
   displayName: 'Run tests'
 
 - task: PublishTestResults@2
