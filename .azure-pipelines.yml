@@ -13,6 +13,8 @@ jobs:
         node_version: 6.x
       node_8_x:
         node_version: 8.x
+      node_9_x:
+        node_version: 9.x
       node_10_x:
         node_version: 10.x
 
@@ -32,6 +34,8 @@ jobs:
         node_version: 6.x
       node_8_x:
         node_version: 8.x
+      node_9_x:
+        node_version: 9.x
       node_10_x:
         node_version: 10.x
 
@@ -51,6 +55,8 @@ jobs:
         node_version: 6.x
       node_8_x:
         node_version: 8.x
+      node_9_x:
+        node_version: 9.x
       node_10_x:
         node_version: 10.x
 
