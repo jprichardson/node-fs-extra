@@ -9,6 +9,10 @@ steps:
 - script: npm install
   displayName: 'Install dependencies'
 
+- script: npm run lint
+  displayName: 'Linter'
+  condition: eq(variables.test_suite, 'coverage')
+
 - script: npm run $(test_suite) -- --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml
   displayName: 'Run tests'
 
@@ -21,4 +25,4 @@ steps:
 
 - bash: npm run coveralls
   displayName: 'Run coveralls'
-  condition: variables.run_coverage
+  condition: eq(variables.test_suite, 'coverage')
