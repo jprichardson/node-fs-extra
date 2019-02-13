@@ -6,6 +6,7 @@ jobs:
 
   variables:
     os_name: Windows
+    test_suite: unit
 
   strategy:
     matrix:
@@ -27,6 +28,7 @@ jobs:
 
   variables:
     os_name: Linux
+    test_suite: unit
 
   strategy:
     matrix:
@@ -34,6 +36,7 @@ jobs:
         node_version: 6.x
       node_8_x:
         node_version: 8.x
+        test_suite: full-ci
         run_coverage: true
       node_9_x:
         node_version: 9.x
@@ -49,6 +52,7 @@ jobs:
 
   variables:
     os_name: OSX
+    test_suite: unit
 
   strategy:
     matrix:
