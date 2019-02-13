@@ -18,6 +18,7 @@ jobs:
         node_version: 9.x
       node_10_x:
         node_version: 10.x
+    maxParallel: 3
 
   steps:
   - template: .azure-pipelines-steps.yml
@@ -42,6 +43,7 @@ jobs:
         node_version: 9.x
       node_10_x:
         node_version: 10.x
+    maxParallel: 3
 
   steps:
   - template: .azure-pipelines-steps.yml
@@ -64,6 +66,7 @@ jobs:
         node_version: 9.x
       node_10_x:
         node_version: 10.x
+    maxParallel: 3
 
   steps:
   - template: .azure-pipelines-steps.yml
