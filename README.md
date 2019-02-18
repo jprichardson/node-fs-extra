@@ -22,7 +22,7 @@ I got tired of including `mkdirp`, `rimraf`, and `ncp` in most of my projects.
 Installation
 ------------
 
-    npm install --save fs-extra
+    npm install fs-extra
 
 
 
