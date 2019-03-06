@@ -11,13 +11,13 @@ jobs:
   strategy:
     matrix:
       node_6_x:
-        node_version: 6.x
+        NODE_VERSION: 6.x
       node_8_x:
-        node_version: 8.x
+        NODE_VERSION: 8.x
       node_9_x:
-        node_version: 9.x
+        NODE_VERSION: 9.x
       node_10_x:
-        node_version: 10.x
+        NODE_VERSION: 10.x
     maxParallel: 3
 
   steps:
@@ -34,15 +34,15 @@ jobs:
   strategy:
     matrix:
       node_6_x:
-        node_version: 6.x
+        NODE_VERSION: 6.x
       node_8_x:
-        node_version: 8.x
+        NODE_VERSION: 8.x
         test_suite: coverage
         run_coverage: true
       node_9_x:
-        node_version: 9.x
+        NODE_VERSION: 9.x
       node_10_x:
-        node_version: 10.x
+        NODE_VERSION: 10.x
     maxParallel: 3
 
   steps:
@@ -59,13 +59,13 @@ jobs:
   strategy:
     matrix:
       node_6_x:
-        node_version: 6.x
+        NODE_VERSION: 6.x
       node_8_x:
-        node_version: 8.x
+        NODE_VERSION: 8.x
       node_9_x:
-        node_version: 9.x
+        NODE_VERSION: 9.x
       node_10_x:
-        node_version: 10.x
+        NODE_VERSION: 10.x
     maxParallel: 3
 
   steps:

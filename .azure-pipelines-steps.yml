@@ -3,7 +3,7 @@
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: $(node_version)
+    versionSpec: $(NODE_VERSION)
   displayName: 'Install Node.js'
 
 - script: npm install
@@ -19,7 +19,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/test-results.xml'
-    testRunTitle: $(os_name) Node $(node_version)
+    testRunTitle: $(os_name) Node $(NODE_VERSION)
   displayName: 'Publishing the test results'
   condition: always()
 
