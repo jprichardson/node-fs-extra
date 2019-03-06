@@ -6,7 +6,15 @@ steps:
     versionSpec: $(NODE_VERSION)
   displayName: 'Install Node.js'
 
-- script: npm install
+- task: Npm@1
+  inputs:
+    command: custom
+    customCommand: install -g npm
+  displayName: 'Update npm'
+  condition: eq(variables['NODE_VERSION'], '6.x')
+  # Update npm included in Node 6.x as it doesn't include the `ci` command
+
+- script: npm ci
   displayName: 'Install dependencies'
 
 - script: npm run lint
