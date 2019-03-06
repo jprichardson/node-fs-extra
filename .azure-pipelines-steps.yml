@@ -11,8 +11,8 @@ steps:
     command: custom
     customCommand: install -g npm
   displayName: 'Update npm'
-  condition: eq(variables['NODE_VERSION'], '6.x')
-  # Update npm included in Node 6.x as it doesn't include the `ci` command
+  condition: variables['UPGRADE_NPM']
+  # Upgrade npm included in Node 6.x and 9.x as they don't include the `ci` command
 
 - script: npm ci
   displayName: 'Install dependencies'
