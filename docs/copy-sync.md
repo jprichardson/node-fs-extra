@@ -7,6 +7,7 @@ Copy a file or directory. The directory can have contents. Like `cp -r`.
 - `options` `<Object>`
   - `overwrite` `<boolean>`: overwrite existing file or directory, default is `true`. _Note that the copy operation will silently fail if you set this to `false` and the destination exists._ Use the `errorOnExist` option to change this behavior.
   - `errorOnExist` `<boolean>`: when `overwrite` is `false` and the destination exists, throw an error. Default is `false`.
+  - `checkPathsBeforeCopying` `<boolean>`: check `src` and `dest` paths before copying. Default is `true`.
   - `dereference` `<boolean>`: dereference symlinks, default is `false`.
   - `preserveTimestamps` `<boolean>`: When true, will set last modification and access times to the ones of the original source files. When false, timestamp behavior is OS-dependent. Default is `false`.
   - `filter` `<Function>`: Function to filter copied files. Return `true` to include, `false` to exclude.
