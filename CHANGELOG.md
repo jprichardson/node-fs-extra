@@ -1,3 +1,13 @@
+8.0.0 / 2019-05-11
+------------------
+
+**NOTE:** Node.js v6 support is depreciated, and will be dropped in the next major release.
+
+- Use `renameSync()` under the hood in `moveSync()`
+- Fix bug with bind-mounted directories in `copy*()` ([#613](https://github.com/jprichardson/node-fs-extra/issues/613), [#618](https://github.com/jprichardson/node-fs-extra/pull/618))
+- Fix bug in `move()` with case-insensitive file systems
+- Use `fs.stat()`'s `bigint` option in `copy*()` & `move*()` where possible ([#657](https://github.com/jprichardson/node-fs-extra/issues/657))
+
 7.0.1 / 2018-11-07
 ------------------
 
