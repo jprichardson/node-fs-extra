@@ -1,4 +1,4 @@
-# copy(src, dest, [options, callback])
+# copy(src, dest[, options][, callback])
 
 Copy a file or directory. The directory can have contents. Like `cp -r`.
 
