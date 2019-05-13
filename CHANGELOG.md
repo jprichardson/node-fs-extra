@@ -1,3 +1,8 @@
+8.0.1 / 2019-05-13
+------------------
+
+- Fix bug `Maximum call stack size exceeded` error in `util/stat` ([#679](https://github.com/jprichardson/node-fs-extra/pull/679))
+
 8.0.0 / 2019-05-11
 ------------------
 
