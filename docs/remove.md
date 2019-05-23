@@ -1,6 +1,6 @@
 # remove(path[, callback])
 
-Removes a file or directory. The directory can have contents. Like `rm -rf`.
+Removes a file or directory. The directory can have contents. If the path does not exist, silently does nothing. Like `rm -rf`.
 
 - `path` `<String>`
 - `callback` `<Function>`
