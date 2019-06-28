@@ -1,3 +1,10 @@
+8.1.0 / 2019-06-28
+------------------
+
+- Add support for promisified `fs.realpath.native` in Node v9.2+ ([#650](https://github.com/jprichardson/node-fs-extra/issues/650), [#682](https://github.com/jprichardson/node-fs-extra/pull/682))
+- Update `graceful-fs` dependency ([#700](https://github.com/jprichardson/node-fs-extra/pull/700))
+- Use `graceful-fs` everywhere ([#700](https://github.com/jprichardson/node-fs-extra/pull/700))
+
 8.0.1 / 2019-05-13
 ------------------
 
