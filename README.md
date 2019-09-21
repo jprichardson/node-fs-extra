@@ -102,6 +102,30 @@ async function copyFiles () {
 copyFiles()
 ```
 
+Working with Multiple Files
+----------
+
+Examples:
+
+```js
+const fs = require('fs-extra')
+
+let fileOptions = {
+  '/tmp/myfile': {
+    target: '/tmp/mynewfile',
+    callback: err => {
+      if (err) console.error(err)
+      else console.log('myfile success!')
+    }
+  },
+
+  '/tmp/mysecondfile': {
+    target: '/tmp/mysecondnewfile'
+  }
+}
+
+fs.multi('copy', fileOptions, () => console.log('multiple processes completed'))
+```
 
 Methods
 -------
@@ -117,6 +141,7 @@ Methods
 - [mkdirp](docs/ensureDir.md)
 - [mkdirs](docs/ensureDir.md)
 - [move](docs/move.md)
+- [multi](docs/multi.md)
 - [outputFile](docs/outputFile.md)
 - [outputJson](docs/outputJson.md)
 - [pathExists](docs/pathExists.md)
@@ -135,6 +160,7 @@ Methods
 - [mkdirpSync](docs/ensureDir-sync.md)
 - [mkdirsSync](docs/ensureDir-sync.md)
 - [moveSync](docs/move-sync.md)
+- [multiSync](docs/multiSync)
 - [outputFileSync](docs/outputFile-sync.md)
 - [outputJsonSync](docs/outputJson-sync.md)
 - [pathExistsSync](docs/pathExists-sync.md)
