@@ -2,7 +2,7 @@
 
 [`copySync`](copy-sync.md) or [`moveSync`](move-sync.md) multiple files or directories.
 
-- `method` `<string>` Methods may be `copySync` or `moveSync`.
+- `method` `<string>` Methods may be `copy` or `move`.
 - `files` `<Object>` Destinations, options and callback functions or `<string>` as only destinations for each file. Each key of `<Object>` is referred to `src` (see: [`copySync`](copy-sync.md) or [`moveSync`](move-sync.md)).
   - `dest` `<string>` Destination
   - `opts` `<Object>` Options
