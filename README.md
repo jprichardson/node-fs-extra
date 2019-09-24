@@ -110,21 +110,20 @@ Examples:
 ```js
 const fs = require('fs-extra')
 
-let fileOptions = {
+let files = {
   '/tmp/myfile': {
-    target: '/tmp/mynewfile',
+    dest: '/tmp/mynewfile',
+    overwrite: false,
     callback: err => {
       if (err) console.error(err)
       else console.log('myfile success!')
     }
   },
 
-  '/tmp/mysecondfile': {
-    target: '/tmp/mysecondnewfile'
-  }
+  '/tmp/mysecondfile': '/tmp/mysecondnewfile'
 }
 
-fs.multi('copy', fileOptions, () => console.log('multiple processes completed'))
+fs.multi('copy', files, () => console.log('multiple processes completed'))
 ```
 
 Methods

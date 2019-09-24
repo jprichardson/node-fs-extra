@@ -2,10 +2,10 @@
 
 [`copySync`](copy-sync.md) or [`moveSync`](move-sync.md) multiple files or directories.
 
-- `method` `<String>` Methods may be `copySync` or `moveSync`.
-- `files` `<Object>` Destinations, options and callback functions for each file. Each key of `<Object>` is referred to `src` (see: [`copySync`](copy-sync.md) or [`moveSync`](move-sync.md)).
-  - `dest` `<String>`
-  - `opts` `<Object>`
+- `method` `<string>` Methods may be `copySync` or `moveSync`.
+- `files` `<Object>` Destinations, options and callback functions or `<string>` as only destinations for each file. Each key of `<Object>` is referred to `src` (see: [`copySync`](copy-sync.md) or [`moveSync`](move-sync.md)).
+  - `dest` `<string>` Destination
+  - `opts` `<Object>` Options
       - `overwrite` `<boolean>`: default is `true` for [`copySync`](copy-sync.md) or default is `false` for [`moveSync`](move-sync.md)
       - `errorOnExist` `<boolean>`: for [`copySync`](copy-sync.md)
       - `dereference` `<boolean>`: for [`copySync`](copy-sync.md)
@@ -19,12 +19,11 @@ const fs = require('fs-extra')
 
 let files = {
   '/tmp/myfile': {
-    target: '/tmp/mynewfile'
+    dest: '/tmp/mynewfile',
+    overwrite: false
   },
 
-  '/tmp/mysecondfile': {
-    target: '/tmp/mysecondnewfile'
-  }
+  '/tmp/mysecondfile': '/tmp/mysecondnewfile'
 }
 
 fs.multiSync('copy', files)
