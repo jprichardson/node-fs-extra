@@ -31,7 +31,8 @@
     "create",
     "text",
     "output",
-    "move"
+    "move",
+    "promise"
   ],
   "author": "JP Richardson <jprichardson@gmail.com>",
   "license": "MIT",
