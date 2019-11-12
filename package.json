@@ -46,6 +46,7 @@
     "istanbul": "^0.4.5",
     "klaw": "^2.1.1",
     "klaw-sync": "^3.0.2",
+    "memfs": "^2.16.1",
     "minimist": "^1.1.1",
     "mocha": "^5.0.5",
     "proxyquire": "^2.0.1",
