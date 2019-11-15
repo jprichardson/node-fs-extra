@@ -37,8 +37,9 @@
   "author": "JP Richardson <jprichardson@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@jzetlen/jsonfile": "*",
     "graceful-fs": "^4.2.0",
-    "jsonfile": "^4.0.0",
+    "memoize-weak": "^1.0.2",
     "universalify": "^0.1.0"
   },
   "devDependencies": {
