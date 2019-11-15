@@ -102,6 +102,31 @@ async function copyFiles () {
 copyFiles()
 ```
 
+Advanced Usage
+--------------
+
+**Advanced Usage**
+
+The default export of `fs-extra` is a wrapper around the real filesystem.
+You can use the included `FsExtra(fs)` constructor to make a version of this module that operates on an alternate filesystem object.
+This is mostly useful when you want to use a virtual or mock filesystem instead of the real filesystem.
+
+The `FsExtra` constructor takes one argument: the underlying `fs` object to use.
+The supplied `fs` must be drop-in compatible with Node's `fs` object.
+Packages like [`memfs`](https://npmjs.com/package/memfs) and [`unionfs`](https://npmjs.com/package/unionfs) would work.
+This is especially useful if you want to use `fs-extra` methods with the virtual filesystems in running Webpack compilers!
+
+```js
+const memfs = require('memfs')
+const { FsExtra } = require('fs-extra')
+const fse = new FsExtra(memfs)
+fse.outputJsonSync('/some/virtual.json', { not: 'a real file' });
+fse.readFile('/some/virtual.json', (err, obj) => {
+  obj.not === 'a real file'
+})
+// but the real filesystem is untouched...
+require('fs').readFileSync('/some/virtual.json') // throws ENOENT!
+```
 
 Methods
 -------
