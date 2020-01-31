@@ -43,11 +43,11 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "istanbul": "^0.4.5",
     "klaw": "^2.1.1",
     "klaw-sync": "^3.0.2",
     "minimist": "^1.1.1",
     "mocha": "^5.0.5",
+    "nyc": "^15.0.0",
     "proxyquire": "^2.0.1",
     "read-dir-files": "^0.1.1",
     "semver": "^5.3.0",
@@ -60,7 +60,7 @@
   ],
   "scripts": {
     "full-ci": "npm run lint && npm run coverage",
-    "coverage": "istanbul cover -i 'lib/**' -x '**/__tests__/**' test.js",
+    "coverage": "nyc -r lcovonly npm run unit",
     "coveralls": "coveralls < coverage/lcov.info",
     "lint": "standard",
     "test-find": "find ./lib/**/__tests__ -name *.test.js | xargs mocha",
