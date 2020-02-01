@@ -3,12 +3,10 @@ os:
   - linux
   - osx
 node_js:
-  - 6
-  - 8
-  - 9
   - 10
   - 11
   - 12
+  - 13
 env: TEST_SUITE=unit
 matrix:
   exclude:
