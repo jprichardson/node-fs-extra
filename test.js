@@ -7,11 +7,12 @@ const Mocha = require('mocha')
 
 const argv = require('minimist')(process.argv.slice(2))
 
-const mochaOpts = Object.assign({
+const mochaOpts = {
   ui: 'bdd',
   reporter: 'dot',
-  timeout: 30000
-}, argv)
+  timeout: 30000,
+  ...argv
+}
 
 const mocha = new Mocha(mochaOpts)
 const testExt = '.test.js'
