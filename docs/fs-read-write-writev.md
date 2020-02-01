@@ -43,6 +43,6 @@ async function example () {
 ```js
 // With async/await:
 async function example () {
-  const { bytesWritten, buffers } = await fs.write(fd, buffers, position)
+  const { bytesWritten, buffers } = await fs.writev(fd, buffers, position)
 }
 ```
