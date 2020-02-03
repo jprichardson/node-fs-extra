@@ -143,7 +143,7 @@ Methods
 - [writeJsonSync](docs/writeJson-sync.md)
 
 
-**NOTE:** You can still use the native Node.js methods. They are promisified and copied over to `fs-extra`. See [notes on `fs.read()` & `fs.write()`](docs/fs-read-write.md)
+**NOTE:** You can still use the native Node.js methods. They are promisified and copied over to `fs-extra`. See [notes on `fs.read()`, `fs.write()`, & `fs.writev()`](docs/fs-read-write-writev.md)
 
 ### What happened to `walk()` and `walkSync()`?
 
