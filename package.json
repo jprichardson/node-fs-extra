@@ -37,6 +37,7 @@
   "author": "JP Richardson <jprichardson@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "at-least-node": "^1.0.0",
     "graceful-fs": "^4.2.0",
     "jsonfile": "^4.0.0",
     "universalify": "^0.1.0"
@@ -50,7 +51,6 @@
     "nyc": "^15.0.0",
     "proxyquire": "^2.0.1",
     "read-dir-files": "^0.1.1",
-    "semver": "^5.3.0",
     "standard": "^14.1.0"
   },
   "main": "./lib/index.js",
