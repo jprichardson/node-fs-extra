@@ -2,6 +2,8 @@
 
 Ensures that the link exists. If the directory structure does not exist, it is created.
 
+**Alias:** `createLink()`
+
 - `srcpath` `<String>`
 - `dstpath` `<String>`
 - `callback` `<Function>`
