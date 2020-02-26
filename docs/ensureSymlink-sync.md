@@ -2,6 +2,8 @@
 
 Ensures that the symlink exists. If the directory structure does not exist, it is created.
 
+**Alias:** `createSymlinkSync()`
+
 - `srcpath` `<String>`
 - `dstpath` `<String>`
 - `type` `<String>`

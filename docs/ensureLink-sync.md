@@ -2,6 +2,8 @@
 
 Ensures that the link exists. If the directory structure does not exist, it is created.
 
+**Alias:** `createLinkSync()`
+
 - `srcpath` `<String>`
 - `dstpath` `<String>`
 
