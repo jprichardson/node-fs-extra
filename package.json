@@ -40,7 +40,7 @@
     "at-least-node": "^1.0.0",
     "graceful-fs": "^4.2.0",
     "jsonfile": "^4.0.0",
-    "universalify": "^0.1.0"
+    "universalify": "^1.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
