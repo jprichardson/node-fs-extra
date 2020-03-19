@@ -1,3 +1,28 @@
+9.0.0 / 2020-03-19
+------------------
+
+### Breaking changes
+
+- Requires Node.js version 10 or greater ([#725](https://github.com/jprichardson/node-fs-extra/issues/725), [#751](https://github.com/jprichardson/node-fs-extra/pull/751))
+- Switched `ensureDir*` to use a fork of https://github.com/sindresorhus/make-dir to make use of native recursive `fs.mkdir` where possible ([#619](https://github.com/jprichardson/node-fs-extra/issues/619), [#756](https://github.com/jprichardson/node-fs-extra/pull/756))
+- Properly preserve `atime` for `copy*` with `preserveTimestamps` option ([#633](https://github.com/jprichardson/node-fs-extra/pull/633))
+
+**The following changes, allthough technically breaking, will not affect the vast majority of users:**
+
+- `outputJson` now outputs objects as they were when the function was called, even if they are mutated later ([#702](https://github.com/jprichardson/node-fs-extra/issues/702), [#768](https://github.com/jprichardson/node-fs-extra/pull/768))
+- Cannot pass `null` as an options parameter to `*Json*` methods ([#745](https://github.com/jprichardson/node-fs-extra/issues/745), [#768](https://github.com/jprichardson/node-fs-extra/pull/768))
+
+### Improvements
+
+- Add promise shims for `fs.writev` & `fs.opendir` ([#747](https://github.com/jprichardson/node-fs-extra/pull/747))
+- Better errors for `ensureFile` ([#696](https://github.com/jprichardson/node-fs-extra/issues/696), [#744](https://github.com/jprichardson/node-fs-extra/pull/744))
+- Better file comparison for older Node versions ([#694](https://github.com/jprichardson/node-fs-extra/pull/694))
+
+### Miscellaneous changes
+- Peformance optimizations ([#762](https://github.com/jprichardson/node-fs-extra/issues/762), [#764](https://github.com/jprichardson/node-fs-extra/pull/764))
+- Add missing documentation for aliases ([#758](https://github.com/jprichardson/node-fs-extra/issues/758), [#766](https://github.com/jprichardson/node-fs-extra/pull/766))
+- Update `universalify` dependency ([#767](https://github.com/jprichardson/node-fs-extra/pull/767))
+
 8.1.0 / 2019-06-28
 ------------------
 
