@@ -1,8 +1,13 @@
-# remove(path[, callback])
+# remove(path[, options][, callback])
 
-Removes a file or directory. The directory can have contents. If the path does not exist, silently does nothing. Like `rm -rf`.
+Removes a file or directory. The directory can have contents.
+
+If `options.shoutMissing` is not set and the path does not exist, silently does nothing. Like `rm -rf`.
 
 - `path` `<String>`
+- `options` `<Object>`
+  - `shoutMissing` `<boolean>`: Throw an error if path does not exist, default is `false`.
+  - `maxBusyTries` `<number>`: Maximum number of attempts at removal if file or directory is busy or locked, default is `3`.
 - `callback` `<Function>`
 
 ## Example:
