@@ -6,8 +6,7 @@ Ensures that the symlink exists. If the directory structure does not exist, it i
 
 - `srcPath` `<String>`
 - `destPath` `<String>`
-- `type` `<String>`
-	- It is only available on Windows and ignored on other platforms. It can be set to `dir`, `file`, or `junction`.
+- `type` `<String>` It is only available on Windows and ignored on other platforms. It can be set to `dir`, `file`, or `junction`.
 
 ## Example:
 
