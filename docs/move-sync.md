@@ -20,5 +20,5 @@ fs.moveSync('/tmp/somefile', '/tmp/does/not/exist/yet/somefile')
 ```js
 const fs = require('fs-extra')
 
-fs.moveSync('/tmp/somedir', '/tmp/may/already/existed/somedir', { overwrite: true })
+fs.moveSync('/tmp/somedir', '/tmp/may/already/exist/somedir', { overwrite: true })
 ```
