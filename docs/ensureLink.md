@@ -7,7 +7,7 @@ Ensures that the link exists. If the directory structure does not exist, it is c
 - `srcPath` `<String>`
 - `destPath` `<String>`
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
 
 ## Example:
 

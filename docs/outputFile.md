@@ -6,7 +6,7 @@ Almost the same as `writeFile` (i.e. it [overwrites](http://pages.citebite.com/v
 - `data` `<String> | <Buffer> | <Uint8Array>`
 - `options` `<Object> | <String>` (the same as [`fs.writeFile()` options](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback))
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
 
 ## Example:
 

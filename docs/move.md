@@ -7,7 +7,7 @@ Moves a file or directory, even across devices.
 - `options` `<Object>`
   - `overwrite` `<boolean>`: overwrite existing file or directory, default is `false`.
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
 
 ## Example:
 

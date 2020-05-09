@@ -7,7 +7,7 @@ Reads a JSON file and then parses it into an object.
 - `file` `<String>`
 - `options` `<Object>` (the same as [`jsonFile.readFile()` options](https://github.com/jprichardson/node-jsonfile#readfilefilename-options-callback))
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
   - `obj` `<Object>`
 
 ## Example:

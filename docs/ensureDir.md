@@ -9,7 +9,7 @@ Ensures that the directory exists. If the directory structure does not exist, it
   - If it is `Integer`, it will be `mode`.
   - If it is `Object`, it will be `{ mode: <Integer> }`.
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
 
 ## Example:
 

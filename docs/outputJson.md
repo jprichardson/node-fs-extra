@@ -12,7 +12,7 @@ Almost the same as [`writeJson`](writeJson.md), except that if the directory doe
   - `replacer` [JSON replacer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter)
   - Also accepts [`fs.writeFile()` options](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
 
 ## Example:
 

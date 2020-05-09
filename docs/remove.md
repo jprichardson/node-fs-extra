@@ -4,7 +4,7 @@ Removes a file or directory. The directory can have contents. If the path does n
 
 - `path` `<String>`
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
 
 ## Example:
 

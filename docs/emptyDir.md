@@ -6,7 +6,7 @@ Ensures that a directory is empty. Deletes directory contents if the directory i
 
 - `dir` `<String>`
 - `callback` `<Function>`
-  - `err`
+  - `err` `<Error>`
 
 ## Example:
 
