@@ -1,20 +1,20 @@
-# ensureSymlinkSync(srcpath, dstpath[, type])
+# ensureSymlinkSync(srcPath, destPath[, type])
 
 Ensures that the symlink exists. If the directory structure does not exist, it is created.
 
 **Alias:** `createSymlinkSync()`
 
-- `srcpath` `<String>`
-- `dstpath` `<String>`
-- `type` `<String>`
+- `srcPath` `<String>`
+- `destPath` `<String>`
+- `type` `<String>` It is only available on Windows and ignored on other platforms. It can be set to `dir`, `file`, or `junction`.
 
 ## Example:
 
 ```js
 const fs = require('fs-extra')
 
-const srcpath = '/tmp/file.txt'
-const dstpath = '/tmp/this/path/does/not/exist/file.txt'
-fs.ensureSymlinkSync(srcpath, dstpath)
+const srcPath = '/tmp/file.txt'
+const destPath = '/tmp/this/path/does/not/exist/file.txt'
+fs.ensureSymlinkSync(srcPath, destPath)
 // symlink has now been created, including the directory it is to be placed in
 ```

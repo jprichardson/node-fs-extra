@@ -6,6 +6,7 @@ Ensures that a directory is empty. Deletes directory contents if the directory i
 
 - `dir` `<String>`
 - `callback` `<Function>`
+  - `err` `<Error>`
 
 ## Example:
 
@@ -16,7 +17,6 @@ const fs = require('fs-extra')
 // With a callback:
 fs.emptyDir('/tmp/some/dir', err => {
   if (err) return console.error(err)
-
   console.log('success!')
 })
 

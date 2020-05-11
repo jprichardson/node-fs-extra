@@ -1,11 +1,14 @@
 # ensureDirSync(dir[,options])
 
-Ensures that the directory exists. If the directory structure does not exist, it is created. Like `mkdir -p`. If provided, options may specify the desired mode for the directory. 
+Ensures that the directory exists. If the directory structure does not exist, it is created. If provided, options may specify the desired mode for the directory. 
 
 **Aliases:** `mkdirsSync()`, `mkdirpSync()`
 
 - `dir` `<String>`
 - `options` `<Integer>|<Object>`
+  - If it is `Integer`, it will be `mode`.
+  - If it is `Object`, it will be `{ mode: <Integer> }`.
+
 ## Example:
 
 ```js

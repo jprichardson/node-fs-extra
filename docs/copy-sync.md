@@ -1,6 +1,6 @@
 # copySync(src, dest[, options])
 
-Copy a file or directory. The directory can have contents. Like `cp -r`.
+Copy a file or directory. The directory can have contents.
 
 - `src` `<String>` Note that if `src` is a directory it will copy everything inside of this directory, not the entire directory itself (see [issue #537](https://github.com/jprichardson/node-fs-extra/issues/537)).
 - `dest` `<String>` Note that if `src` is a file, `dest` cannot be a directory (see [issue #323](https://github.com/jprichardson/node-fs-extra/issues/323)).

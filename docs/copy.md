@@ -1,6 +1,6 @@
 # copy(src, dest[, options][, callback])
 
-Copy a file or directory. The directory can have contents. Like `cp -r`.
+Copy a file or directory. The directory can have contents.
 
 - `src` `<String>` Note that if `src` is a directory it will copy everything inside of this directory, not the entire directory itself (see [issue #537](https://github.com/jprichardson/node-fs-extra/issues/537)).
 - `dest` `<String>` Note that if `src` is a file, `dest` cannot be a directory (see [issue #323](https://github.com/jprichardson/node-fs-extra/issues/323)).
@@ -11,6 +11,7 @@ Copy a file or directory. The directory can have contents. Like `cp -r`.
   - `preserveTimestamps` `<boolean>`: When true, will set last modification and access times to the ones of the original source files. When false, timestamp behavior is OS-dependent. Default is `false`.
   - `filter` `<Function>`: Function to filter copied files. Return `true` to include, `false` to exclude. Can also return a `Promise` that resolves to `true` or `false` (or pass in an `async` function).
 - `callback` `<Function>`
+  - `err` `<Error>`
 
 ## Example:
 
@@ -20,13 +21,11 @@ const fs = require('fs-extra')
 // With a callback:
 fs.copy('/tmp/myfile', '/tmp/mynewfile', err => {
   if (err) return console.error(err)
-
   console.log('success!')
 }) // copies file
 
 fs.copy('/tmp/mydir', '/tmp/mynewdir', err => {
   if (err) return console.error(err)
-
   console.log('success!')
 }) // copies directory, even if it has subdirectories or files
 
@@ -64,7 +63,6 @@ const filterFunc = (src, dest) => {
 
 fs.copy('/tmp/mydir', '/tmp/mynewdir', { filter: filterFunc }, err => {
   if (err) return console.error(err)
-
   console.log('success!')
 })
 ```

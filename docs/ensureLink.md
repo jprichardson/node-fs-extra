@@ -1,29 +1,30 @@
-# ensureLink(srcpath, dstpath[, callback])
+# ensureLink(srcPath, destPath[, callback])
 
 Ensures that the link exists. If the directory structure does not exist, it is created.
 
 **Alias:** `createLink()`
 
-- `srcpath` `<String>`
-- `dstpath` `<String>`
+- `srcPath` `<String>`
+- `destPath` `<String>`
 - `callback` `<Function>`
+  - `err` `<Error>`
 
 ## Example:
 
 ```js
 const fs = require('fs-extra')
 
-const srcpath = '/tmp/file.txt'
-const dstpath = '/tmp/this/path/does/not/exist/file.txt'
+const srcPath = '/tmp/file.txt'
+const destPath = '/tmp/this/path/does/not/exist/file.txt'
 
 // With a callback:
-fs.ensureLink(srcpath, dstpath, err => {
+fs.ensureLink(srcPath, destPath, err => {
   console.log(err) // => null
   // link has now been created, including the directory it is to be placed in
 })
 
 // With Promises:
-fs.ensureLink(srcpath, dstpath)
+fs.ensureLink(srcPath, destPath)
 .then(() => {
   console.log('success!')
 })
@@ -41,5 +42,5 @@ async function example (src, dest) {
   }
 }
 
-example(srcpath, dstpath)
+example(srcPath, destPath)
 ```

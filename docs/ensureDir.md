@@ -1,12 +1,15 @@
 # ensureDir(dir[,options][,callback])
 
-Ensures that the directory exists. If the directory structure does not exist, it is created. Like `mkdir -p`.
+Ensures that the directory exists. If the directory structure does not exist, it is created.
 
 **Aliases:** `mkdirs()`, `mkdirp()`
 
 - `dir` `<String>`
 - `options` `<Integer>|<Object>`
+  - If it is `Integer`, it will be `mode`.
+  - If it is `Object`, it will be `{ mode: <Integer> }`.
 - `callback` `<Function>`
+  - `err` `<Error>`
 
 ## Example:
 

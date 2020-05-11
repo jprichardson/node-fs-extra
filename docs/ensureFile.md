@@ -6,6 +6,7 @@ Ensures that the file exists. If the file that is requested to be created is in 
 
 - `file` `<String>`
 - `callback` `<Function>`
+  - `err` `<Error>`
 
 ## Example:
 
