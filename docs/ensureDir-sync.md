@@ -5,7 +5,7 @@ Ensures that the directory exists. If the directory structure does not exist, it
 **Aliases:** `mkdirsSync()`, `mkdirpSync()`
 
 - `dir` `<String>`
-- `options` `<Integer>|<Object>`
+- `options` `<Integer> | <Object>`
   - If it is `Integer`, it will be `mode`.
   - If it is `Object`, it will be `{ mode: <Integer> }`.
 
