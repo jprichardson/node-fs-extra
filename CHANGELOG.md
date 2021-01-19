@@ -1,3 +1,9 @@
+9.1.0 / 2021-01-19
+------------------
+
+- Add promise support for `fs.rm()` ([#841](https://github.com/jprichardson/node-fs-extra/issues/841), [#860](https://github.com/jprichardson/node-fs-extra/pull/860))
+- Upgrade universalify for performance improvments ([#825](https://github.com/jprichardson/node-fs-extra/pull/825))
+
 9.0.1 / 2020-06-03
 ------------------
 
