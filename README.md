@@ -153,6 +153,9 @@ They were removed from `fs-extra` in v2.0.0. If you need the functionality, `wal
 Third Party
 -----------
 
+### CLI
+
+[fse-cli](https://www.npmjs.com/package/@atao60/fse-cli) allows you to run `fs-extra` from a console or from [npm](https://www.npmjs.com) scripts.
 
 ### TypeScript
 
