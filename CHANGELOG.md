@@ -1,3 +1,16 @@
+9.1.0 / 2021-01-19
+------------------
+
+- Add promise support for `fs.rm()` ([#841](https://github.com/jprichardson/node-fs-extra/issues/841), [#860](https://github.com/jprichardson/node-fs-extra/pull/860))
+- Upgrade universalify for performance improvments ([#825](https://github.com/jprichardson/node-fs-extra/pull/825))
+
+9.0.1 / 2020-06-03
+------------------
+
+- Fix issue with `ensureFile()` when used with Jest on Windows ([#804](https://github.com/jprichardson/node-fs-extra/issues/804), [#805](https://github.com/jprichardson/node-fs-extra/pull/805))
+- Remove unneeded `process.umask()` call ([#791](https://github.com/jprichardson/node-fs-extra/pull/791))
+- Docs improvements ([#753](https://github.com/jprichardson/node-fs-extra/pull/753), [#795](https://github.com/jprichardson/node-fs-extra/pull/795), [#797](https://github.com/jprichardson/node-fs-extra/pull/797))
+
 9.0.0 / 2020-03-19
 ------------------
 
