@@ -1,6 +1,6 @@
 # ensureSymlink(srcPath, destPath[, type][, callback])
 
-Ensures that the symlink exists. If the directory structure does not exist, it is created.
+Ensures that the symlink exists. If the directory structure does not exist, it is created. If `destPath` already exists then it will not be updated, even if it is not a symlink to `srcPath`.
 
 **Alias:** `createSymlink()`
 
