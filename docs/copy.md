@@ -9,7 +9,7 @@ Copy a file or directory. The directory can have contents.
   - `errorOnExist` `<boolean>`: when `overwrite` is `false` and the destination exists, throw an error. Default is `false`.
   - `dereference` `<boolean>`: dereference symlinks, default is `false`.
   - `preserveTimestamps` `<boolean>`: When true, will set last modification and access times to the ones of the original source files. When false, timestamp behavior is OS-dependent. Default is `false`.
-  - `filter` `<Function>`: Function to filter copied files. Return `true` to include, `false` to exclude. Can also return a `Promise` that resolves to `true` or `false` (or pass in an `async` function).
+  - `filter` `<Function>`: Function to filter copied files/directories. Return `true` to copy the item, `false` to ignore it. Can also return a `Promise` that resolves to `true` or `false` (or pass in an `async` function).
 - `callback` `<Function>`
   - `err` `<Error>`
 
