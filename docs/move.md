@@ -3,7 +3,7 @@
 Moves a file or directory, even across devices.
 
 - `src` `<String>`
-- `dest` `<String>`
+- `dest` `<String>` Path to move `src` to
 - `options` `<Object>`
   - `overwrite` `<boolean>`: overwrite existing file or directory, default is `false`.
 - `callback` `<Function>`
