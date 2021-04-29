@@ -37,12 +37,12 @@
   "author": "JP Richardson <jprichardson@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "at-least-node": "^1.0.0",
     "graceful-fs": "^4.2.0",
     "jsonfile": "^6.0.1",
     "universalify": "^2.0.0"
   },
   "devDependencies": {
+    "at-least-node": "^1.0.0",
     "coveralls": "^3.0.0",
     "klaw": "^2.1.1",
     "klaw-sync": "^3.0.2",
