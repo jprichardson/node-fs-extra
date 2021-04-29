@@ -2,9 +2,9 @@
 environment:
   matrix:
     # node.js
-    - nodejs_version: "10"
     - nodejs_version: "12"
     - nodejs_version: "14"
+    - nodejs_version: "16"
 # Install scripts. (runs after repo cloning)
 install:
   # Get the latest stable version of Node.js or io.js
