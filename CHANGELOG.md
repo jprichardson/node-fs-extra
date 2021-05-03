@@ -1,3 +1,33 @@
+10.0.0 / 2021-05-03
+-------------------
+
+### Breaking changes
+
+- Require Node.js v12+ ([#886](https://github.com/jprichardson/node-fs-extra/issues/886), [#893](https://github.com/jprichardson/node-fs-extra/pull/893), [#890](https://github.com/jprichardson/node-fs-extra/pull/890), [#894](https://github.com/jprichardson/node-fs-extra/pull/894), [#895]( https://github.com/jprichardson/node-fs-extra/pull/895))
+- Allow copying broken symlinks ([#779](https://github.com/jprichardson/node-fs-extra/pull/779), [#765](https://github.com/jprichardson/node-fs-extra/issues/765), [#638](https://github.com/jprichardson/node-fs-extra/issues/638), [#761](https://github.com/jprichardson/node-fs-extra/issues/761))
+
+**The following changes, although technically semver-major, will not affect the vast majority of users:**
+
+- Ensure correct type when destination exists for `ensureLink*()`/`ensureSymlink*()` ([#826](https://github.com/jprichardson/node-fs-extra/pull/826), [#786](https://github.com/jprichardson/node-fs-extra/issues/786), [#870](https://github.com/jprichardson/node-fs-extra/issues/870))
+- Error when attempting to `copy*()` unknown file type ([#880](https://github.com/jprichardson/node-fs-extra/pull/880))
+- Remove undocumented options for `remove*()` ([#882](https://github.com/jprichardson/node-fs-extra/pull/882))
+
+### Improvements
+
+- Allow changing case of filenames with `move*()`, even on technically case-insensitive filesystems ([#759](https://github.com/jprichardson/node-fs-extra/issues/759), [#801](https://github.com/jprichardson/node-fs-extra/pull/801))
+- Use native `fs.rm*()` for `remove*()` in environments that support it ([#882](https://github.com/jprichardson/node-fs-extra/pull/882), [#806](https://github.com/jprichardson/node-fs-extra/issues/806))
+- Improve `emptyDir()` performance ([#885](https://github.com/jprichardson/node-fs-extra/pull/885))
+
+### Bugfixes
+
+- Ensure `copy*()`'s `filter` function is not called more than necessary ([#883](https://github.com/jprichardson/node-fs-extra/pull/883), [#809](https://github.com/jprichardson/node-fs-extra/issues/809))
+- Fix `move*()` raising `EPERM` error when moving a file to the root of a drive on Windows ([#897](https://github.com/jprichardson/node-fs-extra/pull/897), [#819](https://github.com/jprichardson/node-fs-extra/issues/819))
+
+### Miscellaneous changes
+
+- Do not use `at-least-node` as a dependency ([#896](https://github.com/jprichardson/node-fs-extra/pull/896))
+- Improve documentation ([#888](https://github.com/jprichardson/node-fs-extra/pull/888), [#830](https://github.com/jprichardson/node-fs-extra/issues/830), [#884](https://github.com/jprichardson/node-fs-extra/pull/884), [#843](https://github.com/jprichardson/node-fs-extra/issues/843))
+
 9.1.0 / 2021-01-19
 ------------------
 
