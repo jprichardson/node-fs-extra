@@ -50,7 +50,7 @@
     "nyc": "^15.0.0",
     "proxyquire": "^2.0.1",
     "read-dir-files": "^0.1.1",
-    "standard": "^14.1.0"
+    "standard": "^16.0.3"
   },
   "main": "./lib/index.js",
   "files": [
