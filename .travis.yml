@@ -3,7 +3,6 @@ language: node_js
 os:
   - linux
   - osx
-osx_image: xcode9.3
 node_js:
   - 6
   - 8
