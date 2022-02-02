@@ -60,7 +60,7 @@ fs.readJson(file, { throws: false }, (err, obj) => {
   console.log(obj) // => null
 })
 
-// Wtih Promises:
+// With Promises:
 fs.readJson(file, { throws: false })
 .then(obj => {
   console.log(obj) // => null
