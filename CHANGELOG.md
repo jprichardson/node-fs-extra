@@ -1,3 +1,8 @@
+10.0.1 / 2022-02-22
+-------------------
+
+- Add `sideEffects: false` to `package.json` ([#941](https://github.com/jprichardson/node-fs-extra/pull/941))
+
 10.0.0 / 2021-05-03
 -------------------
 
