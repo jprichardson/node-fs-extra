@@ -1,3 +1,10 @@
+10.1.0 / 2022-04-16
+-------------------
+
+- Warn if `fs.realpath.native` does not exist, instead of erroring ([#953](https://github.com/jprichardson/node-fs-extra/pull/953))
+- Allow explicitly passing `undefined` options to `move()` ([#947](https://github.com/jprichardson/node-fs-extra/issues/947), [#955](https://github.com/jprichardson/node-fs-extra/pull/955))
+- Use `process.emitWarning` instead of `console.warn` ([#954](https://github.com/jprichardson/node-fs-extra/pull/954))
+
 10.0.1 / 2022-02-22
 -------------------
 
