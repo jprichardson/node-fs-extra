@@ -1,6 +1,6 @@
 # outputFile(file, data[, options][, callback])
 
-Almost the same as `writeFile` (i.e. it [overwrites](http://pages.citebite.com/v2o5n8l2f5reb)), except that if the parent directory does not exist, it's created. `file` must be a file path (a buffer or a file descriptor is not allowed).
+Almost the same as `writeFile` (i.e. it overwrites), except that if the parent directory does not exist, it's created. `file` must be a file path (a buffer or a file descriptor is not allowed).
 
 - `file` `<String>`
 - `data` `<String> | <Buffer> | <Uint8Array>`
