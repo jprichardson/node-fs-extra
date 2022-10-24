@@ -51,7 +51,7 @@
     "read-dir-files": "^0.1.1",
     "standard": "^16.0.3"
   },
-  "main": "./lib/index.js",
+  "exports": "./lib/index.js",
   "files": [
     "lib/",
     "!lib/**/__tests__/"
