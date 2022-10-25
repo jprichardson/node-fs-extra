@@ -27,6 +27,8 @@ Installation
 Usage
 -----
 
+### CommonJS
+
 `fs-extra` is a drop in replacement for native `fs`. All methods in `fs` are attached to `fs-extra`. All `fs` methods return promises if the callback isn't passed.
 
 You don't ever need to include the original `fs` module again:
@@ -53,6 +55,31 @@ you can also keep both, but it's redundant:
 ```js
 const fs = require('fs')
 const fse = require('fs-extra')
+```
+
+### ESM
+
+There is also an `fs-extra/esm` import, that supports both default and named exports. However, note that `fs` methods are not included in `fs-extra/esm`; you still need to import `fs` and/or `fs/promises` seperately:
+
+```js
+import { readFileSync } from 'fs'
+import { readFile } from 'fs/promises'
+import { outputFile, outputFileSync } from 'fs-extra/esm'
+```
+
+Default exports are supported:
+
+```js
+import fs from 'fs'
+import fse from 'fs-extra/esm'
+// fse.readFileSync is not a function; must use fs.readFileSync
+```
+
+but you probably want to just use regular `fs-extra` instead of `fs-extra/esm` for default exports:
+
+```js
+import fs from 'fs-extra'
+// both fs and fs-extra methods are defined
 ```
 
 Sync vs Async vs Async/Await
@@ -197,7 +224,8 @@ fs-extra contains hundreds of tests.
 
 - `npm run lint`: runs the linter ([standard](http://standardjs.com/))
 - `npm run unit`: runs the unit tests
-- `npm test`: runs both the linter and the tests
+- `npm run unit-esm`: runs tests for `fs-extra/esm` exports
+- `npm test`: runs the linter and all tests
 
 
 ### Windows
