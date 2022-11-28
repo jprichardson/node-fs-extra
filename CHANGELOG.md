@@ -1,3 +1,21 @@
+11.0.0 / 2022-11-28
+-------------------
+
+### Breaking Changes
+
+- Don't allow requiring `fs-extra/lib/SOMETHING` (switched to `exports`) ([#974](https://github.com/jprichardson/node-fs-extra/pull/974))
+- Require Node v14.14+ ([#968](https://github.com/jprichardson/node-fs-extra/issues/968), [#969](https://github.com/jprichardson/node-fs-extra/pull/969))
+
+### New Features
+
+- Add `fs-extra/esm` for ESM named export support; see [docs](https://github.com/jprichardson/node-fs-extra#esm) for details ([#746](https://github.com/jprichardson/node-fs-extra/issues/746), [#974](https://github.com/jprichardson/node-fs-extra/pull/974))
+- Add promise support for `fs.readv()` ([#970](https://github.com/jprichardson/node-fs-extra/pull/970))
+
+### Bugfixes
+
+- Don't `stat` filtered items in `copy*` ([#965](https://github.com/jprichardson/node-fs-extra/issues/965), [#971](https://github.com/jprichardson/node-fs-extra/pull/971))
+- Remove buggy stats check in `copy` ([#918](https://github.com/jprichardson/node-fs-extra/issues/918), [#976](https://github.com/jprichardson/node-fs-extra/pull/976))
+
 10.1.0 / 2022-04-16
 -------------------
 
