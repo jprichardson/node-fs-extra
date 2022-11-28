@@ -26,6 +26,6 @@ klaw('./lib').on('readable', function () {
   }
 }).on('end', () => {
   mocha.run(failures => {
-    require('./').remove(path.join(os.tmpdir(), 'fs-extra'), () => process.exit(failures))
+    require('./lib').remove(path.join(os.tmpdir(), 'fs-extra'), () => process.exit(failures))
   })
 })
