@@ -1,3 +1,8 @@
+11.1.0 / 2022-11-29
+-------------------
+
+- Re-add `main` field to `package.json` for better TypeScript compatibility ([#979](https://github.com/jprichardson/node-fs-extra/issues/979), [#981](https://github.com/jprichardson/node-fs-extra/pull/981))
+
 11.0.0 / 2022-11-28
 -------------------
 
