@@ -52,7 +52,6 @@
     "standard": "^17.0.0"
   },
   "main": "./lib/index.js",
-  "module": "./lib/esm.mjs",
   "exports": {
     ".": "./lib/index.js",
     "./esm": "./lib/esm.mjs"
