@@ -59,23 +59,23 @@ const fse = require('fs-extra')
 
 ### ESM
 
-There is also an `fs-extra/esm` import, that supports both default and named exports. However, note that `fs` methods are not included in `fs-extra/esm`; you still need to import `fs` and/or `fs/promises` seperately:
+There is also an `fs-extra` import, that supports both default and named exports. However, note that `fs` methods are not included in `fs-extra`; you still need to import `fs` and/or `fs/promises` seperately:
 
 ```js
 import { readFileSync } from 'fs'
 import { readFile } from 'fs/promises'
-import { outputFile, outputFileSync } from 'fs-extra/esm'
+import { outputFile, outputFileSync } from 'fs-extra'
 ```
 
 Default exports are supported:
 
 ```js
 import fs from 'fs'
-import fse from 'fs-extra/esm'
+import fse from 'fs-extra'
 // fse.readFileSync is not a function; must use fs.readFileSync
 ```
 
-but you probably want to just use regular `fs-extra` instead of `fs-extra/esm` for default exports:
+but you probably want to just use regular `fs-extra` instead of `fs-extra` for default exports:
 
 ```js
 import fs from 'fs-extra'
@@ -224,7 +224,7 @@ fs-extra contains hundreds of tests.
 
 - `npm run lint`: runs the linter ([standard](http://standardjs.com/))
 - `npm run unit`: runs the unit tests
-- `npm run unit-esm`: runs tests for `fs-extra/esm` exports
+- `npm run unit-esm`: runs tests for `fs-extra` exports
 - `npm test`: runs the linter and all tests
 
 
