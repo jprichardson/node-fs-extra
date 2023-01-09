@@ -5,7 +5,7 @@ Node.js: fs-extra
 
 [![npm Package](https://img.shields.io/npm/v/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
 [![License](https://img.shields.io/npm/l/fs-extra.svg)](https://github.com/jprichardson/node-fs-extra/blob/master/LICENSE)
-[![build status](https://img.shields.io/github/workflow/status/jprichardson/node-fs-extra/Node.js%20CI/master)](https://github.com/jprichardson/node-fs-extra/actions/workflows/ci.yml?query=branch%3Amaster)
+[![build status](https://img.shields.io/github/actions/workflow/status/jprichardson/node-fs-extra/ci.yml?branch=master)](https://github.com/jprichardson/node-fs-extra/actions/workflows/ci.yml?query=branch%3Amaster)
 [![downloads per month](http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
