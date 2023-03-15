@@ -227,6 +227,8 @@ fs-extra contains hundreds of tests.
 - `npm run unit-esm`: runs tests for `fs-extra/esm` exports
 - `npm test`: runs the linter and all tests
 
+When running unit tests, set the environment variable `CROSS_DEVICE_PATH` to the absolute path of an empty directory on another device (like a thumb drive) to enable cross-device move tests.
+
 
 ### Windows
 
