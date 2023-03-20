@@ -1,3 +1,8 @@
+11.1.1 / 2023-03-20
+-------------------
+
+- Preserve timestamps when moving files across devices ([#992](https://github.com/jprichardson/node-fs-extra/issues/992), [#994](https://github.com/jprichardson/node-fs-extra/pull/994))
+
 11.1.0 / 2022-11-29
 -------------------
 
