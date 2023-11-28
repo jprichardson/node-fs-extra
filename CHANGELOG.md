@@ -1,3 +1,9 @@
+11.2.0 / 2023-11-27
+-------------------
+
+- Copy directory contents in parallel for better performance ([#1026](https://github.com/jprichardson/node-fs-extra/pull/1026))
+- Refactor internal code to use `async`/`await` ([#1020](https://github.com/jprichardson/node-fs-extra/issues/1020))
+
 11.1.1 / 2023-03-20
 -------------------
 
