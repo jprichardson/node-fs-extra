@@ -284,7 +284,7 @@ License
 
 Licensed under MIT
 
-Copyright (c) 2011-2017 [JP Richardson](https://github.com/jprichardson)
+Copyright (c) 2011-2024 [JP Richardson](https://github.com/jprichardson)
 
 [1]: http://nodejs.org/docs/latest/api/fs.html
 
