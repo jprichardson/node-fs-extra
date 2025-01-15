@@ -1,3 +1,9 @@
+11.3.0 / 2025-01-15
+-------------------
+
+- Add promise support for newer `fs` methods ([#1044](https://github.com/jprichardson/node-fs-extra/issues/1044), [#1045](https://github.com/jprichardson/node-fs-extra/pull/1045))
+- Use `fs.opendir` in `copy()`/`copySync()` for better perf/scalability ([#972](https://github.com/jprichardson/node-fs-extra/issues/972), [#1028](https://github.com/jprichardson/node-fs-extra/pull/1028))
+
 11.2.0 / 2023-11-27
 -------------------
 
