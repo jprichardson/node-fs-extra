@@ -53,7 +53,10 @@
   },
   "main": "./lib/index.js",
   "exports": {
-    ".": "./lib/index.js",
+    ".": {
+      "import": "./lib/esm.mjs",
+      "default": "./lib/index.js"
+    },
     "./esm": "./lib/esm.mjs"
   },
   "files": [
