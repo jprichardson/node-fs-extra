@@ -57,6 +57,8 @@ const fs = require('fs')
 const fse = require('fs-extra')
 ```
 
+**NOTE:** The deprecated constants `fs.F_OK`, `fs.R_OK`, `fs.W_OK`, & `fs.X_OK` are not exported on Node.js v24.0.0+; please use their `fs.constants` equivalents. 
+
 ### ESM
 
 There is also an `fs-extra/esm` import, that supports both default and named exports. However, note that `fs` methods are not included in `fs-extra/esm`; you still need to import `fs` and/or `fs/promises` seperately:
