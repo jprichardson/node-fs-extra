@@ -1,3 +1,8 @@
+11.3.1 / 2025-08-05
+-------------------
+
+- Fix case where `move`/`moveSync` could incorrectly think files are identical on Windows ([#1050](https://github.com/jprichardson/node-fs-extra/pull/1050))
+
 11.3.0 / 2025-01-15
 -------------------
 
