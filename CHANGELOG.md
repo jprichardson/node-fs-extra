@@ -1,3 +1,8 @@
+11.3.2 / 2025-09-15
+-------------------
+
+- Fix spurrious `UnhandledPromiseRejectionWarning` that could occur when calling `.copy()` in some cases ([#1056](https://github.com/jprichardson/node-fs-extra/issues/1056), [#1058](https://github.com/jprichardson/node-fs-extra/pull/1058))
+
 11.3.1 / 2025-08-05
 -------------------
 
