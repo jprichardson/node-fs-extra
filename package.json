@@ -1,6 +1,6 @@
 {
   "name": "fs-extra",
-  "version": "11.3.2",
+  "version": "11.3.3",
   "description": "fs-extra contains methods that aren't included in the vanilla Node.js fs package. Such as recursive mkdir, copy, and remove.",
   "engines": {
     "node": ">=14.14"

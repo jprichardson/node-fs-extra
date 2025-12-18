@@ -1,3 +1,8 @@
+11.3.3 / 2025-12-18
+-------------------
+
+- Fix copying symlink when destination is a symlink to the same target ([#1019](https://github.com/jprichardson/node-fs-extra/issues/1019), [#1060](https://github.com/jprichardson/node-fs-extra/pull/1060))
+
 11.3.2 / 2025-09-15
 -------------------
 
