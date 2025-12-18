@@ -8,7 +8,7 @@
   "homepage": "https://github.com/jprichardson/node-fs-extra",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jprichardson/node-fs-extra"
+    "url": "git+https://github.com/jprichardson/node-fs-extra.git"
   },
   "keywords": [
     "fs",
