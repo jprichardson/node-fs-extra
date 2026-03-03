@@ -1,3 +1,8 @@
+11.3.4 / 2026-03-03
+-------------------
+
+- Fix bug where calling `ensureSymlink`/`ensureSymlinkSync` with a relative `srcPath` would fail if the symlink already existed ([#1038](https://github.com/jprichardson/node-fs-extra/issues/1038), [#1064](https://github.com/jprichardson/node-fs-extra/pull/1064))
+
 11.3.3 / 2025-12-18
 -------------------
 
