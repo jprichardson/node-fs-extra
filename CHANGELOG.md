@@ -1,3 +1,10 @@
+11.3.5 / 2026-05-06
+-------------------
+
+- Fix `ensureLink*`/`ensureSymlink*` identical file detection on Windows ([#1068](https://github.com/jprichardson/node-fs-extra/pull/1068))
+- Fix error handling in timestamp preservation code ([#1065](https://github.com/jprichardson/node-fs-extra/pull/1065), [#1069](https://github.com/jprichardson/node-fs-extra/pull/1069))
+- Fix potential file descriptor leak on error in synchronous timestamp preservation code ([#1066](https://github.com/jprichardson/node-fs-extra/pull/1066))
+
 11.3.4 / 2026-03-03
 -------------------
 
