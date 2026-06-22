@@ -61,7 +61,7 @@ const fse = require('fs-extra')
 
 ### ESM
 
-There is also an `fs-extra/esm` import, that supports both default and named exports. However, note that `fs` methods are not included in `fs-extra/esm`; you still need to import `fs` and/or `fs/promises` seperately:
+There is also an `fs-extra/esm` import, that supports both default and named exports. However, note that `fs` methods are not included in `fs-extra/esm`; you still need to import `fs` and/or `fs/promises` separately:
 
 ```js
 import { readFileSync } from 'fs'
