@@ -1,3 +1,9 @@
+11.3.6 / 2026-06-29
+-------------------
+
+- Fix handling of symlinked destination ancestors in copy/move methods ([#1071](https://github.com/jprichardson/node-fs-extra/issues/1071), [#1073](https://github.com/jprichardson/node-fs-extra/pull/1073))
+- Docs typo fixed ([#1074](https://github.com/jprichardson/node-fs-extra/pull/1074))
+
 11.3.5 / 2026-05-06
 -------------------
 
