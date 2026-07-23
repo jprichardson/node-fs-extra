@@ -1,3 +1,8 @@
+11.4.0 / 2026-07-23
+-------------------
+
+- Proper `EEXIST` error when trying to create a symlink and the dest already exists as a broken symlink ([#925](https://github.com/jprichardson/node-fs-extra/issues/925), [#1076](https://github.com/jprichardson/node-fs-extra/pull/1076))
+
 11.3.6 / 2026-06-29
 -------------------
 
