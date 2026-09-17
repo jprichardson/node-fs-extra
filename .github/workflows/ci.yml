@@ -15,9 +15,9 @@ jobs:
         os: [ubuntu-latest, macos-15-intel, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v7
     - name: Use Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node }}
     - run: npm install
