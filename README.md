@@ -275,7 +275,6 @@ Credit
 
 - [Isaac Shlueter](https://github.com/isaacs)
 - [Charlie McConnel](https://github.com/avianflu)
-- [James Halliday](https://github.com/substack)
 - [Andrew Kelley](https://github.com/andrewrk)
 
 
