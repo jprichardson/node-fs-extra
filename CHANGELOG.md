@@ -1,3 +1,9 @@
+11.4.1 / 2026-09-22
+-------------------
+
+- Properly handle read errors (e.g. due to permissions) in `emptyDir*()` ([#1080](https://github.com/jprichardson/node-fs-extra/pull/1080))
+- Allow renaming with only Unicode normalization difference in the filename (APFS-specific) ([#859](https://github.com/jprichardson/node-fs-extra/issues/859), [#1079](https://github.com/jprichardson/node-fs-extra/pull/1079))
+
 11.4.0 / 2026-07-23
 -------------------
 
