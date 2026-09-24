@@ -137,6 +137,7 @@ Methods
 
 - [copy](docs/copy.md)
 - [emptyDir](docs/emptyDir.md)
+- [isEmptyDir](docs/isEmptyDir.md)
 - [ensureFile](docs/ensureFile.md)
 - [ensureDir](docs/ensureDir.md)
 - [ensureLink](docs/ensureLink.md)
@@ -155,6 +156,7 @@ Methods
 
 - [copySync](docs/copy-sync.md)
 - [emptyDirSync](docs/emptyDir-sync.md)
+- [isEmptyDirSync](docs/isEmptyDir-sync.md)
 - [ensureFileSync](docs/ensureFile-sync.md)
 - [ensureDirSync](docs/ensureDir-sync.md)
 - [ensureLinkSync](docs/ensureLink-sync.md)
